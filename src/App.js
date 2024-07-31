@@ -1,8 +1,9 @@
 import { Container } from "./common/Container";
+import MoviesListPage from "../src/feature/movies/MoviesListPage";
 
 export default () => (
   <Container>
-    Hello world!
+    <MoviesListPage /> 
   </Container>
 );
 
