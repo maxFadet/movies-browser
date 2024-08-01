@@ -1,8 +1,12 @@
 import { Container } from "./common/Container";
+import { NavigationBar } from "./NavigationBar";
 
-export default () => (
-  <Container>
-    Hello world!
-  </Container>
-);
+export const App = () => {
+
+  return (
+    <Container>
+      <NavigationBar />
+    </Container>
+  );
+};
 
