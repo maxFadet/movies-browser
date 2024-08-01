@@ -22,6 +22,8 @@ export const HeaderContent = styled.div`
 `;
 
 export const Header = styled.h1`
+    font-weight: 500;
+    font-size: 24px;
     margin: 0;
 `;
 
@@ -38,14 +40,19 @@ export const NavigationList = styled.ul`
 `;
 
 export const NavigationItem = styled.li`
-   
+   border: 1px solid ${({ theme }) => theme.colors.white};
+   border-radius: 25px;
+   padding: 12px 24px;
+   font-size: 12px;
+   font-weight: 600;
 `;
 
 export const Search = styled.div`
     display: flex;
+    flex-basis: 30%;
     align-items: center;
     gap: 16px;
-    padding: 12px;
+    padding: 12px 24px;
     border: 1px solid ${({ theme }) => theme.colors.mystic};
     border-radius: 25px;
     background-color: ${({ theme }) => theme.colors.white};
@@ -54,4 +61,8 @@ export const Search = styled.div`
 export const Input = styled.input`
     border: none;
     background-color: unset;
+
+    &:focus-visible{
+        outline: none;
+    }
 `;
