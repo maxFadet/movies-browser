@@ -1,11 +1,11 @@
 import { Container } from "./common/Container";
-import { NavigationBar } from "./NavigationBar";
+import { PageHeader } from "./PageHeader";
 
 export const App = () => {
 
   return (
     <Container>
-      <NavigationBar />
+      <PageHeader />
     </Container>
   );
 };
