@@ -1,16 +1,20 @@
-import { StyledHeader, MenuItem, LogoContainer } from "./styled";
+import { StyledHeader, MenuItem, LogoContainer, SearchContainer } from "./styled";
 import { toMoviesList } from "../routes";
-import { Logo } from "./logoIcon";
+import { LogoIcon } from "./logoIcon";
+import { SearchIcon } from "./searchIcon";
 
 export default () => {
     return (
         <nav>
             <StyledHeader>
                 <LogoContainer>
-                    <Logo />
+                    <LogoIcon />
                 </LogoContainer>
                 <MenuItem to={toMoviesList()}>MOVIES</MenuItem>
                 <MenuItem to={toMoviesList()}>PEOPLE</MenuItem>
+              <SearchContainer>
+                    <SearchIcon />
+              </SearchContainer>
             </StyledHeader>
         </nav>
     );

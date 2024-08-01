@@ -1,7 +1,7 @@
-import { ReactComponent as LogoIcon } from "./logo.svg";
+import { ReactComponent as Logo } from "./logo.svg";
 
-export const Logo = () => (
+export const LogoIcon = () => (
     <div>
-        <LogoIcon />
+        <Logo />
     </div>
 );

@@ -8,18 +8,28 @@ export const StyledHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 23px 0;
+    max-width: 1920px;
+    max-height: 94px;
 `;
 
 export const LogoContainer = styled.div`
     display: flex;
     align-items: center;
     max-width: 220px,
-    mah-height: 48px;
+    max-height: 48px;
 `;
 
-export const LogoIcon = styled.svg`
+export const SearchContainer = styled.div`
+    max-width: 432px;
+    min-width: 288px;
+    max-height: 48px;
+    pading-left: 24px;
+    background-color: ${({theme}) => theme.colors.white};
+    border-radius: 33px;
     `
+export const SearchInput =styled.input`
+    
+`    
 
 export const MenuItem = styled(NavLink).attrs(() => ({
     activeClassName,
