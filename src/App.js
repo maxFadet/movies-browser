@@ -1,8 +1,9 @@
 import { Container } from "./common/Container";
+import ActorsList from "./features/ActorList";
 
 export default () => (
-  <Container>
-    Hello world!
-  </Container>
+
+    <ActorsList />
+
 );
 
