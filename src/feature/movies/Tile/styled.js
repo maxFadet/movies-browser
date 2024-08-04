@@ -40,9 +40,11 @@ export const TileHeader = styled.div`
   font-weight: 500;
   color: ${({ theme }) => theme.colors.black};
   word-break: break-word;
+  margin-bottom: 4px; 
  `;
 
  export const MovieYear = styled.h2`
+  margin-top: 4px; 
   font-size: 16px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.waterloo};
