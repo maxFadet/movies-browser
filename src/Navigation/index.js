@@ -1,4 +1,4 @@
-import { StyledHeader, MenuItem, LogoContainer, SearchContainer, LogoTitle } from "./styled";
+import { StyledHeader, MenuItem, LogoContainer, SearchContainer, LogoTitle, SearchInput, MenuContainer } from "./styled";
 import { toMoviesList } from "../routes";
 import { LogoIcon } from "./logoIcon";
 import { SearchIcon } from "./searchIcon";
@@ -13,10 +13,13 @@ export default () => {
                         Movies Browser
                     </LogoTitle>
                 </LogoContainer>
-                <MenuItem to={toMoviesList()}>MOVIES</MenuItem>
-                <MenuItem to={toMoviesList()}>PEOPLE</MenuItem>
+                <MenuContainer>
+                    <MenuItem to={toMoviesList()}>MOVIES</MenuItem>
+                    <MenuItem to={toMoviesList()}>PEOPLE</MenuItem>
+                </MenuContainer>
                 <SearchContainer>
                     <SearchIcon />
+                    <SearchInput placeholder="Search for movies..." />
                 </SearchContainer>
             </StyledHeader>
         </nav>
