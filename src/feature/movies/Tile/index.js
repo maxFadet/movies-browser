@@ -8,8 +8,8 @@ import {
     Star,
     Rating,
     Votes,
-    TagsContainer,
-    Tag
+    Tag,
+    Tags
 } from "./styled";
 import { MoviePoster } from "./TileElements/poster/MoviePoster";
 
@@ -19,11 +19,13 @@ const Tile = () => (
             <MoviePoster />
         </PosterContainer>
         <TileHeader>
-            <TileTitle>movies title</TileTitle>
+            <TileTitle>movie title</TileTitle>
             <MovieYear>2020</MovieYear>
-            <TagsContainer>
-                <Tag />
-            </TagsContainer>
+            <Tags>
+                <Tag>Action</Tag>
+                <Tag>Adventure</Tag>
+                <Tag>Drama</Tag>
+            </Tags>
         </TileHeader>
         <RatingContainer>
             <Star />
