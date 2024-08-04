@@ -95,5 +95,6 @@ margin: 4px;
 
 export const Votes = styled.li`
 padding-left: 8px;
-
+color: ${({ theme }) => theme.colors.waterloo};
+margin-top: 4px;
 `;
