@@ -19,8 +19,8 @@ const Tile = () => (
             <MoviePoster />
         </PosterContainer>
         <TileHeader>
-            <TileTitle />
-            <MovieYear />
+            <TileTitle>movies title</TileTitle>
+            <MovieYear>2020</MovieYear>
             <TagsContainer>
                 <Tag />
             </TagsContainer>
