@@ -12,8 +12,12 @@ export const MediaSection = styled.section`
     justify-items: start;
     grid-template-columns: repeat(auto-fill, 20%);
 
-    @media (max-width: 1000px) {
+    @media (max-width: 900px) {
         grid-template-columns: repeat(auto-fill, 46%);  
+    };
+
+    @media (max-width: 400px) {
+        grid-template-columns: 100%;  
     };
 `;
 
