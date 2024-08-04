@@ -16,7 +16,7 @@ export const PosterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  pading: 16;
+  padding: 16;
   background-color: ${({ theme }) => theme.colors.silver};
   max-width: 292px;
   height: 434px;
@@ -32,7 +32,7 @@ export const TileHeader = styled.div`
   flex-direction: column;
   max-width: 292px;
   max-height: 105px;
-  pading: 16;
+  padding: 16;
  `;
 
  export const TileTitle = styled.h2`
@@ -43,7 +43,7 @@ export const TileHeader = styled.div`
   margin-bottom: 4px; 
  `;
 
- export const MovieYear = styled.h2`
+ export const MovieYear = styled.h3`
   margin-top: 4px; 
   font-size: 16px;
   font-weight: 400;
@@ -57,12 +57,19 @@ export const TileHeader = styled.div`
   border: 1px solid red;
  `;
 
- export const Tag = styled.span`
-    
+ export const Tags = styled.ul`
+ list-style: none;
+ padding-left: 0; 
+ display: flex;
+  flez-wrap: wrap;    
  `;
  
+ export const Tag = styled.li`
+  background-color: ${({ theme }) => theme.colors.mystic};    
+ `;
+
  export const RatingContainer = styled.div`
-  pading: 16; 
+  padding: 16; 
   width: 140px;
   height: 24px;
   border: 1px solid red;
