@@ -1,12 +1,22 @@
-import { TileStyled, PosterContainer, TileHeader, TileTitle, MovieYear, RatingContainer, Star, Rating, Votes, Poster, TagsContainer, Tag } from "./styled";
+import {
+    TileStyled,
+    PosterContainer,
+    TileHeader,
+    TileTitle,
+    MovieYear,
+    RatingContainer,
+    Star,
+    Rating,
+    Votes,
+    TagsContainer,
+    Tag
+} from "./styled";
 import { MoviePoster } from "./TileElements/poster/MoviePoster";
 
 const Tile = () => (
     <TileStyled>
         <PosterContainer>
-            <Poster>
-                <MoviePoster />
-            </Poster>
+            <MoviePoster />
         </PosterContainer>
         <TileHeader>
             <TileTitle />

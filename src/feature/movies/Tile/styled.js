@@ -21,11 +21,11 @@ export const PosterContainer = styled.div`
    max-width: 292px;
    max-height: 434px;
    border-radius: 5px;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+      max-width: 292px;
+      max-height: 434px;
   `;
-  
-export const Poster = styled.svg`
-   width: 100%;
- `;
 
 export const TileHeader = styled.div`
   display: flex;
