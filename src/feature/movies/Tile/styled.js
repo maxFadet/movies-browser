@@ -9,7 +9,7 @@ export const TileStyled = styled.article`
   padding: 16px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
-  color: ${({ theme }) => theme.colors.black}; /* Ustawia kolor czcionki */
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const PosterContainer = styled.div`
