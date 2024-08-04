@@ -8,6 +8,19 @@ function MoviesListPage() {
             <Header title="Popular movies" />
             <TileContainer>
                 <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+                <Tile />
+
             </TileContainer>
         </Container>
     );
