@@ -13,11 +13,15 @@ export const MediaSection = styled.section`
     grid-template-columns: repeat(auto-fill, 20%);
 
     @media (max-width: 900px) {
-        grid-template-columns: repeat(auto-fill, 46%);  
+        grid-template-columns: repeat(3, 30%);
     };
 
-    @media (max-width: 400px) {
-        grid-template-columns: 100%;  
+    @media (max-width: 450px) {
+        grid-template-columns: repeat(2, 50%);
+    };
+
+    @media (max-width: 300px) {
+        grid-template-columns: 100%;
     };
 `;
 
