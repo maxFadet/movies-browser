@@ -15,12 +15,6 @@ function MoviesListPage() {
                 <Tile />
                 <Tile />
                 <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-
             </TileContainer>
         </Container>
     );
