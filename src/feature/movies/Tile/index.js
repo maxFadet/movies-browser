@@ -11,7 +11,8 @@ import {
     Tag,
     Tags
 } from "./styled";
-import { MoviePoster } from "./TileElements/poster/MoviePoster";
+import { MoviePoster } from "./TileElements/MoviePoster";
+import { StarShape } from "./TileElements/StarShape";
 
 const Tile = () => (
     <TileStyled>
@@ -28,7 +29,7 @@ const Tile = () => (
             </Tags>
         </TileHeader>
         <RatingContainer>
-            <Star />
+            <StarShape />
             <Rating />
             <Votes />
         </RatingContainer>
