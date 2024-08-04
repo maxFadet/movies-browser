@@ -30,8 +30,8 @@ const Tile = () => (
         </TileHeader>
         <RatingContainer>
             <StarShape />
-            <Rating />
-            <Votes />
+            <Rating>7,8</Rating>
+            <Votes>35 votes</Votes>
         </RatingContainer>
 
 
