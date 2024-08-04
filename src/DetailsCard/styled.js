@@ -10,20 +10,20 @@ export const StyledDetailsCard = styled.article`
     margin: 64px auto;
     padding: 24px;
 
-    @media (max-width: 800px) {
+    @media (max-width: 1100px) {
         grid-template-areas: 
             "image details"
             "description description"
     };
 `;
 
-export const Poster = styled.div`
+export const Poster = styled.img`
     width: 300px;
     grid-area: image;
     background-color: green;
     border-radius: 15px;
 
-    @media (max-width: 800px) {
+    @media (max-width: 1100px) {
         width: 100%;
     };
 `;
