@@ -13,15 +13,13 @@ import {
 } from "./styled";
 import { Rates } from "../Rates";
 
-
 export const DetailsCard = () => {
     return (
         <StyledDetailsCard>
             <Poster
-            // src="https://raw.githubusercontent.com/maxFadet/movies-browser/f1d4c789e1dd080758002ae1153b527f2c7d70d9/src/poster.png"
-            // alt=""
+                src="https://raw.githubusercontent.com/maxFadet/movies-browser/f1d4c789e1dd080758002ae1153b527f2c7d70d9/src/poster.png"
+                alt=""
             >
-               
             </Poster>
             <Details>
                 <Header>Mulan</Header>
