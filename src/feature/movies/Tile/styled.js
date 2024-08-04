@@ -46,7 +46,7 @@ export const TileHeader = styled.div`
  export const MovieYear = styled.h3`
   margin-top: 4px; 
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 400;    
   color: ${({ theme }) => theme.colors.waterloo};
   word-break: break-word;
  `;
@@ -58,27 +58,32 @@ export const TileHeader = styled.div`
  `;
 
  export const Tags = styled.ul`
- list-style: none;
- padding-left: 0; 
- display: flex;
-  flez-wrap: wrap;    
+  list-style: none;
+  padding-left: 0; 
+  display: flex;
+  flex-wrap: wrap;    
+  margin: -8px; 
  `;
  
  export const Tag = styled.li`
-  background-color: ${({ theme }) => theme.colors.mystic};    
+  background-color: ${({ theme }) => theme.colors.mystic};
+  border-radius: 5px;
+  padding: 8px 16px 8px 16px;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 4px;
  `;
 
  export const RatingContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;  
+  margin-top: 39px; 
   padding: 16; 
   width: 140px;
   height: 24px;
-  border: 1px solid red;
  `;
  
- export const Star = styled.svg`
-    
- `;
-
 export const Rating = styled.div`
 
 `;
