@@ -4,5 +4,8 @@ export const theme = {
         whisper: "#F5F5FA",
         mystic: "#E4E6F0",
         white: "#FFFFFF",
+        brightHeather: "#bac7d580",
+        stormGray: "#74788B",
+        darkerGray: "#7E839A",
     },
 }
