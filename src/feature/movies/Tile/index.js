@@ -5,7 +5,6 @@ import {
     TileTitle,
     MovieYear,
     RatingContainer,
-    Star,
     Rating,
     Votes,
     Tag,
