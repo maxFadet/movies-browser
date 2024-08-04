@@ -1,14 +1,26 @@
-import { Container } from "./common/Container";
-import { PageHeader } from "./PageHeader";
-import { PagePoster } from "./PagePoster";
+import { PagePanel } from "./PagePanel";
+import { MainContent } from "./MainContent";
+import { PosterCard } from "./PosterCard";
+import { DetailsCard } from "./DetailsCard";
+import { MediaCard } from "./MediaCard";
+import { Tile } from "./common/Tile";
 
 export const App = () => {
 
   return (
-    <Container>
-      <PageHeader />
-      <PagePoster />
-    </Container>
+    <>
+      <PagePanel />
+      <PosterCard />
+      <MainContent
+        content={
+          <>
+            <Tile content={<DetailsCard />} />
+            <MediaCard header="Cast" />
+            <MediaCard header="Crew" />
+          </>
+        }
+      />
+    </>
   );
 };
 
