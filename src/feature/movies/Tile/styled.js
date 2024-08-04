@@ -75,19 +75,25 @@ export const TileHeader = styled.div`
   margin: 4px;
  `;
 
- export const RatingContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;  
-  margin-top: 39px; 
-  padding: 16; 
+ export const RatingContainer = styled.ul`
   width: 140px;
   height: 24px;
+  list-style: none;
+  padding-left: 0; 
+  display: flex;
+  flex-wrap: wrap;    
+  margin-top: 39px; 
  `;
  
-export const Rating = styled.div`
-
+export const Rating = styled.li`
+padding-left: 8px;
+color: ${({ theme }) => theme.colors.black}
+font-size: 16px;
+font-weight: 600;
+margin: 4px;
 `;
 
-export const Votes = styled.div`
+export const Votes = styled.li`
+padding-left: 8px;
 
 `;
