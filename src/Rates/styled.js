@@ -11,11 +11,17 @@ export const StyledRates = styled.div`
     justify-content: start;
     grid-gap: 16px;
 
-    ${({ $smaller }) => $smaller && css`
+    @media (max-width: 700px) {
       grid-template-areas: 
           "star score votes";
       grid-gap: 12px;
       align-items: center;
+    };
+
+    ${({ $smaller }) => $smaller && css`
+      @media (max-width: 700px) {
+        grid-gap: 8px;
+      };
     `};
 `;
 
@@ -24,9 +30,15 @@ export const Score = styled.p`
     font-weight: 500;
     margin: 0;
     grid-area: score;
+    align-self: center;
 
     ${({ $smaller }) => $smaller && css`
       font-size: 22px;
+
+      @media (max-width: 700px) {
+        font-size: 13px;
+        font-weight: 600;
+      };
     `};
 `;
 
@@ -45,6 +57,10 @@ export const TotalScore = styled.span`
 
     ${({ $smaller }) => $smaller && css`
       font-size: 14px;
+
+      @media (max-width: 700px) {
+        display: none;
+      };
     `};
 `;
 
@@ -56,5 +72,10 @@ export const Votes = styled.p`
 
   ${({ $smaller }) => $smaller && css`
     font-size: 14px;
+
+    @media (max-width: 700px) {
+      font-size: 13px;
+      color: ${({ theme }) => theme.colors.darkerGray};
+    };
   `};
 `;
