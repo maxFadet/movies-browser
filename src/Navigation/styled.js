@@ -19,6 +19,13 @@ export const LogoContainer = styled.div`
     max-height: 48px;
 `;
 
+export const LogoTitle = styled.span`
+font-size: 24px;
+font-weight: 500;
+color: ${({ theme }) => theme.colors.white};
+margin-left: 12px;
+`;
+
 export const SearchContainer = styled.div`
     max-width: 432px;
     min-width: 288px;
@@ -34,9 +41,12 @@ export const SearchInput =styled.input`
 export const MenuItem = styled(NavLink).attrs(() => ({
     activeClassName,
 }))`
-color: ${({ theme }) => theme.colors.white};
 text-decoration: none;
+color: ${({ theme }) => theme.colors.white};
+font-size: 14px;
+font-weight: 600;
     
     &.${activeClassName} {
         border: 1px solid ${({ theme }) => theme.colors.white};
+        margin: 24px 13.5px;
     }`;
