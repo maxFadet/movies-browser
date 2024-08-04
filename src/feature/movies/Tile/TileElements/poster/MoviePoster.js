@@ -1,7 +1,7 @@
-import { ReactComponent as Poster } from "./poster.svg";
+import { ReactComponent as PosterSvg } from "./poster.svg";
 
 export const MoviePoster = () => (
     <div>
-        <Poster />
+        <PosterSvg />
     </div>
 );
