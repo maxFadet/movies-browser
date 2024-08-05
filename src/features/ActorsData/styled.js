@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactComponent as Vector } from '../../image/Vector.svg';
 
 export const Wrapper = styled.main`
   max-width: 1400px;
@@ -8,6 +9,7 @@ export const Wrapper = styled.main`
 
 export const Description = styled.article`
   background: rgba(255, 255, 255, 1);
+  box-shadow: rgba(186, 199, 213, 0.5) 0px 4px 12px;
   min-height: 644px;
   padding: 40px;
   margin: auto;
@@ -57,4 +59,116 @@ export const Biographi = styled.p`
   font-weight: 400;
   line-height: 32px;
   margin: 0;
+`;
+
+export const Section = styled.section`
+  display: grid;
+  grid-template-columns: repeat(4, 324px);
+  grid-gap: 24px;
+  margin: 64px auto;
+`;
+
+export const Title = styled.span`
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 43px;
+  grid-column: 1 / -1;
+  color: ${({ theme }) => theme.colors.woodsmoke};
+`;
+
+export const Poster = styled.img`
+  width: 177px;
+  height: 264px;
+  width: 100%;
+  border-radius: 5px;
+`;
+
+export const Tile = styled.div`
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: rgba(186, 199, 213, 0.5) 0px 4px 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+
+&:hover {
+
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`;
+
+export const MovieName = styled.h2`
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28.6px;
+  color: ${({ theme }) => theme.colors.blackPearl};
+  margin: 16px 0 8px;
+`;
+
+export const SubTitle = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: ${({ theme }) => theme.colors.waterloo};
+`;
+
+export const Tags = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+`;
+
+export const Tag = styled.li`
+  padding: 8px 16px;
+  background: ${({ theme }) => theme.colors.mystic};
+  border-radius: 5px;
+  font-size: 14px;
+`;
+
+export const Ranking = styled.div`
+  display: flex;
+  gap: 12px;
+`;
+
+export const Rates = styled.div`
+  display: flex;
+  gap: 12px;
+`;
+
+export const Votes = styled.div`
+  font-size: 16px;
+  line-height: 24px;
+  color: ${({ theme }) => theme.colors.waterloo};
+`;
+
+export const Number = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: ${({ theme }) => theme.colors.blackPearl};
+`;
+
+export const Star = styled(Vector)`
+  color: ${({ theme }) => theme.colors.candlelight};
+  width: 24px;
+  height: 24px;
+
+  @media(max-width: 1256px) {
+        width: 16px;
+        height: 16px;
+}
 `;

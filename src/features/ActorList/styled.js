@@ -44,7 +44,7 @@ export const Section = styled.section`
 
 export const Tile = styled.div`
   background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.5);
+  box-shadow: rgba(186, 199, 213, 0.5) 0px 4px 12px;
   display: grid;
   grid-template-rows: auto auto;
   padding: 16px;
@@ -84,6 +84,6 @@ export const Name = styled.p`
 export const Photo = styled.img`
   width: 177px;
   height: 264px;
-  /* width: 100%; */
+  width: 100%;
   border-radius: 5px;
 `;
