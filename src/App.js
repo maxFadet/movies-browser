@@ -1,12 +1,12 @@
-import { Container } from "./common/Container";
-import ActorsList from "./features/ActorList";
-import { ActorsData } from "./features/ActorsData";
+import { MovieDetailsPage } from "./features/MovieDetailsPage/MovieDetails";
 
+function App() {
+  return (
+    <>
+      <MovieDetailsPage />
+    </>
+  );
+};
 
-export default () => (
-  <>
-    {/* <ActorsList /> */}
-    <ActorsData />
-  </>
-);
+export default App;
 

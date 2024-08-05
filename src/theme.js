@@ -1,11 +1,11 @@
 export const theme = {
     colors: {
+        black: "#000000",
         whisper: "#F5F5FA",
-        woodsmoke: "#18181B",
-        blackPearl: "#03121F",
-        waterloo: "#7E839A",
         mystic: "#E4E6F0",
-        candlelight: "#FCD420",
-        
-    }
+        white: "#FFFFFF",
+        brightHeather: "#bac7d580",
+        stormGray: "#74788B",
+        darkerGray: "#7E839A",
+    },
 }
