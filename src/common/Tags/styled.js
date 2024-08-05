@@ -13,13 +13,14 @@ export const StyledTags = styled.ul`
     };
 `;
 
-export const Tag = styled.ul`
+export const Tag = styled.li`
    background-color: ${({ theme }) => theme.colors.mystic};
    flex-basis: 20%;
    font-size: 16px;
    border-radius: 5px;
    font-weight: 400;
    padding: 8px 16px;
+   list-style-type: none;
    text-align: center;
 
    @media (max-width: 475px) {
