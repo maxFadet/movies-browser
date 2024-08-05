@@ -84,7 +84,7 @@ export const MenuItem = styled(NavLink).attrs(() => ({
         margin: 24px 13.5px;
     }`;
 
-    export const SearchContainer = styled.div`
+export const SearchContainer = styled.div`
     display: flex;
     flex-wrap: wrap;    
     margin: -8px;     
