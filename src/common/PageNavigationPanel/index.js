@@ -1,13 +1,23 @@
-import { ReactComponent as MovieBrowserIcon } from "./Video.svg";
-import { ReactComponent as SearchIcon } from "./Search.svg";
-import { StyledPageHeader, HeaderContent, NavigationList, HeaderContainer, Navigation, Header, NavigationItem, Search, Input } from "./styled";
+import { ReactComponent as SearchIcon } from "./Icons/Search.svg";
+import {
+    StyledPageHeader,
+    HeaderContent,
+    StyledMovieBrowserIcon,
+    NavigationList,
+    HeaderContainer,
+    Navigation,
+    Header,
+    NavigationItem,
+    Search,
+    Input
+} from "./styled";
 
-export const PageHeader = () => {
+export const PageNavigationPanel = () => {
     return (
         <StyledPageHeader>
             <HeaderContainer>
                 <HeaderContent>
-                    <MovieBrowserIcon />
+                    <StyledMovieBrowserIcon />
                     <Header>Movie Browser</Header>
                 </HeaderContent>
                 <Navigation>
