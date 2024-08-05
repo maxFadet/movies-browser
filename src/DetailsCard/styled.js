@@ -20,10 +20,10 @@ export const StyledDetailsCard = styled.article`
         padding: 16px;
         grid-template-columns: 1fr 1fr;
     };
-
+/* 
     @media (max-width: 650px) {
         grid-template-columns: 1fr 0.5fr;
-    };
+    }; */
 
     @media (max-width: 475px) {
         grid-template-columns: 1fr 1fr;
@@ -34,7 +34,8 @@ export const Poster = styled.img`
     width: 100%;
     grid-area: image;
     border-radius: 15px;
-    object-fit: cover;
+    align-self: start;
+    object-fit: contain;
 `;
 
 export const Details = styled.div`
@@ -71,20 +72,21 @@ export const Year = styled.p`
     };
 `;
 
-export const Production = styled.p`
-    margin: 0;
+export const DetailInfoType = styled.span`
+    color: ${({ theme }) => theme.colors.stormGray};
     font-size: 18px;
     font-weight: 400;
 
     @media (max-width: 475px) {
-        font-size: 12px;
+        display: none;
     };
 `;
 
-export const Date = styled.p`
+export const DetailInfo = styled.p`
     margin: 0;
     font-size: 18px;
     font-weight: 400;
+    line-height: 21px;
 
     @media (max-width: 475px) {
         font-size: 12px;
@@ -93,34 +95,6 @@ export const Date = styled.p`
 
 export const Rate = styled.p`
     margin: 0;
-`;
-
-export const Tags = styled.ul`
-    margin: 0;
-    padding-left: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    align-self: baseline;
-
-    @media (max-width: 475px) {
-        gap: 8px;
-    };
-`;
-
-export const Tag = styled.ul`
-   background-color: ${({ theme }) => theme.colors.mystic};
-   flex-basis: 20%;
-   font-size: 16px;
-   border-radius: 5px;
-   font-weight: 400;
-   padding: 8px 16px;
-   text-align: center;
-
-   @media (max-width: 475px) {
-        font-size: 10px;
-        padding: 4px 8px;
-    };
 `;
 
 export const Description = styled.p`
@@ -134,15 +108,5 @@ export const Description = styled.p`
         font-size: 14px;
         font-weight: 200;
         line-height: 22px;
-    };
-`;
-
-export const KeyWord = styled.span`
-    color: ${({ theme }) => theme.colors.stormGray};
-    font-size: 18px;
-    font-weight: 400;
-
-    @media (max-width: 475px) {
-        display: none;
     };
 `;

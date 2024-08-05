@@ -4,14 +4,12 @@ import {
     Poster,
     Header,
     Year,
-    Production,
-    Tags,
-    Tag,
+    DetailInfo,
     Description,
-    Date,
-    KeyWord,
+    DetailInfoType,
 } from "./styled";
 import { Rates } from "../Rates";
+import { Tags } from "../common/Tags";
 
 export const DetailsCard = () => {
     return (
@@ -24,17 +22,13 @@ export const DetailsCard = () => {
             <Details>
                 <Header>Mulan</Header>
                 <Year>2020</Year>
-                <Production>
-                    <KeyWord>Production:</KeyWord> China, United States of America
-                </Production>
-                <Date>
-                    <KeyWord>Release date:</KeyWord> 24.10.2020
-                </Date>
-                <Tags>
-                    <Tag>Action</Tag>
-                    <Tag>Adventure</Tag>
-                    <Tag>Drama</Tag>
-                </Tags>
+                <DetailInfo>
+                    <DetailInfoType>Production:</DetailInfoType> China, United States of America
+                </DetailInfo>
+                <DetailInfo>
+                    <DetailInfoType>Release date:</DetailInfoType> 24.10.2020
+                </DetailInfo>
+                <Tags />
                 <Rates details />
             </Details>
             <Description>
