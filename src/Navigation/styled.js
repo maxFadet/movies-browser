@@ -17,7 +17,7 @@ export const StyledHeader = styled.div`
     }
 `;
 
-export const LogoContainer = styled.div`
+export const Logo = styled.div`
     display: flex;
     align-items: center;
 
@@ -27,11 +27,35 @@ export const LogoContainer = styled.div`
     }
 `;
 
+export const LogoContainer = styled.div`
+    width: 40px;
+    height: 40px;
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+    
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+        width: 17px;
+        height: 17px;
+        margin-bottom: 0;
+        order: 3;
+    }
+`;
+
 export const LogoTitle = styled.span`
     font-size: 24px;
     font-weight: 500;
     color: ${({ theme }) => theme.colors.white};
     margin-left: 12px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+        font-size: 13px;
+        margin-bottom: 0;
+        order: 3;
+    }    
+    
 `;
 
 export const MenuContainer = styled.div`

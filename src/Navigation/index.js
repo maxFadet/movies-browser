@@ -1,4 +1,4 @@
-import { StyledHeader, MenuItem, LogoContainer, SearchContainer, LogoTitle, SearchInput, MenuContainer } from "./styled";
+import { StyledHeader, MenuItem, Logo, LogoContainer, SearchContainer, LogoTitle, SearchInput, MenuContainer } from "./styled";
 import { toMoviesList } from "../routes";
 import { LogoIcon } from "./logoIcon";
 import { SearchIcon } from "./searchIcon";
@@ -7,12 +7,14 @@ export default () => {
     return (
         <nav>
             <StyledHeader>
-                <LogoContainer>
-                    <LogoIcon />
+                <Logo>
+                    <LogoContainer>
+                        <LogoIcon />
+                    </LogoContainer>
                     <LogoTitle>
                         Movies Browser
                     </LogoTitle>
-                </LogoContainer>
+                </Logo>
                 <MenuContainer>
                     <MenuItem to={toMoviesList()}>MOVIES</MenuItem>
                     <MenuItem to={toMoviesList()}>PEOPLE</MenuItem>
