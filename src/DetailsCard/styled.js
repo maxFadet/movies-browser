@@ -5,7 +5,7 @@ export const StyledDetailsCard = styled.article`
    grid-template-areas: 
         "image details"
         "image description";
-    align-items: center;
+    align-items: stretch;
     grid-gap: 40px;
     padding: 24px;
 
@@ -20,22 +20,31 @@ export const StyledDetailsCard = styled.article`
         padding: 16px;
         grid-template-columns: 1fr 1fr;
     };
+
+    @media (max-width: 650px) {
+        grid-template-columns: 1fr 0.5fr;
+    };
+
+    @media (max-width: 475px) {
+        grid-template-columns: 1fr 1fr;
+    };
 `;
 
 export const Poster = styled.img`
     width: 100%;
     grid-area: image;
     border-radius: 15px;
+    object-fit: cover;
 `;
 
 export const Details = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    align-self:baseline;
     grid-gap: 12px;
     grid-area: details;
+    align-self: baseline;
 
-    @media (max-width: 550px) {
+    @media (max-width: 475px) {
         grid-gap: 8px;
     };
 `;
@@ -44,7 +53,7 @@ export const Header = styled.header`
     font-size: 36px;
     font-weight: 600;
 
-    @media (max-width: 550px) {
+    @media (max-width: 475px) {
         font-size: 16px;
         font-weight: 500;
     };
@@ -55,7 +64,7 @@ export const Year = styled.p`
     font-weight: 400;
     margin: 0;
 
-    @media (max-width: 550px) {
+    @media (max-width: 475px) {
         font-size: 13px;
         font-weight: 500;
         color: ${({ theme }) => theme.colors.darkerGray};
@@ -67,7 +76,7 @@ export const Production = styled.p`
     font-size: 18px;
     font-weight: 400;
 
-    @media (max-width: 550px) {
+    @media (max-width: 475px) {
         font-size: 12px;
     };
 `;
@@ -77,7 +86,7 @@ export const Date = styled.p`
     font-size: 18px;
     font-weight: 400;
 
-    @media (max-width: 550px) {
+    @media (max-width: 475px) {
         font-size: 12px;
     };
 `;
@@ -92,8 +101,9 @@ export const Tags = styled.ul`
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+    align-self: baseline;
 
-    @media (max-width: 550px) {
+    @media (max-width: 475px) {
         gap: 8px;
     };
 `;
@@ -107,7 +117,7 @@ export const Tag = styled.ul`
    padding: 8px 16px;
    text-align: center;
 
-   @media (max-width: 550px) {
+   @media (max-width: 475px) {
         font-size: 10px;
         padding: 4px 8px;
     };
@@ -120,7 +130,7 @@ export const Description = styled.p`
     margin: 0;
     grid-area: description;
 
-    @media (max-width: 550px) {
+    @media (max-width: 475px) {
         font-size: 14px;
         font-weight: 200;
         line-height: 22px;
@@ -132,7 +142,7 @@ export const KeyWord = styled.span`
     font-size: 18px;
     font-weight: 400;
 
-    @media (max-width: 550px) {
+    @media (max-width: 475px) {
         display: none;
     };
 `;
