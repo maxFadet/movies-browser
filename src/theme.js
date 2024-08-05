@@ -5,5 +5,10 @@ export const theme = {
         mystic: "#E4E6F0",
         waterloo: "#7E839A",
         black: "#18181B"
-    }
+    },
+
+    breakpoints: {
+        tablet: 768,
+        mobile: 360,
+    },
 }
