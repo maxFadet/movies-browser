@@ -1,14 +1,17 @@
 export const theme = {
     colors: {
-        white: "#FFFFFF",
+        black: "#000000",
+        black: "#18181B",
         whisper: "#F5F5FA",
+        silver: "#C4C4C4",
         mystic: "#E4E6F0",
+        white: "#FFFFFF",
+        brightHeather: "#bac7d580",
+        stormGray: "#74788B",
+        darkerGray: "#7E839A",
         waterloo: "#7E839A",
-        black: "#18181B"
     },
-
     breakpoints: {
-        tablet: 700,
-        mobile: 420,
-    },
-};
+        mobile: 320,
+    }
+}
