@@ -1,9 +1,34 @@
-import { StyledTile } from "./styled";
+import {
+    StyledExampleTile,
+    Image,
+    Title,
+    SubInfo,
+    ExtraContent,
+    Overview,
+} from "./styled";
 
-export const Tile = ({ content }) => {
+export const Tile = ({
+    image,
+    title,
+    subInfo,
+    extraContent,
+}) => {
+    const isExtraContentMissing = !extraContent;
+
     return (
-        <StyledTile>
-            {content}
-        </StyledTile>
+        <StyledExampleTile
+            $isExtraContentMissing={isExtraContentMissing}
+        >
+            <Image src={image} alt={title} />
+            <Overview
+                $isExtraContentMissing={isExtraContentMissing}
+            >
+                <Title>
+                    {title}
+                </Title>
+                <SubInfo>{subInfo}</SubInfo>
+                <ExtraContent>{extraContent}</ExtraContent>
+            </Overview>
+        </StyledExampleTile>
     );
-}
+};
