@@ -7,19 +7,28 @@ export const StyledRates = styled.div`
         "star score"
         "votes votes";
     grid-template-columns: repeat(2, auto);
-    align-items: end;
+    align-items: center;
     justify-content: start;
     grid-gap: 16px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 750px) {
+      grid-gap: 12px;
+    };
+
+    @media (max-width: 450px) {
       grid-template-areas: 
           "star score votes";
-      grid-gap: 12px;
+      grid-gap: 8px;
       align-items: center;
     };
 
-    ${({ $smaller }) => $smaller && css`
-      @media (max-width: 700px) {
+    ${({ $larger }) => $larger && css`
+      grid-template-areas: 
+          "star score votes";
+      grid-gap: 8px;
+      align-items: center;
+      
+      @media (max-width: 450px) {
         grid-gap: 8px;
       };
     `};
@@ -32,10 +41,19 @@ export const Score = styled.p`
     grid-area: score;
     align-self: center;
 
-    ${({ $smaller }) => $smaller && css`
+    @media (max-width: 750px) {
+      font-size: 24px;
+    };
+
+    @media (max-width: 450px) {
+        font-size: 13px;
+        font-weight: 600;
+      };
+
+    ${({ $larger }) => $larger && css`
       font-size: 22px;
 
-      @media (max-width: 700px) {
+      @media (max-width: 450px) {
         font-size: 13px;
         font-weight: 600;
       };
@@ -45,9 +63,17 @@ export const Score = styled.p`
 export const StyledStarIcon = styled(StarIcon)`
   grid-area: star;
 
-  ${({ $smaller }) => $smaller && css`
+  @media (max-width: 750px) {
+    width: 30px;
+  };
+
+  @media (max-width: 450px) {
       width: 24px;
-    `};
+  };
+
+  ${({ $larger }) => $larger && css`
+      width: 24px;
+  `};
 `;
 
 export const TotalScore = styled.span`
@@ -55,10 +81,15 @@ export const TotalScore = styled.span`
     font-weight: 400;
     padding: 8px;
 
-    ${({ $smaller }) => $smaller && css`
+    @media (max-width: 450px) {
+      font-size: 14px;
+      padding: 6px;
+    };
+
+    ${({ $larger }) => $larger && css`
       font-size: 14px;
 
-      @media (max-width: 700px) {
+      @media (max-width: 450px) {
         display: none;
       };
     `};
@@ -70,10 +101,14 @@ export const Votes = styled.p`
   font-weight: 400;
   grid-area: votes;
 
-  ${({ $smaller }) => $smaller && css`
+  @media (max-width: 450px) {
+      font-size: 13px;
+    };
+
+  ${({ $larger }) => $larger && css`
     font-size: 14px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 450px) {
       font-size: 13px;
       color: ${({ theme }) => theme.colors.darkerGray};
     };
