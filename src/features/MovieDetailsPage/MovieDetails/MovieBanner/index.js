@@ -1,10 +1,9 @@
-import { Rates } from "../../../common/Rates";
+import { Rates } from "../../../../common/Rates"
 import {
     StyledPagePoster,
     Title,
     MainInfo,
 } from "./styled";
-
 
 export const MovieBanner = ({
     poster,

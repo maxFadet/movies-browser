@@ -19,8 +19,7 @@ export const StyledPagePoster = styled.div.attrs(({ $poster }) => ({
     background-repeat: no-repeat;
     padding-top: 42.25%;
     padding-bottom: 56px;
-   
-    margin-bottom: 64px;
+    
     @media (max-width: 750px) {
         box-shadow: inset 0px 0px 40px 48px #000000;
         padding-bottom: 10px;
