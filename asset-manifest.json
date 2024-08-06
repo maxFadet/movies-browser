@@ -1,21 +1,19 @@
 {
   "files": {
-    "main.js": "/movies-browser/static/js/main.cedf19f4.js",
+    "main.js": "/movies-browser/static/js/main.266f28d0.js",
     "static/js/453.4f8818d1.chunk.js": "/movies-browser/static/js/453.4f8818d1.chunk.js",
     "static/media/image.png": "/movies-browser/static/media/image.dc46124160210db984d9.png",
-    "static/media/shape-star.svg": "/movies-browser/static/media/shape-star.9d9d3e3b84561a420af5343482f78b29.svg",
+    "static/media/shape-star.svg": "/movies-browser/static/media/shape-star.a60a712b1f74f734e6fe6e06fb2ea31c.svg",
     "index.html": "/movies-browser/index.html",
-    "static/media/Vector.svg": "/movies-browser/static/media/Vector.8663155c38d2739a01d98dddbf5d2ae1.svg",
-    "static/media/Star.svg": "/movies-browser/static/media/Star.f8fa76848843ad6f2e49384424f34380.svg",
-    "static/media/poster.svg": "/movies-browser/static/media/poster.c54ec4eb7cea38ded00457dc7aed2d5d.svg",
-    "static/media/logo.svg": "/movies-browser/static/media/logo.64519bacc48e8f0f2a39675e55643d9b.svg",
-    "static/media/Video.svg": "/movies-browser/static/media/Video.b470e4d16ccf0d12d72ef767c7109491.svg",
-    "static/media/search.svg": "/movies-browser/static/media/search.ed3f24f20cda9bb4e005406a3f864acb.svg",
-    "static/media/Search.svg": "/movies-browser/static/media/Search.638da95db9ada1b4ffde54d27da245e8.svg",
-    "main.cedf19f4.js.map": "/movies-browser/static/js/main.cedf19f4.js.map",
+    "static/media/Vector.svg": "/movies-browser/static/media/Vector.291f146da8ec732e66d3333dc945ea1b.svg",
+    "static/media/Star.svg": "/movies-browser/static/media/Star.17fc10390d5fa2a1158e40450673940b.svg",
+    "static/media/poster.svg": "/movies-browser/static/media/poster.88a352691d679e1db33ee3469ebd99c9.svg",
+    "static/media/Video.svg": "/movies-browser/static/media/Video.60b1f07faf4eb35d0860429c3849c852.svg",
+    "static/media/Search.svg": "/movies-browser/static/media/Search.ff7c2592001d7451a44b72e7059ef3b4.svg",
+    "main.266f28d0.js.map": "/movies-browser/static/js/main.266f28d0.js.map",
     "453.4f8818d1.chunk.js.map": "/movies-browser/static/js/453.4f8818d1.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.cedf19f4.js"
+    "static/js/main.266f28d0.js"
   ]
 }
