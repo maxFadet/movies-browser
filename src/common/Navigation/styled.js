@@ -1,75 +1,72 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { ReactComponent as MovieBrowserIcon } from "./Icons/Video.svg";
 
 const activeClassName = "link-active";
 
-export const StyledHeader = styled.div`
-    background-color: ${({ theme }) => theme.colors.black};
-    display: flex;
-    flex-wrap: wrap;    
-    align-items: center;
-    justify-content: space-around;
-    max-width: 1920px;
-    min-height: 94px;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-        min-height: 142px;
-    }
-`;
-
-export const Logo = styled.div`
-    display: flex;
-    align-items: center;
-
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-        margin-bottom: 0;
-    }
-`;
-
-export const LogoContainer = styled.div`
-    width: 40px;
-    height: 40px;
-
-    svg {
-        width: 100%;
-        height: 100%;
-    }
-    
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
-        width: 17px;
-        height: 17px;
-        margin-bottom: 0;
-        order: 3;
-    }
-`;
-
-export const LogoTitle = styled.span`
-    font-size: 24px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.white};
-    margin-left: 12px;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
-        font-size: 13px;
-        margin-bottom: 0;
-        order: 3;
-    }    
-    
-`;
-
-export const MenuContainer = styled.div`
+export const StyledPageHeader = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-        margin-bottom: 0;
-        order: 3;
-    }
+    justify-content: space-around;
+    padding: 23px 0;
+    color:  ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.black};
+    
+    @media (max-width: 800px) {
+        gap: 24px;
+        justify-content: center;
+    };
 `;
 
-export const MenuItem = styled(NavLink).attrs(() => ({
+export const HeaderContainer = styled.header`
+    display: flex;
+    align-items: center;
+    gap: 80px;
+
+    @media (max-width: 550px) {
+        gap: 20px;
+    };
+`;
+
+export const HeaderContent = styled.div`
+    display: flex;
+    gap: 12px;
+    align-items: center;
+`;
+
+export const Header = styled.h1`
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0;
+
+    @media (max-width: 550px) {
+        font-size: 13px;
+    };
+`;
+
+export const StyledMovieBrowserIcon = styled(MovieBrowserIcon)`
+     @media (max-width: 400px) {
+       width: 13px;
+    };
+`;
+
+export const Navigation = styled.nav`
+`;
+
+export const NavigationList = styled.ul`
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding-left: 0px;
+
+    @media (max-width: 550px) {
+        gap: 12px;
+    };
+`;
+
+export const NavigationItem = styled(NavLink).attrs(() => ({
     activeClassName,
 }))`
     text-decoration: none;
@@ -84,30 +81,30 @@ export const MenuItem = styled(NavLink).attrs(() => ({
         margin: 24px 13.5px;
     }`;
 
-export const SearchContainer = styled.div`
+export const Search = styled.div`
     display: flex;
-    flex-wrap: wrap;    
-    margin: -8px;     
-    padding: 12px;
-    padding-left: 24px;
-    max-width: 432px;
-    min-width: 288px;
-    max-height: 48px;
-    background-color: ${({theme}) => theme.colors.white};
-    border-radius: 33px;
+    flex-basis: 30%;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 24px;
+    border: 1px solid ${({ theme }) => theme.colors.mystic};
+    border-radius: 25px;
+    background-color: ${({ theme }) => theme.colors.white};
 
+    @media (max-width: 800px) {
+        flex-basis: 60%;
+    };
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-        order: 3;
-        margin-bottom: 16px;
-        width: auto;
-    }
+    @media (max-width: 550px) {
+        padding: 14px 16px;
+    };
 `;
 
-export const SearchInput =styled.input`
+export const Input = styled.input`
     border: none;
-    margin-left: 16px;
-    font-size: 16px;
-    font-weight: 400;
-    color: ${({ theme }) => theme.colors.waterloo};
-`;   
+    background-color: unset;
+
+    &:focus-visible{
+        outline: none;
+    }
+`;

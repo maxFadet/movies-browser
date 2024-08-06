@@ -1,4 +1,3 @@
-import { PageNavigationPanel } from "../../../common/PageNavigationPanel";
 import { MainContent } from "../../../common/MainContent";
 import { MovieBanner } from "../MovieBanner";
 import { DetailsTile } from "../../../common/DetailsTile"
@@ -12,7 +11,6 @@ export const MovieDetailsPage = () => {
 
     return (
         <>
-            <PageNavigationPanel />
             <MovieBanner
                 poster="https://github.com/maxFadet/movies-browser/blob/feature/movie-details/src/Poster-big.png?raw=true"
                 title="Mulan long title"
