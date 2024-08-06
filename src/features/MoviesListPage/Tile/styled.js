@@ -9,7 +9,6 @@ export const TileStyled = styled.article`
   padding: 16px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
-  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const PosterContainer = styled.div`
@@ -40,7 +39,6 @@ export const TileHeader = styled.div`
  export const TileTitle = styled.h2`
   font-size: 22px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.black};
   word-break: break-word;
   margin-bottom: 4px; 
  `;
@@ -88,7 +86,6 @@ export const TileHeader = styled.div`
  
 export const Rating = styled.li`
 padding-left: 8px;
-color: ${({ theme }) => theme.colors.black};
 font-size: 16px;
 font-weight: 600;
 margin: 4px;

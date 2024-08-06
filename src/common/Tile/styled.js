@@ -47,7 +47,7 @@ export const SubInfo = styled.p`
     margin: 0;
     font-size: 18px;
     font-weight: 400;
-    color: ${({ theme }) => theme.colors.darkerGray};
+    color: ${({ theme }) => theme.colors.waterloo};
 `;
 
 export const ExtraContent = styled.div`

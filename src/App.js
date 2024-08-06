@@ -1,12 +1,12 @@
 
 import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
-import Navigation from "./Navigation";
+import Navigation from "./common/Navigation";
 import { toMoviesList, toActorsList, toPerson, toMovie } from "./routes";
 import { MovieDetailsPage } from "./features/MovieDetailsPage/MovieDetails";
 import ActorsList from "./features/ActorList";
-import { ActorsData } from "./features/ActorsData";
+import { ActorsData } from "./features/ActorPage";
 import { Container } from "./common/Container";
-import MoviesListPage from "../src/feature/movies/MoviesListPage";
+import MoviesListPage from "../src/features/MoviesListPage";
 
 function App() {
   return (

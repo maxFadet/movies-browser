@@ -113,7 +113,6 @@ export const MovieName = styled.h2`
   font-size: 22px;
   font-weight: 500;
   line-height: 28.6px;
-  color: ${({ theme }) => theme.colors.blackPearl};
   margin: 16px 0 8px;
 `;
 
@@ -159,11 +158,9 @@ export const Number = styled.div`
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
-  color: ${({ theme }) => theme.colors.blackPearl};
 `;
 
 export const Star = styled(Vector)`
-  color: ${({ theme }) => theme.colors.candlelight};
   width: 24px;
   height: 24px;
 

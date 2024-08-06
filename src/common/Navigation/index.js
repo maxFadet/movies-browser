@@ -1,5 +1,5 @@
 import { StyledHeader, MenuItem, Logo, LogoContainer, SearchContainer, LogoTitle, SearchInput, MenuContainer } from "./styled";
-import { toMoviesList, toActorsList } from "../routes";
+import { toMoviesList, toActorsList } from "../../routes";
 import { LogoIcon } from "./logoIcon";
 import { SearchIcon } from "./searchIcon";
 

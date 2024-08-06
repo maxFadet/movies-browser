@@ -68,7 +68,7 @@ export const Year = styled.p`
     @media (max-width: 475px) {
         font-size: 13px;
         font-weight: 500;
-        color: ${({ theme }) => theme.colors.darkerGray};
+        color: ${({ theme }) => theme.colors.waterloo};
     };
 `;
 

@@ -110,7 +110,7 @@ export const Votes = styled.p`
 
     @media (max-width: 450px) {
       font-size: 13px;
-      color: ${({ theme }) => theme.colors.darkerGray};
+      color: ${({ theme }) => theme.colors.waterloo};
     };
   `};
 `;

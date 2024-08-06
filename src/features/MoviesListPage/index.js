@@ -1,9 +1,9 @@
-import Header from "../../../common/Header";
+import Header from "../../common/Header";
 import { TileContainer, Wrapper } from "./styled";
-import Tile from "../Tile";
+import Tile from "./Tile";
 import { useNavigate } from "react-router-dom";
-import { toMovie } from "../../../routes";
-import { films } from "../../../features/ActorsData/filmsData";
+import { toMovie } from "../../routes";
+import { films } from "../ActorPage/filmsData";
 
 function MoviesListPage() {
     const navigate = useNavigate();
