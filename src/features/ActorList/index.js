@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { actors } from './actorsData';
-import { Tile, Name, Wrapper, Title, Photo, Section } from './styled';
+import { Tile, Name, Title, Photo, Section } from './styled';
 import { toPerson } from "../../routes";
 
 const ActorsList = () => {
@@ -11,7 +11,6 @@ const ActorsList = () => {
     };
 
     return (
-        <Wrapper>
             <Section>
                 <Title>Popular people</Title>
                 {actors.map((actor, index) => (
@@ -21,7 +20,6 @@ const ActorsList = () => {
                     </Tile>
                 ))}
             </Section>
-        </Wrapper>
     );
 };
 

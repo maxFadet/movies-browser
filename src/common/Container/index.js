@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  max-width: 1920px;
-  margin: 0 auto;
-`;
+export const Container = styled.main`
+  max-width: 1400px;
+  width: 90%;
+  margin: 42px auto;
+  `;

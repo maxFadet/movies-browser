@@ -1,5 +1,5 @@
 import {
-    Description, Photo, Wrapper, Name, Birth, Date, Place, Text, Biographi, Section, Title, Poster, Tile, MovieName, Content,
+    Description, Photo, Name, Birth, Date, Place, Text, Biographi, Section, Title, Poster, Tile, MovieName, Content,
     SubTitle,
     Tags,
     Tag,
@@ -14,7 +14,7 @@ import image from "../../image/image.png"
 
 export const ActorsData = () => {
     return (
-        <Wrapper>
+        <>
             <Description>
                 <Photo src={image} alt="actor" />
                 <Name>Liu Yifei</Name>
@@ -55,6 +55,6 @@ export const ActorsData = () => {
                     </Tile>
                 ))}
             </Section>
-        </Wrapper>
+        </>
     )
 }

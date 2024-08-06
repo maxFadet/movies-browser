@@ -1,5 +1,5 @@
 import Header from "../../common/Header";
-import { TileContainer, Wrapper } from "./styled";
+import { TileContainer } from "./styled";
 import Tile from "./Tile";
 import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../routes";
@@ -13,7 +13,7 @@ function MoviesListPage() {
     };
 
     return (
-        <Wrapper>
+        <>
             <Header title="Popular movies" />
             <TileContainer>
                 {films.map((film, index) => (
@@ -29,7 +29,7 @@ function MoviesListPage() {
                     />
                 ))}
             </TileContainer>
-        </Wrapper>
+        </>
     );
 }
 

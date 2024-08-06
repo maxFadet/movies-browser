@@ -8,12 +8,6 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.woodsmoke};
 `;
 
-export const Wrapper = styled.main`
-  max-width: 1400px;
-  width: 90%;
-  margin: 42px auto;
-  `;
-
 export const Section = styled.section`
   display: grid;
   grid-template-columns: repeat(6, minmax(100px, 1fr));

@@ -1,12 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as Vector } from '../../image/Vector.svg';
 
-export const Wrapper = styled.main`
-  max-width: 1400px;
-  width: 90%;
-  margin: 42px auto;
-  `;
-
 export const Description = styled.article`
   background: rgba(255, 255, 255, 1);
   box-shadow: rgba(186, 199, 213, 0.5) 0px 4px 12px;
