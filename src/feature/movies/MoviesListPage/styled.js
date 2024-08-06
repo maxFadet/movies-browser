@@ -8,3 +8,9 @@ export const TileContainer = styled.div`
   row-gap: 24px;
   justify-content: space-between;
 `;
+
+export const Wrapper = styled.main`
+  max-width: 1400px;
+  width: 90%;
+  margin: 42px auto;
+  `;

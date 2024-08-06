@@ -1,7 +1,7 @@
 
 import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 import Navigation from "./Navigation";
-import { toMoviesList } from "./routes";
+import { toMoviesList, toActorsList, toPerson, toMovie } from "./routes";
 import { MovieDetailsPage } from "./features/MovieDetailsPage/MovieDetails";
 import ActorsList from "./features/ActorList";
 import { ActorsData } from "./features/ActorsData";
@@ -15,14 +15,11 @@ function App() {
       <Container>
         <Routes>
           <Route path={toMoviesList()} element={<MoviesListPage />} />
-          <Route>
-            <Route path="*" element={<Navigate to={toMoviesList()} />} />
-          </Route>
+          <Route path={toActorsList()} element={<ActorsList />} />
+          <Route path={toPerson()} element={<ActorsData />} />
+          <Route path={toMovie()} element={<MovieDetailsPage />} />
+          <Route path="*" element={<Navigate to={toMoviesList()} />} />
         </Routes>
-        <MovieDetailsPage />
-        <ActorsList />
-        <ActorsData />
-
       </Container>
     </HashRouter>
   );

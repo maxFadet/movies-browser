@@ -1,3 +1,4 @@
+import React from "react";
 import {
     TileStyled,
     PosterContainer,
@@ -13,27 +14,25 @@ import {
 import { MoviePoster } from "./TileElements/MoviePoster";
 import { StarShape } from "./TileElements/StarShape";
 
-const Tile = () => (
-    <TileStyled>
+const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
+    <TileStyled onClick={onClick}>
         <PosterContainer>
-            <MoviePoster />
+            <MoviePoster src={poster} alt={title} />
         </PosterContainer>
         <TileHeader>
-            <TileTitle>movie title</TileTitle>
-            <MovieYear>2020</MovieYear>
+            <TileTitle>{title}</TileTitle>
+            <MovieYear>{year}</MovieYear>
             <Tags>
-                <Tag>Action</Tag>
-                <Tag>Adventure</Tag>
-                <Tag>Drama</Tag>
+                {genres.map((genre, index) => (
+                    <Tag key={index}>{genre}</Tag>
+                ))}
             </Tags>
         </TileHeader>
         <RatingContainer>
             <StarShape />
-            <Rating>7,8</Rating>
-            <Votes>35 votes</Votes>
+            <Rating>{rate}</Rating>
+            <Votes>{votes} votes</Votes>
         </RatingContainer>
-
-
     </TileStyled>
 );
 

@@ -25,6 +25,7 @@ export const PosterContainer = styled.div`
   @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     max-width: 292px;
     max-height: 434px;
+  }
   `;
 
 export const TileHeader = styled.div`
@@ -77,7 +78,6 @@ export const TileHeader = styled.div`
  `;
 
  export const RatingContainer = styled.ul`
-  width: 140px;
   height: 24px;
   list-style: none;
   padding-left: 0; 
@@ -88,7 +88,7 @@ export const TileHeader = styled.div`
  
 export const Rating = styled.li`
 padding-left: 8px;
-color: ${({ theme }) => theme.colors.black}
+color: ${({ theme }) => theme.colors.black};
 font-size: 16px;
 font-weight: 600;
 margin: 4px;
