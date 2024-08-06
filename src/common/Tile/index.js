@@ -17,11 +17,11 @@ export const Tile = ({
 
     return (
         <StyledExampleTile
-            $isExtraContentMissing={isExtraContentMissing}
+            $extraContentMissing={isExtraContentMissing}
         >
             <Image src={image} alt={title} />
             <Overview
-                $isExtraContentMissing={isExtraContentMissing}
+                $extraContentMissing={isExtraContentMissing}
             >
                 <Title>
                     {title}
