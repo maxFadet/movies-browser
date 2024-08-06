@@ -4,7 +4,8 @@ export const StyledExampleTile = styled.article`
     display: grid;
     grid-gap: 16px;
     grid-template-columns: 1fr;
-
+    grid-template-rows: auto 1fr;
+    height: 100%;
     padding: 16px;
 
     box-shadow: 0px 4px 12px 0px  
@@ -15,7 +16,7 @@ export const StyledExampleTile = styled.article`
         grid-template-columns: 1fr 1fr;  
     };
     
-    ${({ $isExtraContentMissing }) => $isExtraContentMissing && css`
+    ${({ $extraContentMissing }) => $extraContentMissing && css`
         @media (max-width: 450px) {
             grid-template-columns: 1fr;   
         };
@@ -31,8 +32,9 @@ export const Overview = styled.div`
     display: grid;
     grid-gap: 8px;
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
 
-    ${({ $isExtraContentMissing }) => $isExtraContentMissing && css`
+    ${({ $extraContentMissing }) => $extraContentMissing && css`
         justify-items: center;
     `};
 `;
@@ -40,7 +42,6 @@ export const Overview = styled.div`
 export const Title = styled.header`
     font-size: 22px;
     font-weight: 500;
-    text-align: center;
 `;
 
 export const SubInfo = styled.p`
@@ -52,6 +53,7 @@ export const SubInfo = styled.p`
 
 export const ExtraContent = styled.div`
     display: grid;
+    align-self: end;
     grid-template-columns: 1fr;
     grid-gap: 40px;
 `;
