@@ -9,7 +9,7 @@ export const ListPageTaleList = ({ header, content }) => {
         <StyledTileList>
             <ListHeader>{header}</ListHeader>
             <ListSection>
-                <>{content}</>
+                {content}
             </ListSection>
         </StyledTileList>
     );
