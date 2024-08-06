@@ -1,11 +1,12 @@
 import { MovieDetailsPage } from "./features/MovieDetailsPage/MovieDetails";
 
-export const App = () => {
-
+function App() {
   return (
     <>
       <MovieDetailsPage />
     </>
   );
 };
+
+export default App;
 
