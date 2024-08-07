@@ -1,8 +1,8 @@
 import { DetailsTile } from "../../../common/DetailsTile"
 import { Tile } from "../../../common/Tile";
 import { Tags } from "../../../common/Tags";
-import { DetatailsPageTileList } from "../../../common/DetailsPageTileList";
-import { ListPageTileList } from "../../../common/ListPageTileList";
+import { PeopleTilesList } from "../../../common/PeopleTilesList";
+import { MoviesTilesList } from "../../../common/MoviesTilesList";
 import { Rates } from "../../../common/Rates";
 import { Details } from "../../../common/Details"
 
@@ -32,7 +32,7 @@ export const MovieDetailsPage = () => {
                 A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father.  A young Chinese maiden disguises herself as a male warrior in order to save her father.
                 "
             />
-            <DetatailsPageTileList
+            <PeopleTilesList
                 header="Cast"
                 content={
                     <>
@@ -49,7 +49,7 @@ export const MovieDetailsPage = () => {
                     </>
                 }
             />
-            <ListPageTileList
+            <MoviesTilesList
                 header="Popular movies"
                 content={
                     <>
