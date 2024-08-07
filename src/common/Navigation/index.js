@@ -8,7 +8,7 @@ import {
     Header,
     NavigationItem,
     Search,
-    Input
+    Input,
 } from "./styled";
 import { ReactComponent as SearchIcon } from "./Icons/Search.svg";
 import { toMoviesList, toActorsList } from "../../routes";
@@ -16,12 +16,12 @@ import { toMoviesList, toActorsList } from "../../routes";
 export default () => {
     return (
         <nav>
-            <StyledPageHeader>
+<StyledPageHeader>
                 <HeaderContainer>
                     <HeaderContent>
                         <StyledMovieBrowserIcon />
-                        <Header>Movie Browser</Header>
-                    </HeaderContent>
+                        <Header>Movies Browser</Header>
+                     </HeaderContent>
                     <Navigation>
                         <NavigationList>
                             <NavigationItem to={toMoviesList()}>
