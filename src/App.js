@@ -19,15 +19,16 @@ function App() {
           <Route path={toMoviesList()} element={<PageContent content={<MoviesListPage />} />} />
           <Route path={toActorsList()} element={<PageContent content={<ActorsList />} />} />
           <Route path={toPerson()} element={<PageContent content={<ActorsData />} />} />
-          <Route path={toMovie()} element={<>
-            <MovieBanner
-              poster="https://github.com/maxFadet/movies-browser/blob/feature/movie-details/src/Poster-big.png?raw=true"
-              title="Mulan long title"
-            />
-            <PageContent
-              content={<MovieDetailsPage />}
-            />
-          </>} />
+          <Route path={toMovie()} element={
+            <>
+              <MovieBanner
+                poster="https://github.com/maxFadet/movies-browser/blob/feature/movie-details/src/Poster-big.png?raw=true"
+                title="Mulan long title"
+              />
+              <PageContent
+                content={<MovieDetailsPage />}
+              />
+            </>} />
           <Route path="*" element={<Navigate to={toMoviesList()} />} />
         </Routes>
       </Container>
