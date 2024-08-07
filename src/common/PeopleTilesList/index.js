@@ -4,7 +4,7 @@ import {
     ListSection,
 } from "./styled";
 
-export const DetatailsPageTileList = ({ header, content }) => {
+export const PeopleTilesList = ({ header, content }) => {
     return (
         <StyledTileList>
             <ListHeader>{header}</ListHeader>
