@@ -11,6 +11,11 @@ export const theme = {
         waterloo: "#7E839A",
     },
     breakpoints: {
-        mobile: 320,
+        mobile: "480px",
+        mobile2: "600px",
+        mobile3: "768px",
+        tablet: "1024px",
+        tablet2: "1200px",
+        laptop: "1480px"
     }
 }
