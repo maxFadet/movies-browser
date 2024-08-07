@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
-export const StyledPagePoster = styled.div.attrs(({ $poster }) => ({
-    style: {
-        backgroundImage: `url(${$poster})`
-    }
-}))`
+export const StyledMovieBanner =
+    styled.div.attrs(({ $poster }) => ({
+        style: {
+            backgroundImage: `url(${$poster})`
+        }
+    }))`
+
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 24px;
+    width: 100%;
 
     color: ${({ theme }) => theme.colors.white};
     box-shadow: inset 0px 10px 74px 110px 
@@ -17,17 +20,13 @@ export const StyledPagePoster = styled.div.attrs(({ $poster }) => ({
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+
     padding-top: 42.25%;
     padding-bottom: 56px;
-   
-    margin-bottom: 64px;
+
     @media (max-width: 750px) {
         box-shadow: inset 0px 0px 40px 48px #000000;
         padding-bottom: 10px;
-    };
-
-    @media (max-width: 450px) {
-        margin-bottom: 16px;
     };
 `;
 
