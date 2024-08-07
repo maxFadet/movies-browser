@@ -1,9 +1,8 @@
-import { MainContent } from "../../../common/MainContent";
-import { MovieBanner } from "../MovieBanner";
 import { DetailsTile } from "../../../common/DetailsTile"
 import { Tile } from "../../../common/Tile";
 import { Tags } from "../../../common/Tags";
 import { DetatailsPageTileList } from "../../../common/DetailsPageTileList";
+import { ListPageTileList } from "../../../common/ListPageTileList";
 import { Rates } from "../../../common/Rates";
 import { Details } from "../../../common/Details"
 
@@ -11,46 +10,68 @@ export const MovieDetailsPage = () => {
 
     return (
         <>
-            <MovieBanner
-                poster="https://github.com/maxFadet/movies-browser/blob/feature/movie-details/src/Poster-big.png?raw=true"
-                title="Mulan long title"
+            <DetailsTile
+                image="https://raw.githubusercontent.com/maxFadet/movies-browser/f1d4c789e1dd080758002ae1153b527f2c7d70d9/src/poster.png"
+                mainDetails={
+                    <Details
+                        header="Mulan"
+                        year="2020"
+                        extraContent={
+                            <>
+                                <Tags />
+                                <Tags />
+                                <Tags />
+                                <Rates />
+                            </>
+                        }
+                    />
+                }
+                description=" A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father.  A young Chinese maiden disguises herself as a male warrior in order to save her father.
+                A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father.  A young Chinese maiden disguises herself as a male warrior in order to save her father.
+                A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father.  A young Chinese maiden disguises herself as a male warrior in order to save her father.
+                A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father.  A young Chinese maiden disguises herself as a male warrior in order to save her father.
+                "
             />
-            <MainContent
+            <DetatailsPageTileList
+                header="Cast"
                 content={
                     <>
-                        <DetailsTile
-                            image="https://raw.githubusercontent.com/maxFadet/movies-browser/f1d4c789e1dd080758002ae1153b527f2c7d70d9/src/poster.png"
-                            mainDetails={
-                                <Details
-                                    header="Mulan"
-                                    year="2020"
-                                    extraContent={
-                                        <>
-                                            <Tags />
-                                            <Rates />
-                                        </>
-                                    }
-                                />
-                            }
-                            description="
-                                A young Chinese maiden disguises herself as a male warrior in order to save her father. 
-                                Disguises herself as a male warrior in order to save her father.  A young Chinese maiden disguises herself as a male warrior in order to save her father.
-                            "
+                        <Tile
+                            image="https://upload.wikimedia.org/wikipedia/commons/2/21/Johnny_Depp_2020.jpg"
+                            title="John Depp"
+                            subInfo="Mulan"
                         />
-                        <DetatailsPageTileList
-                            header="Cast"
-                            content={
+                        <Tile
+                            image="https://upload.wikimedia.org/wikipedia/commons/2/21/Johnny_Depp_2020.jpg"
+                            title="John Depp"
+                            subInfo="Mulan"
+                        />
+                    </>
+                }
+            />
+            <ListPageTileList
+                header="Popular movies"
+                content={
+                    <>
+                        <Tile
+                            image="https://media.themoviedb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
+                            title="Dune"
+                            subInfo="2020"
+                            extraContent={
                                 <>
-                                    <Tile
-                                        image="https://upload.wikimedia.org/wikipedia/commons/2/21/Johnny_Depp_2020.jpg"
-                                        title="John Depp"
-                                        subInfo="Mulan"
-                                    />
-                                    <Tile
-                                        image="https://upload.wikimedia.org/wikipedia/commons/2/21/Johnny_Depp_2020.jpg"
-                                        title="John Depp"
-                                        subInfo="Mulan"
-                                    />
+                                    <Tags />
+                                    <Rates />
+                                </>
+                            }
+                        />
+                        <Tile
+                            image="https://media.themoviedb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
+                            title="Dune"
+                            subInfo="2020"
+                            extraContent={
+                                <>
+                                    <Tags />
+                                    <Rates />
                                 </>
                             }
                         />

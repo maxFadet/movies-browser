@@ -8,7 +8,7 @@ export const StyledDetailsTile = styled.article`
    grid-template-areas: 
         "image details"
         "image description";
-    align-items: stretch;
+    align-items: start;
     grid-gap: 40px;
     padding: 24px;
 
@@ -33,8 +33,6 @@ export const Image = styled.img`
     width: 100%;
     grid-area: image;
     border-radius: 15px;
-    align-self: start;
-    object-fit: contain;
 `;
 
 export const Details = styled.div`
@@ -42,11 +40,9 @@ export const Details = styled.div`
     grid-template-columns: 1fr;
     grid-gap: 12px;
     grid-area: details;
-    align-self: center;
 
     @media (max-width: 475px) {
         grid-gap: 8px;
-        align-self: baseline;
     };
 `;
 

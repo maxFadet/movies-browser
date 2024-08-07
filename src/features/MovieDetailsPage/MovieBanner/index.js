@@ -1,6 +1,6 @@
 import { Rates } from "../../../common/Rates";
 import {
-    StyledPagePoster,
+    StyledMovieBanner,
     Title,
     MainInfo,
 } from "./styled";
@@ -12,11 +12,11 @@ export const MovieBanner = ({
 }) => {
 
     return (
-        <StyledPagePoster $poster={poster}>
+        <StyledMovieBanner $poster={poster}>
             <MainInfo>
                 <Title>{title}</Title>
                 <Rates mainInfo />
             </MainInfo>
-        </StyledPagePoster>
+        </StyledMovieBanner>
     );
 };

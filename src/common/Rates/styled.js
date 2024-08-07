@@ -68,7 +68,7 @@ export const StyledStarIcon = styled(StarIcon)`
   };
 
   @media (max-width: 450px) {
-      width: 24px;
+      width: 16px;
   };
 
   ${({ $larger }) => $larger && css`

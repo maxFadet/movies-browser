@@ -38,7 +38,7 @@ export const ListSection = styled.ul`
         grid-gap: 16px;
     };
 
-    @media (max-width: 300px) {
-        grid-template-columns: 100%;
+    @media (max-width: 350px) {
+        grid-template-columns: repeat(2, 50%);
     };
 `;

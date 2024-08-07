@@ -15,7 +15,7 @@ export const StyledExampleTile = styled.article`
         grid-template-columns: 1fr 1fr;  
     };
     
-    ${({ $isExtraContentMissing }) => $isExtraContentMissing && css`
+    ${({ $extraContentMissing }) => $extraContentMissing && css`
         @media (max-width: 450px) {
             grid-template-columns: 1fr;   
         };
@@ -32,7 +32,7 @@ export const Overview = styled.div`
     grid-gap: 8px;
     grid-template-columns: 1fr;
 
-    ${({ $isExtraContentMissing }) => $isExtraContentMissing && css`
+    ${({ $extraContentMissing }) => $extraContentMissing && css`
         justify-items: center;
     `};
 `;
@@ -40,7 +40,10 @@ export const Overview = styled.div`
 export const Title = styled.header`
     font-size: 22px;
     font-weight: 500;
-    text-align: center;
+
+    ${({ $extraContentMissing }) => $extraContentMissing && css`
+        text-align: center;
+    `};
 `;
 
 export const SubInfo = styled.p`
