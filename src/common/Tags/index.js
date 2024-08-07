@@ -6,9 +6,6 @@ export const Tags = () => {
             <Tag>Action</Tag>
             <Tag>Adventure</Tag>
             <Tag>Drama</Tag>
-            <Tag>Action</Tag>
-            <Tag>Adventure</Tag>
-            <Tag>Drama</Tag>
         </StyledTags>
     );
 }
