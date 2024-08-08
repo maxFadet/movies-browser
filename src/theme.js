@@ -13,11 +13,12 @@ export const theme = {
         scienceBlue: "#0044CC",
     },
     breakpoints: {
-        mobile: "480px",
-        mobile2: "600px",
-        mobile3: "768px",
-        tablet: "1024px",
-        tablet2: "1200px",
+        mobileS: "320px",
+        mobileM: "480px",
+        mobileL: "600px",
+        tabletS: "768px",
+        tabletM: "1024px",
+        tabletL: "1200px",
         laptop: "1480px"
     }
 }

@@ -9,17 +9,17 @@ export const ActorProfile = styled.article`
   margin: auto;
   width: 100%;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     min-height: 360px;
     padding: 30px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     min-height: 300px;
     padding: 24px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     min-height: 196px;
     display: flex;
     flex-wrap: wrap;
@@ -35,15 +35,15 @@ export const ActorPhoto = styled.img`
   float: left;
   margin: 0 40px 30px 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     height: 300px;
     margin: 0 20px 6px 0;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     height: 240px;
     margin: 0 22px 4px 0;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     width: 116px;
     height: 163px;
     margin: 0;
@@ -56,12 +56,12 @@ export const ActorName = styled.h1`
   line-height: 43px;
   margin: 8px 0 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     font-size: 26px;
     line-height: 30px;
     margin: 6px 0 20px;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     font-size: 14px;
     line-height: 18px;
     font-weight: 500;
@@ -76,12 +76,12 @@ export const ActorDetails = styled.div`
   font-size: 18px;
   line-height: 22px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     font-size: 15px;
     line-height: 18px;
     gap: 4px;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     font-size: 12px;
     line-height: 14px;
     gap: 2px;
@@ -100,10 +100,10 @@ export const DetailLabel = styled.span`
   line-height: 22px;
   color: ${({ theme }) => theme.colors.stormGray};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     margin-right: 4px;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     margin-right: 2px;
   }
 `;
@@ -113,12 +113,12 @@ export const Biography = styled.p`
   line-height: 32px;
   margin: 24px 0 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     font-size: 17px;
     line-height: 27px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     font-size: 14px;
     line-height: 22px;
     margin-top: 0;
@@ -160,12 +160,12 @@ export const SectionTitle = styled.span`
   grid-column: 1 / -1;
   color: ${({ theme }) => theme.colors.woodsmoke};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     font-size: 28px;
     line-height: 34px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     font-size: 20px;
     line-height: 24px;
   }
@@ -176,7 +176,7 @@ export const MoviePoster = styled.img`
   height: 264px;
   border-radius: 5px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     width: 114px;
     height: 169px;
   }
@@ -192,7 +192,7 @@ export const MovieCard = styled.div`
   position: relative;
   gap: 16px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     flex-direction: row;
   }
 `;
@@ -209,7 +209,7 @@ export const MovieTitle = styled.h2`
   line-height: 29px;
   margin: 16px 0 8px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     font-size: 16px;
     line-height: 21px;
     margin: 0;
@@ -222,7 +222,7 @@ export const MovieSubTitle = styled.div`
   color: ${({ theme }) => theme.colors.waterloo};
   margin-bottom: 8px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     font-size: 13px;
     margin-bottom: 0;
   }
@@ -236,7 +236,7 @@ export const GenreTags = styled.ul`
   margin: 0 0 8px;
   padding: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     margin: 6px 0 8px;
   }
 `;
@@ -247,7 +247,7 @@ export const GenreTag = styled.li`
   border-radius: 5px;
   font-size: 14px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     padding: 4px 8px;
     font-size: 10px;
   }
@@ -258,7 +258,7 @@ export const RatingWrapper = styled.div`
   gap: 12px;
   margin-top: auto;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     margin-top: 8px;
   }
 `;
@@ -267,7 +267,7 @@ export const Rating = styled.div`
   display: flex;
   gap: 12px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     gap: 8px;
   }
 `;
@@ -277,7 +277,7 @@ export const VoteCount = styled.div`
   line-height: 24px;
   color: ${({ theme }) => theme.colors.waterloo};
   
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     font-size: 13px;
     line-height: 17px;
   }
@@ -288,7 +288,7 @@ export const RatingNumber = styled.div`
   font-weight: 600;
   line-height: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     font-size: 13px;
     line-height: 17px;
   }
@@ -298,7 +298,7 @@ export const RatingStar = styled(StarIcon)`
   width: 24px;
   height: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     width: 16px;
     height: 16px;
   }
