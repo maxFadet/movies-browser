@@ -1,36 +1,43 @@
 import { DetailsTile } from "../../../common/DetailsTile"
 import { Tile } from "../../../common/Tile";
-import { Tags } from "../../../common/Tags";
+import { GenresList } from "../../../common/GenresList";
 import { PeopleTilesList } from "../../../common/PeopleTilesList";
 import { MoviesTilesList } from "../../../common/MoviesTilesList";
 import { Rates } from "../../../common/Rates";
 import { Details } from "../../../common/Details"
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchMovieDetailsApi } from "../../../movieDetailsSlice";
 
 export const MovieDetailsPage = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const fetchDelayId = setTimeout(() => {
+            dispatch(fetchMovieDetailsApi());
+        }, 1000);
+
+        return () => clearTimeout(fetchDelayId);
+    }, [dispatch]);
 
     return (
         <>
             <DetailsTile
-                image="https://raw.githubusercontent.com/maxFadet/movies-browser/f1d4c789e1dd080758002ae1153b527f2c7d70d9/src/poster.png"
+                // image={poster}
                 mainDetails={
                     <Details
-                        header="Mulan"
+                        // header={title}
                         year="2020"
                         extraContent={
                             <>
-                                <Tags />
-                                <Tags />
-                                <Tags />
+                                <GenresList />
                                 <Rates />
                             </>
                         }
+                        movie
                     />
                 }
-                description=" A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father.  A young Chinese maiden disguises herself as a male warrior in order to save her father.
-                A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father.  A young Chinese maiden disguises herself as a male warrior in order to save her father.
-                A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father.  A young Chinese maiden disguises herself as a male warrior in order to save her father.
-                A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father.  A young Chinese maiden disguises herself as a male warrior in order to save her father.
-                "
+            // overview={overview}
             />
             <PeopleTilesList
                 header="Cast"
@@ -59,7 +66,7 @@ export const MovieDetailsPage = () => {
                             subInfo="2020"
                             extraContent={
                                 <>
-                                    <Tags />
+                                    <GenresList />
                                     <Rates />
                                 </>
                             }
@@ -70,7 +77,7 @@ export const MovieDetailsPage = () => {
                             subInfo="2020"
                             extraContent={
                                 <>
-                                    <Tags />
+                                    <GenresList />
                                     <Rates />
                                 </>
                             }
