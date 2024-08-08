@@ -1,7 +1,7 @@
 import {
     StyledPageHeader,
     NavigationList,
-    Navigation,
+    NavigationContainer,
     NavigationItem,
     Search,
     Input,
@@ -27,7 +27,7 @@ export default () => {
     return (
         <nav>
             <StyledPageHeader>
-                <Navigation>
+                <NavigationContainer>
                     <NavigationLogo to={toMoviesList()}>
                         <NavigationLogoIcon />
                         <NavigationTitle>Movies Browser</NavigationTitle>
@@ -40,7 +40,7 @@ export default () => {
                             PEOPLE
                         </NavigationItem>
                     </NavigationList>
-                </Navigation>
+                </NavigationContainer>
                 <Search>
                     <StyledSearchIcon />
                     <Input
@@ -50,4 +50,4 @@ export default () => {
             </StyledPageHeader>
         </nav>
     );
-}
+};
