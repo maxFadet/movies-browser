@@ -20,7 +20,7 @@ const getPlaceholderText = (pathname) =>
         : 'Search for people...'
     ;
 
-export default () => {
+const Navigation = () => {
     const location = useLocation();
     const placeholderText = getPlaceholderText(location.pathname);
 
@@ -51,3 +51,5 @@ export default () => {
         </nav>
     );
 };
+
+export default Navigation;
