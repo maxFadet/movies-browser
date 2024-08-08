@@ -9,11 +9,10 @@ export const Details = ({
     header,
     year,
     extraContent,
-    keyDetailType,
-    keyDetailContent
+    movie
 }) => {
     const isYearMissing = !year;
-
+    const isMovieDetails = movie
     return (
         <>
             <Header>{header}</Header>
@@ -22,12 +21,17 @@ export const Details = ({
                     <Year>{year}</Year>
                 )
             }
-            <DetailInfo>
-                <DetailInfoType>Production:</DetailInfoType> China, United States of America
-            </DetailInfo>
-            <DetailInfo>
-                <DetailInfoType>Release date:</DetailInfoType> 24.10.2020
-            </DetailInfo>
+
+            {isMovieDetails ?
+                <DetailInfo>
+                    <DetailInfoType>Production:</DetailInfoType> China, United States of America<br />
+                    <DetailInfoType>Release date:</DetailInfoType> 24.10.2020
+                </DetailInfo> :
+                <DetailInfo>
+                    <DetailInfoType>Birth:</DetailInfoType> China, United States of America
+                    <DetailInfoType>Place of birth:</DetailInfoType> 24.10.2020
+                </DetailInfo>
+            }
             {extraContent}
         </>
     );
