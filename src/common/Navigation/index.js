@@ -1,40 +1,37 @@
 import {
     StyledPageHeader,
-    HeaderContent,
-    StyledMovieBrowserIcon,
     NavigationList,
-    HeaderContainer,
     Navigation,
-    Header,
     NavigationItem,
     Search,
     Input,
+    NavigationLogo,
+    NavigationTitle,
+    NavigationLogoIcon,
+    StyledSearchIcon,
 } from "./styled";
-import { ReactComponent as SearchIcon } from "./Icons/Search.svg";
 import { toMoviesList, toActorsList } from "../../routes";
 
 export default () => {
     return (
         <nav>
-<StyledPageHeader>
-                <HeaderContainer>
-                    <HeaderContent>
-                        <StyledMovieBrowserIcon />
-                        <Header>Movies Browser</Header>
-                     </HeaderContent>
-                    <Navigation>
-                        <NavigationList>
-                            <NavigationItem to={toMoviesList()}>
-                                MOVIES
-                            </NavigationItem>
-                            <NavigationItem to={toActorsList()}>
-                                PEOPLE
-                            </NavigationItem>
-                        </NavigationList>
-                    </Navigation>
-                </HeaderContainer>
+            <StyledPageHeader>
+                <Navigation>
+                    <NavigationLogo to={toMoviesList()}>
+                        <NavigationLogoIcon />
+                        <NavigationTitle>Movies Browser</NavigationTitle>
+                    </NavigationLogo>
+                    <NavigationList>
+                        <NavigationItem to={toMoviesList()}>
+                            MOVIES
+                        </NavigationItem>
+                        <NavigationItem to={toActorsList()}>
+                            PEOPLE
+                        </NavigationItem>
+                    </NavigationList>
+                </Navigation>
                 <Search>
-                    <SearchIcon />
+                    <StyledSearchIcon />
                     <Input
                         placeholder="Search for movies..."
                     />
