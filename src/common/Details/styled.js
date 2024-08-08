@@ -22,17 +22,11 @@ export const Year = styled.p`
     };
 `;
 
-export const DetailInfoType = styled.span`
-    color: ${({ theme }) => theme.colors.stormGray};
-    font-size: 18px;
-    font-weight: 400;
-
-    @media (max-width: 475px) {
-        display: none;
-    };
-`;
-
 export const DetailInfo = styled.p`
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: left;
+    grid-gap: 8px;
     margin: 0;
     font-size: 18px;
     font-weight: 400;
@@ -40,6 +34,16 @@ export const DetailInfo = styled.p`
 
     @media (max-width: 475px) {
         font-size: 12px;
+    };
+`;
+
+export const DetailInfoType = styled.span`
+    color: ${({ theme }) => theme.colors.stormGray};
+    font-size: 18px;
+    font-weight: 400;
+
+    @media (max-width: 475px) {
+        display: none;
     };
 `;
 
