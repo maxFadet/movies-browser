@@ -5,7 +5,7 @@ import {
     Details,
 } from "./styled";
 
-export const DetailsTile = ({ image, mainDetails, description }) => {
+export const DetailsTile = ({ image, mainDetails, overview }) => {
     const isMainDetailsMissing = !mainDetails;
 
     return (
@@ -23,7 +23,7 @@ export const DetailsTile = ({ image, mainDetails, description }) => {
                 )
             }
             <Description>
-                {description}
+                {overview}
             </Description>
         </StyledDetailsTile>
     );
