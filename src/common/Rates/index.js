@@ -6,19 +6,19 @@ import {
     StyledStarIcon,
 } from "./styled";
 
-export const Rates = ({ mainInfo }) => {
+export const Rates = ({ mainInfo, voteAverage, voteCount }) => {
     const isRatesAreMainInfo = !mainInfo;
 
     return (
         <StyledRates $larger={isRatesAreMainInfo}>
             <StyledStarIcon $larger={isRatesAreMainInfo} />
             <Score $larger={isRatesAreMainInfo}>
-                7,8
+                {voteAverage}
                 <TotalScore $larger={isRatesAreMainInfo}>
                     /10
                 </TotalScore>
             </Score>
-            <Votes $larger={isRatesAreMainInfo}>335 votes</Votes>
+            <Votes $larger={isRatesAreMainInfo}>{voteCount} votes</Votes>
         </StyledRates>
     )
 }
