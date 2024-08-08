@@ -11,8 +11,19 @@ import {
     StyledSearchIcon,
 } from "./styled";
 import { toMoviesList, toActorsList } from "../../routes";
+import { useLocation } from "react-router-dom";
+
+
+const getPlaceholderText = (pathname) =>
+    pathname === toMoviesList()
+        ? 'Search for movies...'
+        : 'Search for people...'
+    ;
 
 export default () => {
+    const location = useLocation();
+    const placeholderText = getPlaceholderText(location.pathname);
+
     return (
         <nav>
             <StyledPageHeader>
@@ -33,7 +44,7 @@ export default () => {
                 <Search>
                     <StyledSearchIcon />
                     <Input
-                        placeholder="Search for movies..."
+                        placeholder={placeholderText}
                     />
                 </Search>
             </StyledPageHeader>
