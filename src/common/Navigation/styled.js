@@ -1,74 +1,83 @@
 import styled from "styled-components";
-import { ReactComponent as MovieBrowserIcon } from "./Icons/Video.svg";
+import { ReactComponent as LogoIcon } from "./Icons/Video.svg";
+import { ReactComponent as SearchIcon } from "./Icons/Search.svg";
 import { NavLink } from "react-router-dom";
 
-export const NavigationHeader = styled.div`
-    background-color: ${({ theme }) => theme.colors.black}; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 16px;
-
-`;
-
 export const StyledPageHeader = styled.div`
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-justify-content: space-around;
-// width: 78%;
-background-color: ${({ theme }) => theme.colors.black}; 
-color:  ${({ theme }) => theme.colors.white};
-padding: 0 16px;
-min-height: 94px;
-
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: ${({ theme }) => theme.colors.black}; 
+    color:  ${({ theme }) => theme.colors.white};
+    padding: 0 16px;
+    min-height: 94px;
 
 @media (max-width: 900px) {
     flex-direction: column;
-    margin-bottom: 0px;
+    align-items: center;
 };
 `;
 
-export const HeaderContainer = styled.header`
+export const NavigationContainer = styled.nav`
     display: flex;
     align-items: center;
     padding-left: 17px;  
     gap: 80px;
 
-    @media (max-width: 550px) {
-        gap: 20px;
-        margin-bottom: -36px;
+    @media (max-width: 768px) {
+        gap: 60px;
+        margin-bottom: -24px;
+        margin-left: -12px;
+        margin-right: 24px;
     };
 `;
 
-export const HeaderContent = styled.div`
+export const NavigationLogo = styled(NavLink)`
     display: flex;
     gap: 12px;
     align-items: center;
-`;
+    text-decoration: none;
+    flex-shrink: 0;
 
-export const StyledMovieBrowserIcon = styled(MovieBrowserIcon)`
-     @media (max-width: 400px) {
-       width: 17px;
+    &:hover,
+    &:visited,
+    &:active,
+    &:focus {
+        text-decoration: none;
+        color: ${({ theme }) => theme.colors.white};
+    };
+
+    @media (max-width: 768px) {
+        // flex-shrink: 0;
+        justify-content: space-around;
     };
 `;
 
-export const Header = styled.h1`
+export const NavigationLogoIcon = styled(LogoIcon)`
+    max-width: 40px;
+
+    @media (max-width: 550px) {
+        max-width: 17px;
+    }
+`;
+
+export const NavigationTitle = styled.h1`
+    color: ${({ theme }) => theme.colors.white};
     font-size: 24px;
     font-weight: 500;
     margin: 0;
 
-    @media (max-width: 925px) {
-        font-size: 18px;
-    };
-
-    @media (max-width: 600px) {
+    @media (max-width: 550px) {
         font-size: 13px;
     };
-`;
 
-export const Navigation = styled.nav`
+    &:hover,
+    &:visited,
+    &:active,
+    &:focus {
+        text-decoration: none;
+        color: ${({ theme }) => theme.colors.white};
+    };
 `;
 
 export const NavigationList = styled.ul`
@@ -78,9 +87,9 @@ export const NavigationList = styled.ul`
     margin: 0;
     padding-left: 0px;
 
-    @media (max-width: 550px) {
-        gap: 12px;
-        margin-bottom: 0;
+    @media (max-width: 400px) {
+        flex: 1;
+        gap: 6px;
     };
 `;
 
@@ -97,11 +106,12 @@ export const NavigationItem = styled(NavLink)`
     &.active {
         border: 1px solid ${({ theme }) => theme.colors.white};
         border-radius: 24px;
-        margin: 24px 13.5px;
-    }
-    @media (max-width: 550px) {
-        padding: 8px;
+        margin: 24px 0px;
+    };
 
+    @media (max-width: 550px) {
+        font-size: 12px;
+        padding: 12px;
     };
 `;
 
@@ -117,14 +127,32 @@ export const Search = styled.div`
     border-radius: 33px;
     background-color: ${({ theme }) => theme.colors.white};
 
-    @media (max-width: 550px) {
+    @media (max-width: 888px) {
         padding: 14px 16px;
+        margin: 0;
+        margin-top: 24px;
+        margin-bottom: 16px;
+    };
+
+    @media (max-width: 888px) {
+        width: 100%;
+        flex-basis: 100%;
     };
 `;
+
+export const StyledSearchIcon = styled(SearchIcon) `
+    max-width: 40px;
+
+    @media (max-width: 550px) {
+        max-width: 17px;
+    };
+`;
+
 
 export const Input = styled.input`
     border: none;
     background-color: unset;
+    font-size: 13px;
 
     &:focus-visible{
         outline: none;
