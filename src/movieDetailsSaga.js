@@ -4,7 +4,7 @@ import { getResponse } from "./getResponse";
 
 function* fetchMovieDetailsApiHandler() {
     try {
-        const movieDetails = yield call(getResponse("movieDetailsData.json"));
+        const movieDetails = yield call(getResponse, "movieDetailsData.json");
         yield put(fetchMovieDetailsSuccess(movieDetails));
     } catch {
         yield put(fetchMovieDetailsError());
