@@ -48,7 +48,6 @@ export const NavigationLogo = styled(NavLink)`
     };
 
     @media (max-width: 768px) {
-        // flex-shrink: 0;
         justify-content: space-around;
     };
 `;
@@ -99,7 +98,6 @@ export const NavigationItem = styled(NavLink)`
     font-size: 14px;
     font-weight: 600;
     margin: 24px 0px;
-    // margin-left: 0px;
     padding: 8px 24px;
 
     
@@ -127,7 +125,7 @@ export const Search = styled.div`
     border-radius: 33px;
     background-color: ${({ theme }) => theme.colors.white};
 
-    @media (max-width: 888px) {
+    @media (max-width: 768px) {
         padding: 14px 16px;
         margin: 0;
         margin-top: 24px;
