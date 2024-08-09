@@ -20,13 +20,17 @@ export const MovieDetailsPage = () => {
     return (
         <>
             {fetchStatus === "loading" ?
-                <>Ładowanie...</> :
-                <>
-                    <MovieBanner />
-                    <PageContent
-                        content={<MovieDetailsMainContent />}
-                    />
-                </>}
+                <>Loading...</> :
+                fetchStatus === "error" ?
+                    <>
+                        Error
+                    </> :
+                    <>
+                        <MovieBanner />
+                        <PageContent
+                            content={<MovieDetailsMainContent />}
+                        />
+                    </>}
         </>
     );
 }
