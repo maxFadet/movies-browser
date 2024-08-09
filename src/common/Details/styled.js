@@ -22,10 +22,10 @@ export const Year = styled.p`
     };
 `;
 
-export const DetailInfo = styled.p`
+export const DetailInfo = styled.div`
     display: grid;
-    grid-template-columns: auto auto;
-    justify-items: left;
+    grid-template-columns: auto;
+    justify-content: start;
     grid-gap: 8px;
     margin: 0;
     font-size: 18px;
@@ -35,6 +35,10 @@ export const DetailInfo = styled.p`
     @media (max-width: 475px) {
         font-size: 12px;
     };
+`;
+
+export const DetailInfoItem = styled.p`
+    margin: 0;
 `;
 
 export const DetailInfoType = styled.span`
