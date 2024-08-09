@@ -37,5 +37,6 @@ export const selectVoteCount = state => selectDetails(state).vote_count;
 
 export const selectProductionCountries = state => selectDetails(state).production_countries
 export const selectReleaseDate = state => selectDetails(state).release_date;
+export const selectMovieBanner = state => selectDetails(state).backdrop_path;
 
 export const movieDetailsReducer = movieDetailsSlice.reducer;
