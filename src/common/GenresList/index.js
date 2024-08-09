@@ -4,17 +4,15 @@ import { selectGenres } from "../../movieDetailsSlice";
 
 export const GenresList = () => {
     const genres = useSelector(selectGenres);
-    
+
     return (
         <StyledGenresList>
             {
-                genres && (
-                    genres.map(({ id, name }) => (
-                        <Genre key={id}>
-                            {name}
-                        </Genre>
-                    ))
-                )
+                genres.map(({ id, name }) => (
+                    <Genre key={id}>
+                        {name}
+                    </Genre>
+                ))
             }
         </StyledGenresList>
     );
