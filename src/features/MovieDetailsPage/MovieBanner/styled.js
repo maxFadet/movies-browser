@@ -32,9 +32,12 @@ export const StyledMovieBanner =
 
 export const MainInfo = styled.div`
     margin-left: 30px;
+    display: grid;
+    grid-gap: 24px;
 
     @media (max-width: 750px) {
         margin-left: 16px;
+        grid-gap: 4px;
     };
 `;
 

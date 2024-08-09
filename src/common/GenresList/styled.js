@@ -1,23 +1,22 @@
 import styled from "styled-components";
 
-export const StyledTags = styled.ul`
+export const StyledGenresList = styled.ul`
     margin: 0;
     padding-left: 0px;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    align-self: baseline;
 
     @media (max-width: 475px) {
         gap: 8px;
     };
 `;
 
-export const Tag = styled.li`
-   background-color: ${({ theme }) => theme.colors.mystic};
+export const Genre = styled.li`
    flex-basis: 20%;
-   font-size: 16px;
+   background-color: ${({ theme }) => theme.colors.mystic};
    border-radius: 5px;
+   font-size: 16px;
    font-weight: 400;
    padding: 8px 16px;
    list-style-type: none;

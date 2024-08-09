@@ -5,6 +5,7 @@ export const StyledPageContent = styled.div`
     display: grid;
     grid-gap: 64px;
     padding: 56px 0;
+    margin: auto;
 
     @media (max-width: 768px) {
         width: 90%;

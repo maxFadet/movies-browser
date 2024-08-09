@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Rates } from "../../../common/Rates";
 import {
     StyledMovieBanner,
@@ -5,17 +6,29 @@ import {
     MainInfo,
 } from "./styled";
 
+import {
+    selectMovieBanner,
+    selectTitle,
+    selectVoteAvarage,
+    selectVoteCount
+} from "../../../movieDetailsSlice";
 
-export const MovieBanner = ({
-    poster,
-    title,
-}) => {
+export const MovieBanner = () => {
+    const title = useSelector(selectTitle);
+    const banner = useSelector(selectMovieBanner);
+
+    const voteAverage = useSelector(selectVoteAvarage);
+    const voteCount = useSelector(selectVoteCount);
 
     return (
-        <StyledMovieBanner $poster={poster}>
+        <StyledMovieBanner $poster={banner}>
             <MainInfo>
                 <Title>{title}</Title>
-                <Rates mainInfo />
+                <Rates
+                    mainInfo
+                    voteAverage={voteAverage}
+                    voteCount={voteCount}
+                />
             </MainInfo>
         </StyledMovieBanner>
     );
