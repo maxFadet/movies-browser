@@ -5,7 +5,6 @@ import ActorsList from "./features/ActorList";
 import { ActorsData } from "./features/ActorPage";
 import { Container } from "./common/Container";
 import MoviesListPage from "../src/features/MoviesListPage";
-import { PageContent } from "./common/PageContent";
 import { MovieDetailsPage } from "./features/MovieDetailsPage";
 
 function App() {
@@ -14,9 +13,9 @@ function App() {
       <Navigation />
       <Container>
         <Routes>
-          <Route path={toMoviesList()} element={<PageContent content={<MoviesListPage />} />} />
-          <Route path={toActorsList()} element={<PageContent content={<ActorsList />} />} />
-          <Route path={toPerson()} element={<PageContent content={<ActorsData />} />} />
+          <Route path={toMoviesList()} element={<MoviesListPage />} />
+          <Route path={toActorsList()} element={<ActorsList />} />
+          <Route path={toPerson()} element={<ActorsData />} />
           <Route path={toMovie()} element={<MovieDetailsPage />} />
           <Route path="*" element={<Navigate to={toMoviesList()} />} />
         </Routes>
@@ -26,5 +25,3 @@ function App() {
 };
 
 export default App;
-
-
