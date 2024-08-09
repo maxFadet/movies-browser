@@ -1,11 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { ReactComponent as VideoIcon } from "../../Video.svg";
 
 export const StyledDetailsTile = styled.article`
-   display: grid;
-   box-shadow: 0px 4px 12px 0px  
+    display: grid;
+    box-shadow: 0px 4px 12px 0px  
         ${({ theme }) => theme.colors.brightHeather};
     background-color: ${({ theme }) => theme.colors.white};
-   grid-template-areas: 
+    grid-template-areas: 
         "image details"
         "image description";
     align-items: start;
@@ -15,7 +16,8 @@ export const StyledDetailsTile = styled.article`
     @media (max-width: 1150px) {
         grid-template-areas: 
             "image details"
-            "description description"
+            "description description";
+            grid-template-columns: 0.5fr 1fr;
     };
 
     @media (max-width: 860px) {
@@ -23,16 +25,47 @@ export const StyledDetailsTile = styled.article`
         padding: 16px;
         grid-template-columns: 1fr 1fr;
     };
+`;
 
-    @media (max-width: 475px) {
-        grid-template-columns: 1fr 1fr;
+export const ImageContainer =
+    styled.div.attrs(({ $image }) => ({
+        style: $image && (
+            {
+                backgroundImage: `url(${$image})`,
+                backgroundPosition: "top",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "transparent",
+            }
+        )
+    }))`
+    grid-area: image;
+    border-radius: 15px;
+    background-color: ${({ theme }) => theme.colors.silver};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 312px;
+    height: 100%;
+
+    ${({ $image }) => $image && css` 
+        background-size: contain;
+
+        @media (max-width: 360px) {
+            background-size: cover;
+        };
+    `};
+
+    @media (max-width: 1150px) {
+        width: 100%;
     };
 `;
 
+export const StyledVideoIcon = styled(VideoIcon)``;
+
 export const Image = styled.img`
     width: 100%;
-    grid-area: image;
     border-radius: 15px;
+    display: block;
 `;
 
 export const Details = styled.div`
@@ -68,17 +101,11 @@ export const Year = styled.p`
     };
 `;
 
-export const DetailInfoType = styled.span`
-    color: ${({ theme }) => theme.colors.stormGray};
-    font-size: 18px;
-    font-weight: 400;
-
-    @media (max-width: 475px) {
-        display: none;
-    };
-`;
-
-export const DetailInfo = styled.p`
+export const DetailInfo = styled.div`
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: start;
+    grid-gap: 8px;
     margin: 0;
     font-size: 18px;
     font-weight: 400;
@@ -89,8 +116,18 @@ export const DetailInfo = styled.p`
     };
 `;
 
-export const Rate = styled.p`
+export const DetailInfoItem = styled.p`
     margin: 0;
+`;
+
+export const DetailInfoType = styled.span`
+    color: ${({ theme }) => theme.colors.stormGray};
+    font-size: 18px;
+    font-weight: 400;
+
+    @media (max-width: 475px) {
+        display: none;
+    };
 `;
 
 export const Description = styled.p`
