@@ -13,8 +13,6 @@ export const StyledGenresList = styled.ul`
 `;
 
 export const Genre = styled.li`
-   display: flex;
-   align-items: center;
    flex-basis: 20%;
    background-color: ${({ theme }) => theme.colors.mystic};
    border-radius: 5px;
