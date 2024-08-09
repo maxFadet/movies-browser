@@ -4,40 +4,17 @@ import { GenresList } from "../../../common/GenresList";
 import { PeopleTilesList } from "../../../common/PeopleTilesList";
 import { MoviesTilesList } from "../../../common/MoviesTilesList";
 import { Rates } from "../../../common/Rates";
-import { Details } from "../../../common/Details"
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchMovieDetailsApi } from "../../../movieDetailsSlice";
 
-export const MovieDetailsPage = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        const fetchDelayId = setTimeout(() => {
-            dispatch(fetchMovieDetailsApi());
-        }, 1000);
-
-        return () => clearTimeout(fetchDelayId);
-    }, [dispatch]);
-
+export const MovieDetailsMainContent = () => {
     return (
         <>
             <DetailsTile
-                // image={poster}
-                mainDetails={
-                    <Details
-                        // header={title}
-                        year="2020"
-                        extraContent={
-                            <>
-                                <GenresList />
-                                <Rates />
-                            </>
-                        }
-                        movie
-                    />
+                extraContent={
+                    <>
+                        <GenresList />
+                        <Rates />
+                    </>
                 }
-            // overview={overview}
             />
             <PeopleTilesList
                 header="Cast"
