@@ -26,6 +26,16 @@ export const selectMovieDetailsState = state => state.movieDetails;
 
 export const selectDetails = state => selectMovieDetailsState(state).details;
 export const selectFetchStatus = state => selectMovieDetailsState(state).fetchStatus;
+
 export const selectGenres = state => selectDetails(state).genres;
+export const selectTitle = state => selectDetails(state).title;
+export const selectPoster = state => selectDetails(state).poster_path;
+export const selectOverview = state => selectDetails(state).overview;
+
+export const selectVoteAvarage = state => selectDetails(state).vote_average;
+export const selectVoteCount = state => selectDetails(state).vote_count;
+
+export const selectProductionCountries = state => selectDetails(state).production_countries
+export const selectReleaseDate = state => selectDetails(state).release_date;
 
 export const movieDetailsReducer = movieDetailsSlice.reducer;
