@@ -9,9 +9,16 @@ export const theme = {
         brightHeather: "#bac7d580",
         stormGray: "#74788B",
         waterloo: "#7E839A",
+        pattensBlue: "#D6E4FF",
+        scienceBlue: "#0044CC",
     },
     breakpoints: {
-        tablet: 767,
-        mobile: 320,
-    },
-};
+        mobileS: "320px",
+        mobileM: "480px",
+        mobileL: "600px",
+        tabletS: "768px",
+        tabletM: "1024px",
+        tabletL: "1200px",
+        laptop: "1480px"
+    }
+}

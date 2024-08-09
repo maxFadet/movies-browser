@@ -6,11 +6,19 @@ import { ActorsData } from "./features/ActorPage";
 import { Container } from "./common/Container";
 import MoviesListPage from "../src/features/MoviesListPage";
 import { MovieDetailsPage } from "./features/MovieDetailsPage";
+import { PageContent } from "./common/PageContent";
+import { MovieBanner } from "./features/MovieDetailsPage/MovieBanner";
+import { NoResults } from "./common/NoResultsPage";
+import { Error } from "./common/Error";
+import { Loader } from "./common/Loader";
 
 function App() {
   return (
     <HashRouter>
       <Navigation />
+      {/* <NoResults /> */}
+      {/* <Error /> */}
+      {/* <Loader /> */}
       <Container>
         <Routes>
           <Route path={toMoviesList()} element={<MoviesListPage />} />

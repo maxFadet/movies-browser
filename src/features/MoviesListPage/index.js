@@ -4,6 +4,7 @@ import Tile from "./Tile";
 import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../routes";
 import { films } from "../ActorPage/filmsData";
+import { Pagination } from "../../common/Pagination";
 
 function MoviesListPage() {
     const navigate = useNavigate();
@@ -29,6 +30,7 @@ function MoviesListPage() {
                     />
                 ))}
             </TileContainer>
+            <Pagination />
         </>
     );
 }
