@@ -1,45 +1,55 @@
 import {
     StyledPageHeader,
-    HeaderContent,
-    StyledMovieBrowserIcon,
     NavigationList,
-    HeaderContainer,
-    Navigation,
-    Header,
+    NavigationContainer,
     NavigationItem,
     Search,
-    Input
+    Input,
+    NavigationLogo,
+    NavigationTitle,
+    NavigationLogoIcon,
+    StyledSearchIcon,
 } from "./styled";
-import { ReactComponent as SearchIcon } from "./Icons/Search.svg";
 import { toMoviesList, toActorsList } from "../../routes";
+import { useLocation } from "react-router-dom";
 
-export default () => {
+
+const getPlaceholderText = (pathname) =>
+    pathname === toMoviesList()
+        ? 'Search for movies...'
+        : 'Search for people...'
+    ;
+
+const Navigation = () => {
+    const location = useLocation();
+    const placeholderText = getPlaceholderText(location.pathname);
+
     return (
         <nav>
             <StyledPageHeader>
-                <HeaderContainer>
-                    <HeaderContent>
-                        <StyledMovieBrowserIcon />
-                        <Header>Movie Browser</Header>
-                    </HeaderContent>
-                    <Navigation>
-                        <NavigationList>
-                            <NavigationItem to={toMoviesList()}>
-                                MOVIES
-                            </NavigationItem>
-                            <NavigationItem to={toActorsList()}>
-                                PEOPLE
-                            </NavigationItem>
-                        </NavigationList>
-                    </Navigation>
-                </HeaderContainer>
+                <NavigationContainer>
+                    <NavigationLogo to={toMoviesList()}>
+                        <NavigationLogoIcon />
+                        <NavigationTitle>Movies Browser</NavigationTitle>
+                    </NavigationLogo>
+                    <NavigationList>
+                        <NavigationItem to={toMoviesList()}>
+                            MOVIES
+                        </NavigationItem>
+                        <NavigationItem to={toActorsList()}>
+                            PEOPLE
+                        </NavigationItem>
+                    </NavigationList>
+                </NavigationContainer>
                 <Search>
-                    <SearchIcon />
+                    <StyledSearchIcon />
                     <Input
-                        placeholder="Search for movies..."
+                        placeholder={placeholderText}
                     />
                 </Search>
             </StyledPageHeader>
         </nav>
     );
-}
+};
+
+export default Navigation;
