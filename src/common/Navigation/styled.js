@@ -12,10 +12,10 @@ export const StyledPageHeader = styled.div`
     padding: 0 16px;
     min-height: 94px;
 
-@media (max-width: 900px) {
-    flex-direction: column;
-    align-items: center;
-};
+    @media (max-width: 900px) {
+        flex-direction: column;
+        align-items: center;
+    };
 `;
 
 export const NavigationContainer = styled.nav`
@@ -98,7 +98,8 @@ export const NavigationItem = styled(NavLink)`
     font-size: 14px;
     font-weight: 600;
     margin: 24px 0px;
-    padding: 8px 24px;
+    padding: 13.5px 24px;
+    ;
 
     
     &.active {
