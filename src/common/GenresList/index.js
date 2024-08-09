@@ -7,15 +7,15 @@ export const GenresList = () => {
     
     return (
         <StyledGenresList>
-            {/* {
-                fechedGenresList ?
-                    fechedGenresList.filter(({ id }) => (
-                        movieGenresIds.includes(id)
-                    )).map(({ name, id }) => (
-                        <Genre key={id}>{name}</Genre>
-                    )) :
-                    <></>
-            } */}
+            {
+                genres && (
+                    genres.map(({ id, name }) => (
+                        <Genre key={id}>
+                            {name}
+                        </Genre>
+                    ))
+                )
+            }
         </StyledGenresList>
     );
 }
