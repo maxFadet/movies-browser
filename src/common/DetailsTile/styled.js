@@ -62,12 +62,6 @@ export const ImageContainer =
 
 export const StyledVideoIcon = styled(VideoIcon)``;
 
-export const Image = styled.img`
-    width: 100%;
-    border-radius: 15px;
-    display: block;
-`;
-
 export const Details = styled.div`
     display: grid;
     grid-template-columns: 1fr;
