@@ -19,7 +19,7 @@ import {
     selectReleaseDate,
     selectTitle,
     selectProductionCountries
-} from "../../movieDetailsSlice";
+} from "../../features/MovieDetailsPage/slices/movieDetailsSlice";
 
 export const DetailsTile = ({ extraContent }) => {
     const title = useSelector(selectTitle);
