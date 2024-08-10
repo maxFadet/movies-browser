@@ -3,16 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const movieDetailsSlice = createSlice({
     name: "movieDetails",
     initialState: {
-        details: [],
-        fetchStatus: "loading",
+        movieDetails: [],
+        fetchMovieDetailsStatus: "loading",
     },
     reducers: {
         fetchMovieDetailsApi: () => { },
         fetchMovieDetailsSuccess: (state, { payload: movieDetails }) => {
-            state.fetchStatus = "success";
-            state.details = movieDetails;
+            state.fetchMovieDetailsStatus = "success";
+            state.movieDetails = movieDetails;
         },
-        fetchMovieDetailsError: (state) => { state.fetchStatus = "error" },
+        fetchMovieDetailsError: (state) => { state.fetchMovieDetailsStatus = "error" },
     },
 });
 
@@ -22,10 +22,10 @@ export const {
     fetchMovieDetailsError
 } = movieDetailsSlice.actions;
 
-export const selectMovieDetailsState = state => state.movieDetails;
+const selectMovieDetailsState = state => state.movieDetails;
 
-export const selectDetails = state => selectMovieDetailsState(state).details;
-export const selectFetchStatus = state => selectMovieDetailsState(state).fetchStatus;
+export const selectDetails = state => selectMovieDetailsState(state).movieDetails;
+export const selectfetchMovieDetailsStatus = state => selectMovieDetailsState(state).fetchMovieDetailsStatus;
 
 export const selectGenres = state => selectDetails(state).genres;
 export const selectTitle = state => selectDetails(state).title;

@@ -6,7 +6,10 @@ import {
     TotalScore,
     StyledStarIcon,
 } from "./styled";
-import { selectVoteAvarage, selectVoteCount } from "../../movieDetailsSlice";
+import {
+    selectVoteAvarage,
+    selectVoteCount
+} from "../../features/MovieDetailsPage/slices/movieDetailsSlice";
 
 export const Rates = ({ mainInfo }) => {
     const isRatesAreMainInfo = !mainInfo;

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Rates } from "../../../common/Rates";
+import { Rates } from "../../../../common/Rates";
 import {
     StyledMovieBanner,
     Title,
@@ -11,7 +11,7 @@ import {
     selectTitle,
     selectVoteAvarage,
     selectVoteCount
-} from "../../../movieDetailsSlice";
+} from "../../slices/movieDetailsSlice";
 
 export const MovieBanner = () => {
     const title = useSelector(selectTitle);

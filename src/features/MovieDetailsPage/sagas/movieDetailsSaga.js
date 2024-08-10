@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { fetchMovieDetailsApi, fetchMovieDetailsSuccess, fetchMovieDetailsError } from "./movieDetailsSlice";
-import { getResponse } from "./getResponse";
+import { fetchMovieDetailsApi, fetchMovieDetailsSuccess, fetchMovieDetailsError } from "../slices/movieDetailsSlice";
+import { getResponse } from "../../../getResponse";
 
 function* fetchMovieDetailsApiHandler() {
     try {
