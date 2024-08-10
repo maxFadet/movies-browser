@@ -19,7 +19,6 @@ function App() {
       {/* <NoResults /> */}
       {/* <Error /> */}
       {/* <Loader /> */}
-      <Container>
         <Routes>
           <Route path={toMoviesList()} element={<MoviesListPage />} />
           <Route path={toActorsList()} element={<ActorsList />} />
@@ -27,7 +26,6 @@ function App() {
           <Route path={toMovie()} element={<MovieDetailsPage />} />
           <Route path="*" element={<Navigate to={toMoviesList()} />} />
         </Routes>
-      </Container>
     </HashRouter>
   );
 };
