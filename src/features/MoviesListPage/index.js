@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../routes";
 import { films } from "../ActorPage/filmsData";
 import { Pagination } from "../../common/Pagination";
+import { Container } from "../../common/Container";
 
 function MoviesListPage() {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ function MoviesListPage() {
     };
 
     return (
-        <>
+        <Container>
             <Header title="Popular movies" />
             <TileContainer>
                 {films.map((film, index) => (
@@ -31,7 +32,7 @@ function MoviesListPage() {
                 ))}
             </TileContainer>
             <Pagination />
-        </>
+        </Container>
     );
 }
 

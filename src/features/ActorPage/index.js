@@ -6,10 +6,11 @@ import {
 } from "./styled";
 import { films } from './filmsData';
 import image from "../../image/image.png";
+import { Container } from "../../common/Container";
 
 export const ActorsData = () => {
     return (
-        <>
+        <Container>
             <ActorProfile>
                 <ActorPhoto src={image} alt="actor" />
                 <ActorDetailsWrapper>
@@ -52,6 +53,6 @@ export const ActorsData = () => {
                     </MovieCard>
                 ))}
             </MoviesSection>
-        </>
+        </Container>
     );
 };
