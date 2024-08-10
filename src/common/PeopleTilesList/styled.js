@@ -21,7 +21,7 @@ export const ListHeader = styled.header`
 
 export const ListSection = styled.ul`
     display: grid;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(4, 22.5%);
     align-items: start;
 
     grid-gap: 24px;
@@ -33,12 +33,8 @@ export const ListSection = styled.ul`
     };
 
     @media (max-width: 700px) {
-        grid-template-columns: repeat(2, 50%);
+        grid-template-columns: repeat(2, 47%);
         justify-content: center;
         grid-gap: 16px;
-    };
-
-    @media (max-width: 350px) {
-        grid-template-columns: repeat(2, 50%);
     };
 `;
