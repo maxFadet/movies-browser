@@ -4,12 +4,14 @@ import { ReactComponent as SearchIcon } from "./Icons/Search.svg";
 import { NavLink } from "react-router-dom";
 
 export const StyledPageHeader = styled.div`
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     background-color: ${({ theme }) => theme.colors.black}; 
     color:  ${({ theme }) => theme.colors.white};
-    padding: 0 16px;
+    padding-left: 17px;
+    padding-right: 16px;
     min-height: 94px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
