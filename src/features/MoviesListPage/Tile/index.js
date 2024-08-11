@@ -9,7 +9,8 @@ import {
     Rating,
     Votes,
     Tag,
-    Tags
+    Tags,
+    TileDescription
 } from "./styled";
 import { MoviePoster } from "./TileElements/MoviePoster";
 import { StarShape } from "./TileElements/StarShape";
@@ -19,6 +20,7 @@ const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
         <PosterContainer>
             <MoviePoster src={poster} alt={title} />
         </PosterContainer>
+        <TileDescription>
         <TileHeader>
             <TileTitle>{title}</TileTitle>
             <MovieYear>{year}</MovieYear>
@@ -33,6 +35,8 @@ const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
             <Rating>{rate}</Rating>
             <Votes>{votes}</Votes>
         </RatingContainer>
+        </TileDescription>
+       
     </TileStyled>
 );
 
