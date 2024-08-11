@@ -4,9 +4,6 @@ export const films = [
         photo: "path_to_photo_2",
         year: "2020",
         genres: ["Action", "Adventure", "Drama"],
-        // genra: "Action",
-        // genra1: "Adventure",
-        // genra2: "Drama",
         rate: "7,8",
         vote: "35 votes"
     },
@@ -23,7 +20,6 @@ export const films = [
         photo: "path_to_photo_2",
         year: "2020",
         genres: ["Action"],
-        // genra: "Action",
         rate: "7,8",
         vote: "35 votes"
     },
@@ -32,7 +28,6 @@ export const films = [
         photo: "path_to_photo_2",
         year: "2020",
         genres: ["Action"],
-        // genra: "Action",
         rate: "7,8",
         vote: "35 votes"
     },
