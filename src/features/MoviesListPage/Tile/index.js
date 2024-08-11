@@ -21,22 +21,24 @@ const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
             <MoviePoster src={poster} alt={title} />
         </PosterContainer>
         <TileDescription>
-        <TileHeader>
-            <TileTitle>{title}</TileTitle>
-            <MovieYear>{year}</MovieYear>
-            <Tags>
-                {genres.map((genre, index) => (
-                    <Tag key={index}>{genre}</Tag>
-                ))}
-            </Tags>
-        </TileHeader>
-        <RatingContainer>
-            <StarShape />
-            <Rating>{rate}</Rating>
-            <Votes>{votes}</Votes>
-        </RatingContainer>
+            <TileHeader>
+                <TileTitle>{title}</TileTitle>
+                <MovieYear>{year}</MovieYear>
+                <Tags>
+                    {genres
+                        .filter(genre => genre)
+                        .map((genre, index) => (
+                            <Tag key={index}>{genre}</Tag>
+                        ))}
+                </Tags>
+            </TileHeader>
+            <RatingContainer>
+                <StarShape />
+                <Rating>{rate}</Rating>
+                <Votes>{votes}</Votes>
+            </RatingContainer>
         </TileDescription>
-       
+
     </TileStyled>
 );
 
