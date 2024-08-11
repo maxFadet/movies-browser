@@ -7,4 +7,4 @@ export const TileContainer = styled.div`
   column-gap: 24px;
   row-gap: 24px;
   justify-content: space-between;
-  `;
+`;
