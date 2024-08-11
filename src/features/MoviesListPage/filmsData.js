@@ -31,4 +31,12 @@ export const films = [
         rate: "7,8",
         vote: "35 votes"
     },
+    {
+        name: "Mulan",
+        photo: "path_to_photo_2",
+        year: "",
+        genres: ["Action"],
+        rate: "7,8",
+        vote: "35 votes"
+    },
 ];
