@@ -26,7 +26,7 @@ const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
                 <MovieYear>{year}</MovieYear>
                 <Tags>
                     {genres
-                        .filter(genre => genre)
+                            .filter(genre => genre)
                         .map((genre, index) => (
                             <Tag key={index}>{genre}</Tag>
                         ))}
