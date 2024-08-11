@@ -10,21 +10,21 @@ import {
     Votes,
     Tag,
     Tags,
-    TileDescription
+    TileDescription,
+    StyledMoviePoster,
 } from "./styled";
-import { MoviePoster } from "./TileElements/MoviePoster";
-import { StarShape } from "./TileElements/StarShape";
+import { ReactComponent as StarShape } from "./TileElements/images/shape-star.svg";
 
 const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
     <TileStyled onClick={onClick}>
         <PosterContainer>
-            <MoviePoster src={poster} alt={title} />
+            <StyledMoviePoster src={poster} alt={title} />
         </PosterContainer>
         <TileDescription>
             <TileHeader>
                 <TileTitle>{title}</TileTitle>
                 <MovieYear>{year}</MovieYear>
-               {genres.length > 0 && (
+                {genres.length > 0 && (
                     <Tags>
                         {genres.map((genre, index) => (
                             <Tag key={index}>{genre}</Tag>
