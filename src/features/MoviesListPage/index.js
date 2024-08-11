@@ -24,8 +24,7 @@ function MoviesListPage() {
                         onClick={() => handleMovieClick(film.id)}
                         title={film.name}
                         year={film.year}
-                        genres={[film.genra, film.genra2]}
-                        rate={film.rate}
+                        genres={film.genres}                        rate={film.rate}
                         votes={film.vote}
                         poster={film.photo}
                     />
