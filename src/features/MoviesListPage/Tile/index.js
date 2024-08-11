@@ -12,8 +12,8 @@ import {
     Tags,
     TileDescription,
     StyledMoviePoster,
+    StyledStarShape,
 } from "./styled";
-import { ReactComponent as StarShape } from "./TileElements/images/shape-star.svg";
 
 const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
     <TileStyled onClick={onClick}>
@@ -33,7 +33,7 @@ const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
                 )}
             </TileHeader>
             <RatingContainer>
-                <StarShape />
+                <StyledStarShape />
                 <Rating>{rate}</Rating>
                 <Votes>{votes}</Votes>
             </RatingContainer>
