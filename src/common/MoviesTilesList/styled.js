@@ -27,7 +27,7 @@ export const ListSection = styled.ul`
     padding-left: 0px;
     margin: 0;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
         grid-template-columns: repeat(3, 31%);
     };
 
