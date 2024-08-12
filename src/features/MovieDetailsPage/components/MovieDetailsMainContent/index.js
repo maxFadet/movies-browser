@@ -70,8 +70,8 @@ export const MovieDetailsMainContent = () => {
                             subInfo="2020"
                             extraContent={
                                 <>
-                                    <GenresList />
-                                    <Rates />
+                                      <GenresList genres={genres} />
+                                      <Rates voteAverage={vote_average} voteCount={vote_count} />
                                 </>
                             }
                         />
@@ -81,8 +81,8 @@ export const MovieDetailsMainContent = () => {
                             subInfo="2020"
                             extraContent={
                                 <>
-                                    <GenresList />
-                                    <Rates />
+                                  <GenresList genres={genres} />
+                                  <Rates voteAverage={vote_average} voteCount={vote_count} />
                                 </>
                             }
                         />
