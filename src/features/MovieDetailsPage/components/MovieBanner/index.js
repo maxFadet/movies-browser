@@ -2,16 +2,16 @@ import { useSelector } from "react-redux";
 import { Rates } from "../../../../common/Rates";
 import { StyledMovieBanner, Title, MainInfo, } from "./styled";
 import { selectMovieDetailsById, } from "../../slices/moviesDetailsListSlice";
-import { useParams } from "react-router-dom";
+import { useURLId } from "../../../../useUrlId";
 
 export const MovieBanner = () => {
-    const { id } = useParams();
+    const urlId = useURLId();
     const {
         title,
         backdrop_path,
         vote_average,
         vote_count
-    } = useSelector(state => selectMovieDetailsById(state, id));
+    } = useSelector(state => selectMovieDetailsById(state, urlId));
 
     return (
         <>
