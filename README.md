@@ -1,16 +1,38 @@
-# Movie Browser
+# Movies Browser
 
 ## Demo
 
+Check out the live demo of the application here:
 https://maxfadet.github.io/movies-browser/
 
 ## Description:
 
 Discover and organize your favorite films effortlessly. 
-    Access detailed information, ratings, and reviews all in one place. 
-    Enjoy a smooth and intuitive experience with modern React technology.
+Access detailed information, ratings, and reviews all in one place. 
+Enjoy a smooth and intuitive experience with modern React technology.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+The application features a clean and responsive UI, powered by `styled-components`, with dynamic routing handled by `React Router` and state management achieved through `Redux` and `Redux-Saga`. The application is styled using a theme, allowing for consistent design across all components.
+
+## Features
+
+- **Movie Search**: Browse and search for movies by title, genre, or year.
+- **Movie Details**: Click on any movie to view its detailed information, including a synopsis, rating, genre, and more.
+- **Responsive Design**: Fully responsive UI, optimized for both desktop and mobile devices.
+- **Dynamic Routing**: Navigation between pages using `React Router` with `NavLink` for active link styling.
+- **Global State Management**: Managed through `Redux`, with asynchronous actions handled by `Redux-Saga`.
+- **Theming**: Consistent styling across the application using `styled-components` and a global theme.
+- **Error Handling**: Graceful handling of errors with user-friendly messages.
+
+## Tech Stack
+
+- **React**: Frontend library for building user interfaces.
+- **Styled-Components**: For styling components with a clean, scoped CSS.
+- **React Router (NavLink)**: For dynamic routing within the application.
+- **Redux**: Global state management.
+- **Redux-Saga**: Handling side effects and asynchronous actions.
+- **ThemeProvider**: For consistent theming across the application.
 
 ## Available Scripts
 
