@@ -1,35 +1,30 @@
 import { useSelector } from "react-redux";
 import { Rates } from "../../../../common/Rates";
-import {
-    StyledMovieBanner,
-    Title,
-    MainInfo,
-} from "./styled";
-
-import {
-    selectMovieBanner,
-    selectTitle,
-    selectVoteAvarage,
-    selectVoteCount
-} from "../../slices/movieDetailsSlice";
+import { StyledMovieBanner, Title, MainInfo, } from "./styled";
+import { selectMovieDetailsById, } from "../../slices/moviesDetailsListSlice";
+import { useParams } from "react-router-dom";
 
 export const MovieBanner = () => {
-    const title = useSelector(selectTitle);
-    const banner = useSelector(selectMovieBanner);
-
-    const voteAverage = useSelector(selectVoteAvarage);
-    const voteCount = useSelector(selectVoteCount);
+    const { id } = useParams();
+    const {
+        title,
+        backdrop_path,
+        vote_average,
+        vote_count
+    } = useSelector(state => selectMovieDetailsById(state, id));
 
     return (
-        <StyledMovieBanner $poster={banner}>
-            <MainInfo>
-                <Title>{title}</Title>
-                <Rates
-                    mainInfo
-                    voteAverage={voteAverage}
-                    voteCount={voteCount}
-                />
-            </MainInfo>
-        </StyledMovieBanner>
+        <>
+            <StyledMovieBanner $backdrop={backdrop_path}>
+                <MainInfo>
+                    <Title>{title}</Title>
+                    <Rates
+                        mainInfo
+                        voteAverage={vote_average}
+                        voteCount={vote_count}
+                    />
+                </MainInfo>
+            </StyledMovieBanner>
+        </>
     );
 };
