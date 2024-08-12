@@ -9,7 +9,7 @@ export const StyledPageHeader = styled.div`
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    background-color: ${({ theme }) => theme.colors.black}; 
+    background-color: ${({ theme }) => theme.colors.woodsmoke}; 
     color:  ${({ theme }) => theme.colors.white};
     padding-left: 17px;
     padding-right: 16px;
