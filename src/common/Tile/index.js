@@ -1,10 +1,12 @@
 import {
     StyledTile,
     Image,
+    ImageContainer,
     Title,
     SubInfo,
     ExtraContent,
     GeneralInfo,
+    StyledProfileIcon,
 } from "./styled";
 
 export const Tile = ({
@@ -14,18 +16,24 @@ export const Tile = ({
     extraContent,
     id,
 }) => {
-    const isExtraContentMissing = !extraContent;
+    const isExtraContentAvailable = !!extraContent;
 
     return (
         <StyledTile
             key={id}
-            $extraContentMissing={isExtraContentMissing}
+            $extraContentAvailable={isExtraContentAvailable}
         >
-            <Image src={image} alt={title} />
+            {
+                image ?
+                    <Image $extraContentAvailable={isExtraContentAvailable} src={image} alt={title} /> :
+                    <ImageContainer>
+                        <StyledProfileIcon />
+                    </ImageContainer>
+            }
             <GeneralInfo
-                $extraContentMissing={isExtraContentMissing}
+                $extraContentAvailable={isExtraContentAvailable}
             >
-                <Title $extraContentMissing={isExtraContentMissing}>
+                <Title $extraContentAvailable={isExtraContentAvailable}>
                     {title}
                 </Title>
                 <SubInfo>{subInfo}</SubInfo>
