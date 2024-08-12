@@ -21,7 +21,7 @@ function MoviesListPage() {
                 {films.map((film, index) => (
                     <Tile
                         key={index}
-                        onClick={() => handleMovieClick(film.id)}
+                        onClick={() => handleMovieClick(1)}
                         title={film.name}
                         year={film.year}
                         genres={[film.genra, film.genra2]}
