@@ -5,16 +5,15 @@ import { PeopleTilesList } from "../../../../common/PeopleTilesList";
 import { MoviesTilesList } from "../../../../common/MoviesTilesList";
 import { Rates } from "../../../../common/Rates";
 import { useSelector } from "react-redux";
-import { selectMovieCast, selectMovieCrew } from "../../slices/movieCreditsSlice";
+import { selectCreditsById } from "../../slices/moviesCredditsListSlice";
 import { selectMovieDetailsById } from "../../slices/moviesDetailsListSlice";
-import { useParams } from "react-router-dom";
+import { useURLId } from "../../../../useUrlId";
 
 export const MovieDetailsMainContent = () => {
-    const { id } = useParams()
-    const movieCast = useSelector(selectMovieCast);
-    const movieCrew = useSelector(selectMovieCrew);
+    const urlId = useURLId();
 
-    const { genres, vote_average, vote_count } = useSelector(state => selectMovieDetailsById(state, id));
+    const { cast, crew } = useSelector(state => selectCreditsById(state, urlId));
+    const { genres, vote_average, vote_count } = useSelector(state => selectMovieDetailsById(state, urlId));
     return (
         <>
             <DetailsTile
@@ -30,7 +29,7 @@ export const MovieDetailsMainContent = () => {
                 content={
                     <>
                         {
-                            movieCast.map(({ character, name, profile_path, id }) => (
+                            cast.map(({ character, name, profile_path, id }) => (
                                 <Tile
                                     id={id}
                                     image={profile_path}
@@ -47,7 +46,7 @@ export const MovieDetailsMainContent = () => {
                 content={
                     <>
                         {
-                            movieCrew.map(({
+                            crew.map(({
                                 job, name, profile_path, id
                             }) => (
                                 <Tile
