@@ -4,27 +4,31 @@ import { fetchMoviesDetailsList, selectFetchMoviesDetailsListStatus } from "../s
 import { MovieBanner } from "./MovieBanner";
 import { PageContent } from "../../../common/PageContent";
 import { MovieDetailsMainContent } from "./MovieDetailsMainContent";
-import { fetchMovieCredits, selectMovieCreditsFetchStatus } from "../slices/movieCreditsSlice";
+import { fetchMoviesCreditsList, selectMoviesCreditsListFetchStatus } from "../slices/moviesCredditsListSlice";
 import { Loader } from "../../../common/Loader";
 import { Error } from "../../../common/Error";
 import { NoResults } from "../../../common/NoResultsPage";
+import { loadingStatus } from "../../../requestStatuses/loadingStatus";
+import { errorStatus } from "../../../requestStatuses/errorStatus";
+import { successStatus } from "../../../requestStatuses/successStatus";
 
 export const MovieDetailsPage = () => {
     const fetchMoviesDetailsListStatus = useSelector(selectFetchMoviesDetailsListStatus);
-    const fetchMovieCreditsStatus = useSelector(selectMovieCreditsFetchStatus);
+    const fetchMoviesCreditsListStatus = useSelector(selectMoviesCreditsListFetchStatus);
+
+    const isLoading = fetchMoviesDetailsListStatus === loadingStatus || fetchMoviesCreditsListStatus === loadingStatus;
+    const isError = fetchMoviesDetailsListStatus === errorStatus || fetchMoviesCreditsListStatus === errorStatus
+    const isSuccess = fetchMoviesDetailsListStatus === successStatus && fetchMoviesCreditsListStatus === successStatus;
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchDelayId = setTimeout(() => {
             dispatch(fetchMoviesDetailsList());
-            dispatch(fetchMovieCredits());
+            dispatch(fetchMoviesCreditsList());
         }, 1000);
         return () => clearTimeout(fetchDelayId);
     }, [dispatch]);
-
-    const isLoading = fetchMoviesDetailsListStatus === "loading" || fetchMovieCreditsStatus === "loading";
-    const isError = fetchMoviesDetailsListStatus === "error" || fetchMovieCreditsStatus === "error"
-    const isSuccess = fetchMoviesDetailsListStatus === "success" && fetchMovieCreditsStatus === "success";
 
     return (
         isLoading ? (
@@ -34,9 +38,7 @@ export const MovieDetailsPage = () => {
         ) : isSuccess ? (
             <>
                 <MovieBanner />
-                <PageContent
-                    content={<MovieDetailsMainContent />}
-                />
+                <PageContent content={<MovieDetailsMainContent />} />
             </>
         ) : (
             <NoResults />
