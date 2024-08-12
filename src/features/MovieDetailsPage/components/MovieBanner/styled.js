@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledMovieBanner =
-    styled.div.attrs(({ $poster }) => ({
+    styled.div.attrs(({ $backdrop }) => ({
         style: {
-            backgroundImage: `url(${$poster})`
+            backgroundImage: `url(${$backdrop})`
         }
     }))`
 
