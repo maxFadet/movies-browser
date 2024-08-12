@@ -5,21 +5,22 @@ import { PeopleTilesList } from "../../../../common/PeopleTilesList";
 import { MoviesTilesList } from "../../../../common/MoviesTilesList";
 import { Rates } from "../../../../common/Rates";
 import { useSelector } from "react-redux";
-import { selectMovieCast, selectMovieCrew } from "../../slices/movieCreditsSlice";
+import { selectCreditsById } from "../../slices/moviesCredditsListSlice";
+import { selectMovieDetailsById } from "../../slices/moviesDetailsListSlice";
+import { useURLId } from "../../../../useUrlId";
 
 export const MovieDetailsMainContent = () => {
+    const urlId = useURLId();
 
-    const movieCast = useSelector(selectMovieCast);
-    const movieCrew = useSelector(selectMovieCrew);
-    console.log(movieCrew);
-
+    const { cast, crew } = useSelector(state => selectCreditsById(state, urlId));
+    const { genres, vote_average, vote_count } = useSelector(state => selectMovieDetailsById(state, urlId));
     return (
         <>
             <DetailsTile
                 extraContent={
                     <>
-                        <GenresList />
-                        <Rates />
+                        <GenresList genres={genres} />
+                        <Rates voteAverage={vote_average} voteCount={vote_count} />
                     </>
                 }
             />
@@ -28,7 +29,7 @@ export const MovieDetailsMainContent = () => {
                 content={
                     <>
                         {
-                            movieCast.map(({ character, name, profile_path, id }) => (
+                            cast.map(({ character, name, profile_path, id }) => (
                                 <Tile
                                     id={id}
                                     image={profile_path}
@@ -45,7 +46,7 @@ export const MovieDetailsMainContent = () => {
                 content={
                     <>
                         {
-                            movieCrew.map(({
+                            crew.map(({
                                 job, name, profile_path, id
                             }) => (
                                 <Tile
@@ -69,8 +70,8 @@ export const MovieDetailsMainContent = () => {
                             subInfo="2020"
                             extraContent={
                                 <>
-                                    <GenresList />
-                                    <Rates />
+                                      <GenresList genres={genres} />
+                                      <Rates voteAverage={vote_average} voteCount={vote_count} />
                                 </>
                             }
                         />
@@ -80,8 +81,8 @@ export const MovieDetailsMainContent = () => {
                             subInfo="2020"
                             extraContent={
                                 <>
-                                    <GenresList />
-                                    <Rates />
+                                  <GenresList genres={genres} />
+                                  <Rates voteAverage={vote_average} voteCount={vote_count} />
                                 </>
                             }
                         />

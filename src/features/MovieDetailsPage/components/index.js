@@ -1,47 +1,47 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {
-    fetchMovieDetailsApi,
-    selectfetchMovieDetailsStatus
-} from "./../slices/movieDetailsSlice";
+import { fetchMoviesDetailsList, selectFetchMoviesDetailsListStatus } from "../slices/moviesDetailsListSlice";
 import { MovieBanner } from "./MovieBanner";
 import { PageContent } from "../../../common/PageContent";
 import { MovieDetailsMainContent } from "./MovieDetailsMainContent";
-import { fetchMovieCredits, selectMovieCreditsFetchStatus } from "../slices/movieCreditsSlice";
+import { fetchMoviesCreditsList, selectMoviesCreditsListFetchStatus } from "../slices/moviesCredditsListSlice";
 import { Loader } from "../../../common/Loader";
 import { Error } from "../../../common/Error";
+import { NoResults } from "../../../common/NoResultsPage";
+import { loadingStatus } from "../../../requestStatuses/loadingStatus";
+import { errorStatus } from "../../../requestStatuses/errorStatus";
+import { successStatus } from "../../../requestStatuses/successStatus";
 
 export const MovieDetailsPage = () => {
-    const fetchMovieDetailsStatus = useSelector(selectfetchMovieDetailsStatus);
-    const fetchMovieCreditsStatus = useSelector(selectMovieCreditsFetchStatus);
+    const fetchMoviesDetailsListStatus = useSelector(selectFetchMoviesDetailsListStatus);
+    const fetchMoviesCreditsListStatus = useSelector(selectMoviesCreditsListFetchStatus);
+
+    const isLoading = fetchMoviesDetailsListStatus === loadingStatus || fetchMoviesCreditsListStatus === loadingStatus;
+    const isError = fetchMoviesDetailsListStatus === errorStatus || fetchMoviesCreditsListStatus === errorStatus
+    const isSuccess = fetchMoviesDetailsListStatus === successStatus && fetchMoviesCreditsListStatus === successStatus;
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchDelayId = setTimeout(() => {
-            dispatch(fetchMovieDetailsApi());
-            dispatch(fetchMovieCredits());
-        }, 1500);
-
+            dispatch(fetchMoviesDetailsList());
+            dispatch(fetchMoviesCreditsList());
+        }, 1000);
         return () => clearTimeout(fetchDelayId);
     }, [dispatch]);
 
     return (
-        <>
-            {
-                fetchMovieDetailsStatus === "loading" ||
-                    fetchMovieCreditsStatus === "loading" ?
-                    <Loader /> :
-                    fetchMovieDetailsStatus === "error" ||
-                        fetchMovieCreditsStatus === "error" ?
-                        <>
-                            <Error />
-                        </> :
-                        <>
-                            <MovieBanner />
-                            <PageContent
-                                content={<MovieDetailsMainContent />}
-                            />
-                        </>}
-        </>
+        isLoading ? (
+            <Loader />
+        ) : isError ? (
+            <Error />
+        ) : isSuccess ? (
+            <>
+                <MovieBanner />
+                <PageContent content={<MovieDetailsMainContent />} />
+            </>
+        ) : (
+            <NoResults />
+        )
     );
 }

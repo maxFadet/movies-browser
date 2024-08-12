@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-
 import {
     StyledDetailsTile,
     ImageContainer,
@@ -12,30 +11,27 @@ import {
     DetailInfoItem,
     DetailInfoType,
 } from "./styled";
-
-import {
-    selectOverview,
-    selectPoster,
-    selectReleaseDate,
-    selectTitle,
-    selectProductionCountries
-} from "../../features/MovieDetailsPage/slices/movieDetailsSlice";
+import { selectMovieDetailsById } from
+    "../../features/MovieDetailsPage/slices/moviesDetailsListSlice";
+import { useURLId } from "../../useUrlId";
 
 export const DetailsTile = ({ extraContent }) => {
-    const title = useSelector(selectTitle);
-    const overview = useSelector(selectOverview);
-    const poster = useSelector(selectPoster);
+    const urlId = useURLId();
+    const {
+        title,
+        poster_path,
+        overview,
+        production_countries,
+        release_date
+    } = useSelector(state => selectMovieDetailsById(state, urlId));
 
-    const productionCountries = useSelector(selectProductionCountries);
-    const releaseDate = useSelector(selectReleaseDate);
-
-    const year = new Date(releaseDate).getFullYear();
+    const year = new Date(release_date).getFullYear();
 
     return (
         <StyledDetailsTile>
             {
-                poster ?
-                    <ImageContainer $image={poster} /> :
+                poster_path ?
+                    <ImageContainer $image={poster_path} /> :
                     <ImageContainer>
                         <StyledVideoIcon />
                     </ImageContainer>
@@ -48,21 +44,21 @@ export const DetailsTile = ({ extraContent }) => {
                     )
                 }
                 {
-                    productionCountries || releaseDate ?
+                    production_countries || release_date ?
                         <DetailInfo>
                             <DetailInfoItem >
                                 <DetailInfoType>Production:</DetailInfoType> {
                                     window.innerWidth <= 475
-                                        ? (Array.isArray(productionCountries[0].iso_3166_1)
-                                            ? productionCountries[0].iso_3166_1.join(", ")
-                                            : productionCountries[0].iso_3166_1)
-                                        : (Array.isArray(productionCountries[0].name)
-                                            ? productionCountries[0].name.join(", ")
-                                            : productionCountries[0].name)
+                                        ? (Array.isArray(production_countries[0].iso_3166_1)
+                                            ? production_countries[0].iso_3166_1.join(", ")
+                                            : production_countries[0].iso_3166_1)
+                                        : (Array.isArray(production_countries[0].name)
+                                            ? production_countries[0].name.join(", ")
+                                            : production_countries[0].name)
                                 }
                             </DetailInfoItem>
                             <DetailInfoItem>
-                                <DetailInfoType>Release date:</DetailInfoType> {releaseDate}
+                                <DetailInfoType>Release date:</DetailInfoType> {release_date}
                             </DetailInfoItem>
                         </DetailInfo> :
                         <DetailInfo>

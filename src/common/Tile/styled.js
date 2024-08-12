@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components";
+import { ReactComponent as ProfileIcon } from "../../Profile.svg";
 
 export const StyledTile = styled.li`
     list-style-type: none;
     display: grid;
     grid-gap: 16px;
     grid-template-columns: 1fr;
-    grid-auto-rows: auto 1fr;
+    grid-auto-rows: 1fr 0.5fr;
     height: 100%;
     padding: 16px;
     align-items: start;
@@ -14,44 +15,75 @@ export const StyledTile = styled.li`
     background-color: 
         ${({ theme }) => theme.colors.white};
 
-    @media (max-width: 450px) {
-        grid-template-columns: 1fr 1fr;  
-    };
-    
-    ${({ $extraContentMissing }) => $extraContentMissing && css`
+    ${({ $extraContentAvailable }) => $extraContentAvailable && css`
         @media (max-width: 450px) {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;  
         };
     `};
 `;
 
+export const ImageContainer = styled.div`
+    border-radius: 15px;
+    background-color: ${({ theme }) => theme.colors.silver};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+
+    ${({ $image }) => $image && css` 
+        background-size: cover;
+    `};
+
+    @media (max-width: 450px) {
+       height: 150px;
+    };
+`;
+
+export const StyledProfileIcon = styled(ProfileIcon)`
+    @media (max-width: 450px) {
+       width: 30px;
+    };
+`;
+
 export const Image = styled.img`
     width: 100%;
-    border-radius: 10px;
+    border-radius: 15px;
+    height: 300px;
+    object-fit: cover;
+
+    @media (max-width: 450px) {
+        height: 150px;
+    };
+
+    ${({ $extraContentAvailable }) => $extraContentAvailable && css`
+        height: unset;
+        @media (max-width: 450px) {
+            object-fit: cover;
+            height: unset;
+        };
+    `};
 `;
 
 export const GeneralInfo = styled.div`
     display: grid;
     grid-gap: 8px;
     grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
 
-    ${({ $extraContentMissing }) => $extraContentMissing && css`
-        justify-items: center;
-        text-align: center;
+    ${({ $extraContentAvailable }) => $extraContentAvailable && css`
+        justify-items: start;
     `};
 `;
 
 export const Title = styled.header`
     font-size: 22px;
     font-weight: 500;
+    text-align: center;
 
     @media (max-width: 450px) {
         font-size: 14px;
     };
-
-    ${({ $extraContentMissing }) => $extraContentMissing && css`
-        text-align: center;
-    `};
 `;
 
 export const SubInfo = styled.p`
