@@ -28,11 +28,11 @@ export const ListSection = styled.ul`
     padding-left: 0px;
     margin: 0;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1200px) {
         grid-template-columns: repeat(3, 31%);
     };
 
-    @media (max-width: 700px) {
+    @media (max-width: 950px) {
         grid-template-columns: repeat(2, 47%);
         justify-content: center;
         grid-gap: 16px;
