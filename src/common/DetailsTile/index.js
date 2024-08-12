@@ -13,17 +13,17 @@ import {
 } from "./styled";
 import { selectMovieDetailsById } from
     "../../features/MovieDetailsPage/slices/moviesDetailsListSlice";
-import { useParams } from "react-router-dom";
+import { useURLId } from "../../useUrlId";
 
 export const DetailsTile = ({ extraContent }) => {
-    const { id } = useParams();
+    const urlId = useURLId();
     const {
         title,
         poster_path,
         overview,
         production_countries,
         release_date
-    } = useSelector(state => selectMovieDetailsById(state, id));
+    } = useSelector(state => selectMovieDetailsById(state, urlId));
 
     const year = new Date(release_date).getFullYear();
 
