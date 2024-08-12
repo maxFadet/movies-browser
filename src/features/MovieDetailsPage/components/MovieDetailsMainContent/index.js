@@ -6,6 +6,7 @@ import { MoviesTilesList } from "../../../../common/MoviesTilesList";
 import { Rates } from "../../../../common/Rates";
 import { useSelector } from "react-redux";
 import { selectMovieCast, selectMovieCrew } from "../../slices/movieCreditsSlice";
+import { Title, Section } from "./styled"
 
 export const MovieDetailsMainContent = () => {
 
@@ -23,23 +24,17 @@ export const MovieDetailsMainContent = () => {
                     </>
                 }
             />
-            <PeopleTilesList
-                header="Cast"
-                content={
-                    <>
-                        {
-                            movieCast.map(({ character, name, profile_path, id }) => (
-                                <Tile
-                                    id={id}
-                                    image={profile_path}
-                                    title={name}
-                                    subInfo={character}
-                                />
-                            ))
-                        }
-                    </>
-                }
-            />
+            <Section>
+                <Title>Cast</Title>
+                {movieCast.map(({ character, name, profile_path, id }) => (
+                    <PeopleTilesList
+                        key={id}
+                        photo={profile_path}
+                        name={name}
+                        subName={character}
+                    />
+                ))}
+            </Section>
             <PeopleTilesList
                 header="Crew"
                 content={

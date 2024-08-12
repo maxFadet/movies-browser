@@ -21,12 +21,12 @@ export const Section = styled.section`
   display: grid;
   grid-template-columns: repeat(6, minmax(100px, 1fr));
   gap: 24px;
+  width: 100%;
   justify-content: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
     grid-template-columns: repeat(5, minmax(100px, 1fr));
     gap: 20px;
-    width: 100%;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {

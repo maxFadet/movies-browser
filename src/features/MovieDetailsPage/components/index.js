@@ -10,6 +10,7 @@ import { MovieDetailsMainContent } from "./MovieDetailsMainContent";
 import { fetchMovieCredits, selectMovieCreditsFetchStatus } from "../slices/movieCreditsSlice";
 import { Loader } from "../../../common/Loader";
 import { Error } from "../../../common/Error";
+import { Container } from "../../../common/Container";
 
 export const MovieDetailsPage = () => {
     const fetchMovieDetailsStatus = useSelector(selectfetchMovieDetailsStatus);
@@ -38,9 +39,9 @@ export const MovieDetailsPage = () => {
                         </> :
                         <>
                             <MovieBanner />
-                            <PageContent
-                                content={<MovieDetailsMainContent />}
-                            />
+                            <Container>
+                                <MovieDetailsMainContent />
+                            </Container>
                         </>}
         </>
     );

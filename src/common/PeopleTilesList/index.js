@@ -1,16 +1,19 @@
 import {
-    StyledTileList,
-    ListHeader,
-    ListSection,
+    Info,
+    Name,
+    Photo,
+    StyledTile,
+    SubName,
 } from "./styled";
 
-export const PeopleTilesList = ({ header, content }) => {
+export const PeopleTilesList = ({ name, subName, photo, onClick }) => {
     return (
-        <StyledTileList>
-            <ListHeader>{header}</ListHeader>
-            <ListSection>
-                <>{content}</>
-            </ListSection>
-        </StyledTileList>
+        <StyledTile onClick={onClick}>
+            <Photo src={photo} alt={name} />
+            <Info>
+                <Name>{name}</Name>
+                <SubName>{subName}</SubName>
+            </Info>
+        </StyledTile>
     );
 };

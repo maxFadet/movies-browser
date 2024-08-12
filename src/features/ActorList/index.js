@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { actors } from './actorsData';
-import { Tile, Name, Title, Photo, Section } from './styled';
+import { Title, Section } from './styled';
 import { toPerson } from "../../routes";
 import { Pagination } from "../../common/Pagination";
 import { Container } from "../../common/Container";
+import { PeopleTilesList } from "../../common/PeopleTilesList"
 
 const ActorsList = () => {
     const navigate = useNavigate();
@@ -17,16 +18,18 @@ const ActorsList = () => {
             <Section>
                 <Title>Popular people</Title>
                 {actors.map((actor, index) => (
-                    <Tile key={index} onClick={() => handleActorClick(actor.id)}>
-                        <Photo src={actor.photo} alt={actor.name} />
-                        <Name>{actor.name}</Name>
-                    </Tile>
+                    <PeopleTilesList
+                        key={index}
+                        onClick={() => handleActorClick(actor.id)}
+                        photo={actor.photo}
+                        name={actor.name}
+                        subName={actor.subname}
+                    />
                 ))}
+
             </Section>
             <Pagination />
         </Container>
-
-
     );
 };
 

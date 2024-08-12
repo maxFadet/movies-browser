@@ -1,40 +1,52 @@
 import styled from "styled-components";
 
-export const StyledTileList = styled.section`
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 32px;
+export const StyledTile = styled.div`
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: rgba(186, 199, 213, 0.5) 0px 4px 12px;
+  display: grid;
+  grid-template-rows: auto auto;
+  padding: 16px;
+  gap: 12px;
 
-    @media (max-width: 450px) {
-        grid-gap: 12px;
-    };
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+    padding: 8px;
+    gap: 8px;
+  }
 `;
 
-export const ListHeader = styled.header`
-    font-size: 36px;
-    font-weight: 600;
+export const Name = styled.p`
+  color: ${({ theme }) => theme.colors.woodsmoke};
+  margin: 0;
+  line-height: 29px;
+  font-size: 22px;
+  font-weight: 500;
 
-    @media (max-width: 450px) {
-        font-size: 20px;
-    };
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+    font-size: 14px;
+    line-height: 18px;
+}
 `;
 
-export const ListSection = styled.ul`
-    display: grid;
-    grid-template-columns: repeat(4, 22.5%);
-    align-items: start;
+export const Photo = styled.img`
+  width: 177px;
+  height: 264px;
+  width: 100%;
+  border-radius: 5px;
+`;
 
-    grid-gap: 24px;
-    padding-left: 0px;
-    margin: 0;
+export const SubName = styled.div`
+  font-size: 18px;
+  line-height: 27px;
+  color: ${({ theme }) => theme.colors.waterloo};
+  margin-top: 8px;
+`;
 
-    @media (max-width: 900px) {
-        grid-template-columns: repeat(3, 31%);
-    };
-
-    @media (max-width: 700px) {
-        grid-template-columns: repeat(2, 47%);
-        justify-content: center;
-        grid-gap: 16px;
-    };
+export const Info = styled.section`
+  text-align: center;
+  word-break: break-word;
 `;
