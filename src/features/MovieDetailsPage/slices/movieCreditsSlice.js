@@ -12,7 +12,7 @@ export const movieCredditsSlice = createSlice({
             state.fetchMovieCreditsStatus = "success";
             state.movieCredits = movieCredits;
         },
-        fetchMovieCreditsError: (state) => { 
+        fetchMovieCreditsError: (state) => {
             state.fetchMovieCreditsStatus = "error";
         },
     }
@@ -24,7 +24,7 @@ export const {
     fetchMovieCreditsError
 } = movieCredditsSlice.actions;
 
-const selectMovieCreditsState = state => state.movieCredits;
+export const selectMovieCreditsState = state => state.movieCredits;
 
 export const selectMovieCreditsFetchStatus = state =>
     selectMovieCreditsState(state).fetchMovieCreditsStatus
