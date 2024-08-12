@@ -6,20 +6,22 @@ import { MoviesTilesList } from "../../../../common/MoviesTilesList";
 import { Rates } from "../../../../common/Rates";
 import { useSelector } from "react-redux";
 import { selectMovieCast, selectMovieCrew } from "../../slices/movieCreditsSlice";
+import { selectMovieDetailsById } from "../../slices/moviesDetailsListSlice";
+import { useParams } from "react-router-dom";
 
 export const MovieDetailsMainContent = () => {
-
+    const { id } = useParams()
     const movieCast = useSelector(selectMovieCast);
     const movieCrew = useSelector(selectMovieCrew);
-    console.log(movieCrew);
 
+    const { genres, vote_average, vote_count } = useSelector(state => selectMovieDetailsById(state, id));
     return (
         <>
             <DetailsTile
                 extraContent={
                     <>
-                        <GenresList />
-                        <Rates />
+                        <GenresList genres={genres} />
+                        <Rates voteAverage={vote_average} voteCount={vote_count} />
                     </>
                 }
             />
