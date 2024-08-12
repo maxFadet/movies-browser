@@ -1,18 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loadingStatus } from "../../../requestStatuses/loadingStatus";
+import { errorStatus } from "../../../requestStatuses/errorStatus";
+import { successStatus } from "../../../requestStatuses/successStatus";
 
 export const moviesDetailsListSlice = createSlice({
     name: "moviesDetailsList",
     initialState: {
         moviesDetailsList: null,
-        fetchMoviesDetailsListStatus: "loading",
+        fetchMoviesDetailsListStatus: loadingStatus,
     },
     reducers: {
         fetchMoviesDetailsList: () => { },
         fetchMoviesDetailsListSuccess: (state, { payload: moviesDetailsList }) => {
-            state.fetchMoviesDetailsListStatus = "success";
+            state.fetchMoviesDetailsListStatus = successStatus;
             state.moviesDetailsList = moviesDetailsList;
         },
-        fetchMoviesDetailsListError: (state) => { state.fetchMoviesDetailsListStatus = "error" },
+        fetchMoviesDetailsListError: (state) => { state.fetchMoviesDetailsListStatus = errorStatus },
     },
 });
 
