@@ -6,26 +6,22 @@ export const StyledMovieBanner =
             backgroundImage: `url(${$backdrop})`
         }
     }))`
-
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 24px;
     width: 100%;
-
     color: ${({ theme }) => theme.colors.white};
     box-shadow: inset 0px 10px 74px 110px 
-    ${({ theme }) => theme.colors.black};
-
-    background-color: ${({ theme }) => theme.colors.black};
+        ${({ theme }) => theme.colors.woodsmoke};
+    background-color: ${({ theme }) => theme.colors.woodsmoke}; 
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-
     padding-top: 42.25%;
     padding-bottom: 56px;
-
     @media (max-width: 750px) {
-        box-shadow: inset 0px 0px 40px 48px #000000;
+        box-shadow: inset 0px 0px 40px 48px 
+            ${({ theme }) => theme.colors.woodsmoke};
         padding-bottom: 10px;
     };
 `;
