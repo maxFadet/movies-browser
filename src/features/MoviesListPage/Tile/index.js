@@ -24,13 +24,12 @@ const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
             <TileHeader>
                 <TileTitle>{title}</TileTitle>
                 <MovieYear>{year}</MovieYear>
-                {genres.length > 0 && (
-                    <Tags>
-                        {genres.map((genre, index) => (
-                            <Tag key={index}>{genre}</Tag>
+                <Tags>
+                    {
+                        genres.map((id) => (
+                            <Tag key={id}>{id}</Tag>
                         ))}
-                    </Tags>
-                )}
+                </Tags>
             </TileHeader>
             <RatingContainer>
                 <StyledStarShape />
