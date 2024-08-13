@@ -7,6 +7,7 @@ export const StyledTile = styled.div`
   grid-template-rows: auto auto;
   padding: 16px;
   gap: 12px;
+  cursor: pointer;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     padding: 8px;
@@ -33,8 +34,6 @@ export const Name = styled.p`
 `;
 
 export const Photo = styled.img`
-  width: 177px;
-  height: 264px;
   width: 100%;
   border-radius: 5px;
 `;
@@ -44,6 +43,16 @@ export const SubName = styled.div`
   line-height: 27px;
   color: ${({ theme }) => theme.colors.waterloo};
   margin-top: 8px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
+    font-size: 15px;
+    line-height: 22px;
+}
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+    font-size: 13px;
+    line-height: 17px;
+}
 `;
 
 export const Info = styled.section`

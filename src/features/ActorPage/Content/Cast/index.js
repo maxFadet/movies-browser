@@ -1,34 +1,23 @@
-import {
-    MoviesSection,
-    SectionTitle, MoviePoster, MovieCard, MovieInfo, MovieTitle, MovieSubTitle, GenreTags, GenreTag,
-    RatingWrapper, Rating, VoteCount, RatingNumber, RatingStar,
-} from "./styled";
+import { MoviesSection } from "./styled";
 import { films } from './filmsData';
+import { MoviesTilesList } from "../../../../common/MoviesTilesList";
+import Header from "../../../../common/Header";
 
 export const Cast = () => {
     return (
         <MoviesSection>
-            <SectionTitle>Movies - cast (4)</SectionTitle>
+            <Header title="Movies - cast (4)" />
             {films.map((film, index) => (
-                <MovieCard key={index}>
-                    <MoviePoster src={film.photo} alt={film.name} />
-                    <MovieInfo>
-                        <MovieTitle>{film.name}</MovieTitle>
-                        <MovieSubTitle>{film.year}</MovieSubTitle>
-                        <GenreTags>
-                            <GenreTag>{film.genra}</GenreTag>
-                            <GenreTag>{film.genra2}</GenreTag>
-                        </GenreTags>
-                        <RatingWrapper>
-                            <Rating>
-                                <RatingStar />
-                                <RatingNumber>{film.rate}</RatingNumber>
-                            </Rating>
-                            <VoteCount>{film.vote}</VoteCount>
-                        </RatingWrapper>
-                    </MovieInfo>
-                </MovieCard>
+                <MoviesTilesList
+                    key={index}
+                    image={film.photo}
+                    name={film.name}
+                    year={film.year}
+                    vote={film.vote}
+                    rate={film.rate}
+                    genres={film.genres}
+                />
             ))}
-        </MoviesSection>
+        </MoviesSection >
     );
 };

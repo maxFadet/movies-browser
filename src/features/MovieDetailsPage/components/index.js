@@ -3,14 +3,15 @@ import { useEffect } from "react";
 import {
     fetchMovieDetailsApi,
     selectfetchMovieDetailsStatus
-} from "./../slices/movieDetailsSlice";
-import { MovieBanner } from "./MovieBanner";
-import { PageContent } from "../../../common/PageContent";
-import { MovieDetailsMainContent } from "./MovieDetailsMainContent";
-import { fetchMovieCredits, selectMovieCreditsFetchStatus } from "../slices/movieCreditsSlice";
+} from "../slices/movieDetailsSlice";
+import { MovieBanner } from "../components/MovieBanner";
 import { Loader } from "../../../common/Loader";
 import { Error } from "../../../common/Error";
 import { Container } from "../../../common/Container";
+import { Details } from "./Details";
+import { Cast } from "./Cast";
+import { Crew } from "./Crew";
+import { fetchMovieCredits, selectMovieCreditsFetchStatus } from "../slices/movieCreditsSlice";
 
 export const MovieDetailsPage = () => {
     const fetchMovieDetailsStatus = useSelector(selectfetchMovieDetailsStatus);
@@ -28,21 +29,20 @@ export const MovieDetailsPage = () => {
 
     return (
         <>
-            {
-                fetchMovieDetailsStatus === "loading" ||
-                    fetchMovieCreditsStatus === "loading" ?
-                    <Loader /> :
-                    fetchMovieDetailsStatus === "error" ||
-                        fetchMovieCreditsStatus === "error" ?
-                        <>
-                            <Error />
-                        </> :
-                        <>
-                            <MovieBanner />
-                            <Container>
-                                <MovieDetailsMainContent />
-                            </Container>
-                        </>}
+            {fetchMovieDetailsStatus === "loading" || fetchMovieCreditsStatus === "loading" ? (
+                <Loader />
+            ) : fetchMovieDetailsStatus === "error" || fetchMovieCreditsStatus === "error" ? (
+                <Error />
+            ) : (
+                <>
+                    <MovieBanner />
+                    <Container>
+                        <Details />
+                        <Cast />
+                        <Crew />
+                    </Container>
+                </>
+            )}
         </>
     );
-}
+};

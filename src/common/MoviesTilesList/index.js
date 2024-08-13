@@ -1,16 +1,37 @@
 import {
-    StyledTileList,
-    ListHeader,
-    ListSection,
+    StyledTile,
+    MovieInfo,
+    MovieTitle,
+    MovieSubTitle,
+    MovieTags,
+    MovieTag,
+    RatingWrapper,
+    RatingStar,
+    RatingNumber,
+    VoteCount,
+    MoviePoster,
 } from "./styled";
 
-export const MoviesTilesList = ({ header, content }) => {
+export const MoviesTilesList = ({ image, name, year, genres, rate, vote, onClick }) => {
     return (
-        <StyledTileList>
-            <ListHeader>{header}</ListHeader>
-            <ListSection>
-                <>{content}</>
-            </ListSection>
-        </StyledTileList>
+        <StyledTile onClick={onClick}>
+            <MoviePoster src={image} alt={name} />
+            <MovieInfo>
+                <MovieTitle>{name}</MovieTitle>
+                <MovieSubTitle>{year}</MovieSubTitle>
+                {genres.length > 0 && (
+                    <MovieTags>
+                        {genres.map((genre, index) => (
+                            <MovieTag key={index}>{genre}</MovieTag>
+                        ))}
+                    </MovieTags>
+                )}
+                <RatingWrapper>
+                    <RatingStar />
+                    <RatingNumber>{rate}</RatingNumber>
+                    <VoteCount>{vote}</VoteCount>
+                </RatingWrapper>
+            </MovieInfo>
+        </StyledTile>
     );
 };

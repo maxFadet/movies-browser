@@ -1,11 +1,11 @@
 import Header from "../../common/Header";
 import { TileContainer } from "./styled";
-import Tile from "./Tile";
 import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../routes";
-import { films } from "./filmsData";
 import { Pagination } from "../../common/Pagination";
 import { Container } from "../../common/Container";
+import { films } from './moviesData';
+import { MoviesTilesList } from "../../common/MoviesTilesList";
 
 function MoviesListPage() {
     const navigate = useNavigate();
@@ -16,17 +16,18 @@ function MoviesListPage() {
 
     return (
         <Container>
-            <Header title="Popular movies" />
             <TileContainer>
+                <Header title="Popular movies" />
                 {films.map((film, index) => (
-                    <Tile
+                    <MoviesTilesList
                         key={index}
                         onClick={() => handleMovieClick(film.id)}
-                        title={film.name}
+                        name={film.name}
                         year={film.year}
-                        genres={film.genres}                        rate={film.rate}
-                        votes={film.vote}
-                        poster={film.photo}
+                        genres={film.genres}
+                        rate={film.rate}
+                        vote={film.vote}
+                        image={film.photo}
                     />
                 ))}
             </TileContainer>

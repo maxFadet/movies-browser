@@ -1,35 +1,34 @@
 export const actors = [
     {
         name: "Chloe Coleman",
-        photo: "path_to_photo_2",
+        photo: require('../../image/image.png'),
     },
     {
         name: "Chloe Coleman",
-        photo: "path_to_photo_2",
+        photo: require('../../image/image.png'),
     },
     {
         name: "Chloe Coleman",
-        photo: "path_to_photo_2",
+        photo: require('../../image/image.png'),
     },
     {
         name: "Chloe Coleman",
-        photo: "path_to_photo_2",
+        photo: require('../../image/image.png'),
     },
     {
         name: "Chloe Coleman",
-        photo: "path_to_photo_2",
+        photo: require('../../image/image.png'),
     },
     {
         name: "Chloe Coleman",
-        photo: "path_to_photo_2",
+        photo: require('../../image/image.png'),
     },
     {
         name: "Chloe Coleman",
-        photo: "path_to_photo_2",
+        photo: require('../../image/image.png'),
     },
     {
         name: "Chloe Coleman",
-        photo: "path_to_photo_2",
+        photo: require('../../image/image.png'),
     },
-
 ];
