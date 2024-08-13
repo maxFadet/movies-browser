@@ -8,7 +8,7 @@ import {
     NavigationLogoIcon,
 } from "./styled";
 import Search from "./Search";
-import { toMoviesList, toActorsList } from "../../routes";
+import { toMoviesList, toActorsList } from "../routes";
 
 const Navigation = () => {
 

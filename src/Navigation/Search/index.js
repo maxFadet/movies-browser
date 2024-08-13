@@ -1,6 +1,6 @@
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation } from "react-router-dom";
-import { toMoviesList, toActorsList } from "../../../routes";
+import { toMoviesList, toActorsList } from "../../routes";
 
 
 
