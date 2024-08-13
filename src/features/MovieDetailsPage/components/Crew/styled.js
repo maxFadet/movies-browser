@@ -1,25 +1,5 @@
 import styled from "styled-components";
 
-export const Title = styled.h1`
-  font-size: 36px;
-  font-weight: 600;
-  line-height: 43px;
-  grid-column: 1 / -1;
-  margin-top: 64px;
-  color: ${({ theme }) => theme.colors.woodsmoke};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
-    line-height: 34px;
-    font-size: 28px;
-    font-size: 32px;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-    line-height: 24px;
-    font-size: 20px;
-    margin-top: 21px;
-  }
-`;
-
 export const Section = styled.section`
   display: grid;
   grid-template-columns: repeat(6, minmax(100px, 1fr));

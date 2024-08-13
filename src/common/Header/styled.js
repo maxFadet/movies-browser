@@ -17,3 +17,11 @@ export const Title = styled.span`
     line-height: 24px;
   }
 `;
+
+export const TitleWithMargin = styled(Title)`
+  margin-top: 64px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+    margin-top: 20px;
+  }
+`;
