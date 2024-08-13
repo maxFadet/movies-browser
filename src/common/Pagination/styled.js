@@ -8,7 +8,7 @@ export const Wrapper = styled.section`
   justify-content: center;
   margin: 56px auto;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     gap: 8px;
     margin: 50px auto;
   }
@@ -18,7 +18,7 @@ export const Buttons = styled.div`
   display: flex;
   gap: 12px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     gap: 8px;
   }
 `;
@@ -34,7 +34,7 @@ export const ButtonTile = styled.button`
   background-color: ${({ theme }) => theme.colors.pattensBlue};
   cursor: pointer;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     padding: 7.5px 12px;
     gap: 4px;
   }
@@ -50,7 +50,7 @@ export const ButtonText = styled.span`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.woodsmoke};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     display: none;
   }
 `;
@@ -59,7 +59,7 @@ export const PointerLeft = styled(Pointer)`
   width: 7px;
   height: 11px;
   
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     width: 5px;
     height: 8px;
     }
@@ -77,7 +77,7 @@ export const Counter = styled.div`
   display: flex;
   gap: 8px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     gap: 2px;
   }
 `;
@@ -87,7 +87,7 @@ export const CounterText = styled.span`
   font-size: 16px;
   line-height: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     font-size: 10px;
   }
 `;
@@ -97,7 +97,7 @@ export const CounterNumber = styled.span`
   line-height: 24px;
   font-weight: 600;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     font-size: 10px;
   }
 `;
