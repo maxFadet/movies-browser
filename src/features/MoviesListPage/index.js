@@ -1,37 +1,37 @@
-import Header from "../../common/Header";
-import { TileContainer } from "./styled";
-import Tile from "./Tile";
-import { useNavigate } from "react-router-dom";
-import { toMovie } from "../../routes";
-import { films } from "./filmsData";
-import { Pagination } from "../../common/Pagination";
-import { Container } from "../../common/Container";
+import { selectPopularMoviesFetchStatust, fetchPopularMovies } from "../../popularMoviesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { loadingStatus } from "../../requestStatuses/loadingStatus";
+import { errorStatus } from "../../requestStatuses/errorStatus";
+import { Loader } from "../../common/Loader";
+import { Error } from "../../common/Error";
+import { MainContent } from "./MainContent";
 
 function MoviesListPage() {
-    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const handleMovieClick = (id) => {
-        navigate(toMovie({ id }));
-    };
+    const popularMoviesFetchStatus = useSelector(selectPopularMoviesFetchStatust);
+
+    useEffect(() => {
+        const popularMoviesFetchDelayId = setTimeout(() => {
+            dispatch(fetchPopularMovies());
+        }, 1000)
+
+        return () => clearTimeout(popularMoviesFetchDelayId);
+    }, [dispatch]);
 
     return (
-        <Container>
-            <Header title="Popular movies" />
-            <TileContainer>
-                {films.map((film, index) => (
-                    <Tile
-                        key={index}
-                        onClick={() => handleMovieClick(1)}
-                        title={film.name}
-                        year={film.year}
-                        genres={film.genres}                        rate={film.rate}
-                        votes={film.vote}
-                        poster={film.photo}
-                    />
-                ))}
-            </TileContainer>
-            <Pagination />
-        </Container>
+        <>
+            {
+                popularMoviesFetchStatus === loadingStatus ?
+                    <Loader /> :
+                    (
+                        popularMoviesFetchStatus === errorStatus ?
+                            <Error /> :
+                            <MainContent />
+                    )
+            }
+        </>
     );
 }
 
