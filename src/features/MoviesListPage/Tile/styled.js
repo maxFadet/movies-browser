@@ -68,6 +68,7 @@ export const TileHeader = styled.div`
   max-height: 105px;
   padding: 16;
   margin-top: 0px;
+  margin-bottom: 16px;
 `;
 
 export const TileTitle = styled.h2`
