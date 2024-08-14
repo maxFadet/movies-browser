@@ -1,14 +1,83 @@
+// import Header from "../../common/Header";
+// import { TileContainer } from "./styled";
+// import Tile from "./Tile";
+// import { useNavigate } from "react-router-dom";
+// import { toMovie } from "../../routes";
+// import { films } from "./filmsData";
+// import { Pagination } from "../../common/Pagination";
+// import { Container } from "../../common/Container";
+
+// function MoviesListPage() {
+//     const navigate = useNavigate();
+
+//     const handleMovieClick = (id) => {
+//         navigate(toMovie({ id }));
+//     };
+
+//     return (
+//         <Container>
+//             <Header title="Popular movies" />
+//             <TileContainer>
+//                 {films.map((film, index) => (
+//                     <Tile
+//                         key={index}
+//                         onClick={() => handleMovieClick(1)}
+//                         title={film.name}
+//                         year={film.year}
+//                         genres={film.genres}                        rate={film.rate}
+//                         votes={film.vote}
+//                         poster={film.photo}
+//                     />
+//                 ))}
+//             </TileContainer>
+//             <Pagination />
+//         </Container>
+//     );
+// }
+
+// export default MoviesListPage;
+
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../common/Header";
 import { TileContainer } from "./styled";
 import Tile from "./Tile";
-import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../routes";
-import { films } from "./filmsData";
 import { Pagination } from "../../common/Pagination";
 import { Container } from "../../common/Container";
+import axios from "axios";
 
 function MoviesListPage() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [movies, setMovies] = useState([]);
+    
+    const query = new URLSearchParams(location.search).get('search') || '';
+
+    useEffect(() => {
+        if (query) {
+            const fetchMovies = async () => {
+                const options = {
+                    method: 'GET',
+                    url: 'https://api.themoviedb.org/3/search/movie',
+                    params: { query, include_adult: 'false', language: 'en-US', page: '1' },
+                    headers: {
+                        accept: 'application/json',
+                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDQ2MTI2MDcwMmJkZGJiOTg4MmUyZTRhMDJlZDA0ZSIsIm5iZiI6MTcyMzY2MTY0My45NDk0MjksInN1YiI6IjY2YWI4MjEwNGZlNDIxMzEwY2QyY2FlNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9nMPyeWUKdhaUTVPfltvi473upjSJlz1iKauLIeuXpQ'
+                    }
+                };
+
+                try {
+                    const response = await axios.request(options);
+                    setMovies(response.data.results);
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+
+            fetchMovies();
+        }
+    }, [query]);
 
     const handleMovieClick = (id) => {
         navigate(toMovie({ id }));
@@ -16,17 +85,18 @@ function MoviesListPage() {
 
     return (
         <Container>
-            <Header title="Popular movies" />
+            <Header title="Search results" />
             <TileContainer>
-                {films.map((film, index) => (
+                {movies.map((film) => (
                     <Tile
-                        key={index}
-                        onClick={() => handleMovieClick(1)}
-                        title={film.name}
-                        year={film.year}
-                        genres={film.genres}                        rate={film.rate}
-                        votes={film.vote}
-                        poster={film.photo}
+                        key={film.id}
+                        onClick={() => handleMovieClick(film.id)}
+                        title={film.title}
+                        year={film.release_date.split("-")[0]}
+                        genres={film.genre_ids} // Assuming genre_ids are available
+                        rate={film.vote_average}
+                        votes={film.vote_count}
+                        poster={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
                     />
                 ))}
             </TileContainer>
@@ -36,3 +106,6 @@ function MoviesListPage() {
 }
 
 export default MoviesListPage;
+
+
+
