@@ -6,15 +6,18 @@ import { errorStatus } from "../../requestStatuses/errorStatus";
 import { Loader } from "../../common/Loader";
 import { Error } from "../../common/Error";
 import { MainContent } from "./MainContent";
+import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from "../../moviesGenresSlice";
 
 function MoviesListPage() {
     const dispatch = useDispatch();
 
     const popularMoviesFetchStatus = useSelector(selectPopularMoviesFetchStatust);
+    const moviesGenresFetchStatus = useSelector(selectMoviesGenresFetchStatus);
 
     useEffect(() => {
         const popularMoviesFetchDelayId = setTimeout(() => {
             dispatch(fetchPopularMovies());
+            dispatch(fetchMoviesGenres());
         }, 1000)
 
         return () => clearTimeout(popularMoviesFetchDelayId);
@@ -23,10 +26,10 @@ function MoviesListPage() {
     return (
         <>
             {
-                popularMoviesFetchStatus === loadingStatus ?
+                popularMoviesFetchStatus === loadingStatus || moviesGenresFetchStatus === loadingStatus?
                     <Loader /> :
                     (
-                        popularMoviesFetchStatus === errorStatus ?
+                        popularMoviesFetchStatus === errorStatus || moviesGenresFetchStatus === errorStatus?
                             <Error /> :
                             <MainContent />
                     )
