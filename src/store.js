@@ -4,6 +4,7 @@ import { moviesDetailsListReducer } from './features/MovieDetailsPage/slices/mov
 import { rootSaga } from './rootSaga';
 import { moviesCreditsListReducer } from './features/MovieDetailsPage/slices/moviesCredditsListSlice';
 import { popularMoviesReducer } from './popularMoviesSlice';
+import { moviesGenresReducer } from './moviesGenresSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -12,6 +13,7 @@ export const store = configureStore({
         moviesDetailsList: moviesDetailsListReducer,
         moviesCreditsList: moviesCreditsListReducer,
         popularMovies: popularMoviesReducer,
+        moviesGenres: moviesGenresReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(sagaMiddleware),
