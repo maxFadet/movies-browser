@@ -33,6 +33,7 @@ export const Search = styled.div`
 `;
 
 export const StyledSearchIcon = styled(SearchIcon) `
+    margin-left: 12px;
     max-width: 40px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
@@ -44,8 +45,14 @@ export const StyledSearchIcon = styled(SearchIcon) `
 export const Input = styled.input`
     border: none;
     background-color: unset;
-    font-size: 13px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
     width: 100%;
+    
+    &::placeholder {
+        color: ${({ theme }) => theme.colors.waterloo};
+    }
 
     &:focus-visible{
         outline: none;
