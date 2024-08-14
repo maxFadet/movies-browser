@@ -109,7 +109,22 @@ export const NavigationItem = styled(NavLink)`
     font-weight: 600;
     margin: 24px 0px;
     padding: 13.5px 24px;
-    ;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 12px;
+        width: 0;
+        height: 2px;
+        background-color:  ${({ theme }) => theme.colors.white};;
+        transition: width 0.6s ease;
+    };
+    
+    &:hover::after {
+        width: 100%;
+    };
     
     &.active {
         border: 1px solid ${({ theme }) => theme.colors.white};
