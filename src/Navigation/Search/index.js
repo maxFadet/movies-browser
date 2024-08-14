@@ -1,31 +1,3 @@
-// import { Search, StyledSearchIcon, Input } from "./styled";
-// import { useLocation } from "react-router-dom";
-// import { toMoviesList } from "../../routes";
-
-
-
-// const getPlaceholderText = (pathname) =>
-//     pathname === toMoviesList()
-//         ? 'Search for movies...'
-//         : 'Search for people...'
-//     ;
-
-// export default () => {
-//     const location = useLocation();
-//     const placeholderText = getPlaceholderText(location.pathname);
-
-//     return (
-//         <Search>
-//             <StyledSearchIcon />
-//             <Input
-//                 placeholder={placeholderText}
-//             />
-//         </Search>
-//     );
-// };
-
-
-
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toMoviesList } from "../../routes";
