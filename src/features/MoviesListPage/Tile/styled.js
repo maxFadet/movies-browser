@@ -101,7 +101,7 @@ export const Tags = styled.ul`
   padding-left: 0; 
   display: flex;
   flex-wrap: wrap;    
-  hight: auto;
+  height: auto;
   margin: -8px; 
 `;
 
@@ -112,7 +112,7 @@ export const Tag = styled.li`
   gap: 8px;
   font-size: 14px;
   font-weight: 400;
-  line-height: 19.6px;px;
+  line-height: 19.6px;
   margin: 4px;
   flex: 0 1 auto; 
 
