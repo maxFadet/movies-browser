@@ -4,6 +4,7 @@ import { moviesDetailsListSaga } from
 import { movieCreditsSaga } from
     "./features/MovieDetailsPage/sagas/movieCreditsSaga";
 import { popularMoviesSaga } from "./popularMoviesSaga";
+import { moviesGenresSaga } from "./moviesGenresSaga";
 
 
 export function* rootSaga() {
@@ -11,5 +12,6 @@ export function* rootSaga() {
         moviesDetailsListSaga(),
         movieCreditsSaga(),
         popularMoviesSaga(),
+        moviesGenresSaga(),
     ]);
 };
