@@ -12,7 +12,7 @@ import { useURLId } from "../../../../useUrlId";
 export const MovieDetailsMainContent = () => {
     const urlId = useURLId();
 
-    const { cast, crew } = useSelector(state => selectCreditsById(state, urlId));
+    // const { cast, crew } = useSelector(state => selectCreditsById(state, urlId));
     const { genres, vote_average, vote_count } = useSelector(state => selectMovieDetailsById(state, urlId));
     return (
         <>
@@ -24,7 +24,7 @@ export const MovieDetailsMainContent = () => {
                     </>
                 }
             />
-            <PeopleTilesList
+            {/*  <PeopleTilesList
                 header="Cast"
                 content={
                     <>
@@ -59,8 +59,8 @@ export const MovieDetailsMainContent = () => {
                         }
                     </>
                 }
-            />
-            <MoviesTilesList
+            /> 
+             <MoviesTilesList
                 header="Popular movies"
                 content={
                     <>
@@ -88,7 +88,7 @@ export const MovieDetailsMainContent = () => {
                         />
                     </>
                 }
-            />
+            /> */}
         </>
     )
 }
