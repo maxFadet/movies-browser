@@ -3,26 +3,14 @@ import {
     NavigationList,
     NavigationContainer,
     NavigationItem,
-    Search,
-    Input,
     NavigationLogo,
     NavigationTitle,
     NavigationLogoIcon,
-    StyledSearchIcon,
 } from "./styled";
-import { toMoviesList, toActorsList } from "../../routes";
-import { useLocation } from "react-router-dom";
-
-
-const getPlaceholderText = (pathname) =>
-    pathname === toMoviesList()
-        ? 'Search for movies...'
-        : 'Search for people...'
-    ;
+import Search from "./Search";
+import { toMoviesList, toActorsList } from "../routes";
 
 const Navigation = () => {
-    const location = useLocation();
-    const placeholderText = getPlaceholderText(location.pathname);
 
     return (
         <nav>
@@ -41,12 +29,7 @@ const Navigation = () => {
                         </NavigationItem>
                     </NavigationList>
                 </NavigationContainer>
-                <Search>
-                    <StyledSearchIcon />
-                    <Input
-                        placeholder={placeholderText}
-                    />
-                </Search>
+                <Search />
             </StyledPageHeader>
         </nav>
     );
