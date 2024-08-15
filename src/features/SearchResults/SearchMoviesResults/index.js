@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../../common/Header";
-import { TileContainer } from "../../MoviesListPage/styled";
+import { TileContainer } from "../../MoviesListPage/MainContent/styled";
 import Tile from "../../MoviesListPage/Tile";
 import { toMovie } from "../../../routes";
 import { Pagination } from "../../../common/Pagination";
