@@ -1,6 +1,6 @@
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toMoviesList } from "../../routes";
+import { toMoviesList, toSearchMoviesResults } from "../../routes";
 import { useState } from "react";
 
 const getPlaceholderText = (pathname) =>
@@ -21,7 +21,7 @@ export default () => {
 
     const handleSearchSubmit = (event) => {
         if (event.key === 'Enter') {
-            navigate(`${toMoviesList()}?search=${query}`);
+            navigate(`${toSearchMoviesResults()}?search=${query}`);
         }
     };
 
