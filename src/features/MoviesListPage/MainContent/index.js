@@ -1,13 +1,13 @@
 import { Pagination } from "../../../common/Pagination";
 import { Container } from "../../../common/Container";
-import Header from "../../../common/Header";
-import { TileContainer } from "./styled";
-import Tile from "../Tile";
 import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../../routes";
 import { useSelector } from "react-redux";
 import { selectPopularMovies } from "../../../popularMoviesSlice";
-
+import { Tile } from "../../../common/Tile";
+import { GenresList } from "../../../common/GenresList";
+import { Rates } from "../../../common/Rates";
+import { MoviesTilesList } from "../../../common/MoviesTilesList";
 export const MainContent = () => {
     const navigate = useNavigate();
     const handleMovieClick = (id) => {
@@ -15,24 +15,37 @@ export const MainContent = () => {
     };
 
     const { results } = useSelector(selectPopularMovies);
+
     return (
         <Container>
-            <Header title="Popular movies" />
-            <TileContainer>
-                {results.map(({ title, id, vote_average, vote_count, poster_path, release_date, genre_ids }) => (
-                    <Tile
-                        key={id}
-                        onClick={() => handleMovieClick(id)}
-                        title={title}
-                        year={new Date(release_date).getFullYear()}
-                        genresIds={genre_ids}
-                        rate={vote_average}
-                        votes={vote_count}
-                        poster={poster_path}
-                    />
-                ))}
-            </TileContainer>
-            <Pagination />
+            <MoviesTilesList
+                header="Popular movies"
+                content={
+                    <>
+                        {results.map((
+                            { title, id, vote_average, vote_count, poster_path, release_date, genre_ids }) => (
+                            <Tile
+                                navigateTo={() => handleMovieClick(id)}
+                                image={poster_path}
+                                title={title}
+                                subInfo={new Date(release_date).getFullYear()}
+                                extraContent={
+                                    <>
+                                        <GenresList
+                                            genresIds={genre_ids}
+                                        />
+                                        <Rates
+                                            voteAverage={vote_average}
+                                            voteCount={vote_count}
+                                        />
+                                    </>
+                                }
+                            />
+                        ))}
+                    </>
+                }
+            />
+            {/* <Pagination /> */}
         </Container>
     )
 }
