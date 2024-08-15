@@ -34,8 +34,8 @@ const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
             </TileHeader>
             <RatingContainer>
                 <StyledStarShape />
-                <Rating>{rate.toFixed(1)}</Rating>
-                <Votes>{votes.toLocaleString().replace(/,/g, ' ')} votes</Votes>
+                <Rating>{rate}</Rating>
+                <Votes>{votes} votes</Votes>
             </RatingContainer>
         </TileDescription>
 
