@@ -21,8 +21,8 @@ export const DetailsTile = ({ extraContent }) => {
         title,
         poster_path,
         overview,
-        production_countries,
-        release_date
+        release_date,
+        production_countries
     } = useSelector(state => selectMovieDetailsById(state, urlId));
 
     const year = new Date(release_date).getFullYear();

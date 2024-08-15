@@ -28,7 +28,7 @@ export const StyledRates = styled.div`
       grid-gap: 8px;
       align-items: center;
       
-      @media (max-width: 450px) {
+      @media (max-width: 500px) {
         grid-gap: 8px;
       };
     `};
@@ -45,7 +45,7 @@ export const Score = styled.p`
       font-size: 24px;
     };
 
-    @media (max-width: 450px) {
+    @media (max-width: 500px) {
         font-size: 13px;
         font-weight: 600;
       };
@@ -53,7 +53,7 @@ export const Score = styled.p`
     ${({ $larger }) => $larger && css`
       font-size: 22px;
 
-      @media (max-width: 450px) {
+      @media (max-width: 500px) {
         font-size: 13px;
         font-weight: 600;
       };
@@ -67,7 +67,7 @@ export const StyledStarIcon = styled(StarIcon)`
     width: 30px;
   };
 
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
       width: 16px;
   };
 
@@ -81,7 +81,7 @@ export const TotalScore = styled.span`
     font-weight: 400;
     padding: 8px;
 
-    @media (max-width: 450px) {
+    @media (max-width: 500px) {
       font-size: 14px;
       padding: 6px;
     };
@@ -89,7 +89,7 @@ export const TotalScore = styled.span`
     ${({ $larger }) => $larger && css`
       font-size: 14px;
 
-      @media (max-width: 450px) {
+      @media (max-width: 500px) {
         display: none;
       };
     `};
@@ -101,14 +101,14 @@ export const Votes = styled.p`
   font-weight: 400;
   grid-area: votes;
 
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
       font-size: 13px;
     };
 
   ${({ $larger }) => $larger && css`
     font-size: 14px;
 
-    @media (max-width: 450px) {
+    @media (max-width: 500px) {
       font-size: 13px;
       color: ${({ theme }) => theme.colors.waterloo};
     };

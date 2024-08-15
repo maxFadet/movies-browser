@@ -12,14 +12,17 @@ import { useURLId } from "../../../../useUrlId";
 export const MovieDetailsMainContent = () => {
     const urlId = useURLId();
 
-    const { cast, crew } = useSelector(state => selectCreditsById(state, urlId));
-    const { genres, vote_average, vote_count } = useSelector(state => selectMovieDetailsById(state, urlId));
+    const { cast, crew } =
+        useSelector(state => selectCreditsById(state, urlId));
+    const { genres, vote_average, vote_count } =
+        useSelector(state => selectMovieDetailsById(state, urlId));
+        
     return (
         <>
             <DetailsTile
                 extraContent={
                     <>
-                        <GenresList genres={genres} />
+                        <GenresList genresIds={genres.map(({ id }) => id)} />
                         <Rates voteAverage={vote_average} voteCount={vote_count} />
                     </>
                 }
@@ -70,8 +73,8 @@ export const MovieDetailsMainContent = () => {
                             subInfo="2020"
                             extraContent={
                                 <>
-                                      <GenresList genres={genres} />
-                                      <Rates voteAverage={vote_average} voteCount={vote_count} />
+                                    <GenresList genres={genres} />
+                                    <Rates voteAverage={vote_average} voteCount={vote_count} />
                                 </>
                             }
                         />
@@ -81,8 +84,8 @@ export const MovieDetailsMainContent = () => {
                             subInfo="2020"
                             extraContent={
                                 <>
-                                  <GenresList genres={genres} />
-                                  <Rates voteAverage={vote_average} voteCount={vote_count} />
+                                    <GenresList genres={genres} />
+                                    <Rates voteAverage={vote_average} voteCount={vote_count} />
                                 </>
                             }
                         />
@@ -91,4 +94,4 @@ export const MovieDetailsMainContent = () => {
             />
         </>
     )
-}
+};

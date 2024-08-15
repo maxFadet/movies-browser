@@ -21,7 +21,7 @@ export const ListHeader = styled.header`
 
 export const ListSection = styled.ul`
     display: grid;
-    grid-template-columns: repeat(4, 22.5%);
+    grid-template-columns: repeat(4, 23.1%);
     align-items: start;
 
     grid-gap: 24px;
