@@ -1,7 +1,7 @@
 import {
     StyledTile,
     Image,
-    ImageContainer,
+    IconContainer,
     Title,
     SubInfo,
     ExtraContent,
@@ -15,20 +15,22 @@ export const Tile = ({
     subInfo,
     extraContent,
     id,
+    navigateTo
 }) => {
     const isExtraContentAvailable = !!extraContent;
 
     return (
         <StyledTile
+            onClick={navigateTo}
             key={id}
             $extraContentAvailable={isExtraContentAvailable}
         >
             {
                 image ?
-                    <Image $extraContentAvailable={isExtraContentAvailable} src={image} alt={title} /> :
-                    <ImageContainer>
+                    <Image $extraContentAvailable={isExtraContentAvailable} $image={image} /> :
+                    <IconContainer>
                         <StyledProfileIcon />
-                    </ImageContainer>
+                    </IconContainer>
             }
             <GeneralInfo
                 $extraContentAvailable={isExtraContentAvailable}
