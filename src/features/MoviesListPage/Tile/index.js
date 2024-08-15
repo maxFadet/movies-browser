@@ -35,7 +35,7 @@ const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
             <RatingContainer>
                 <StyledStarShape />
                 <Rating>{rate.toFixed(1)}</Rating>
-                <Votes>{votes} votes</Votes>
+                <Votes>{votes}</Votes>
             </RatingContainer>
         </TileDescription>
 
