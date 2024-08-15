@@ -54,9 +54,9 @@ function SearchMoviesResults() {
                         onClick={() => handleMovieClick(film.id)}
                         title={film.title}
                         year={film.release_date.split("-")[0]}
-                        genres={film.genre_ids} // Assuming genre_ids are available
-                        rate={film.vote_average}
-                        votes={film.vote_count}
+                        genres={film.genre_ids} 
+                        rate={film.vote_average.toFixed(1)}
+                        votes={film.vote_count.toLocaleString().replace(/,/g, ' ')}
                         poster={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
                     />
                 ))}
