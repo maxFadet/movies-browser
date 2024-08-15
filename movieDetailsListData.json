@@ -1,0 +1,378 @@
+[
+  {
+    "adult": false,
+    "backdrop_path": "https://play-lh.googleusercontent.com/proxy/4hgiWeNML8HXc6oIpxgbyd_iK2c__adWVRzhAhiEAKCsgkw3gBagwVW8Tmpq84cAT52dH6MJT7ebzB-JnHlbbk9LAgfYFk4ehL8hwcIRC3OG8gy0jg=s1920-w1920-h1080",
+    "belongs_to_collection": null,
+    "budget": 63000000,
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      }
+    ],
+    "homepage": "http://www.foxmovies.com/movies/fight-club",
+    "id": 934433,
+    "imdb_id": "tt0137523",
+    "original_language": "en",
+    "original_title": "Fight Club",
+    "overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+    "popularity": 61.416,
+    "poster_path": "https://media.themoviedb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
+    "production_companies": [
+      {
+        "id": 508,
+        "logo_path": "/7cxRWzi4LsVm4Utfpr1hfARNurT.png",
+        "name": "Regency Enterprises",
+        "origin_country": "US"
+      },
+      {
+        "id": 711,
+        "logo_path": "/tEiIH5QesdheJmDAqQwvtN60727.png",
+        "name": "Fox 2000 Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 20555,
+        "logo_path": "/hD8yEGUBlHOcfHYbujp71vD8gZp.png",
+        "name": "Taurus Film",
+        "origin_country": "DE"
+      },
+      {
+        "id": 54051,
+        "logo_path": null,
+        "name": "Atman Entertainment",
+        "origin_country": ""
+      },
+      {
+        "id": 54052,
+        "logo_path": null,
+        "name": "Knickerbocker Films",
+        "origin_country": "US"
+      },
+      {
+        "id": 4700,
+        "logo_path": "/A32wmjrs9Psf4zw0uaixF0GXfxq.png",
+        "name": "The Linson Company",
+        "origin_country": "US"
+      },
+      {
+        "id": 25,
+        "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+        "name": "20th Century Fox",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "1999-10-15",
+    "revenue": 100853753,
+    "runtime": 139,
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Mischief. Mayhem. Soap.",
+    "title": "Fight Club",
+    "video": false,
+    "vote_average": 8.433,
+    "vote_count": 26280
+  },
+  {
+    "adult": false,
+    "backdrop_path": "https://github.com/maxFadet/movies-browser/blob/master/src/image/Poster-big.png?raw=true",
+    "belongs_to_collection": null,
+    "budget": 63000000,
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      }
+    ],
+    "homepage": "http://www.foxmovies.com/movies/fight-club",
+    "id": 868759,
+    "imdb_id": "tt0137523",
+    "original_language": "en",
+    "original_title": "Mulan",
+    "overview": "To save her father from death in the army, a young maiden secretly goes in his place and becomes one of China's greatest heroines in the process. To save her father from death in the army, a young maiden secretly goes in his place and becomes one of China's greatest heroines in the process.",
+    "popularity": 61.416,
+    "poster_path": "https://github.com/maxFadet/movies-browser/blob/master/src/image/poster.png?raw=true",
+    "production_companies": [
+      {
+        "id": 508,
+        "logo_path": "/7cxRWzi4LsVm4Utfpr1hfARNurT.png",
+        "name": "Regency Enterprises",
+        "origin_country": "US"
+      },
+      {
+        "id": 711,
+        "logo_path": "/tEiIH5QesdheJmDAqQwvtN60727.png",
+        "name": "Fox 2000 Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 20555,
+        "logo_path": "/hD8yEGUBlHOcfHYbujp71vD8gZp.png",
+        "name": "Taurus Film",
+        "origin_country": "DE"
+      },
+      {
+        "id": 54051,
+        "logo_path": null,
+        "name": "Atman Entertainment",
+        "origin_country": ""
+      },
+      {
+        "id": 54052,
+        "logo_path": null,
+        "name": "Knickerbocker Films",
+        "origin_country": "US"
+      },
+      {
+        "id": 4700,
+        "logo_path": "/A32wmjrs9Psf4zw0uaixF0GXfxq.png",
+        "name": "The Linson Company",
+        "origin_country": "US"
+      },
+      {
+        "id": 25,
+        "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+        "name": "20th Century Fox",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "1999-10-15",
+    "revenue": 100853753,
+    "runtime": 139,
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Mischief. Mayhem. Soap.",
+    "title": "Mulan",
+    "video": false,
+    "vote_average": 8.433,
+    "vote_count": 26280
+  },
+  {
+    "adult": false,
+    "backdrop_path": "https://images.tv.osn.com/colossus/images/series/7936/18710/landscape/18710-1_LC132105921.jpg",
+    "belongs_to_collection": null,
+    "budget": 63000000,
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      }
+    ],
+    "homepage": "http://www.foxmovies.com/movies/fight-club",
+    "id": 502356,
+    "imdb_id": "tt0137523",
+    "original_language": "en",
+    "original_title": "House Of The Dragon",
+    "overview": "If you watched Game of Thrones you of course remember the Mother of Dragons herself, Daenerys Targaryen, and her quest to take back the Iron Throne. From that period, House of the Dragon brings us back nearly 200 years to the time in Westerosi history when House Targaryen was at the height of its power. The series begins with the reign of King Viserys I, the fifth Targaryen ruler, the question of his succession, and the events that unfold after he names his daughter, Rhaenyra, heir — a title a woman had never assumed.",
+    "popularity": 61.416,
+    "poster_path": "https://cinebean.com/wp-content/uploads/2024/05/House-of-the-Dragon-Season-2-Poster-scaled.webp",
+    "production_companies": [
+      {
+        "id": 508,
+        "logo_path": "/7cxRWzi4LsVm4Utfpr1hfARNurT.png",
+        "name": "Regency Enterprises",
+        "origin_country": "US"
+      },
+      {
+        "id": 711,
+        "logo_path": "/tEiIH5QesdheJmDAqQwvtN60727.png",
+        "name": "Fox 2000 Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 20555,
+        "logo_path": "/hD8yEGUBlHOcfHYbujp71vD8gZp.png",
+        "name": "Taurus Film",
+        "origin_country": "DE"
+      },
+      {
+        "id": 54051,
+        "logo_path": null,
+        "name": "Atman Entertainment",
+        "origin_country": ""
+      },
+      {
+        "id": 54052,
+        "logo_path": null,
+        "name": "Knickerbocker Films",
+        "origin_country": "US"
+      },
+      {
+        "id": 4700,
+        "logo_path": "/A32wmjrs9Psf4zw0uaixF0GXfxq.png",
+        "name": "The Linson Company",
+        "origin_country": "US"
+      },
+      {
+        "id": 25,
+        "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+        "name": "20th Century Fox",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "1999-10-15",
+    "revenue": 100853753,
+    "runtime": 139,
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Mischief. Mayhem. Soap.",
+    "title": "House Of The Dragon",
+    "video": false,
+    "vote_average": 8.433,
+    "vote_count": 26280
+  },
+  {
+    "adult": false,
+    "backdrop_path": "https://images6.alphacoders.com/116/1166940.jpg",
+    "belongs_to_collection": null,
+    "budget": 63000000,
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      }
+    ],
+    "homepage": "http://www.foxmovies.com/movies/fight-club",
+    "id": 640146,
+    "imdb_id": "tt0137523",
+    "original_language": "en",
+    "original_title": "Dune",
+    "overview": "Dune follows young nobleman Paul Atreides through adversity to his destiny as a messianic leader on the arid desert planet Arrakis.",
+    "popularity": 61.416,
+    "poster_path": "https://m.media-amazon.com/images/I/81p6brsaWcL._AC_UF894,1000_QL80_.jpg",
+    "production_companies": [
+      {
+        "id": 508,
+        "logo_path": "/7cxRWzi4LsVm4Utfpr1hfARNurT.png",
+        "name": "Regency Enterprises",
+        "origin_country": "US"
+      },
+      {
+        "id": 711,
+        "logo_path": "/tEiIH5QesdheJmDAqQwvtN60727.png",
+        "name": "Fox 2000 Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 20555,
+        "logo_path": "/hD8yEGUBlHOcfHYbujp71vD8gZp.png",
+        "name": "Taurus Film",
+        "origin_country": "DE"
+      },
+      {
+        "id": 54051,
+        "logo_path": null,
+        "name": "Atman Entertainment",
+        "origin_country": ""
+      },
+      {
+        "id": 54052,
+        "logo_path": null,
+        "name": "Knickerbocker Films",
+        "origin_country": "US"
+      },
+      {
+        "id": 4700,
+        "logo_path": "/A32wmjrs9Psf4zw0uaixF0GXfxq.png",
+        "name": "The Linson Company",
+        "origin_country": "US"
+      },
+      {
+        "id": 25,
+        "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+        "name": "20th Century Fox",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "1999-10-15",
+    "revenue": 100853753,
+    "runtime": 139,
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Mischief. Mayhem. Soap.",
+    "title": "Dune",
+    "video": false,
+    "vote_average": 8.433,
+    "vote_count": 26280
+  }
+]
