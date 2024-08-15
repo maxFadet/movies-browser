@@ -28,8 +28,11 @@ export const selectMoviesGenresState = state => state.moviesGenres;
 export const selectMoviesGenresFetchStatus = state => selectMoviesGenresState(state).moviesGenresFetchStatus;
 export const selectMoviesGenres = state => selectMoviesGenresState(state).moviesGenres;
 export const findMoviesGenresById = (state, genresIds) => {
-    const { genres } = selectMoviesGenres(state);
+    if (!genresIds) {
+        return [];
+    }
 
+    const { genres } = selectMoviesGenres(state);
     const foundNames = genres.filter(({ id }) => genresIds.includes(id));
 
     return foundNames;
