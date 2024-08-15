@@ -132,7 +132,7 @@ export const RatingContainer = styled.ul`
   list-style: none;
   padding-left: 0; 
   display: flex;
-  margin-top: 39px; 
+  margin-top: 49px; 
   margin-bottom: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
