@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
     TileStyled,
     PosterContainer,
@@ -14,31 +15,35 @@ import {
     StyledMoviePoster,
     StyledStarShape,
 } from "./styled";
+import { findMoviesGenresById } from "../../../moviesGenresSlice";
 
-const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
-    <TileStyled onClick={onClick}>
-        <PosterContainer>
-            <StyledMoviePoster src={poster} alt={title} />
-        </PosterContainer>
-        <TileDescription>
-            <TileHeader>
-                <TileTitle>{title}</TileTitle>
-                <MovieYear>{year}</MovieYear>
-                {genres.length > 0 && (
+const Tile = ({ title, year, genresIds, rate, votes, poster, onClick }) => {
+    const genresFoundById = useSelector(state => findMoviesGenresById(state, genresIds));
+
+    return (
+        <TileStyled onClick={onClick}>
+            <PosterContainer>
+                <StyledMoviePoster src={poster} alt={title} />
+            </PosterContainer>
+            <TileDescription>
+                <TileHeader>
+                    <TileTitle>{title}</TileTitle>
+                    <MovieYear>{year}</MovieYear>
                     <Tags>
-                        {genres.map((genre, index) => (
-                            <Tag key={index}>{genre}</Tag>
+                        {genresFoundById.map(({ id, name }) => (
+                            <Tag key={id}>{name}</Tag>
                         ))}
-                    </Tags>)}
-            </TileHeader>
-            <RatingContainer>
-                <StyledStarShape />
-                <Rating>{rate.toFixed(1)}</Rating>
-                <Votes>{votes}</Votes>
-            </RatingContainer>
-        </TileDescription>
+                    </Tags>
+                </TileHeader>
+                <RatingContainer>
+                    <StyledStarShape />
+                    <Rating>{rate.toFixed(1)}</Rating>
+                    <Votes>{votes}</Votes>
+                </RatingContainer>
+            </TileDescription>
 
-    </TileStyled>
-);
+        </TileStyled>
+    )
+};
 
 export default Tile;
