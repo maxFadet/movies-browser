@@ -29,8 +29,7 @@ const Tile = ({ title, year, genres, rate, votes, poster, onClick }) => (
                         {genres.map((genre, index) => (
                             <Tag key={index}>{genre}</Tag>
                         ))}
-                    </Tags>
-                )}
+                    </Tags>)}
             </TileHeader>
             <RatingContainer>
                 <StyledStarShape />
