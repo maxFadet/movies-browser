@@ -5,7 +5,6 @@ export const StyledTile = styled.li`
     display: grid;
     grid-gap: 16px;
     grid-template-columns: 1fr;
-    grid-auto-rows: 0.5fr;
     align-items: flex-start;
 
     box-shadow: 0px 4px 12px 0px  ${({ theme }) => theme.colors.brightHeather};
@@ -14,9 +13,12 @@ export const StyledTile = styled.li`
     cursor: pointer;
     padding: 16px;
     list-style-type: none;
-    width: 300px;
+    height: 100%;
 
     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
+        height: auto;
+        width: 300px;
+
         @media (max-width: 710px) {
             grid-template-columns: 1fr 1.5fr;
             width: 100%;
@@ -34,21 +36,37 @@ export const StyledTile = styled.li`
     `};
 `;
 
-export const IconContainer = styled.div`
-    border-radius: 15px;
-    background-color: ${({ theme }) => theme.colors.silver};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 250px;
+export const IconContainer =
+    styled.div.attrs(({ $icon }) => ({
+        style: {
+            backgroundImage: `url(${$icon})`,
+        }
+    }))`
 
-    ${({ $image }) => $image && css` 
-        background-size: cover;
-    `};
+    background-repeat: no-repeat;
+    background-position: top;
+    border-radius: 8px;
+    background-color: ${({theme}) => theme.colors.stormGray};
+
+    width: 100%;
+    border-radius: 15px;
+    height: 300px;
 
     @media (max-width: 450px) {
-       height: 150px;
+        height: 150px;
     };
+
+    ${({ $extraContentAvailable }) => $extraContentAvailable && css`
+        height: 450px;
+
+        @media (max-width: 710px) {
+            height: 100%;
+        }; 
+        
+        @media (max-width: 300px) {
+            background-size: contain;
+        };
+    `};
 `;
 
 export const StyledProfileIcon = styled(ProfileIcon)`
@@ -57,7 +75,7 @@ export const StyledProfileIcon = styled(ProfileIcon)`
     };
 `;
 
-export const Image = 
+export const Image =
     styled.div.attrs(({ $image }) => ({
         style: {
             backgroundImage: `url(${$image})`,
@@ -68,20 +86,25 @@ export const Image =
     background-position: top;
     border-radius: 8px;
 
-    height: 450px;
+    width: 100%;
+    border-radius: 15px;
+    height: 300px;
 
-    @media (max-width: 710px) {
-        height: 100%;
-    }; 
-
-    @media (max-width: 475px) {
-        background-size: cover;
-        height: 100%;
+    @media (max-width: 450px) {
+        height: 150px;
     };
 
-    @media (max-width: 300px) {
-        background-size: contain;
-    };
+    ${({ $extraContentAvailable }) => $extraContentAvailable && css`
+        height: 450px;
+
+        @media (max-width: 710px) {
+            height: 100%;
+        }; 
+        
+        @media (max-width: 300px) {
+            background-size: contain;
+        };
+    `};
 `;
 
 export const GeneralInfo = styled.div`
