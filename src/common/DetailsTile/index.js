@@ -10,6 +10,7 @@ import {
     DetailInfo,
     DetailInfoItem,
     DetailInfoType,
+    IconContainer
 } from "./styled";
 import { selectMovieDetailsById } from
     "../../features/MovieDetailsPage/slices/moviesDetailsListSlice";
@@ -32,9 +33,9 @@ export const DetailsTile = ({ extraContent }) => {
             {
                 poster_path ?
                     <ImageContainer $image={poster_path} /> :
-                    <ImageContainer>
+                    <IconContainer>
                         <StyledVideoIcon />
-                    </ImageContainer>
+                    </IconContainer>
             }
             <Details>
                 <Header>{title}</Header>
@@ -58,7 +59,11 @@ export const DetailsTile = ({ extraContent }) => {
                                 }
                             </DetailInfoItem>
                             <DetailInfoItem>
-                                <DetailInfoType>Release date:</DetailInfoType> {release_date}
+                                <DetailInfoType>Release date:</DetailInfoType> {
+                                    new Date(release_date).toLocaleString(undefined,
+                                        { year: "numeric", month: "numeric", day: "numeric" }
+                                    )
+                                }
                             </DetailInfoItem>
                         </DetailInfo> :
                         <DetailInfo>
