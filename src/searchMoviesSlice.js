@@ -10,7 +10,7 @@ export const searchMoviesSlice = createSlice({
         searchStatus: loadingStatus,
     },
     reducers: {
-        searchMovies: (state) => {
+        searchMovies: (state, action) => {
             state.searchStatus = loadingStatus;
         },
         searchMoviesSuccess: (state, { payload: movies }) => {
