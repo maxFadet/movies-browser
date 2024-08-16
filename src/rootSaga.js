@@ -5,7 +5,7 @@ import { movieCreditsSaga } from
     "./features/MovieDetailsPage/sagas/movieCreditsSaga";
 import { popularMoviesSaga } from "./popularMoviesSaga";
 import { moviesGenresSaga } from "./moviesGenresSaga";
-
+import { searchMoviesSaga } from './searchMoviesSaga';
 
 export function* rootSaga() {
     yield all([
@@ -13,5 +13,6 @@ export function* rootSaga() {
         movieCreditsSaga(),
         popularMoviesSaga(),
         moviesGenresSaga(),
+        searchMoviesSaga(),
     ]);
 };
