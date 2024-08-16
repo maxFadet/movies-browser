@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchPeople } from "./api/searchActor";
-import { searchPeople, searchPeopleSuccess, searchPeopleError } from "./searchPeopleSlice";
+import { searchPeople, searchPeopleSuccess, searchPeopleError } from "./searchActorSlice";
 
 function* searchPeopleHandler(action) {
     try {

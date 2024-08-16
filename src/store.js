@@ -6,6 +6,7 @@ import { moviesCreditsListReducer } from './features/MovieDetailsPage/slices/mov
 import { popularMoviesReducer } from './popularMoviesSlice';
 import { moviesGenresReducer } from './moviesGenresSlice';
 import { searchMoviesReducer } from './searchMoviesSlice';
+import { searchPeopleReducer } from './searchActorSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,6 +17,7 @@ export const store = configureStore({
         popularMovies: popularMoviesReducer,
         moviesGenres: moviesGenresReducer,
         searchMovies: searchMoviesReducer,
+        searchPeople: searchPeopleReducer,
         
     },
     middleware: (getDefaultMiddleware) =>
