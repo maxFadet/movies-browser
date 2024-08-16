@@ -23,10 +23,10 @@ export const searchActorSlice = createSlice({
     },
 });
 
-export const { searchPeople, searchPeopleSuccess, searchPeopleError } = searchPeopleSlice.actions;
+export const { searchPeople, searchPeopleSuccess, searchPeopleError } = searchActorSlice.actions;
 
 export const selectSearchPeopleState = (state) => state.searchPeople;
 export const selectSearchPeopleStatus = (state) => selectSearchPeopleState(state).searchStatus;
 export const selectSearchPeople = (state) => selectSearchPeopleState(state).people;
 
-export const searchPeopleReducer = searchPeopleSlice.reducer;
+export const searchPeopleReducer = searchActorSlice.reducer;
