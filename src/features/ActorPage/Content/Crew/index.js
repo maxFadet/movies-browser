@@ -35,8 +35,9 @@ export const Crew = () => {
                         <MovieTitle>{film.name}</MovieTitle>
                         <MovieSubTitle>{film.year}</MovieSubTitle>
                         <MovieTags>
-                            <MovieTag>{film.genra}</MovieTag>
-                            <MovieTag>{film.genra2}</MovieTag>
+                            {film.genres.map((genre, index) => (
+                                <MovieTag key={index}>{genre}</MovieTag>
+                            ))}
                         </MovieTags>
                         <RatingWrapper>
                             <Rating>
