@@ -1,6 +1,8 @@
+import { useDispatch } from 'react-redux';
+import { searchMovies } from '../../searchMoviesSlice';
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toMoviesList, toSearchMoviesResults, toSearchPeopleResults } from "../../routes";
+import { toMoviesList, toActorsList } from "../../routes";
 import { useState } from "react";
 
 const getPlaceholderText = (pathname) =>
@@ -10,12 +12,12 @@ const getPlaceholderText = (pathname) =>
     ;
 
 export default () => {
+    const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
     const [query, setQuery] = useState("");
     const placeholderText = getPlaceholderText(location.pathname);
     const isSearchingMovies = location.pathname === toMoviesList();
-
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
@@ -24,14 +26,13 @@ export default () => {
     const handleSearchSubmit = (event) => {
         if (event.key === 'Enter') {
             if (isSearchingMovies) {
-                navigate(`${toSearchMoviesResults()}?search=${query}`);
+                dispatch(searchMovies(query));
+                navigate(`${toMoviesList()}?search=${query}`);
             } else {
-                navigate(`${toSearchPeopleResults()}?search=${query}`);
+                navigate(`${toActorsList()}?search=${query}`);
             }
         }
     };
-
-
 
     return (
         <Search>
