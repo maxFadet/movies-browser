@@ -40,7 +40,6 @@ export const IconContainer = styled.div`
     border-radius: 15px;
     background-color: ${({ theme }) => theme.colors.silver};
     height: 100%;
-    width: 370px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
       width: 100%;
