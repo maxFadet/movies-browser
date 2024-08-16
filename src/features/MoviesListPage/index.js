@@ -1,35 +1,52 @@
-import { selectPopularMoviesFetchStatust, fetchPopularMovies } from "../../popularMoviesSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { loadingStatus } from "../../requestStatuses/loadingStatus";
-import { errorStatus } from "../../requestStatuses/errorStatus";
-import { Loader } from "../../common/Loader";
-import { Error } from "../../common/Error";
-import { MainContent } from "./MainContent";
-import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from "../../moviesGenresSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { selectPopularMoviesFetchStatust, fetchPopularMovies } from '../../popularMoviesSlice';
+import { searchMovies } from '../../searchMoviesSlice';
+import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from '../../moviesGenresSlice';
+import { loadingStatus } from '../../requestStatuses/loadingStatus';
+import { errorStatus } from '../../requestStatuses/errorStatus';
+import { Loader } from '../../common/Loader';
+import { Error } from '../../common/Error';
+import { MainContent } from './MainContent';
 
 function MoviesListPage() {
     const dispatch = useDispatch();
+    const location = useLocation();
 
     const popularMoviesFetchStatus = useSelector(selectPopularMoviesFetchStatust);
     const moviesGenresFetchStatus = useSelector(selectMoviesGenresFetchStatus);
 
-    useEffect(() => {
-        const popularMoviesFetchDelayId = setTimeout(() => {
-            dispatch(fetchPopularMovies());
-            dispatch(fetchMoviesGenres());
-        }, 1000)
+    const [showSearchLoader, setShowSearchLoader] = useState(false);
 
-        return () => clearTimeout(popularMoviesFetchDelayId);
+    const query = new URLSearchParams(location.search).get('search');
+    const isSearching = Boolean(query);
+
+    useEffect(() => {
+        dispatch(fetchPopularMovies());
+        dispatch(fetchMoviesGenres());
     }, [dispatch]);
+
+    useEffect(() => {
+        if (isSearching) {
+            setShowSearchLoader(true);
+            const searchDelayId = setTimeout(() => {
+                dispatch(searchMovies(query));
+                setShowSearchLoader(false);
+            }, 1000);
+
+            return () => clearTimeout(searchDelayId);
+        }
+    }, [dispatch, query, isSearching]);
 
     return (
         <>
             {
-                popularMoviesFetchStatus === loadingStatus || moviesGenresFetchStatus === loadingStatus?
+                showSearchLoader ||
+                (popularMoviesFetchStatus === loadingStatus || moviesGenresFetchStatus === loadingStatus) ?
                     <Loader /> :
                     (
-                        popularMoviesFetchStatus === errorStatus || moviesGenresFetchStatus === errorStatus?
+                        popularMoviesFetchStatus === errorStatus || moviesGenresFetchStatus === errorStatus ?
                             <Error /> :
                             <MainContent />
                     )
