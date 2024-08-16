@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { ReactComponent as VideoIcon } from "../../Video.svg";
 
 export const StyledDetailsTile = styled.article`
     display: grid;
@@ -79,8 +78,6 @@ export const ImageContainer =
         width: 100%;
     };
 `;
-
-export const StyledVideoIcon = styled(VideoIcon)``;
 
 export const Details = styled.div`
     display: grid;
