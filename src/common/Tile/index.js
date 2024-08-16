@@ -1,14 +1,15 @@
 import {
     StyledTile,
     Image,
-    IconContainer,
     Title,
     SubInfo,
     ExtraContent,
     GeneralInfo,
-    StyledProfileIcon,
+    IconContainer
 } from "./styled";
-import { ReactComponent as ProfileIcon } from "../../Profile.svg";
+import { StyledProfileIcon } from "../StyledProfileIcon";
+import { StyledVideoIcon } from "../StyledVideoIcon";
+
 export const Tile = ({
     image,
     title,
@@ -28,7 +29,9 @@ export const Tile = ({
             {
                 image ?
                     <Image $extraContentAvailable={isExtraContentAvailable} $image={image} /> :
-                    <IconContainer $extraContentAvailable={isExtraContentAvailable} $icon={<ProfileIcon />} />
+                    <IconContainer $extraContentAvailable={isExtraContentAvailable}>
+                        {isExtraContentAvailable ? <StyledVideoIcon /> : <StyledProfileIcon />}
+                    </IconContainer>
             }
             <GeneralInfo
                 $extraContentAvailable={isExtraContentAvailable}
