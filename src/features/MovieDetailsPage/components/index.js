@@ -7,7 +7,6 @@ import { MovieDetailsMainContent } from "./MovieDetailsMainContent";
 import { fetchMoviesCreditsList, selectMoviesCreditsListFetchStatus } from "../slices/moviesCredditsListSlice";
 import { Loader } from "../../../common/Loader";
 import { Error } from "../../../common/Error";
-import { NoResults } from "../../../common/NoResultsPage";
 import { loadingStatus } from "../../../requestStatuses/loadingStatus";
 import { errorStatus } from "../../../requestStatuses/errorStatus";
 import { successStatus } from "../../../requestStatuses/successStatus";
@@ -55,7 +54,7 @@ export const MovieDetailsPage = () => {
                 <PageContent content={<MovieDetailsMainContent />} />
             </>
         ) : (
-            <NoResults />
+            <Error />
         )
     );
 }
