@@ -6,33 +6,36 @@ export const StyledMovieBanner =
             backgroundImage: `url(${$backdrop})`
         }
     }))`
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 24px;
-    width: 100%;
+
     color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.woodsmoke}; 
     box-shadow: inset 0px 10px 74px 110px 
         ${({ theme }) => theme.colors.woodsmoke};
-    background-color: ${({ theme }) => theme.colors.woodsmoke}; 
+
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
+
     padding-top: 42.25%;
-    padding-bottom: 56px;
-    @media (max-width: 750px) {
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
         box-shadow: inset 0px 0px 40px 48px 
             ${({ theme }) => theme.colors.woodsmoke};
-        padding-bottom: 10px;
+    };
+    
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+        box-shadow: inset 0px 7px 29px 38px 
+            ${({ theme }) => theme.colors.woodsmoke};
     };
 `;
 
 export const MainInfo = styled.div`
-    margin-left: 30px;
     display: grid;
     grid-gap: 24px;
+    padding-left: 5%;
+    padding-bottom: 3%;
 
-    @media (max-width: 750px) {
-        margin-left: 16px;
+    @media (max-width:  ${({ theme }) => theme.breakpoints.tabletS}) {
         grid-gap: 4px;
     };
 `;
@@ -41,11 +44,7 @@ export const Title = styled.header`
     font-size: 64px;
     font-weight: 600;
 
-    @media (max-width: 750px) {
-        font-size: 36px;
-    };
-
-    @media (max-width: 450px) {
+    @media (max-width:  ${({ theme }) => theme.breakpoints.mobileM}) {
         font-size: 24px;
     };
 `;
