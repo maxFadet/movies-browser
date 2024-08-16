@@ -37,6 +37,7 @@ export const MainContent = () => {
                                         <Rates
                                             voteAverage={vote_average}
                                             voteCount={vote_count}
+                                            hideTotalScore
                                         />
                                     </>
                                 }
@@ -45,7 +46,7 @@ export const MainContent = () => {
                     </>
                 }
             />
-            {/* <Pagination /> */}
+            <Pagination />
         </Container>
     )
 }
