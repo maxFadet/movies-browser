@@ -5,21 +5,12 @@ export const StyledGenresList = styled.ul`
     flex-wrap: wrap;
 
     gap: 16px;
+    margin: 0px;
     padding-left: 0px;
 
-    @media (max-width: 450px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         gap: 8px;
     };
-
-    /* margin: 0;
-    padding-left: 0px;
-    display: grid;
-    grid-template-columns: repeat(2, 47%);
-    gap: 16px;
-
-    @media (max-width: 475px) {
-        gap: 8px;
-    }; */
 `;
 
 export const Genre = styled.li`
@@ -33,7 +24,7 @@ export const Genre = styled.li`
    padding: 8px 16px;
    list-style-type: none;
 
-   @media (max-width: 500px) {
+   @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         font-size: 10px;
         padding: 4px 8px;
     };
