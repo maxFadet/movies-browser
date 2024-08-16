@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as StarIcon } from '../../image/Vector.svg';
+import { ReactComponent as StarIcon } from '../../../../image/Vector.svg';
 
 export const MoviesSection = styled.section`
   display: grid;
@@ -8,28 +8,28 @@ export const MoviesSection = styled.section`
   margin: 64px auto;
   width: 1400px;
 
-  @media (max-width: 1480px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     grid-template-columns: repeat(4, minmax(200px, 1fr));
     width: 100%;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
     grid-template-columns: repeat(3, minmax(200px, 1fr));
     width: 100%;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     grid-template-columns: repeat(1,  1fr);
     margin-top: 24px;
     grid-gap: 16px;
   }
 `;
 
-export const SectionTitle = styled.span`
+export const Title = styled.span`
   font-size: 36px;
   font-weight: 600;
   line-height: 43px;
@@ -47,18 +47,24 @@ export const SectionTitle = styled.span`
   }
 `;
 
-export const MoviePoster = styled.img`
-  width: 177px;
-  height: 264px;
-  border-radius: 5px;
+export const TitleWithMargin = styled(Title)`
+  margin-top: 64px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+    margin-top: 20px;
+  }
+`;
+
+export const MoviePoster = styled.img`
+  border-radius: 5px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     width: 114px;
     height: 169px;
   }
 `;
 
-export const MovieCard = styled.div`
+export const StyledTile = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: rgba(186, 199, 213, 0.5) 0px 4px 12px;
   display: flex;
@@ -67,6 +73,7 @@ export const MovieCard = styled.div`
   width: 100%;
   position: relative;
   gap: 16px;
+  cursor: pointer;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     flex-direction: row;
@@ -83,7 +90,7 @@ export const MovieTitle = styled.h2`
   font-size: 22px;
   font-weight: 500;
   line-height: 29px;
-  margin: 16px 0 8px;
+  margin: 0 0 8px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     font-size: 16px;
@@ -104,7 +111,7 @@ export const MovieSubTitle = styled.div`
   }
 `;
 
-export const GenreTags = styled.ul`
+export const MovieTags = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -117,7 +124,7 @@ export const GenreTags = styled.ul`
   }
 `;
 
-export const GenreTag = styled.li`
+export const MovieTag = styled.li`
   padding: 8px 16px;
   background: ${({ theme }) => theme.colors.mystic};
   border-radius: 5px;
