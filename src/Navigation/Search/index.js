@@ -4,35 +4,46 @@ import { searchPeople } from '../../searchActorSlice';
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toMoviesList, toActorsList } from "../../routes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const getPlaceholderText = (pathname) =>
     pathname === toMoviesList()
         ? 'Search for movies...'
         : 'Search for people...';
 
-export default () => {
+const MovieSearch = () => {
+    const [query, setQuery] = useState('');
+    const [debouncedQuery, setDebouncedQuery] = useState(query);
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
-    const [query, setQuery] = useState("");
     const placeholderText = getPlaceholderText(location.pathname);
     const isSearchingMovies = location.pathname === toMoviesList();
 
-    const handleInputChange = (event) => {
-        setQuery(event.target.value);
-    };
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedQuery(query);
+        }, 300);
 
-    const handleSearchSubmit = (event) => {
-        if (event.key === 'Enter') {
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [query]);
+
+    useEffect(() => {
+        if (debouncedQuery) {
             if (isSearchingMovies) {
-                dispatch(searchMovies(query));
-                navigate(`${toMoviesList()}?search=${query}`);
+                dispatch(searchMovies(debouncedQuery));
+                navigate(`${toMoviesList()}?search=${debouncedQuery}`);
             } else {
-                dispatch(searchPeople(query));
-                navigate(`${toActorsList()}?search=${query}`);
+                dispatch(searchPeople(debouncedQuery));
+                navigate(`${toActorsList()}?search=${debouncedQuery}`);
             }
         }
+    }, [debouncedQuery, dispatch, isSearchingMovies, navigate]);
+
+    const handleInputChange = (event) => {
+        setQuery(event.target.value);
     };
 
     return (
@@ -42,8 +53,9 @@ export default () => {
                 placeholder={placeholderText}
                 value={query}
                 onChange={handleInputChange}
-                onKeyDown={handleSearchSubmit}
             />
         </Search>
     );
 };
+
+export default MovieSearch;
