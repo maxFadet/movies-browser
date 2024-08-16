@@ -1,19 +1,22 @@
 import { useSelector } from "react-redux";
+
 import {
     StyledDetailsTile,
     ImageContainer,
     Description,
     Details,
-    StyledVideoIcon,
     Header,
     Year,
     DetailInfo,
     DetailInfoItem,
     DetailInfoType,
+    IconContainer
 } from "./styled";
 import { selectMovieDetailsById } from
     "../../features/MovieDetailsPage/slices/moviesDetailsListSlice";
 import { useURLId } from "../../useUrlId";
+import { StyledProfileIcon } from "../StyledProfileIcon";
+import { StyledVideoIcon } from "../StyledVideoIcon";
 
 export const DetailsTile = ({ extraContent }) => {
     const urlId = useURLId();
@@ -26,15 +29,17 @@ export const DetailsTile = ({ extraContent }) => {
     } = useSelector(state => selectMovieDetailsById(state, urlId));
 
     const year = new Date(release_date).getFullYear();
-
+    const areMovieDetails = production_countries || release_date;
+   
+    console.log(production_countries)
     return (
         <StyledDetailsTile>
             {
                 poster_path ?
                     <ImageContainer $image={poster_path} /> :
-                    <ImageContainer>
-                        <StyledVideoIcon />
-                    </ImageContainer>
+                    <IconContainer>
+                        {areMovieDetails ? <StyledVideoIcon /> : <StyledProfileIcon />}
+                    </IconContainer>
             }
             <Details>
                 <Header>{title}</Header>
@@ -44,10 +49,11 @@ export const DetailsTile = ({ extraContent }) => {
                     )
                 }
                 {
-                    production_countries || release_date ?
+                    areMovieDetails ?
                         <DetailInfo>
                             <DetailInfoItem >
-                                <DetailInfoType>Production:</DetailInfoType> {
+                                <DetailInfoType>Production:</DetailInfoType> 
+                                {
                                     window.innerWidth <= 475
                                         ? (Array.isArray(production_countries[0].iso_3166_1)
                                             ? production_countries[0].iso_3166_1.join(", ")
@@ -58,7 +64,11 @@ export const DetailsTile = ({ extraContent }) => {
                                 }
                             </DetailInfoItem>
                             <DetailInfoItem>
-                                <DetailInfoType>Release date:</DetailInfoType> {release_date}
+                                <DetailInfoType>Release date:</DetailInfoType> {
+                                    new Date(release_date).toLocaleString(undefined,
+                                        { year: "numeric", month: "numeric", day: "numeric" }
+                                    )
+                                }
                             </DetailInfoItem>
                         </DetailInfo> :
                         <DetailInfo>

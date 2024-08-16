@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchPopularMovies, fetchPopularMovieSuccess, fetchPopularMoviesError } from "./popularMoviesSlice";
-import { getResponse } from "./getResponse";
+import { getResponse } from "./functions/getResponse";
 
 
 function* fetchPopularMovieHandler() {

@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { ReactComponent as ProfileIcon } from "../../Profile.svg";
 
 export const StyledTile = styled.li`
     display: grid;
@@ -19,60 +18,21 @@ export const StyledTile = styled.li`
         height: auto;
         width: 300px;
 
-        @media (max-width: 710px) {
+        @media (max-width: ${({theme}) => theme.breakpoints.tabletS}) {
             grid-template-columns: 1fr 1.5fr;
             width: 100%;
             grid-template-rows: 320px;
         }; 
 
-        @media (max-width: 500px) {
+        @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 265px;
         }; 
 
-        @media (max-width: 400px) {
+        @media (max-width: ${({theme}) => theme.breakpoints.mobileS}) {
             grid-template-columns: 1.5fr 1fr;
         }; 
     `};
-`;
-
-export const IconContainer =
-    styled.div.attrs(({ $icon }) => ({
-        style: {
-            backgroundImage: `url(${$icon})`,
-        }
-    }))`
-
-    background-repeat: no-repeat;
-    background-position: top;
-    border-radius: 8px;
-    background-color: ${({theme}) => theme.colors.stormGray};
-
-    width: 100%;
-    border-radius: 15px;
-    height: 300px;
-
-    @media (max-width: 450px) {
-        height: 150px;
-    };
-
-    ${({ $extraContentAvailable }) => $extraContentAvailable && css`
-        height: 450px;
-
-        @media (max-width: 710px) {
-            height: 100%;
-        }; 
-        
-        @media (max-width: 300px) {
-            background-size: contain;
-        };
-    `};
-`;
-
-export const StyledProfileIcon = styled(ProfileIcon)`
-    @media (max-width: 450px) {
-       width: 30px;
-    };
 `;
 
 export const Image =
@@ -90,19 +50,19 @@ export const Image =
     border-radius: 15px;
     height: 300px;
 
-    @media (max-width: 450px) {
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
         height: 150px;
     };
 
     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
         height: 450px;
 
-        @media (max-width: 710px) {
+        @media (max-width: ${({theme}) => theme.breakpoints.tabletS}) {
             height: 100%;
         }; 
         
-        @media (max-width: 300px) {
-            background-size: contain;
+        @media (max-width: ${({theme}) => theme.breakpoints.mobileS}) {
+            background-size: cover;
         };
     `};
 `;
@@ -125,7 +85,7 @@ export const Title = styled.header`
     font-weight: 500;
     text-align: center;
 
-    @media (max-width: 500px) {
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
         font-size: 14px;
     };
 
@@ -140,7 +100,7 @@ export const SubInfo = styled.p`
     font-weight: 400;
     color: ${({ theme }) => theme.colors.waterloo};
 
-    @media (max-width: 500px) {
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
         font-size: 13px;
     };
 `;
@@ -150,7 +110,34 @@ export const ExtraContent = styled.div`
     grid-template-columns: 1fr;
     grid-gap: 40px;
 
-    @media (max-width: 500px) {
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
         grid-gap: 12px;
     };
+`;
+
+export const IconContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: ${({theme}) => theme.colors.silver};
+
+    width: 100%;
+    border-radius: 15px;
+    height: 300px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+        height: 150px;
+    };
+
+     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
+        height: 450px;
+
+        @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+            height: 100%;
+        }; 
+        
+        @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+            background-size: contain;
+        };
+    `};
 `;

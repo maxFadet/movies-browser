@@ -39,8 +39,14 @@ export const MainContent = () => {
                                 subInfo={new Date(release_date).getFullYear()}
                                 extraContent={
                                     <>
-                                        <GenresList genresIds={genre_ids} />
-                                        <Rates voteAverage={vote_average} voteCount={vote_count} />
+                                        <GenresList
+                                            genresIds={genre_ids}
+                                        />
+                                        <Rates
+                                            voteAverage={vote_average}
+                                            voteCount={vote_count}
+                                            hideTotalScore
+                                        />
                                     </>
                                 }
                             />

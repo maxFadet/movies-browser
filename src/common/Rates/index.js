@@ -6,21 +6,21 @@ import {
     StyledStarIcon,
 } from "./styled";
 
-export const Rates = ({ mainInfo, voteAverage, voteCount }) => {
-    const isRatesAreMainInfo = !mainInfo;
+export const Rates = ({ mainInfo, hideTotalScore, voteAverage, voteCount }) => {
+    const isRatesAreMainInfo = !!mainInfo;
+    const isTotalScoreHidden = !!hideTotalScore;
 
     return (
         <StyledRates $larger={isRatesAreMainInfo}>
             <StyledStarIcon $larger={isRatesAreMainInfo} />
             <>
                 {
-                    (voteAverage && voteCount) && (
+                    (
+                        voteAverage && voteCount) && (
                         <>
                             <Score $larger={isRatesAreMainInfo}>
-                                {Number(voteAverage).toFixed(1)}
-                                <TotalScore $larger={isRatesAreMainInfo}>
-                                    /10
-                                </TotalScore>
+                                {Number(voteAverage).toFixed(1).replace('.', ',')}
+                                <TotalScore $hideTotalScore={isTotalScoreHidden} $larger={isRatesAreMainInfo}>/ 10</TotalScore>
                             </Score>
                             <Votes $larger={isRatesAreMainInfo}>{Number(voteCount)} votes</Votes>
                         </>
