@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { loadingStatus } from '../../requestStatuses/loadingStatus';
 
 export const actorsSlice = createSlice({
     name: "actorsList",
     initialState: {
         actors: [],
-        status: 'loading',
+        status: loadingStatus,
         error: null
     },
     reducers: {
