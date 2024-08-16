@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchMoviesGenres, fetchMoviesGenresSuccess, fetchMoviesGenresError } from "./moviesGenresSlice";
-import { getResponse } from "./getResponse";
+import { getResponse } from "./functions/getResponse";
 
 function* fetchMoviesGenresHandler() {
     try {

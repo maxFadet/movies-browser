@@ -4,7 +4,7 @@ import {
     fetchMoviesDetailsListSuccess,
     fetchMoviesDetailsListError,
 } from "../slices/moviesDetailsListSlice";
-import { getResponse } from "../../../getResponse";
+import { getResponse } from "../../../functions/getResponse";
 
 function* fetchMoviesDetailsListHandler() {
     try {
