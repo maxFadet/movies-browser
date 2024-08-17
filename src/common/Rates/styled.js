@@ -42,15 +42,15 @@ export const StyledStarIcon = styled(StarIcon)`
 `;
 
 export const Score = styled.p`
-    font-size: 22px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
     margin: 0;
     grid-area: score;
     align-self: center;
 
-    @media (max-width: 750px) {
-      font-size: 18px;
-    };
+    // @media (max-width: 750px) {
+    //   font-size: 18px;
+    // };
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         font-size: 13px;
@@ -96,7 +96,7 @@ export const TotalScore = styled.span`
 `;
 
 export const Votes = styled.p`
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.waterloo};
   margin: 0;
   font-size: 14px;
   font-weight: 400;
