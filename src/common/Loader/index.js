@@ -8,10 +8,10 @@ export const Loader = () => {
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get("search");
-        if (query) {
+        if (query && query !== searchQuery) {
             setSearchQuery(query);
         }
-    }, [location]);
+    }, [location, searchQuery]);
 
     return (
         <Container>
