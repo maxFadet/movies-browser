@@ -7,7 +7,8 @@ import { popularMoviesReducer } from './popularMoviesSlice';
 import { moviesGenresReducer } from './moviesGenresSlice';
 import { searchMoviesReducer } from './searchMoviesSlice';
 import { searchPeopleReducer } from './searchActorSlice';
-import { actorsSliceReducer } from "./features/ActorList/actorsSlice"
+import { actorsSliceReducer } from "./features/ActorList/actorsSlice";
+import { actorDetailsSliceReducer } from "./features/ActorPage/actorDetailsSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,6 +21,7 @@ export const store = configureStore({
         searchMovies: searchMoviesReducer,
         searchPeople: searchPeopleReducer,
         actorsList: actorsSliceReducer,
+        actorDetails: actorDetailsSliceReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(sagaMiddleware),
