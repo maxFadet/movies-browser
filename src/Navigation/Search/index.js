@@ -23,7 +23,7 @@ const MovieSearch = () => {
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedQuery(query);
-        }, 300);
+        }, 500);
 
         return () => {
             clearTimeout(handler);
