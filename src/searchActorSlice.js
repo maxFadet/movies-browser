@@ -20,10 +20,16 @@ export const searchActorSlice = createSlice({
         searchPeopleError: (state) => {
             state.searchStatus = errorStatus;
         },
+        resetSearchPeople: () => {
+            return {
+                people: [],
+                searchStatus: loadingStatus,
+            };
+        },
     },
 });
 
-export const { searchPeople, searchPeopleSuccess, searchPeopleError } = searchActorSlice.actions;
+export const { searchPeople, searchPeopleSuccess, searchPeopleError, resetSearchPeople } = searchActorSlice.actions;
 
 export const selectSearchPeopleState = (state) => state.searchPeople;
 export const selectSearchPeopleStatus = (state) => selectSearchPeopleState(state).searchStatus;
