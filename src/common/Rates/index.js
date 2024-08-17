@@ -23,7 +23,7 @@ export const Rates = ({ mainInfo, hideTotalScore, voteAverage, voteCount }) => {
                                 <TotalScore $hideTotalScore={isTotalScoreHidden} $larger={isRatesAreMainInfo}>/ 10</TotalScore>
                             </Score>
                             <Votes $larger={isRatesAreMainInfo}>
-                                {Number(voteCount).toLocaleString().replace(/,/g, ' ')} votes</Votes>
+                                {Number(voteCount).toLocaleString().replace(/,/g, ',')} votes</Votes>
                         </>
                     )
                 }
