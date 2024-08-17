@@ -98,7 +98,7 @@ export const TotalScore = styled.span`
 export const Votes = styled.p`
   color: ${({ theme }) => theme.colors.waterloo};
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   grid-area: votes;
 
