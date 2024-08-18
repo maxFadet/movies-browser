@@ -6,9 +6,9 @@ import { Section, Title } from './styled';
 import { Pagination } from "../../common/Pagination";
 import { Container } from "../../common/Container";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Error } from "../../common/Error";
-import { Loader } from "../../common/Loader";
-import { NoResults } from "../../common/NoResultsPage";
+// import { Error } from "../../common/Error";
+// import { Loader } from "../../common/Loader";
+// import { NoResults } from "../../common/NoResultsPage";
 import { PersonsListTile } from '../../common/PersosListTile';
 import { toPerson } from "../../routes";
 
@@ -51,8 +51,8 @@ const ActorsList = () => {
         <Container>
             <Section>
                 <Title>{header}</Title>
-                {status === 'loading' && <Loader />}
-                {status === 'succeeded' && actors.length > 0 && (
+                {/* {status === 'loading' && <Loader />} */}
+                {/* {status === 'succeeded' && actors.length > 0 && ( */}
                     <>
                         {actors.map((actor) => (
                             <PersonsListTile
@@ -63,9 +63,9 @@ const ActorsList = () => {
                             />
                         ))}
                     </>
-                )}
-                {status === 'succeeded' && actors.length === 0 && <NoResults />}
-                {status === 'failed' && <Error />}
+                {/* )} */}
+                {/* {status === 'succeeded' && actors.length === 0 && <NoResults />}
+                {status === 'failed' && <Error />} */}
             </Section>
             <Pagination />
         </Container>
