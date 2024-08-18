@@ -17,6 +17,11 @@ export const StyledPageHeader = styled.div`
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         flex-direction: column;
     };
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+        padding-left: 10px;
+        padding-right: 10px;
+    };
 `;
 
 export const NavigationContainer = styled.nav`
@@ -35,7 +40,10 @@ export const NavigationContainer = styled.nav`
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         gap: 19px;
     };
-    
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+        gap: 10px;
+    };
 `;
 
 export const NavigationLogo = styled(NavLink)`
@@ -99,6 +107,10 @@ export const NavigationList = styled.ul`
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         flex: 1;
         gap: 12px;
+    };
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+        gap: 6px;
     };
 `;
 
