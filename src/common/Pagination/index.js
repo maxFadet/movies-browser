@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import {
     Buttons,
     ButtonText,
@@ -8,25 +9,28 @@ import {
     PointerLeft,
     PointerRight,
     Wrapper,
-
-} from "./styled"
-
+} from "./styled";
 
 export const Pagination = () => {
+    const isMobile = useMediaQuery({ maxWidth: 600 });
+
     return (
         <Wrapper>
             <Buttons>
                 <ButtonTile>
-                    <PointerLeft />
-                    <ButtonText>
-                        First
-                    </ButtonText>
+                    {isMobile ? (
+                        <>
+                            <PointerLeft />
+                            <PointerLeft />
+                        </>
+                    ) : (
+                        <PointerLeft />
+                    )}
+                    {!isMobile && <ButtonText>First</ButtonText>}
                 </ButtonTile>
                 <ButtonTile>
                     <PointerLeft />
-                    <ButtonText>
-                        Previous
-                    </ButtonText>
+                    {!isMobile && <ButtonText>Previous</ButtonText>}
                 </ButtonTile>
             </Buttons>
             <Counter>
@@ -38,17 +42,20 @@ export const Pagination = () => {
             <Buttons>
                 <ButtonTile>
                     <PointerRight />
-                    <ButtonText>
-                        Next
-                    </ButtonText>
+                    {!isMobile && <ButtonText>Next</ButtonText>}
                 </ButtonTile>
                 <ButtonTile>
-                    <PointerRight />
-                    <ButtonText>
-                        Last
-                    </ButtonText>
+                    {isMobile ? (
+                        <>
+                            <PointerRight />
+                            <PointerRight />
+                        </>
+                    ) : (
+                        <PointerRight />
+                    )}
+                    {!isMobile && <ButtonText>Last</ButtonText>}
                 </ButtonTile>
             </Buttons>
         </Wrapper>
-    )
-}
+    );
+};
