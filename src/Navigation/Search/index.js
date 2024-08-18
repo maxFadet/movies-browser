@@ -39,6 +39,7 @@ const MovieSearch = () => {
                 dispatch(searchPeople(debouncedQuery));
                 navigate(`${toActorsList()}?search=${debouncedQuery}`);
             }
+            setQuery('');
         }
     }, [debouncedQuery, dispatch, isSearchingMovies, navigate]);
 
