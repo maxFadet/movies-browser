@@ -18,7 +18,6 @@ function MoviesListPage() {
     const moviesGenresFetchStatus = useSelector(selectMoviesGenresFetchStatus);
 
     const [showSearchLoader, setShowSearchLoader] = useState(false);
-
     const query = new URLSearchParams(location.search).get('search');
     const isSearching = Boolean(query);
 
@@ -43,7 +42,7 @@ function MoviesListPage() {
         <>
             {
                 showSearchLoader ||
-                (popularMoviesFetchStatus === loadingStatus || moviesGenresFetchStatus === loadingStatus) ?
+                    (popularMoviesFetchStatus === loadingStatus || moviesGenresFetchStatus === loadingStatus) ?
                     <Loader /> :
                     (
                         popularMoviesFetchStatus === errorStatus || moviesGenresFetchStatus === errorStatus ?
