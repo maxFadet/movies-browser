@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import {
     StyledDetailsTile,
-    ImageContainer,
+    Image,
     Description,
     Details,
     Header,
@@ -12,31 +12,29 @@ import {
     DetailInfoType,
     IconContainer
 } from "./styled";
-import { selectMovieDetailsById } from
-    "../../features/MovieDetailsPage/slices/moviesDetailsListSlice";
-import { useURLId } from "../../useUrlId";
+import { selectMovieDetails } from
+    "../../features/MovieDetailsPage/slices/movieDetailsSlice";
 import { StyledProfileIcon } from "../StyledProfileIcon";
 import { StyledVideoIcon } from "../StyledVideoIcon";
 
 export const DetailsTile = ({ extraContent }) => {
-    const urlId = useURLId();
+
     const {
         title,
         poster_path,
         overview,
         release_date,
         production_countries
-    } = useSelector(state => selectMovieDetailsById(state, urlId));
+    } = useSelector(selectMovieDetails);
 
     const year = new Date(release_date).getFullYear();
     const areMovieDetails = production_countries || release_date;
-   
-    console.log(production_countries)
+
     return (
         <StyledDetailsTile>
             {
                 poster_path ?
-                    <ImageContainer $image={poster_path} /> :
+                    <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title}/> :
                     <IconContainer>
                         {areMovieDetails ? <StyledVideoIcon /> : <StyledProfileIcon />}
                     </IconContainer>
@@ -52,7 +50,7 @@ export const DetailsTile = ({ extraContent }) => {
                     areMovieDetails ?
                         <DetailInfo>
                             <DetailInfoItem >
-                                <DetailInfoType>Production:</DetailInfoType> 
+                                <DetailInfoType>Production:</DetailInfoType>
                                 {
                                     window.innerWidth <= 475
                                         ? (Array.isArray(production_countries[0].iso_3166_1)
