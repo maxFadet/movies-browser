@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledPageContent = styled.div`
-    width: 85%;
+    width: 80%;
     display: grid;
     grid-gap: 64px;
     margin: 56px auto;
