@@ -4,7 +4,7 @@ export const StyledTile = styled.li`
     display: grid;
     grid-gap: 16px;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 0.1fr;
+    grid-template-rows: 1fr 0.5fr;
     align-items: flex-start;
     box-shadow: 0px 4px 12px 0px  ${({ theme }) => theme.colors.brightHeather};
     background-color: ${({ theme }) => theme.colors.white};
@@ -12,6 +12,7 @@ export const StyledTile = styled.li`
     padding: 16px;
     list-style-type: none;
     height: 100%;
+    word-break: break-all;
 
     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
         grid-template-rows: unset;
