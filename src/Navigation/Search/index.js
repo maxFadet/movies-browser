@@ -18,7 +18,7 @@ const MovieSearch = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const placeholderText = getPlaceholderText(location.pathname);
-    const isSearchingMovies = location.pathname === toMoviesList();
+    const isSearchingMovies = location.pathname === toMoviesList() || location.pathname.match(/^\/movies\/\d+$/);
 
     useEffect(() => {
         const handler = setTimeout(() => {
@@ -51,6 +51,14 @@ const MovieSearch = () => {
     const handleInputChange = (event) => {
         setQuery(event.target.value);
     };
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const searchQuery = searchParams.get('search');
+        if (searchQuery) {
+            setQuery(searchQuery);
+        }
+    }, [location.search]);
 
     return (
         <Search>
