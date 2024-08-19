@@ -54,8 +54,8 @@ export const MovieDetailsPage = () => {
             <Error />
         ) : isSuccess ? (
             <>
-                <MovieBanner movieId={movieId} />
-                <PageContent content={<MovieDetailsMainContent movieId={movieId} />} />
+                <MovieBanner />
+                <PageContent content={<MovieDetailsMainContent />} />
             </>
         ) : (
             <Error />
