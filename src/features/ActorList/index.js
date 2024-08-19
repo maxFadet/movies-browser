@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectActors, selectActorsStatus, fetchActorsStart } from './actorsSlice';
+import { selectActors, selectActorsStatus, selectCurrentPage, selectTotalPages, fetchActorsStart } from './actorsSlice';
 import { selectSearchPeople, selectSearchPeopleStatus, searchPeople } from '../../searchActorSlice';
 import { Section, Title } from './styled';
 import { Pagination } from "../../common/Pagination";
@@ -18,6 +18,8 @@ const ActorsList = () => {
     const location = useLocation();
 
     const [searchQuery, setSearchQuery] = useState("");
+    const currentPage = useSelector(selectCurrentPage);
+    const totalPages = useSelector(selectTotalPages);
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get("search");
@@ -35,12 +37,16 @@ const ActorsList = () => {
         if (isSearching) {
             dispatch(searchPeople(searchQuery));
         } else {
-            dispatch(fetchActorsStart());
+            dispatch(fetchActorsStart({ page: currentPage }));
         }
-    }, [dispatch, isSearching, searchQuery]);
+    }, [dispatch, isSearching, searchQuery, currentPage]);
 
     const handleActorClick = (id) => {
         navigate(toPerson({ id }));
+    };
+
+    const handlePageChange = (page) => {
+        dispatch(fetchActorsStart({ page }));
     };
 
     const header = isSearching
@@ -53,21 +59,25 @@ const ActorsList = () => {
                 <Title>{header}</Title>
                 {/* {status === 'loading' && <Loader />} */}
                 {/* {status === 'succeeded' && actors.length > 0 && ( */}
-                    <>
-                        {actors.map((actor) => (
-                            <PersonsListTile
-                                key={actor.id}
-                                onClick={() => handleActorClick(actor.id)}
-                                photo={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-                                name={actor.name}
-                            />
-                        ))}
-                    </>
+                <>
+                    {actors.map((actor) => (
+                        <PersonsListTile
+                            key={actor.id}
+                            onClick={() => handleActorClick(actor.id)}
+                            photo={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                            name={actor.name}
+                        />
+                    ))}
+                </>
                 {/* )} */}
                 {/* {status === 'succeeded' && actors.length === 0 && <NoResults />}
                 {status === 'failed' && <Error />} */}
             </Section>
-            <Pagination />
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+            />
         </Container>
     );
 };

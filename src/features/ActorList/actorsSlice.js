@@ -6,11 +6,14 @@ export const actorsSlice = createSlice({
     initialState: {
         actors: [],
         status: loadingStatus,
-        error: null
+        error: null,
+        currentPage: 1,
+        totalPages: 500
     },
     reducers: {
-        fetchActorsStart: (state) => {
+        fetchActorsStart: (state, action) => {
             state.status = 'loading';
+            state.currentPage = action.payload.page || 1;
         },
         fetchActorsSuccess: (state, action) => {
             state.status = 'succeeded';
@@ -27,5 +30,7 @@ export const { fetchActorsStart, fetchActorsSuccess, fetchActorsFailure } = acto
 
 export const selectActors = state => state.actorsList.actors;
 export const selectActorsStatus = state => state.actorsList.status;
+export const selectCurrentPage = state => state.actorsList.currentPage;
+export const selectTotalPages = state => state.actorsList.totalPages;
 
 export const actorsSliceReducer = actorsSlice.reducer;
