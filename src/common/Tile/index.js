@@ -28,7 +28,7 @@ export const Tile = ({
         >
             {
                 image ?
-                    <Image $extraContentAvailable={isExtraContentAvailable} $image={image} /> :
+                    <Image $extraContentAvailable={isExtraContentAvailable} src={`https://image.tmdb.org/t/p/w500${image}`} /> :
                     <IconContainer $extraContentAvailable={isExtraContentAvailable}>
                         {isExtraContentAvailable ? <StyledVideoIcon /> : <StyledProfileIcon />}
                     </IconContainer>

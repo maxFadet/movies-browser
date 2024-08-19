@@ -2,21 +2,15 @@ import { DetailsTile } from "../../../../common/DetailsTile"
 import { Tile } from "../../../../common/Tile";
 import { GenresList } from "../../../../common/GenresList";
 import { PeopleTilesList } from "../../../../common/PeopleTilesList";
-import { MoviesTilesList } from "../../../../common/MoviesTilesList";
 import { Rates } from "../../../../common/Rates";
 import { useSelector } from "react-redux";
-import { selectCreditsById } from "../../slices/moviesCredditsListSlice";
-import { selectMovieDetailsById } from "../../slices/moviesDetailsListSlice";
-import { useURLId } from "../../../../useUrlId";
+import { selectMovieCreddits } from "../../slices/moviesCredditsListSlice";
+import { selectMovieDetails } from "../../slices/movieDetailsSlice";
 
 export const MovieDetailsMainContent = () => {
-    const urlId = useURLId();
+    const { cast, crew } = useSelector(selectMovieCreddits);
+    const { genres, vote_average, vote_count } = useSelector(selectMovieDetails);
 
-    const { cast, crew } =
-        useSelector(state => selectCreditsById(state, urlId));
-    const { genres, vote_average, vote_count } =
-        useSelector(state => selectMovieDetailsById(state, urlId));
-        
     return (
         <>
             <DetailsTile
@@ -60,35 +54,6 @@ export const MovieDetailsMainContent = () => {
                                 />
                             ))
                         }
-                    </>
-                }
-            />
-            <MoviesTilesList
-                header="Popular movies"
-                content={
-                    <>
-                        <Tile
-                            image="https://media.themoviedb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
-                            title="Dune"
-                            subInfo="2020"
-                            extraContent={
-                                <>
-                                    <GenresList genres={genres} />
-                                    <Rates voteAverage={vote_average} voteCount={vote_count} />
-                                </>
-                            }
-                        />
-                        <Tile
-                            image="https://media.themoviedb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
-                            title="Dune"
-                            subInfo="2020"
-                            extraContent={
-                                <>
-                                    <GenresList genres={genres} />
-                                    <Rates voteAverage={vote_average} voteCount={vote_count} />
-                                </>
-                            }
-                        />
                     </>
                 }
             />

@@ -22,7 +22,7 @@ export const StyledRates = styled.div`
         "star score"
         "votes votes";
       
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         grid-gap: 4px;
       };
     `};
@@ -31,6 +31,10 @@ export const StyledRates = styled.div`
 export const StyledStarIcon = styled(StarIcon)`
   grid-area: star;
   width: 24px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+      width: 21px;
+  };
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
       width: 16px;
@@ -52,7 +56,7 @@ export const Score = styled.p`
     //   font-size: 18px;
     // };
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 13px;
         font-weight: 600;
       };
@@ -64,7 +68,7 @@ export const Score = styled.p`
         font-size: 24px;
       };
 
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 14px;
       };
     `};
@@ -73,10 +77,11 @@ export const Score = styled.p`
 export const TotalScore = styled.span`
     font-size: 14px;
     font-weight: 400;
-    padding: 8px;
+    padding: 0 8px;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
       display: none;
+      padding:  0 4px;
     };
 
     ${({ $hideTotalScore }) => $hideTotalScore && css`
@@ -85,11 +90,10 @@ export const TotalScore = styled.span`
 
     ${({ $larger }) => $larger && css`
       font-size: 16px;
-      padding: 8px;
 
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 10px;
-        padding: 4px;
+        padding:  0 4px;
         display: unset;
       };
     `};
@@ -102,7 +106,7 @@ export const Votes = styled.p`
   font-weight: 400;
   grid-area: votes;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
       font-size: 13px;
       color: ${({ theme }) => theme.colors.waterloo};
     };
@@ -111,7 +115,7 @@ export const Votes = styled.p`
     font-size: 16px;
     color: ${({ theme }) => theme.colors.white};
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
       font-size: 10px;
       color: ${({ theme }) => theme.colors.white};
     };

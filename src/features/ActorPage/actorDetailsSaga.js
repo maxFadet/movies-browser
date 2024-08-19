@@ -1,8 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { fetchActorStart, fetchActorSuccess, fetchActorFailure } from './actorDetailsSlice';
-
-const API_KEY = '57afc837c270fb1a287ab5e06dc4e352';
-const BASE_URL = 'https://api.themoviedb.org/3';
+import { API_KEY } from '../../config/API_KEY';
+import { BASE_URL } from '../../config/BASE_URL';
 
 function* fetchActorSaga(action) {
     try {
