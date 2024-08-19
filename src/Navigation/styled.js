@@ -17,6 +17,11 @@ export const StyledPageHeader = styled.div`
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         flex-direction: column;
     };
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+        padding-left: 10px;
+        padding-right: 10px;
+    };
 `;
 
 export const NavigationContainer = styled.nav`
@@ -35,7 +40,10 @@ export const NavigationContainer = styled.nav`
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         gap: 19px;
     };
-    
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+        gap: 10px;
+    };
 `;
 
 export const NavigationLogo = styled(NavLink)`
@@ -100,6 +108,10 @@ export const NavigationList = styled.ul`
         flex: 1;
         gap: 12px;
     };
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+        gap: 6px;
+    };
 `;
 
 export const NavigationItem = styled(NavLink)`
@@ -110,21 +122,16 @@ export const NavigationItem = styled(NavLink)`
     margin: 24px 0px;
     padding: 13.5px 24px;
     position: relative;
-
-    &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 12px;
-        width: 0;
-        height: 2px;
-        background-color:  ${({ theme }) => theme.colors.white};;
-        transition: width 0.6s ease;
-    };
+    border: 1px solid transparent; 
+    border-radius: 24px;
+    transition: border 0.3s ease, margin 0.3s ease; 
     
-    &:hover::after {
-        width: 100%;
-    };
+    &:hover {
+        border: 1px solid ${({ theme }) => theme.colors.white};
+        border-radius: 24px;
+        margin: 24px 0px;
+        transform: scale(1.1);
+    }
     
     &.active {
         border: 1px solid ${({ theme }) => theme.colors.white};
