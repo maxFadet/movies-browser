@@ -9,7 +9,7 @@ export const StyledMovieBanner =
 
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.woodsmoke}; 
-    box-shadow: inset 0px 10px 74px 110px 
+    box-shadow: inset 0px 0px 74px 110px 
         ${({ theme }) => theme.colors.woodsmoke};
 
     background-position: center;
@@ -18,13 +18,13 @@ export const StyledMovieBanner =
 
     padding-top: 42.25%;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
         box-shadow: inset 0px 0px 40px 48px 
             ${({ theme }) => theme.colors.woodsmoke};
     };
     
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-        box-shadow: inset 0px 7px 29px 38px 
+        box-shadow: inset 0px 0px 29px 31px 
             ${({ theme }) => theme.colors.woodsmoke};
     };
 `;
@@ -35,7 +35,7 @@ export const MainInfo = styled.div`
     padding-left: 5%;
     padding-bottom: 3%;
 
-    @media (max-width:  ${({ theme }) => theme.breakpoints.tabletS}) {
+    @media (max-width:  ${({ theme }) => theme.breakpoints.mobileL}) {
         grid-gap: 4px;
     };
 `;
@@ -44,7 +44,7 @@ export const Title = styled.header`
     font-size: 64px;
     font-weight: 600;
 
-    @media (max-width:  ${({ theme }) => theme.breakpoints.mobileM}) {
+    @media (max-width:  ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 24px;
     };
 `;
