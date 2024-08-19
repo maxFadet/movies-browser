@@ -17,6 +17,7 @@ export const MainContent = () => {
     const handleMovieClick = (id) => {
         navigate(toMovie({ id }));
     };
+
     const searchResults = useSelector(selectSearchMovies);
     const popularMovies = useSelector(selectPopularMovies);
     const location = useLocation();
@@ -31,8 +32,8 @@ export const MainContent = () => {
 
     const isSearching = searchResults.length > 0;
     const header = isSearching
-    ? `Search results for “${searchQuery}”`
-    : "Popular movies";
+        ? `Search results for “${searchQuery}”`
+        : "Popular movies";
 
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
 
@@ -42,31 +43,41 @@ export const MainContent = () => {
                 header={header}
                 content={
                     <>
-                        {moviesToDisplay && moviesToDisplay.map(({ title, id, vote_average, vote_count, poster_path, release_date, genre_ids }) => (
-                            <Tile
-                                key={id}
-                                navigateTo={() => handleMovieClick(id)}
-                                image={poster_path}
-                                title={title}
-                                subInfo={new Date(release_date).getFullYear()}
-                                extraContent={
-                                    <>
-                                        <GenresList
-                                            genresIds={genre_ids}
-                                        />
-                                        <Rates
-                                            voteAverage={vote_average}
-                                            voteCount={vote_count}
-                                            hideTotalScore
-                                        />
-                                    </>
-                                }
-                            />
-                        ))}
+                        {
+                            moviesToDisplay && moviesToDisplay.map((
+                                {
+                                    title,
+                                    id,
+                                    vote_average,
+                                    vote_count,
+                                    poster_path,
+                                    release_date,
+                                    genre_ids
+                                }) => (
+                                <Tile
+                                    key={id}
+                                    navigateTo={() => handleMovieClick(id)}
+                                    image={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                                    title={title}
+                                    subInfo={new Date(release_date).getFullYear()}
+                                    extraContent={
+                                        <>
+                                            <GenresList
+                                                genresIds={genre_ids}
+                                            />
+                                            <Rates
+                                                voteAverage={vote_average}
+                                                voteCount={vote_count}
+                                                hideTotalScore
+                                            />
+                                        </>
+                                    }
+                                />
+                            ))}
                     </>
                 }
             />
-            <Pagination />
+            {/* <Pagination /> */}
         </Container>
     );
 };
