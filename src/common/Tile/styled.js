@@ -4,72 +4,26 @@ export const StyledTile = styled.li`
     display: grid;
     grid-gap: 16px;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 0.5fr;
+    grid-template-rows: 1fr 0.1fr;
     align-items: flex-start;
-
     box-shadow: 0px 4px 12px 0px  ${({ theme }) => theme.colors.brightHeather};
     background-color: ${({ theme }) => theme.colors.white};
-
     cursor: pointer;
     padding: 16px;
     list-style-type: none;
-    min-height: 339px;
-
-    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
-        min-height: 245px;
-    }; 
+    height: 100%;
 
     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
-        height: auto;
-        width: 300px;
-
-        @media (max-width: ${({theme}) => theme.breakpoints.tabletS}) {
+        grid-template-rows: unset;
+        @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
             grid-template-columns: 1fr 1.5fr;
-            width: 100%;
-            grid-template-rows: 320px;
-        }; 
-
-        @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 265px;
-        }; 
-
-        @media (max-width: ${({theme}) => theme.breakpoints.mobileS}) {
-            grid-template-columns: 1.5fr 1fr;
         }; 
     `};
 `;
 
-export const Image =
-    styled.div.attrs(({ $image }) => ({
-        style: {
-            backgroundImage: `url(${$image})`,
-        }
-    }))`
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-    border-radius: 8px;
-
+export const Image = styled.img`
     width: 100%;
-    border-radius: 15px;
-    height: 100%;
-
-    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
-        min-height: 175px;
-    };
-
-    ${({ $extraContentAvailable }) => $extraContentAvailable && css`
-        height: 450px;
-
-        @media (max-width: ${({theme}) => theme.breakpoints.tabletS}) {
-            height: 100%;
-        }; 
-        
-        @media (max-width: ${({theme}) => theme.breakpoints.mobileS}) {
-            background-size: cover;
-        };
-    `};
+    border-radius: 10px;
 `;
 
 export const GeneralInfo = styled.div`
@@ -90,7 +44,7 @@ export const Title = styled.header`
     font-weight: 500;
     text-align: center;
 
-    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 16px;
     };
 
@@ -105,7 +59,7 @@ export const SubInfo = styled.p`
     font-weight: 400;
     color: ${({ theme }) => theme.colors.waterloo};
 
-    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 13px;
     };
 `;
@@ -115,7 +69,7 @@ export const ExtraContent = styled.div`
     grid-template-columns: 1fr;
     grid-gap: 40px;
 
-    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         grid-gap: 12px;
     };
 `;
@@ -124,25 +78,8 @@ export const IconContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${({theme}) => theme.colors.silver};
-
+    background-color: ${({ theme }) => theme.colors.silver};
     width: 100%;
     border-radius: 15px;
     height: 100%;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-        height: 150px;
-    };
-
-     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
-        height: 450px;
-
-        @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
-            height: 100%;
-        }; 
-        
-        @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
-            background-size: contain;
-        };
-    `};
 `;
