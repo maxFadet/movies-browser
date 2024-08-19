@@ -39,7 +39,12 @@ const MovieSearch = () => {
                 dispatch(searchPeople(debouncedQuery));
                 navigate(`${toActorsList()}?search=${debouncedQuery}`);
             }
-            setQuery('');
+            
+            const clearInputTimer = setTimeout(() => {
+                setQuery('');
+            }, 3000);
+
+            return () => clearTimeout(clearInputTimer);
         }
     }, [debouncedQuery, dispatch, isSearchingMovies, navigate]);
 
