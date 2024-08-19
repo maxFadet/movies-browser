@@ -3,11 +3,11 @@ import { searchMovies } from '../../searchMoviesSlice';
 import { searchPeople } from '../../searchActorSlice';
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toMoviesList, toActorsList } from "../../routes";
+import { toMoviesList, toMovie, toActorsList } from "../../routes";
 import { useState, useEffect } from "react";
 
 const getPlaceholderText = (pathname) =>
-    pathname === toMoviesList()
+    pathname === toMoviesList() || pathname === toMovie() || pathname.match(/^\/movies\/\d+$/)
         ? 'Search for movies...'
         : 'Search for people...';
 
