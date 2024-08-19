@@ -8,6 +8,7 @@ import { moviesGenresSaga } from "./moviesGenresSaga";
 import { searchMoviesSaga } from './searchMoviesSaga';
 import { searchPeopleSaga } from "./searchActorSaga";
 import { watchFetchActors } from "./features/ActorList/actorsSaga"
+import { watchFetchActor } from "./features/ActorPage/actorDetailsSaga";
 
 export function* rootSaga() {
     yield all([
@@ -18,5 +19,6 @@ export function* rootSaga() {
         searchMoviesSaga(),
         searchPeopleSaga(),
         watchFetchActors(),
+        watchFetchActor(),
     ]);
 };

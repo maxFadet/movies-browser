@@ -20,10 +20,16 @@ export const searchMoviesSlice = createSlice({
         searchMoviesError: (state) => {
             state.searchStatus = errorStatus;
         },
+        resetSearchMovies: () => {
+            return {
+                movies: [],
+                searchStatus: loadingStatus,
+            };
+        },
     },
 });
 
-export const { searchMovies, searchMoviesSuccess, searchMoviesError } = searchMoviesSlice.actions;
+export const { searchMovies, searchMoviesSuccess, searchMoviesError, resetSearchMovies } = searchMoviesSlice.actions;
 
 export const selectSearchMoviesState = (state) => state.searchMovies;
 export const selectSearchMoviesStatus = (state) => selectSearchMoviesState(state).searchStatus;

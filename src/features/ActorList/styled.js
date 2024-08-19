@@ -5,6 +5,7 @@ export const Title = styled.h1`
   font-weight: 600;
   line-height: 43px;
   grid-column: 1 / -1;
+  margin-top: 64px;
   color: ${({ theme }) => theme.colors.woodsmoke};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
@@ -14,6 +15,7 @@ export const Title = styled.h1`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     line-height: 24px;
     font-size: 20px;
+    margin-top: 21px;
   }
 `;
 
@@ -43,45 +45,4 @@ export const Section = styled.section`
     grid-template-columns: repeat(2, minmax(100px, 1fr));
     gap: 12px;
   }
-`;
-
-export const Tile = styled.div`
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: rgba(186, 199, 213, 0.5) 0px 4px 12px;
-  display: grid;
-  grid-template-rows: auto auto;
-  padding: 16px;
-  gap: 12px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-    padding: 8px;
-    gap: 8px;
-  }
-`;
-
-export const Name = styled.p`
-  color: ${({ theme }) => theme.colors.woodsmoke};
-  margin: 0;
-  line-height: 29px;
-  font-size: 22px;
-  font-weight: 500;
-  text-align: center;
-  word-break: break-word;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
-    font-size: 18px;
-    line-height: 22px;
-}
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-    font-size: 14px;
-    line-height: 18px;
-}
-`;
-
-export const Photo = styled.img`
-  width: 177px;
-  height: 264px;
-  width: 100%;
-  border-radius: 5px;
 `;

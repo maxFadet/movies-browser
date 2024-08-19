@@ -91,7 +91,7 @@ export const Title = styled.header`
     text-align: center;
 
     @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
-        font-size: 14px;
+        font-size: 16px;
     };
 
     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
@@ -101,7 +101,7 @@ export const Title = styled.header`
 
 export const SubInfo = styled.p`
     margin: 0;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     color: ${({ theme }) => theme.colors.waterloo};
 

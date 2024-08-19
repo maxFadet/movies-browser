@@ -9,22 +9,34 @@ import {
 } from "./styled";
 import Search from "./Search";
 import { toMoviesList, toActorsList } from "../routes";
+import { useDispatch } from "react-redux";
+import { resetSearchMovies } from "../searchMoviesSlice";
+import { resetSearchPeople } from "../searchActorSlice"; 
 
 const Navigation = () => {
+    const dispatch = useDispatch();
 
+    const handleMoviesClick = () => {
+        dispatch(resetSearchMovies()); 
+    };
+
+    const handlePeopleClick = () => {
+        dispatch(resetSearchPeople()); 
+    };
+    
     return (
         <nav>
             <StyledPageHeader>
                 <NavigationContainer>
-                    <NavigationLogo to={toMoviesList()}>
+                    <NavigationLogo to={toMoviesList()} onClick={handleMoviesClick}>
                         <NavigationLogoIcon />
                         <NavigationTitle>Movies Browser</NavigationTitle>
                     </NavigationLogo>
                     <NavigationList>
-                        <NavigationItem to={toMoviesList()}>
+                        <NavigationItem to={toMoviesList()} onClick={handleMoviesClick}>
                             MOVIES
                         </NavigationItem>
-                        <NavigationItem to={toActorsList()}>
+                        <NavigationItem to={toActorsList()} onClick={handlePeopleClick}>
                             PEOPLE
                         </NavigationItem>
                     </NavigationList>
