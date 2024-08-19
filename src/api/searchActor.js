@@ -1,12 +1,11 @@
 import axios from "axios";
-
-const API_KEY = process.env.REACT_APP_API_KEY;
-const API_URL = process.env.REACT_APP_API_URL;
+import { BASE_URL } from '../config/BASE_URL';
+import { API_KEY } from '../config/API_KEY';
 
 export const fetchPeople = async (query) => {
   const options = {
     method: 'GET',
-    url: `${API_URL}/search/person`,
+    url: `${BASE_URL}/search/person`,
     params: { query, include_adult: 'false', language: 'en-US', page: '1' },
     headers: {
       accept: 'application/json',
