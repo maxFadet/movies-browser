@@ -21,20 +21,15 @@ export const ListHeader = styled.header`
 
 export const ListSection = styled.ul`
     display: grid;
-    grid-template-columns: repeat(4, 23.1%);
+    grid-template-columns: repeat(auto-fill, 190px);
     align-items: start;
 
     grid-gap: 24px;
     padding-left: 0px;
     margin: 0;
 
-    @media (max-width: ${({theme}) => theme.breakpoints.tabletL}) {
-        grid-template-columns: repeat(3, 31%);
-    };
-
-    @media (max-width: ${({theme}) => theme.breakpoints.tabletM}) {
-        grid-template-columns: repeat(2, 47%);
-        justify-content: center;
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
+        grid-template-columns: repeat(auto-fill, 135px);
         grid-gap: 16px;
     };
 `;

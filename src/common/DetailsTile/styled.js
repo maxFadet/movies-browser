@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-export const StyledDetailsTile = styled.article`
+export const StyledDetailsTile = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(2, 1fr);
     grid-template-areas: 
         "image details"
         "image description";
 
     grid-gap: 40px;
     padding: 24px;
-
     align-items: start;
 
     background-color: ${({ theme }) => theme.colors.white};
@@ -62,7 +62,7 @@ export const ImageContainer =
     background-color: ${({ theme }) => theme.colors.silver};
     
     background-size: cover;
-    width: 370px;
+    width: 100%;
     height: 100%;
     background-color: transparent;
 
