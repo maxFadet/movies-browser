@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchMoviesDetailsList, selectFetchMoviesDetailsListStatus } from "../slices/moviesDetailsListSlice";
+import { fetchMovieDetails, selectFetchMovieDetailsStatus } from "../slices/movieDetailsSlice";
 import { MovieBanner } from "./MovieBanner";
 import { PageContent } from "../../../common/PageContent";
 import { MovieDetailsMainContent } from "./MovieDetailsMainContent";
@@ -11,24 +11,26 @@ import { loadingStatus } from "../../../requestStatuses/loadingStatus";
 import { errorStatus } from "../../../requestStatuses/errorStatus";
 import { successStatus } from "../../../requestStatuses/successStatus";
 import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from "../../../moviesGenresSlice";
+import { useParams } from "react-router-dom";
 
 export const MovieDetailsPage = () => {
-    const fetchMoviesDetailsListStatus = useSelector(selectFetchMoviesDetailsListStatus);
+    const { id: movieId } = useParams();
+    const fetchMovieDetailsStatus = useSelector(selectFetchMovieDetailsStatus);
     const fetchMoviesCreditsListStatus = useSelector(selectMoviesCreditsListFetchStatus);
     const fetchMoviesGenresStatus = useSelector(selectMoviesGenresFetchStatus);
 
     const isLoading =
-        fetchMoviesDetailsListStatus === loadingStatus ||
+        fetchMovieDetailsStatus === loadingStatus ||
         fetchMoviesCreditsListStatus === loadingStatus ||
         fetchMoviesGenresStatus === loadingStatus;
 
     const isError =
-        fetchMoviesDetailsListStatus === errorStatus ||
+        fetchMovieDetailsStatus === errorStatus ||
         fetchMoviesCreditsListStatus === errorStatus ||
         fetchMoviesGenresStatus === errorStatus
 
     const isSuccess =
-        fetchMoviesDetailsListStatus === successStatus &&
+        fetchMovieDetailsStatus === successStatus &&
         fetchMoviesCreditsListStatus === successStatus &&
         fetchMoviesGenresStatus === successStatus
 
@@ -36,12 +38,14 @@ export const MovieDetailsPage = () => {
 
     useEffect(() => {
         const fetchDelayId = setTimeout(() => {
-            dispatch(fetchMoviesDetailsList());
-            dispatch(fetchMoviesCreditsList());
+            if (movieId) {
+                dispatch(fetchMovieDetails(movieId));
+                dispatch(fetchMoviesCreditsList(movieId));
+            }
             dispatch(fetchMoviesGenres());
         }, 1000);
         return () => clearTimeout(fetchDelayId);
-    }, [dispatch]);
+    }, [dispatch, movieId]);
 
     return (
         isLoading ? (
@@ -50,8 +54,8 @@ export const MovieDetailsPage = () => {
             <Error />
         ) : isSuccess ? (
             <>
-                <MovieBanner />
-                <PageContent content={<MovieDetailsMainContent />} />
+                <MovieBanner movieId={movieId} />
+                <PageContent content={<MovieDetailsMainContent movieId={movieId} />} />
             </>
         ) : (
             <Error />
