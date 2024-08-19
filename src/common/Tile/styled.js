@@ -4,6 +4,7 @@ export const StyledTile = styled.li`
     display: grid;
     grid-gap: 16px;
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 0.5fr;
     align-items: flex-start;
 
     box-shadow: 0px 4px 12px 0px  ${({ theme }) => theme.colors.brightHeather};
@@ -12,7 +13,11 @@ export const StyledTile = styled.li`
     cursor: pointer;
     padding: 16px;
     list-style-type: none;
-    height: 100%;
+    min-height: 339px;
+
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
+        min-height: 245px;
+    }; 
 
     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
         height: auto;
@@ -48,10 +53,10 @@ export const Image =
 
     width: 100%;
     border-radius: 15px;
-    height: 300px;
+    height: 100%;
 
     @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
-        height: 150px;
+        min-height: 175px;
     };
 
     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
@@ -123,7 +128,7 @@ export const IconContainer = styled.div`
 
     width: 100%;
     border-radius: 15px;
-    height: 300px;
+    height: 100%;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         height: 150px;
