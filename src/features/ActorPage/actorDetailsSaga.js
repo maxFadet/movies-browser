@@ -10,6 +10,7 @@ function* fetchActorSaga(action) {
         const data = yield response.json();
         yield put(fetchActorSuccess(data));
     } catch (error) {
+        console.error(error.message);
         yield put(fetchActorFailure(error.toString()));
     }
 }
