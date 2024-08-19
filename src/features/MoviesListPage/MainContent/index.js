@@ -30,7 +30,8 @@ export const MainContent = () => {
         }
     }, [location, searchQuery]);
 
-    const isSearching = searchResults.length > 0;
+    const isSearching = searchQuery.length > 0;
+
     const header = isSearching
         ? `Search results for “${searchQuery}”`
         : "Popular movies";
@@ -43,17 +44,16 @@ export const MainContent = () => {
                 header={header}
                 content={
                     <>
-                        {
-                            moviesToDisplay && moviesToDisplay.map((
-                                {
-                                    title,
-                                    id,
-                                    vote_average,
-                                    vote_count,
-                                    poster_path,
-                                    release_date,
-                                    genre_ids
-                                }) => (
+                        {moviesToDisplay && moviesToDisplay.length > 0 ? (
+                            moviesToDisplay.map(({
+                                title,
+                                id,
+                                vote_average,
+                                vote_count,
+                                poster_path,
+                                release_date,
+                                genre_ids
+                            }) => (
                                 <Tile
                                     key={id}
                                     navigateTo={() => handleMovieClick(id)}
@@ -73,7 +73,10 @@ export const MainContent = () => {
                                         </>
                                     }
                                 />
-                            ))}
+                            ))
+                        ) : (
+                            isSearching && <p>No results found for "{searchQuery}"</p>
+                        )}
                     </>
                 }
             />

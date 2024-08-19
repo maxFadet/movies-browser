@@ -3,11 +3,11 @@ import { searchMovies } from '../../searchMoviesSlice';
 import { searchPeople } from '../../searchActorSlice';
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toMoviesList, toActorsList } from "../../routes";
+import { toMoviesList, toMovie, toActorsList } from "../../routes";
 import { useState, useEffect } from "react";
 
 const getPlaceholderText = (pathname) =>
-    pathname === toMoviesList()
+    pathname === toMoviesList() || pathname === toMovie() || pathname.match(/^\/movies\/\d+$/)
         ? 'Search for movies...'
         : 'Search for people...';
 
@@ -18,7 +18,7 @@ const MovieSearch = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const placeholderText = getPlaceholderText(location.pathname);
-    const isSearchingMovies = location.pathname === toMoviesList();
+    const isSearchingMovies = location.pathname === toMoviesList() || location.pathname.match(/^\/movies\/\d+$/);
 
     useEffect(() => {
         const handler = setTimeout(() => {
@@ -39,13 +39,26 @@ const MovieSearch = () => {
                 dispatch(searchPeople(debouncedQuery));
                 navigate(`${toActorsList()}?search=${debouncedQuery}`);
             }
-            setQuery('');
+            
+            const clearInputTimer = setTimeout(() => {
+                setQuery('');
+            }, 3000);
+
+            return () => clearTimeout(clearInputTimer);
         }
     }, [debouncedQuery, dispatch, isSearchingMovies, navigate]);
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
     };
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const searchQuery = searchParams.get('search');
+        if (searchQuery) {
+            setQuery(searchQuery);
+        }
+    }, [location.search]);
 
     return (
         <Search>
