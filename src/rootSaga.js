@@ -1,6 +1,6 @@
 import { all } from "redux-saga/effects";
-import { moviesDetailsListSaga } from
-    "./features/MovieDetailsPage/sagas/moviesDetailsListSaga";
+import { movieDetailsSaga } from
+    "./features/MovieDetailsPage/sagas/movieDetails";
 import { movieCreditsSaga } from
     "./features/MovieDetailsPage/sagas/movieCreditsSaga";
 import { popularMoviesSaga } from "./popularMoviesSaga";
@@ -12,7 +12,7 @@ import { watchFetchActor } from "./features/ActorPage/actorDetailsSaga";
 
 export function* rootSaga() {
     yield all([
-        moviesDetailsListSaga(),
+        movieDetailsSaga(),
         movieCreditsSaga(),
         popularMoviesSaga(),
         moviesGenresSaga(),
