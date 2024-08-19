@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectActors, selectActorsStatus, selectCurrentPage, selectTotalPages, fetchActorsStart } from './actorsSlice';
-import { selectSearchPeople, selectSearchPeopleStatus, searchPeople } from '../../searchActorSlice';
+import {
+    selectActors,
+    selectActorsStatus,
+    selectCurrentPage,
+    fetchActorsStart
+} from './actorsSlice';
+import {
+    selectSearchPeople,
+    selectSearchPeopleStatus,
+    searchPeople
+} from '../../searchActorSlice';
 import { Section, Title } from './styled';
 import { Pagination } from "../../common/Pagination";
 import { Container } from "../../common/Container";
@@ -10,6 +19,24 @@ import { Error } from "../../common/Error";
 import { Loader } from "../../common/Loader";
 import { PersonsListTile } from '../../common/PersosListTile';
 import { toPerson } from "../../routes";
+import { loadingStatus } from '../../requestStatuses/loadingStatus';
+import { errorStatus } from '../../requestStatuses/errorStatus';
+
+const useDebounce = (value, delay) => {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedValue(value);
+        }, delay);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [value, delay]);
+
+    return debouncedValue;
+};
 
 const ActorsList = () => {
     const dispatch = useDispatch();
@@ -17,12 +44,13 @@ const ActorsList = () => {
     const location = useLocation();
 
     const [searchQuery, setSearchQuery] = useState("");
-    const [showSearchLoader, setShowSearchLoader] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const debouncedSearchQuery = useDebounce(searchQuery, 1000);
 
     const currentPage = useSelector(selectCurrentPage);
-    const totalPages = useSelector(selectTotalPages);
-
-    const isSearching = searchQuery.length > 0;
+    const totalPages = 500;
+    const isSearching = debouncedSearchQuery.length > 0;
     const actors = useSelector(isSearching ? selectSearchPeople : selectActors);
     const status = useSelector(isSearching ? selectSearchPeopleStatus : selectActorsStatus);
 
@@ -35,42 +63,44 @@ const ActorsList = () => {
 
     useEffect(() => {
         if (isSearching) {
-            setShowSearchLoader(true);
+            setIsLoading(true);
             const searchDelayId = setTimeout(() => {
-                dispatch(searchPeople(searchQuery));
-                setShowSearchLoader(false);
+                dispatch(searchPeople(debouncedSearchQuery));
+                setIsLoading(false);
             }, 1000);
 
             return () => clearTimeout(searchDelayId);
         } else {
             dispatch(fetchActorsStart({ page: currentPage }));
+            const loadingDelayId = setTimeout(() => {
+                setIsLoading(false);
+            }, 1000);
+
+            return () => clearTimeout(loadingDelayId);
         }
-    }, [dispatch, isSearching, searchQuery, currentPage]);
+    }, [dispatch, isSearching, debouncedSearchQuery, currentPage]);
 
     const handleActorClick = (id) => {
         navigate(toPerson({ id }));
     };
 
     const handlePageChange = (page) => {
+        setIsLoading(true);
         dispatch(fetchActorsStart({ page }));
     };
 
-    const header = isSearching
-        ? `Search results for “${searchQuery}”`
-        : "Popular people";
-
-    if (showSearchLoader || status === 'loading') {
-        return <Loader />;
+    if (isLoading || status === loadingStatus) {
+        return <Loader showText={false} />;
     }
 
-    if (status === 'failed') {
+    if (status === errorStatus) {
         return <Error />;
     }
 
     return (
         <Container>
             <Section>
-                <Title>{header}</Title>
+                <Title>Popular people</Title>
                 {actors.length > 0 && (
                     actors.map((actor) => (
                         <PersonsListTile

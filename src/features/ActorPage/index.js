@@ -15,7 +15,7 @@ import { Container } from '../../common/Container';
 export const ActorsData = () => {
     const { id: actorId } = useParams();
     const dispatch = useDispatch();
-    
+
     const [isLoading, setIsLoading] = useState(true);
 
     const actor = useSelector(selectActor);
@@ -33,7 +33,7 @@ export const ActorsData = () => {
     }, [dispatch, actorId]);
 
     if (isLoading || status === loadingStatus) {
-        return <Loader />;
+        return <Loader showText={false} />;
     }
 
     if (status === errorStatus) {
