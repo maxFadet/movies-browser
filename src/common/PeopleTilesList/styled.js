@@ -27,8 +27,8 @@ export const ListSection = styled.ul`
     padding-left: 0px;
     margin: 0;
 
-    @media (max-width: ${({theme}) => theme.breakpoints.tabletS}) {
-        grid-template-columns: repeat(2, 47%);
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileM}) {
+        grid-template-columns: repeat(auto-fill, 47%);
         grid-gap: 16px;
     };
 `;
