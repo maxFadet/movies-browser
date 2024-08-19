@@ -1,21 +1,19 @@
 import { useSelector } from "react-redux";
 import { Rates } from "../../../../common/Rates";
 import { StyledMovieBanner, Title, MainInfo, } from "./styled";
-import { selectMovieDetailsById, } from "../../slices/moviesDetailsListSlice";
-import { useURLId } from "../../../../useUrlId";
+import { selectMovieDetails, } from "../../slices/movieDetailsSlice";
 
 export const MovieBanner = () => {
-    const urlId = useURLId();
     const {
         title,
         backdrop_path,
         vote_average,
         vote_count
-    } = useSelector(state => selectMovieDetailsById(state, urlId));
+    } = useSelector(selectMovieDetails);
 
     return (
         <>
-            <StyledMovieBanner $backdrop={backdrop_path}>
+            <StyledMovieBanner $backdrop={`https://image.tmdb.org/t/p/original${backdrop_path}`}>
                 <MainInfo>
                     <Title>{title}</Title>
                     <Rates
