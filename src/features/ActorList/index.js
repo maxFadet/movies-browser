@@ -21,6 +21,7 @@ import { PersonsListTile } from '../../common/PersosListTile';
 import { toPerson } from "../../routes";
 import { loadingStatus } from '../../requestStatuses/loadingStatus';
 import { errorStatus } from '../../requestStatuses/errorStatus';
+import { NoResults } from '../../common/NoResultsPage';
 
 const useDebounce = (value, delay) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
@@ -100,6 +101,10 @@ const ActorsList = () => {
     const header = isSearching
     ? `Search results for “${searchQuery}”`
     : "Popular people";
+
+    if (actors.length === 0) {
+        return <NoResults query={searchQuery} />;
+    }
 
     return (
         <Container>
