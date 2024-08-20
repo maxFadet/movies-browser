@@ -11,6 +11,7 @@ import { toMovie } from "../../../routes";
 import { Pagination } from "../../../common/Pagination";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { NoResults } from "../../../common/NoResultsPage";
 
 export const MainContent = () => {
     const navigate = useNavigate();
@@ -38,13 +39,17 @@ export const MainContent = () => {
 
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
 
+    if (isSearching && !moviesToDisplay) {
+        return <NoResults query={searchQuery} />;
+      }
+
     return (
         <Container>
             <MoviesTilesList
                 header={header}
                 content={
                     <>
-                        {moviesToDisplay && moviesToDisplay.length > 0 ? (
+                        {moviesToDisplay && moviesToDisplay.length > 0 && (
                             moviesToDisplay.map(({
                                 title,
                                 id,
@@ -74,8 +79,6 @@ export const MainContent = () => {
                                     }
                                 />
                             ))
-                        ) : (
-                            isSearching && <p>No results found for "{searchQuery}"</p>
                         )}
                     </>
                 }
