@@ -39,7 +39,7 @@ export const MainContent = () => {
 
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
 
-    if (isSearching && !moviesToDisplay) {
+    if (isSearching && (!moviesToDisplay || moviesToDisplay.length === 0)) {
         return <NoResults query={searchQuery} />;
       }
 
