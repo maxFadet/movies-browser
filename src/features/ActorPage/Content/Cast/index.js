@@ -1,6 +1,8 @@
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../../../routes";
-import { films } from './filmsData';
+import { useSelector } from 'react-redux';
+import { selectCast } from '../../actorDetailsSlice';
 import {
     StyledTile,
     MovieInfo,
@@ -19,6 +21,7 @@ import {
 } from "./styled";
 
 export const Cast = () => {
+    const cast = useSelector(selectCast);
     const navigate = useNavigate();
 
     const handleMovieClick = (id) => {
@@ -27,24 +30,24 @@ export const Cast = () => {
 
     return (
         <MoviesSection>
-            <Title>Movies - cast (4)</Title>
-            {films.map((film, index) => (
-                <StyledTile key={index} onClick={() => handleMovieClick(film.id)}>
-                    <MoviePoster src={film.photo} alt={film.name} />
+            <Title>Movies - cast</Title>
+            {cast.map((movie, index) => (
+                <StyledTile key={index} onClick={() => handleMovieClick(movie.id)}>
+                    <MoviePoster src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                     <MovieInfo>
-                        <MovieTitle>{film.name}</MovieTitle>
-                        <MovieSubTitle>{film.year}</MovieSubTitle>
+                        <MovieTitle>{movie.title}</MovieTitle>
+                        <MovieSubTitle>{movie.release_date}</MovieSubTitle>
                         <MovieTags>
-                            {film.genres.map((genre, index) => (
-                                <MovieTag key={index}>{genre}</MovieTag>
+                            {movie.genre_ids.map((genreId, index) => (
+                                <MovieTag key={index}>{genreId}</MovieTag>
                             ))}
                         </MovieTags>
                         <RatingWrapper>
                             <Rating>
                                 <RatingStar />
-                                <RatingNumber>{film.rate}</RatingNumber>
+                                <RatingNumber>{movie.vote_average}</RatingNumber>
                             </Rating>
-                            <VoteCount>{film.vote}</VoteCount>
+                            <VoteCount>{movie.vote_count}</VoteCount>
                         </RatingWrapper>
                     </MovieInfo>
                 </StyledTile>
