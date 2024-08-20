@@ -36,7 +36,7 @@ export const Crew = () => {
                     <MoviePoster src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                     <MovieInfo>
                         <MovieTitle>{movie.title}</MovieTitle>
-                        <MovieSubTitle>{movie.release_date}</MovieSubTitle>
+                        <MovieSubTitle>{new Date(movie.release_date).getFullYear()}</MovieSubTitle>
                         <MovieTags>
                             {movie.genre_ids.map((genreId, index) => (
                                 <MovieTag key={index}>{genreId}</MovieTag>
@@ -47,7 +47,7 @@ export const Crew = () => {
                                 <RatingStar />
                                 <RatingNumber>{movie.vote_average}</RatingNumber>
                             </Rating>
-                            <VoteCount>{movie.vote_count}</VoteCount>
+                            <VoteCount>{movie.vote_count} votes</VoteCount>
                         </RatingWrapper>
                     </MovieInfo>
                 </StyledTile>
