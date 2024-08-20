@@ -11,6 +11,7 @@ import { Container } from '../../../common/Container';
 import { Pagination } from '../../../common/Pagination';
 import { Loader } from '../../../common/Loader';
 import { useEffect, useState } from 'react';
+import { NoResults } from "../../../common/NoResultsPage";
 
 export const MainContent = () => {
     const navigate = useNavigate();
@@ -41,7 +42,7 @@ export const MainContent = () => {
 
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
 
-    const handlePageChange = (page) => {
+  const handlePageChange = (page) => {
         setIsLoading(true);
         setTimeout(() => {
             dispatch(fetchPopularMovies({ page }));
@@ -59,6 +60,9 @@ export const MainContent = () => {
     if (isLoading || isTransitioning) {
         return <Loader showText={false} />;
     }
+    if (isSearching && (!moviesToDisplay || moviesToDisplay.length === 0)) {
+        return <NoResults query={searchQuery} />;
+      }
 
     return (
         <Container>
@@ -66,7 +70,7 @@ export const MainContent = () => {
                 header={header}
                 content={
                     <>
-                        {moviesToDisplay && moviesToDisplay.length > 0 ? (
+                        {moviesToDisplay && moviesToDisplay.length > 0 && (
                             moviesToDisplay.map(({
                                 title,
                                 id,
@@ -96,8 +100,6 @@ export const MainContent = () => {
                                     }
                                 />
                             ))
-                        ) : (
-                            isSearching && <p>No results found for "{searchQuery}"</p>
                         )}
                     </>
                 }
