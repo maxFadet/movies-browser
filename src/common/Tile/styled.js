@@ -13,11 +13,14 @@ export const StyledTile = styled.li`
     list-style-type: none;
     height: 100%;
     word-break: break-all;
+    min-height: 280px;
 
     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
-        grid-template-rows: unset;
+        min-height: unset;
         @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+            grid-template-rows: unset;
             grid-template-columns: 1fr 1.5fr;
+            min-height: 237px;
         }; 
     `};
 `;
@@ -83,4 +86,7 @@ export const IconContainer = styled.div`
     width: 100%;
     border-radius: 15px;
     height: 100%;
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+        height: 144px;  
+    };
 `;

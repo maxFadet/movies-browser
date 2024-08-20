@@ -20,6 +20,11 @@ export const Tile = ({
 }) => {
     const isExtraContentAvailable = !!extraContent;
 
+    const invalidMovieImageUrl = `https://image.tmdb.org/t/p/w500https://image.tmdb.org/t/p/w500null`;
+    const invalidPersonImageUrl =  `https://image.tmdb.org/t/p/w500null`;
+
+    const imageUrl = `https://image.tmdb.org/t/p/w500${image}`;
+
     return (
         <StyledTile
             onClick={navigateTo}
@@ -27,9 +32,9 @@ export const Tile = ({
             $extraContentAvailable={isExtraContentAvailable}
         >
             {
-                image ?
-                    <Image $extraContentAvailable={isExtraContentAvailable} src={`https://image.tmdb.org/t/p/w500${image}`} /> :
-                    <IconContainer $extraContentAvailable={isExtraContentAvailable}>
+                imageUrl !== invalidMovieImageUrl && imageUrl !== invalidPersonImageUrl  ?
+                    <Image $extraContentAvailable={isExtraContentAvailable} src={imageUrl} /> :
+                    <IconContainer>
                         {isExtraContentAvailable ? <StyledVideoIcon /> : <StyledProfileIcon />}
                     </IconContainer>
             }

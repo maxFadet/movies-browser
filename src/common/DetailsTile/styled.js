@@ -40,9 +40,10 @@ export const IconContainer = styled.div`
     grid-area: image;
     border-radius: 15px;
     background-color: ${({ theme }) => theme.colors.silver};
+    width: 400px;
     height: 100%;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
       width: 100%;
     };
 `;

@@ -10,6 +10,7 @@ export const StyledMovieBanner =
     background-size: cover;
 
     color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.woodsmoke};
     box-shadow: inset 0px 0px 74px 110px 
         ${({ theme }) => theme.colors.woodsmoke};
     padding-top: 42.25%;
