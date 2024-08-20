@@ -1,26 +1,30 @@
-import { useSelector } from "react-redux";
-import { selectSearchMovies } from "../../../searchMoviesSlice";
-import { selectPopularMovies } from "../../../popularMoviesSlice";
-import { Tile } from "../../../common/Tile";
-import { GenresList } from "../../../common/GenresList";
-import { Rates } from "../../../common/Rates";
-import { MoviesTilesList } from "../../../common/MoviesTilesList";
-import { Container } from "../../../common/Container";
-import { useNavigate } from "react-router-dom";
-import { toMovie } from "../../../routes";
-import { Pagination } from "../../../common/Pagination";
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { selectSearchMovies } from '../../../searchMoviesSlice';
+import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../../popularMoviesSlice';
+import { Tile } from '../../../common/Tile';
+import { GenresList } from '../../../common/GenresList';
+import { Rates } from '../../../common/Rates';
+import { toMovie } from "../../../routes"
+import { MoviesTilesList } from '../../../common/MoviesTilesList';
+import { Container } from '../../../common/Container';
+import { Pagination } from '../../../common/Pagination';
+import { useEffect, useState } from 'react';
 
 export const MainContent = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const location = useLocation();
+
     const handleMovieClick = (id) => {
         navigate(toMovie({ id }));
     };
 
     const searchResults = useSelector(selectSearchMovies);
     const popularMovies = useSelector(selectPopularMovies);
-    const location = useLocation();
+    const currentPage = useSelector(selectCurrentPage);
+    const totalPages = useSelector(selectTotalPages);
+
     const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
@@ -37,6 +41,10 @@ export const MainContent = () => {
         : "Popular movies";
 
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
+
+    const handlePageChange = (page) => {
+        dispatch(fetchPopularMovies({ page }));
+    };
 
     return (
         <Container>
@@ -80,7 +88,11 @@ export const MainContent = () => {
                     </>
                 }
             />
-            {/* <Pagination /> */}
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+            />
         </Container>
     );
 };
