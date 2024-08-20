@@ -2,7 +2,7 @@ import { Container, Image, Legend, Wrapper } from "./styled";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export const Loader = () => {
+export const Loader = ({ showText = true }) => {
     const location = useLocation();
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -15,9 +15,11 @@ export const Loader = () => {
 
     return (
         <Container>
-            <Legend>
-                {searchQuery ? `Search results for “${searchQuery}”` : "Search results for ..."}
-            </Legend>
+            {showText && (
+                <Legend>
+                    {searchQuery ? `Search results for “${searchQuery}”` : "Search results for ..."}
+                </Legend>
+            )}
             <Wrapper>
                 <Image />
             </Wrapper>

@@ -1,23 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { loadingStatus } from '../../requestStatuses/loadingStatus';
+import { errorStatus } from '../../requestStatuses/errorStatus';
+import { successStatus } from '../../requestStatuses/successStatus';
 
 const actorDetailsSlice = createSlice({
     name: 'actorDetails',
     initialState: {
         actor: null,
-        status: 'idle',
+        status: loadingStatus,
         error: null,
     },
     reducers: {
         fetchActorStart: (state) => {
-            state.status = 'loading';
+            state.status = loadingStatus;
         },
         fetchActorSuccess: (state, action) => {
-            state.status = 'succeeded';
+            state.status = successStatus;
             state.actor = action.payload;
         },
         fetchActorFailure: (state, action) => {
-            state.status = 'failed';
+            state.status = errorStatus;
             state.error = action.payload;
         },
     },

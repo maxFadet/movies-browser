@@ -8,7 +8,10 @@ function* fetchActorsSaga(action) {
     try {
         const response = yield call(fetch, `${BASE_URL}/person/popular?api_key=${API_KEY}&page=${page}`);
         const data = yield response.json();
-        yield put(fetchActorsSuccess(data.results));
+        yield put(fetchActorsSuccess({
+            actors: data.results,
+            totalPages: Math.min(data.total_pages, 500)
+        }));
     } catch (error) {
         yield put(fetchActorsFailure(error.toString()));
     }
