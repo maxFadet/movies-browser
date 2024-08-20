@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/movies-browser/static/js/main.43674443.js",
+    "main.js": "/movies-browser/static/js/main.471da520.js",
     "static/js/453.4f8818d1.chunk.js": "/movies-browser/static/js/453.4f8818d1.chunk.js",
     "static/media/poster.png": "/movies-browser/static/media/poster.8b56259e7263048e47a7.png",
     "index.html": "/movies-browser/index.html",
-    "static/media/Vector.svg": "/movies-browser/static/media/Vector.291f146da8ec732e66d3333dc945ea1b.svg",
-    "static/media/Star.svg": "/movies-browser/static/media/Star.17fc10390d5fa2a1158e40450673940b.svg",
-    "static/media/Profile.svg": "/movies-browser/static/media/Profile.50fa67ba8b05e42674fce5c3bc99f766.svg",
-    "static/media/Danger.svg": "/movies-browser/static/media/Danger.1a50ec90bf2543fe78aca794450d3b21.svg",
-    "static/media/Video.svg": "/movies-browser/static/media/Video.91398cb2bf89584543c8783def0abc05.svg",
-    "static/media/Pointer.svg": "/movies-browser/static/media/Pointer.25e91acf5c7ab77ebc8f8284d8acd11e.svg",
-    "static/media/Search.svg": "/movies-browser/static/media/Search.939e18f2aa9757ddc4b479c7b14f1459.svg",
-    "static/media/Ellipse.svg": "/movies-browser/static/media/Ellipse.4af892972d97b175b1fd732a3ba78755.svg",
-    "main.43674443.js.map": "/movies-browser/static/js/main.43674443.js.map",
+    "static/media/Vector.svg": "/movies-browser/static/media/Vector.8663155c38d2739a01d98dddbf5d2ae1.svg",
+    "static/media/Star.svg": "/movies-browser/static/media/Star.f8fa76848843ad6f2e49384424f34380.svg",
+    "static/media/Profile.svg": "/movies-browser/static/media/Profile.cf6ada77b63e8e3ff5aa77fd490c7a41.svg",
+    "static/media/Danger.svg": "/movies-browser/static/media/Danger.a514e9c64a76d5cf149bdd7443857605.svg",
+    "static/media/Video.svg": "/movies-browser/static/media/Video.c0acad5eec89df1179d9dc4fb6b60bc0.svg",
+    "static/media/Pointer.svg": "/movies-browser/static/media/Pointer.95a980d03aa24878b4b68139a4fd2714.svg",
+    "static/media/Search.svg": "/movies-browser/static/media/Search.bab83b9382dfba1c63ce59e8e78d6092.svg",
+    "static/media/Ellipse.svg": "/movies-browser/static/media/Ellipse.9f16df28425fc8e28092fddbb9e57b37.svg",
+    "main.471da520.js.map": "/movies-browser/static/js/main.471da520.js.map",
     "453.4f8818d1.chunk.js.map": "/movies-browser/static/js/453.4f8818d1.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.43674443.js"
+    "static/js/main.471da520.js"
   ]
 }
