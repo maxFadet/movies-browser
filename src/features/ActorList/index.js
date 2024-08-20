@@ -97,10 +97,14 @@ const ActorsList = () => {
         return <Error />;
     }
 
+    const header = isSearching
+    ? `Search results for “${searchQuery}”`
+    : "Popular people";
+
     return (
         <Container>
             <Section>
-                <Title>Popular people</Title>
+            <Title>{header}</Title>
                 {actors.length > 0 && (
                     actors.map((actor) => (
                         <PersonsListTile
