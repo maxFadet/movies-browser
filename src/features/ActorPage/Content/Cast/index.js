@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../../../routes";
 import { useSelector } from 'react-redux';
@@ -45,7 +44,7 @@ export const Cast = () => {
                         <RatingWrapper>
                             <Rating>
                                 <RatingStar />
-                                <RatingNumber>{movie.vote_average}</RatingNumber>
+                                <RatingNumber>{movie.vote_average.toFixed(1)}</RatingNumber>
                             </Rating>
                             <VoteCount>{movie.vote_count} votes</VoteCount>
                         </RatingWrapper>
