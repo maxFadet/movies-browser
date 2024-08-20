@@ -20,7 +20,15 @@ export const StyledTile = styled.li`
         @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
             grid-template-rows: unset;
             grid-template-columns: 1fr 1.5fr;
-            min-height: 237px;
+            min-height: 293px;
+        };
+
+        @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+           min-height: 230px;
+        }; 
+
+        @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+           min-height: unset;
         }; 
     `};
 `;
