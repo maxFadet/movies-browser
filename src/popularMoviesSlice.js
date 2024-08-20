@@ -6,7 +6,7 @@ import { errorStatus } from "./requestStatuses/errorStatus";
 export const popularMoviesSlice = createSlice({
     name: "popularMovies",
     initialState: {
-        popularMovies: null,
+        popularMovies: { results: [] },
         popularMoviesFetchStatus: loadingStatus,
         currentPage: 1,
         totalPages: 500,
@@ -17,7 +17,7 @@ export const popularMoviesSlice = createSlice({
             state.currentPage = action.payload.page || 1;
         },
         fetchPopularMovieSuccess: (state, { payload: { movies, totalPages } }) => {
-            state.popularMovies = movies;
+            state.popularMovies.results = movies;
             state.totalPages = totalPages || state.totalPages;
             state.popularMoviesFetchStatus = successStatus;
         },

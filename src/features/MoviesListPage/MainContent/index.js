@@ -5,7 +5,7 @@ import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularM
 import { Tile } from '../../../common/Tile';
 import { GenresList } from '../../../common/GenresList';
 import { Rates } from '../../../common/Rates';
-import { toMovie } from "../../../routes"
+import { toMovie } from "../../../routes";
 import { MoviesTilesList } from '../../../common/MoviesTilesList';
 import { Container } from '../../../common/Container';
 import { Pagination } from '../../../common/Pagination';
