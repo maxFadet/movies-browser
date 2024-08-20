@@ -9,6 +9,7 @@ import { toMovie } from "../../../routes";
 import { MoviesTilesList } from '../../../common/MoviesTilesList';
 import { Container } from '../../../common/Container';
 import { Pagination } from '../../../common/Pagination';
+import { Loader } from '../../../common/Loader';
 import { useEffect, useState } from 'react';
 
 export const MainContent = () => {
@@ -16,16 +17,14 @@ export const MainContent = () => {
     const dispatch = useDispatch();
     const location = useLocation();
 
-    const handleMovieClick = (id) => {
-        navigate(toMovie({ id }));
-    };
-
     const searchResults = useSelector(selectSearchMovies);
     const popularMovies = useSelector(selectPopularMovies);
     const currentPage = useSelector(selectCurrentPage);
     const totalPages = useSelector(selectTotalPages);
 
     const [searchQuery, setSearchQuery] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get("search");
@@ -43,8 +42,23 @@ export const MainContent = () => {
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
 
     const handlePageChange = (page) => {
-        dispatch(fetchPopularMovies({ page }));
+        setIsLoading(true);
+        setTimeout(() => {
+            dispatch(fetchPopularMovies({ page }));
+            setIsLoading(false);
+        }, 1000);
     };
+
+    const handleMovieClick = (id) => {
+        setIsTransitioning(true);
+        setTimeout(() => {
+            navigate(toMovie({ id }));
+        }, 1000);
+    };
+
+    if (isLoading || isTransitioning) {
+        return <Loader showText={false} />;
+    }
 
     return (
         <Container>
