@@ -1,28 +1,31 @@
-import { useSelector } from "react-redux";
-import { selectSearchMovies } from "../../../searchMoviesSlice";
-import { selectPopularMovies } from "../../../popularMoviesSlice";
-import { Tile } from "../../../common/Tile";
-import { GenresList } from "../../../common/GenresList";
-import { Rates } from "../../../common/Rates";
-import { MoviesTilesList } from "../../../common/MoviesTilesList";
-import { Container } from "../../../common/Container";
-import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { selectSearchMovies } from '../../../searchMoviesSlice';
+import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../../popularMoviesSlice';
+import { Tile } from '../../../common/Tile';
+import { GenresList } from '../../../common/GenresList';
+import { Rates } from '../../../common/Rates';
 import { toMovie } from "../../../routes";
-import { Pagination } from "../../../common/Pagination";
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { MoviesTilesList } from '../../../common/MoviesTilesList';
+import { Container } from '../../../common/Container';
+import { Pagination } from '../../../common/Pagination';
+import { Loader } from '../../../common/Loader';
+import { useEffect, useState } from 'react';
 import { NoResults } from "../../../common/NoResultsPage";
 
 export const MainContent = () => {
     const navigate = useNavigate();
-    const handleMovieClick = (id) => {
-        navigate(toMovie({ id }));
-    };
+    const dispatch = useDispatch();
+    const location = useLocation();
 
     const searchResults = useSelector(selectSearchMovies);
     const popularMovies = useSelector(selectPopularMovies);
-    const location = useLocation();
+    const currentPage = useSelector(selectCurrentPage);
+    const totalPages = useSelector(selectTotalPages);
+
     const [searchQuery, setSearchQuery] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get("search");
@@ -39,6 +42,24 @@ export const MainContent = () => {
 
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
 
+  const handlePageChange = (page) => {
+        setIsLoading(true);
+        setTimeout(() => {
+            dispatch(fetchPopularMovies({ page }));
+            setIsLoading(false);
+        }, 1000);
+    };
+
+    const handleMovieClick = (id) => {
+        setIsTransitioning(true);
+        setTimeout(() => {
+            navigate(toMovie({ id }));
+        }, 1000);
+    };
+
+    if (isLoading || isTransitioning) {
+        return <Loader showText={false} />;
+    }
     if (isSearching && (!moviesToDisplay || moviesToDisplay.length === 0)) {
         return <NoResults query={searchQuery} />;
       }
@@ -83,7 +104,11 @@ export const MainContent = () => {
                     </>
                 }
             />
-            {/* <Pagination /> */}
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+            />
         </Container>
     );
 };
