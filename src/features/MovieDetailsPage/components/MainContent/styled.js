@@ -1,45 +1,56 @@
 import styled from "styled-components";
 
-export const StyledMovieBanner =
+export const BannerContent = styled.div`
+    width: 100%;
+    background-color: ${({ theme }) => theme.colors.woodsmoke};
+`;
+
+export const Banner =
     styled.div.attrs(({ $backdrop }) => ({
         style: {
             backgroundImage: `url(${$backdrop})`
         }
     }))`
-    background-position: center;
+    width: 80%;
+
+    margin: auto;
+    padding-top: 31.25%;
+    padding-bottom: 3%;
+
+    background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 
     color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.woodsmoke};
-    box-shadow: inset 0px 0px 74px 110px 
-        ${({ theme }) => theme.colors.woodsmoke};
-    padding-top: 42.25%;
+    box-shadow: inset 0px 5px 21px 23px ${({ theme }) => theme.colors.woodsmoke};;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
-        box-shadow: inset 0px 0px 40px 48px 
-            ${({ theme }) => theme.colors.woodsmoke};
+    box-shadow: inset 0px 5px 24px 27px
+        ${({ theme }) => theme.colors.woodsmoke};
     };
     
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-        box-shadow: inset 0px 0px 29px 31px 
+        box-shadow: inset 0px 5px 14px 11px 
             ${({ theme }) => theme.colors.woodsmoke};
     };
 `;
 
-export const MainInfo = styled.div`
+export const BannerMainInfo = styled.div`
     display: grid;
     grid-gap: 24px;
-    padding-left: 5%;
-    padding-bottom: 3%;
 
     @media (max-width:  ${({ theme }) => theme.breakpoints.mobileL}) {
         grid-gap: 4px;
     };
 `;
 
-export const Title = styled.header`
+export const MovieTitle = styled.header`
     font-size: 64px;
     font-weight: 600;
+
+    @media (max-width:  ${({ theme }) => theme.breakpoints.tabletS}) {
+        font-size: 45px;
+    };
 
     @media (max-width:  ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 24px;
