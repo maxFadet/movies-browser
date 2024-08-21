@@ -13,7 +13,7 @@ export const StyledDetailsTile = styled.div`
         ${({ theme }) => theme.colors.brightHeather};
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:repeat(2, 1fr);
         grid-template-areas: 
             "image details"
             "description description";
@@ -50,8 +50,12 @@ export const IconContainer = styled.div`
 
 export const Image = styled.img`
     grid-area: image;
-    width: 100%;
-    border-radius: 10px;    
+    width: 312px;
+    border-radius: 10px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+     width: 100%
+    };
 `;
 
 export const Details = styled.div`
