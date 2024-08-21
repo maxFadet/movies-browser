@@ -23,7 +23,7 @@ const MovieSearch = () => {
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedQuery(query);
-        }, 1000);
+        }, 500);
 
         return () => {
             clearTimeout(handler);
@@ -39,7 +39,7 @@ const MovieSearch = () => {
                 dispatch(searchPeople(debouncedQuery));
                 navigate(`${toActorsList()}?search=${debouncedQuery}`);
             }
-            
+
             const clearInputTimer = setTimeout(() => {
                 setQuery('');
             }, 3000);
@@ -61,14 +61,16 @@ const MovieSearch = () => {
     }, [location.search]);
 
     return (
-        <Search>
-            <StyledSearchIcon />
-            <Input
-                placeholder={placeholderText}
-                value={query}
-                onChange={handleInputChange}
-            />
-        </Search>
+        <>
+            <Search>
+                <StyledSearchIcon />
+                <Input
+                    placeholder={placeholderText}
+                    value={query}
+                    onChange={handleInputChange}
+                />
+            </Search>
+        </>
     );
 };
 
