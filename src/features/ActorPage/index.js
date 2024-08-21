@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchActorStart, selectActor, selectActorStatus } from './actorDetailsSlice';
+import {
+    fetchActorStart,
+    selectActor,
+    selectActorStatus,
+    selectCast,
+    selectCrew
+} from './actorDetailsSlice';
 import { Loader } from '../../common/Loader';
 import { Error } from '../../common/Error';
 import { Details } from './Content/Details';
@@ -20,9 +26,10 @@ export const ActorsData = () => {
 
     const actor = useSelector(selectActor);
     const status = useSelector(selectActorStatus);
+    const cast = useSelector(selectCast);
+    const crew = useSelector(selectCrew);
 
     useEffect(() => {
-
         const loaderTimeoutId = setTimeout(() => {
             setIsLoading(false);
         }, 1000);
@@ -44,8 +51,8 @@ export const ActorsData = () => {
         return (
             <Container>
                 <Details actor={actor} />
-                <Cast />
-                <Crew />
+                <Cast cast={cast} />
+                <Crew crew={crew} />
             </Container>
         );
     }
