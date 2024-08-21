@@ -18,6 +18,8 @@ import {
     Title,
     Rating
 } from "./styled";
+import { getYear } from "../../../../functions/getYear";
+import { GenresList } from "../../../../common/GenresList";
 
 export const Crew = () => {
     const crew = useSelector(selectCrew);
@@ -35,12 +37,10 @@ export const Crew = () => {
                     <MoviePoster src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                     <MovieInfo>
                         <MovieTitle>{movie.title}</MovieTitle>
-                        <MovieSubTitle>{new Date(movie.release_date).getFullYear()}</MovieSubTitle>
-                        <MovieTags>
-                            {movie.genre_ids.map((genreId, index) => (
-                                <MovieTag key={index}>{genreId}</MovieTag>
-                            ))}
-                        </MovieTags>
+                        <MovieSubTitle>{getYear(movie.release_date)}</MovieSubTitle>
+                        <GenresList
+                            genresIds={movie.genre_ids}
+                        />
                         <RatingWrapper>
                             <Rating>
                                 <RatingStar />

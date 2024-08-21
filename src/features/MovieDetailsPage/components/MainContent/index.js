@@ -7,7 +7,9 @@ import { useSelector } from "react-redux";
 import { selectMovieCreddits } from "../../slices/moviesCredditsListSlice";
 import { selectMovieDetails } from "../../slices/movieDetailsSlice";
 import { PageContent } from "../../../../common/PageContent";
-import { StyledMovieBanner, Title, MainInfo, } from "./styled";
+import { BannerContent, MovieTitle, BannerMainInfo, Banner } from "./styled";
+import { useNavigate } from "react-router-dom";
+import { toPerson } from "../../../../routes";
 
 export const MainContent = () => {
     const { cast, crew } = useSelector(selectMovieCreddits);
@@ -19,18 +21,26 @@ export const MainContent = () => {
         genres,
     } = useSelector(selectMovieDetails);
 
+    const navigate = useNavigate();
+
+    const handleActorClick = (id) => {
+        navigate(toPerson({ id }));
+    };
+
     return (
         <>
-            <StyledMovieBanner $backdrop={`https://image.tmdb.org/t/p/original${backdrop_path}`}>
-                <MainInfo>
-                    <Title>{title}</Title>
-                    <Rates
-                        mainInfo
-                        voteAverage={vote_average}
-                        voteCount={vote_count}
-                    />
-                </MainInfo>
-            </StyledMovieBanner>
+            <BannerContent>
+                <Banner $backdrop={`https://image.tmdb.org/t/p/original${backdrop_path}`}>
+                    <BannerMainInfo>
+                        <MovieTitle>{title}</MovieTitle>
+                        <Rates
+                            mainInfo
+                            voteAverage={vote_average}
+                            voteCount={vote_count}
+                        />
+                    </BannerMainInfo>
+                </Banner>
+            </BannerContent>
             <PageContent
                 content={
                     <>
@@ -42,42 +52,49 @@ export const MainContent = () => {
                                 </>
                             }
                         />
-                        <PeopleTilesList
-                            header="Cast"
-                            content={
-                                <>
-                                    {
-                                        cast.map(({ character, name, profile_path, id }) => (
-                                            <Tile
-                                                id={id}
-                                                image={profile_path}
-                                                title={name}
-                                                subInfo={character}
-                                            />
-                                        ))
+                        {
+                            cast && (
+                                <PeopleTilesList
+                                    header="Cast"
+                                    content={
+                                        <>
+                                            {
+                                                cast.map(({ character, name, profile_path, id }) => (
+                                                    <Tile
+                                                        navigateTo={() => handleActorClick(id)}
+                                                        id={id}
+                                                        image={profile_path}
+                                                        title={name}
+                                                        subInfo={character}
+                                                    />
+                                                ))
+                                            }
+                                        </>
                                     }
-                                </>
-                            }
-                        />
-                        <PeopleTilesList
-                            header="Crew"
-                            content={
-                                <>
-                                    {
-                                        crew.map(({
-                                            job, name, profile_path, id
-                                        }) => (
-                                            <Tile
-                                                id={id}
-                                                image={profile_path}
-                                                title={name}
-                                                subInfo={job}
-                                            />
-                                        ))
+                                />
+                            )
+                        }
+                        {
+                            crew && (
+                                <PeopleTilesList
+                                    header="Crew"
+                                    content={
+                                        <>
+                                            {
+                                                crew.map(({ job, name, profile_path, id }) => (
+                                                    <Tile
+                                                        id={id}
+                                                        image={profile_path}
+                                                        title={name}
+                                                        subInfo={job}
+                                                    />
+                                                ))
+                                            }
+                                        </>
                                     }
-                                </>
-                            }
-                        />
+                                />
+                            )
+                        }
                     </>
                 }
             />

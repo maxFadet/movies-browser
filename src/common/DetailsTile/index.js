@@ -16,6 +16,7 @@ import { selectMovieDetails } from
     "../../features/MovieDetailsPage/slices/movieDetailsSlice";
 import { StyledProfileIcon } from "../StyledProfileIcon";
 import { StyledVideoIcon } from "../StyledVideoIcon";
+import { getYear } from "../../functions/getYear";
 
 export const DetailsTile = ({ extraContent }) => {
 
@@ -27,14 +28,13 @@ export const DetailsTile = ({ extraContent }) => {
         production_countries
     } = useSelector(selectMovieDetails);
 
-    const year = new Date(release_date).getFullYear();
     const areMovieDetails = production_countries || release_date;
-
+     
     return (
         <StyledDetailsTile>
             {
                 poster_path ?
-                    <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title}/> :
+                    <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} /> :
                     <IconContainer>
                         {areMovieDetails ? <StyledVideoIcon /> : <StyledProfileIcon />}
                     </IconContainer>
@@ -42,23 +42,22 @@ export const DetailsTile = ({ extraContent }) => {
             <Details>
                 <Header>{title}</Header>
                 {
-                    year && (
-                        <Year>{year}</Year>
+                    release_date && (
+                        <Year>{getYear(release_date)}</Year>
                     )
                 }
                 {
                     areMovieDetails ?
                         <DetailInfo>
                             <DetailInfoItem >
-                                <DetailInfoType>Production:</DetailInfoType>
-                                {
-                                    window.innerWidth <= 475
-                                        ? (Array.isArray(production_countries[0].iso_3166_1)
-                                            ? production_countries[0].iso_3166_1.join(", ")
-                                            : production_countries[0].iso_3166_1)
-                                        : (Array.isArray(production_countries[0].name)
-                                            ? production_countries[0].name.join(", ")
-                                            : production_countries[0].name)
+                                <DetailInfoType>Production:</DetailInfoType> {
+                                    production_countries && (
+                                        production_countries.map(({ name, iso_3166_1 }) => (
+                                            <span key={iso_3166_1}>
+                                                {window.innerWidth <= 475 ? iso_3166_1 : name}
+                                            </span>
+                                        ))
+                                    )
                                 }
                             </DetailInfoItem>
                             <DetailInfoItem>
