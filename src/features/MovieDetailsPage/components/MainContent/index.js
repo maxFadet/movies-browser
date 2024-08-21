@@ -52,43 +52,49 @@ export const MainContent = () => {
                                 </>
                             }
                         />
-                        <PeopleTilesList
-                            header="Cast"
-                            content={
-                                <>
-                                    {
-                                        cast.map(({ character, name, profile_path, id }) => (
-                                            <Tile
-                                                navigateTo={() => handleActorClick(id)}
-                                                id={id}
-                                                image={profile_path}
-                                                title={name}
-                                                subInfo={character}
-                                            />
-                                        ))
+                        {
+                            cast && (
+                                <PeopleTilesList
+                                    header="Cast"
+                                    content={
+                                        <>
+                                            {
+                                                cast.map(({ character, name, profile_path, id }) => (
+                                                    <Tile
+                                                        navigateTo={() => handleActorClick(id)}
+                                                        id={id}
+                                                        image={profile_path}
+                                                        title={name}
+                                                        subInfo={character}
+                                                    />
+                                                ))
+                                            }
+                                        </>
                                     }
-                                </>
-                            }
-                        />
-                        <PeopleTilesList
-                            header="Crew"
-                            content={
-                                <>
-                                    {
-                                        crew.map(({
-                                            job, name, profile_path, id
-                                        }) => (
-                                            <Tile
-                                                id={id}
-                                                image={profile_path}
-                                                title={name}
-                                                subInfo={job}
-                                            />
-                                        ))
+                                />
+                            )
+                        }
+                        {
+                            crew && (
+                                <PeopleTilesList
+                                    header="Crew"
+                                    content={
+                                        <>
+                                            {
+                                                crew.map(({ job, name, profile_path, id }) => (
+                                                    <Tile
+                                                        id={id}
+                                                        image={profile_path}
+                                                        title={name}
+                                                        subInfo={job}
+                                                    />
+                                                ))
+                                            }
+                                        </>
                                     }
-                                </>
-                            }
-                        />
+                                />
+                            )
+                        }
                     </>
                 }
             />
