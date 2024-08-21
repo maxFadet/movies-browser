@@ -29,7 +29,7 @@ export const DetailsTile = ({ extraContent }) => {
     } = useSelector(selectMovieDetails);
 
     const areMovieDetails = production_countries || release_date;
-
+     
     return (
         <StyledDetailsTile>
             {
@@ -50,15 +50,14 @@ export const DetailsTile = ({ extraContent }) => {
                     areMovieDetails ?
                         <DetailInfo>
                             <DetailInfoItem >
-                                <DetailInfoType>Production:</DetailInfoType>
-                                {
-                                    window.innerWidth <= 475
-                                        ? (Array.isArray(production_countries[0].iso_3166_1)
-                                            ? production_countries[0].iso_3166_1.join(", ")
-                                            : production_countries[0].iso_3166_1)
-                                        : (Array.isArray(production_countries[0].name)
-                                            ? production_countries[0].name.join(", ")
-                                            : production_countries[0].name)
+                                <DetailInfoType>Production:</DetailInfoType> {
+                                    production_countries && (
+                                        production_countries.map(({ name, iso_3166_1 }) => (
+                                            <span key={iso_3166_1}>
+                                                {window.innerWidth <= 475 ? iso_3166_1 : name}
+                                            </span>
+                                        ))
+                                    )
                                 }
                             </DetailInfoItem>
                             <DetailInfoItem>
