@@ -8,6 +8,8 @@ import { selectMovieCreddits } from "../../slices/moviesCredditsListSlice";
 import { selectMovieDetails } from "../../slices/movieDetailsSlice";
 import { PageContent } from "../../../../common/PageContent";
 import { BannerContent, MovieTitle, BannerMainInfo, Banner } from "./styled";
+import { useNavigate } from "react-router-dom";
+import { toPerson } from "../../../../routes";
 
 export const MainContent = () => {
     const { cast, crew } = useSelector(selectMovieCreddits);
@@ -18,6 +20,12 @@ export const MainContent = () => {
         vote_count,
         genres,
     } = useSelector(selectMovieDetails);
+
+    const navigate = useNavigate();
+
+    const handleActorClick = (id) => {
+        navigate(toPerson({ id }));
+    };
 
     return (
         <>
@@ -51,6 +59,7 @@ export const MainContent = () => {
                                     {
                                         cast.map(({ character, name, profile_path, id }) => (
                                             <Tile
+                                                navigateTo={() => handleActorClick(id)}
                                                 id={id}
                                                 image={profile_path}
                                                 title={name}
