@@ -20,6 +20,12 @@ const MovieSearch = () => {
     const placeholderText = getPlaceholderText(location.pathname);
     const isSearchingMovies = location.pathname === toMoviesList() || location.pathname.match(/^\/movies\/\d+$/);
 
+    const [searchResultsText, setSearchResultsText] = useState("");
+
+    useEffect(() => {
+        setSearchResultsText(query ? `Search results for "${query}"` : "");
+    }, [query]);
+    
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedQuery(query);
