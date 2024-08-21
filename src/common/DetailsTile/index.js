@@ -16,6 +16,7 @@ import { selectMovieDetails } from
     "../../features/MovieDetailsPage/slices/movieDetailsSlice";
 import { StyledProfileIcon } from "../StyledProfileIcon";
 import { StyledVideoIcon } from "../StyledVideoIcon";
+import { getYear } from "../../functions/getYear";
 
 export const DetailsTile = ({ extraContent }) => {
 
@@ -27,14 +28,13 @@ export const DetailsTile = ({ extraContent }) => {
         production_countries
     } = useSelector(selectMovieDetails);
 
-    const year = new Date(release_date).getFullYear();
     const areMovieDetails = production_countries || release_date;
 
     return (
         <StyledDetailsTile>
             {
                 poster_path ?
-                    <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title}/> :
+                    <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} /> :
                     <IconContainer>
                         {areMovieDetails ? <StyledVideoIcon /> : <StyledProfileIcon />}
                     </IconContainer>
@@ -42,8 +42,8 @@ export const DetailsTile = ({ extraContent }) => {
             <Details>
                 <Header>{title}</Header>
                 {
-                    year && (
-                        <Year>{year}</Year>
+                    release_date && (
+                        <Year>{getYear(release_date)}</Year>
                     )
                 }
                 {
