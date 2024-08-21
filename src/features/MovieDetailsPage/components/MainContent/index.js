@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { selectMovieCreddits } from "../../slices/moviesCredditsListSlice";
 import { selectMovieDetails } from "../../slices/movieDetailsSlice";
 import { PageContent } from "../../../../common/PageContent";
-import { StyledMovieBanner, Title, MainInfo, } from "./styled";
+import { BannerContent, MovieTitle, BannerMainInfo, Banner } from "./styled";
 
 export const MainContent = () => {
     const { cast, crew } = useSelector(selectMovieCreddits);
@@ -21,16 +21,18 @@ export const MainContent = () => {
 
     return (
         <>
-            <StyledMovieBanner $backdrop={`https://image.tmdb.org/t/p/original${backdrop_path}`}>
-                <MainInfo>
-                    <Title>{title}</Title>
-                    <Rates
-                        mainInfo
-                        voteAverage={vote_average}
-                        voteCount={vote_count}
-                    />
-                </MainInfo>
-            </StyledMovieBanner>
+            <BannerContent>
+                <Banner $backdrop={`https://image.tmdb.org/t/p/original${backdrop_path}`}>
+                    <BannerMainInfo>
+                        <MovieTitle>{title}</MovieTitle>
+                        <Rates
+                            mainInfo
+                            voteAverage={vote_average}
+                            voteCount={vote_count}
+                        />
+                    </BannerMainInfo>
+                </Banner>
+            </BannerContent>
             <PageContent
                 content={
                     <>
