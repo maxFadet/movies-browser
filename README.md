@@ -46,6 +46,17 @@ Here are some screenshots of the project in action:
 - **Redux-Saga**: Handling side effects and asynchronous actions.
 - **ThemeProvider**: For consistent theming across the application.
 
+## Contributors
+
+This project was developed as a group effort by the following team members:
+
+- **Oskar Właszczuk** - [OskarWlaszczuk
+](https://github.com/OskarWlaszczuk)
+- **Dorota Karpińska** - [DorotaKar](https://github.com/DorotaKar)
+- **Maksim Padrabinkin** - [maxFadet](https://github.com/maxFadet)
+
+We worked together to bring this project to life, combining our skills.
+
 ## Available Scripts
 
 In the project directory, you can run:
