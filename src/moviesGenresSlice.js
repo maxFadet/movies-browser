@@ -23,18 +23,26 @@ export const moviesGenresSlice = createSlice({
 
 export const { fetchMoviesGenres, fetchMoviesGenresSuccess, fetchMoviesGenresError } = moviesGenresSlice.actions;
 
-export const selectMoviesGenresState = state => state.moviesGenres;
+export const selectMoviesGenresState = (state) => state.moviesGenres;
 
-export const selectMoviesGenresFetchStatus = state => selectMoviesGenresState(state).moviesGenresFetchStatus;
-export const selectMoviesGenres = state => selectMoviesGenresState(state).moviesGenres;
+// Проверка на наличие данных в `moviesGenres`
+export const selectMoviesGenresFetchStatus = (state) => {
+    const moviesGenresState = selectMoviesGenresState(state);
+    return moviesGenresState ? moviesGenresState.moviesGenresFetchStatus : null;
+};
+
+export const selectMoviesGenres = (state) => {
+    const moviesGenresState = selectMoviesGenresState(state);
+    return moviesGenresState ? moviesGenresState.moviesGenres : null;
+};
+
 export const findMoviesGenresById = (state, genresIds) => {
     if (!genresIds) {
         return [];
     }
 
-    const { genres } = selectMoviesGenres(state);
-    const foundNames = genres.filter(({ id }) => genresIds.includes(id));
-
-    return foundNames;
+    const genres = selectMoviesGenres(state)?.genres || [];
+    return genres.filter(({ id }) => genresIds.includes(id));
 };
+
 export const moviesGenresReducer = moviesGenresSlice.reducer;
