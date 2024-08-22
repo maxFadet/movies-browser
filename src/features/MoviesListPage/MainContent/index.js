@@ -2,19 +2,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { selectSearchMovies } from '../../../searchMoviesSlice';
 import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../../popularMoviesSlice';
-import { Tile } from '../../../common/Tile';
-import { GenresList } from '../../../common/GenresList';
-import { Rates } from '../../../common/Rates';
-import { toMovie } from "../../../routes";
-import { MoviesTilesList } from '../../../common/MoviesTilesList';
+import { MovieTile } from '../../../common/MovieTile';
 import { Container } from '../../../common/Container';
 import { Pagination } from '../../../common/Pagination';
 import { Loader } from '../../../common/Loader';
 import { useEffect, useState } from 'react';
 import { NoResults } from "../../../common/NoResultsPage";
-import { getYear } from '../../../functions/getYear';
 import { queryKey } from '../../../queryKey';
 import { useNavigationToPage } from '../../../useNavigation';
+import { toMovie } from "../../../routes";
+import { MoviesTilesList } from '../../../common/MoviesTilesList';
+
 export const MainContent = () => {
     const navigate = useNavigate();
     const handleTileClick = useNavigationToPage();
@@ -57,6 +55,7 @@ export const MainContent = () => {
         setIsTransitioning(true);
         setTimeout(() => {
             navigate(toMovie({ id }));
+            setIsTransitioning(false);
         }, 1000);
     };
 
@@ -74,27 +73,11 @@ export const MainContent = () => {
                 content={
                     <>
                         {moviesToDisplay && moviesToDisplay.length > 0 && (
-                            moviesToDisplay.map(({
-                                title,
-                                id,
-                                vote_average,
-                                vote_count,
-                                poster_path,
-                                release_date,
-                                genre_ids
-                            }) => (
-                                <Tile
-                                    key={id}
-                                    navigateTo={() => handleTileClick(toMovie, id)}
-                                    image={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                                    title={title}
-                                    subInfo={getYear(release_date)}
-                                    extraContent={
-                                        <>
-                                            <GenresList genresIds={genre_ids} />
-                                            <Rates voteAverage={vote_average} voteCount={vote_count} />
-                                        </>
-                                    }
+                            moviesToDisplay.map((movie) => (
+                                <MovieTile
+                                    key={movie.id}
+                                    movie={movie}
+                                    handleMovieClick={handleMovieClick}
                                 />
                             ))
                         )}
