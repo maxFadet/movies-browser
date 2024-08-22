@@ -71,7 +71,7 @@ const ActorsList = () => {
             const searchDelayId = setTimeout(() => {
                 dispatch(searchPeople(debouncedSearchQuery));
                 setIsLoading(false);
-            }, 1000);
+            }, 300);
 
             return () => clearTimeout(searchDelayId);
         } else {
@@ -79,7 +79,7 @@ const ActorsList = () => {
             setIsLoading(true);
             const loadingDelayId = setTimeout(() => {
                 setIsLoading(false);
-            }, 1000);
+            }, 1500);
 
             return () => clearTimeout(loadingDelayId);
         }
@@ -102,18 +102,14 @@ const ActorsList = () => {
         return <Error />;
     }
 
-    const header = isSearching
-        ? `Search results for “${searchQuery}”`
-        : "Popular people";
-
-    if (actors.length === 0) {
+    if (actors.length === 0 && isSearching) {
         return <NoResults query={searchQuery} />;
     }
 
     return (
         <Container>
             <Section>
-                <Title>{header}</Title>
+                <Title>{headerText}</Title>
                 {actors.length > 0 && (
                     actors.map((actor) => (
                         <PersonsListTile
