@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ReactComponent as StarIcon } from '../../../../image/Vector.svg';
+import noImage from '../../../../Video.svg';
 
 export const MoviesSection = styled.section`
   display: grid;
@@ -57,10 +58,21 @@ export const TitleWithMargin = styled(Title)`
 
 export const MoviePoster = styled.img`
   border-radius: 5px;
+  width: 100%;
+
+  ${({ $placeholderPoster }) => $placeholderPoster && css`
+        padding-top: calc(100% * 434 / 292);
+        background-image: url("${noImage}");
+        background-color: ${({ theme }) => theme.colors.silver};
+        background-size: 32%;
+        background-position: center;
+        background-repeat: no-repeat;
+    `}
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     width: 114px;
     height: 169px;
+    padding-top: unset;
   }
 `;
 

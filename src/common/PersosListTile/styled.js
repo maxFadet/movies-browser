@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import Profile from './Profile.svg';
+import noImage from '../../image/noImage.svg';
 
 export const StyledTile = styled.div`
   background-color: rgba(255, 255, 255, 1);
@@ -40,7 +40,7 @@ export const Photo = styled.img`
 
   ${({ $placeholderPhoto }) => $placeholderPhoto && css`
     padding-top: calc(100% * 264 / 177);
-    background-image: url("${Profile}");
+    background-image: url("${noImage}");
     background-color: ${({ theme }) => theme.colors.silver};
     background-size: 32%;
     background-position: center;
