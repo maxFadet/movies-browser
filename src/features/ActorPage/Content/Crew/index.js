@@ -7,8 +7,6 @@ import {
     MovieInfo,
     MovieTitle,
     MovieSubTitle,
-    MovieTags,
-    MovieTag,
     RatingWrapper,
     RatingStar,
     RatingNumber,
@@ -38,9 +36,13 @@ export const Crew = () => {
                     <MovieInfo>
                         <MovieTitle>{movie.title}</MovieTitle>
                         <MovieSubTitle>{getYear(movie.release_date)}</MovieSubTitle>
-                        <GenresList
-                            genresIds={movie.genre_ids}
-                        />
+                        {
+                            movie.genre_ids && (
+                                <GenresList
+                                    genresIds={movie.genre_ids}
+                                />
+                            )
+                        }
                         <RatingWrapper>
                             <Rating>
                                 <RatingStar />
