@@ -101,20 +101,24 @@ const ActorsList = () => {
         return <Error />;
     }
 
-    if (actors.length === 0 && isSearching) {
+    const header = isSearching
+        ? `Search results for “${searchQuery}”`
+        : "Popular people";
+
+    if (actors.length === 0) {
         return <NoResults query={searchQuery} />;
     }
 
     return (
         <Container>
             <Section>
-                <Title>{headerText}</Title>
+                <Title>{header}</Title>
                 {actors.length > 0 && (
                     actors.map((actor) => (
                         <PersonsListTile
                             key={actor.id}
                             onClick={() => handleActorClick(actor.id)}
-                            photo={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                            photo={actor.profile_path}
                             name={actor.name}
                         />
                     ))
