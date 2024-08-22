@@ -13,6 +13,7 @@ import { Loader } from '../../../common/Loader';
 import { useEffect, useState } from 'react';
 import { NoResults } from "../../../common/NoResultsPage";
 import { getYear } from '../../../functions/getYear';
+import { queryKey } from '../../../queryKey';
 export const MainContent = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ export const MainContent = () => {
     const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
-        const query = new URLSearchParams(location.search).get("search");
+        const query = new URLSearchParams(location.search).get(queryKey);
         if (query && query !== searchQuery) {
             setSearchQuery(query);
         }
