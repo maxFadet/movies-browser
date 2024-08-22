@@ -12,7 +12,7 @@ export const StyledTile = styled.li`
     padding: 16px;
     list-style-type: none;
     height: 100%;
-    word-break: break-all;
+    word-break: break-word;
     min-height: 330px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
