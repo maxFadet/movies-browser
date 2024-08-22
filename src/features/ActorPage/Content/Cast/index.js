@@ -1,23 +1,10 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../../../routes";
-import { useSelector } from 'react-redux';
-import { selectCast } from '../../actorDetailsSlice';
-import {
-    StyledTile,
-    MovieInfo,
-    MovieTitle,
-    MovieSubTitle,
-    RatingWrapper,
-    RatingStar,
-    RatingNumber,
-    VoteCount,
-    MoviePoster,
-    MoviesSection,
-    Title,
-    Rating
-} from "./styled";
-import { GenresList } from "../../../../common/GenresList";
-import { getYear } from "../../../../functions/getYear";
+import { useSelector } from "react-redux";
+import { selectCast } from "../../actorDetailsSlice";
+import { MoviesSection, Title } from "./styled";
+import { MovieTile } from "../../../../common/MovieTile";
 
 export const Cast = () => {
     const cast = useSelector(selectCast);
@@ -30,33 +17,13 @@ export const Cast = () => {
     return (
         <MoviesSection>
             <Title>Movies - cast</Title>
-            {cast.map((movie, index) => {
-                const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null;
-
-                return (
-                    <StyledTile key={index} onClick={() => handleMovieClick(movie.id)}>
-                        {posterUrl ? (
-                            <MoviePoster src={posterUrl} alt={movie.title} />
-                        ) : (
-                            <MoviePoster as="div" $placeholderPoster />
-                        )}
-                        <MovieInfo>
-                            <MovieTitle>{movie.title}</MovieTitle>
-                            <MovieSubTitle>{getYear(movie.release_date)}</MovieSubTitle>
-                            <GenresList
-                                genresIds={movie.genre_ids}
-                            />
-                            <RatingWrapper>
-                                <Rating>
-                                    <RatingStar />
-                                    <RatingNumber>{movie.vote_average.toFixed(1)}</RatingNumber>
-                                </Rating>
-                                <VoteCount>{movie.vote_count} votes</VoteCount>
-                            </RatingWrapper>
-                        </MovieInfo>
-                    </StyledTile>
-                );
-            })}
+            {cast.map((movie, index) => (
+                <MovieTile
+                    key={index}
+                    movie={movie}
+                    handleMovieClick={handleMovieClick}
+                />
+            ))}
         </MoviesSection>
     );
 };
