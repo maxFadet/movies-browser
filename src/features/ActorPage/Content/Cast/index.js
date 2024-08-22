@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../../../routes";
 import { useSelector } from "react-redux";
 import { selectCast } from "../../actorDetailsSlice";
-import { MoviesSection, Title } from "./styled";
 import { MovieTile } from "../../../../common/MovieTile";
+import { MoviesTilesList } from "../../../../common/MoviesTilesList";
 
 export const Cast = () => {
     const cast = useSelector(selectCast);
@@ -15,15 +15,16 @@ export const Cast = () => {
     };
 
     return (
-        <MoviesSection>
-            <Title>Movies - cast</Title>
-            {cast.map((movie, index) => (
-                <MovieTile
-                    key={index}
-                    movie={movie}
-                    handleMovieClick={handleMovieClick}
-                />
-            ))}
-        </MoviesSection>
+        <MoviesTilesList
+            header="Movies - cast"
+            content={
+                cast.map((movie, index) => (
+                    <MovieTile
+                        key={index}
+                        movie={movie}
+                        handleMovieClick={handleMovieClick}
+                    />
+                ))}
+        />
     );
 };
