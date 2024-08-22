@@ -29,7 +29,7 @@ export const DetailsTile = ({ extraContent }) => {
     } = useSelector(selectMovieDetails);
 
     const areMovieDetails = production_countries || release_date;
-     
+
     return (
         <StyledDetailsTile>
             {
@@ -51,20 +51,22 @@ export const DetailsTile = ({ extraContent }) => {
                         <DetailInfo>
                             <DetailInfoItem >
                                 <DetailInfoType>Production:</DetailInfoType> {
-                                    production_countries && (
+                                    production_countries ?
                                         production_countries.map(({ name, iso_3166_1 }) => (
                                             <span key={iso_3166_1}>
                                                 {window.innerWidth <= 475 ? iso_3166_1 : name}
                                             </span>
-                                        ))
-                                    )
+                                        )) :
+                                        <>Unknow</>
                                 }
                             </DetailInfoItem>
                             <DetailInfoItem>
                                 <DetailInfoType>Release date:</DetailInfoType> {
-                                    new Date(release_date).toLocaleString(undefined,
-                                        { year: "numeric", month: "numeric", day: "numeric" }
-                                    )
+                                    release_date ?
+                                        new Date(release_date).toLocaleString(undefined,
+                                            { year: "numeric", month: "numeric", day: "numeric" }
+                                        ) :
+                                        <>Unknow</>
                                 }
                             </DetailInfoItem>
                         </DetailInfo> :
@@ -79,9 +81,13 @@ export const DetailsTile = ({ extraContent }) => {
                 }
                 {extraContent}
             </Details>
-            <Description>
-                {overview}
-            </Description>
+            {
+                overview && (
+                    <Description>
+                        {overview}
+                    </Description>
+                )
+            }
         </StyledDetailsTile >
     );
 };
