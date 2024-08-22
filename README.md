@@ -21,11 +21,11 @@ Here are some screenshots of the project in action:
 
 ![Popular movies page](./src/image/readmeimg/popular-movies.png)
 
+![Movie page](./src/image/readmeimg/movie.png)
+
 ![Popular people page](./src/image/readmeimg/popular-people.png)
 
 ![Actor page](./src/image/readmeimg/actor.png)
-
-![Movie page](./src/image/readmeimg/movie.png)
 
 ## Features
 
