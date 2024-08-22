@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     selectActors,
@@ -46,7 +46,8 @@ const ActorsList = () => {
     const location = useLocation();
 
     const [searchQuery, setSearchQuery] = useState("");
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+    const [headerText, setHeaderText] = useState("Popular people");
 
     const debouncedSearchQuery = useDebounce(searchQuery, 1000);
 
@@ -57,11 +58,12 @@ const ActorsList = () => {
     const status = useSelector(isSearching ? selectSearchPeopleStatus : selectActorsStatus);
 
     useEffect(() => {
-        const query = new URLSearchParams(location.search).get(queryKey);
-        if (query && query !== searchQuery) {
-            setSearchQuery(query);
+        const query = new URLSearchParams(location.search).get("search");
+        if (query !== searchQuery) {
+            setSearchQuery(query || "");
+            setHeaderText(query ? `Search results for “${query}”` : "Popular people");
         }
-    }, [location, searchQuery]);
+    }, [location.search, searchQuery]);
 
     useEffect(() => {
         if (isSearching) {
@@ -74,6 +76,7 @@ const ActorsList = () => {
             return () => clearTimeout(searchDelayId);
         } else {
             dispatch(fetchActorsStart({ page: currentPage }));
+            setIsLoading(true);
             const loadingDelayId = setTimeout(() => {
                 setIsLoading(false);
             }, 1000);
@@ -100,8 +103,8 @@ const ActorsList = () => {
     }
 
     const header = isSearching
-    ? `Search results for “${searchQuery}”`
-    : "Popular people";
+        ? `Search results for “${searchQuery}”`
+        : "Popular people";
 
     if (actors.length === 0) {
         return <NoResults query={searchQuery} />;
@@ -110,13 +113,13 @@ const ActorsList = () => {
     return (
         <Container>
             <Section>
-            <Title>{header}</Title>
+                <Title>{header}</Title>
                 {actors.length > 0 && (
                     actors.map((actor) => (
                         <PersonsListTile
                             key={actor.id}
                             onClick={() => handleActorClick(actor.id)}
-                            photo={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                            photo={actor.profile_path}
                             name={actor.name}
                         />
                     ))

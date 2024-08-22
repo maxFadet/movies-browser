@@ -16,8 +16,8 @@ import {
     Title,
     Rating
 } from "./styled";
-import { getYear } from "../../../../functions/getYear";
 import { GenresList } from "../../../../common/GenresList";
+import { getYear } from "../../../../functions/getYear";
 
 export const Crew = () => {
     const crew = useSelector(selectCrew);
@@ -30,29 +30,33 @@ export const Crew = () => {
     return (
         <MoviesSection>
             <Title>Movies - crew</Title>
-            {crew.map((movie, index) => (
-                <StyledTile key={index} onClick={() => handleMovieClick(movie.id)}>
-                    <MoviePoster src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-                    <MovieInfo>
-                        <MovieTitle>{movie.title}</MovieTitle>
-                        <MovieSubTitle>{getYear(movie.release_date)}</MovieSubTitle>
-                        {
-                            movie.genre_ids && (
-                                <GenresList
-                                    genresIds={movie.genre_ids}
-                                />
-                            )
-                        }
-                        <RatingWrapper>
-                            <Rating>
-                                <RatingStar />
-                                <RatingNumber>{movie.vote_average.toFixed(1)}</RatingNumber>
-                            </Rating>
-                            <VoteCount>{movie.vote_count} votes</VoteCount>
-                        </RatingWrapper>
-                    </MovieInfo>
-                </StyledTile>
-            ))}
+            {crew.map((movie, index) => {
+                const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null;
+
+                return (
+                    <StyledTile key={index} onClick={() => handleMovieClick(movie.id)}>
+                        {posterUrl ? (
+                            <MoviePoster src={posterUrl} alt={movie.title} />
+                        ) : (
+                            <MoviePoster as="div" $placeholderPoster />
+                        )}
+                        <MovieInfo>
+                            <MovieTitle>{movie.title}</MovieTitle>
+                            <MovieSubTitle>{getYear(movie.release_date)}</MovieSubTitle>
+                            <GenresList
+                                genresIds={movie.genre_ids}
+                            />
+                            <RatingWrapper>
+                                <Rating>
+                                    <RatingStar />
+                                    <RatingNumber>{movie.vote_average.toFixed(1)}</RatingNumber>
+                                </Rating>
+                                <VoteCount>{movie.vote_count} votes</VoteCount>
+                            </RatingWrapper>
+                        </MovieInfo>
+                    </StyledTile>
+                );
+            })}
         </MoviesSection>
     );
 };
