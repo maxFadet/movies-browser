@@ -12,7 +12,7 @@ import { Pagination } from '../../../common/Pagination';
 import { Loader } from '../../../common/Loader';
 import { useEffect, useState } from 'react';
 import { NoResults } from "../../../common/NoResultsPage";
-
+import { getYear } from '../../../functions/getYear';
 export const MainContent = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -42,7 +42,7 @@ export const MainContent = () => {
 
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
 
-  const handlePageChange = (page) => {
+    const handlePageChange = (page) => {
         setIsLoading(true);
         setTimeout(() => {
             dispatch(fetchPopularMovies({ page }));
@@ -62,7 +62,7 @@ export const MainContent = () => {
     }
     if (isSearching && (!moviesToDisplay || moviesToDisplay.length === 0)) {
         return <NoResults query={searchQuery} />;
-      }
+    }
 
     return (
         <Container>
@@ -85,17 +85,11 @@ export const MainContent = () => {
                                     navigateTo={() => handleMovieClick(id)}
                                     image={`https://image.tmdb.org/t/p/w500${poster_path}`}
                                     title={title}
-                                    subInfo={new Date(release_date).getFullYear()}
+                                    subInfo={getYear(release_date)}
                                     extraContent={
                                         <>
-                                            <GenresList
-                                                genresIds={genre_ids}
-                                            />
-                                            <Rates
-                                                voteAverage={vote_average}
-                                                voteCount={vote_count}
-                                                hideTotalScore
-                                            />
+                                            <GenresList genresIds={genre_ids} />
+                                            <Rates voteAverage={vote_average} voteCount={vote_count} />
                                         </>
                                     }
                                 />
