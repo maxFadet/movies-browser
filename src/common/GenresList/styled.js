@@ -1,31 +1,26 @@
 import styled from "styled-components";
 
 export const StyledGenresList = styled.ul`
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
 
-    gap: 16px;
-    margin: 0px;
-    padding-left: 0px;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
-        gap: 8px;
-    };
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+    margin: 6px 0 8px;
+  }
 `;
 
 export const Genre = styled.li`
-   display: flex;
-   align-items: center;
-   justify-items: center;
-   background-color: ${({ theme }) => theme.colors.mystic};
-   border-radius: 5px;
-   font-size: 16px;
-   font-weight: 400;
-   padding: 8px 16px;
-   list-style-type: none;
+  padding: 8px 16px;
+  background: ${({ theme }) => theme.colors.mystic};
+  border-radius: 5px;
+  font-size: 14px;
 
-   @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
-        font-size: 10px;
-        padding: 4px 8px;
-    };
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
 `;
