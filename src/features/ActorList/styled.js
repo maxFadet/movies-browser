@@ -5,7 +5,7 @@ export const Title = styled.h1`
   font-weight: 600;
   line-height: 43px;
   grid-column: 1 / -1;
-  margin-top: 0px;
+  margin: 0px;
   color: ${({ theme }) => theme.colors.woodsmoke};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
