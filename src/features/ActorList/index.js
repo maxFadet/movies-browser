@@ -99,8 +99,8 @@ const ActorsList = () => {
     }
 
     const header = isSearching
-    ? `Search results for “${searchQuery}”`
-    : "Popular people";
+        ? `Search results for “${searchQuery}”`
+        : "Popular people";
 
     if (actors.length === 0) {
         return <NoResults query={searchQuery} />;
@@ -109,13 +109,13 @@ const ActorsList = () => {
     return (
         <Container>
             <Section>
-            <Title>{header}</Title>
+                <Title>{header}</Title>
                 {actors.length > 0 && (
                     actors.map((actor) => (
                         <PersonsListTile
                             key={actor.id}
                             onClick={() => handleActorClick(actor.id)}
-                            photo={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                            photo={actor.profile_path}
                             name={actor.name}
                         />
                     ))
