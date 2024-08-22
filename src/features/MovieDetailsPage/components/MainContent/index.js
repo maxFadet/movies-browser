@@ -53,7 +53,7 @@ export const MainContent = () => {
                             }
                         />
                         {
-                            cast && (
+                            cast.length > 0 && (
                                 <PeopleTilesList
                                     header="Cast"
                                     content={
@@ -75,7 +75,7 @@ export const MainContent = () => {
                             )
                         }
                         {
-                            crew && (
+                            crew.length > 0 && (
                                 <PeopleTilesList
                                     header="Crew"
                                     content={
@@ -83,6 +83,7 @@ export const MainContent = () => {
                                             {
                                                 crew.map(({ job, name, profile_path, id }) => (
                                                     <Tile
+                                                        navigateTo={() => handleActorClick(id)}
                                                         id={id}
                                                         image={profile_path}
                                                         title={name}
