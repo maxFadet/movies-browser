@@ -51,8 +51,16 @@ export const ActorsData = () => {
         return (
             <Container>
                 <Details actor={actor} />
-                <Cast cast={cast} />
-                <Crew crew={crew} />
+                {
+                    cast.length > 0 && (
+                        <Cast cast={cast} />
+                    )
+                }
+                {
+                    crew.length > 0 && (
+                        <Crew crew={crew} />
+                    )
+                }
             </Container>
         );
     }

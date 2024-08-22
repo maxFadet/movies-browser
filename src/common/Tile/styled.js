@@ -12,11 +12,17 @@ export const StyledTile = styled.li`
     padding: 16px;
     list-style-type: none;
     height: 100%;
-    word-break: break-all;
-    min-height: 280px;
+    word-break: break-word;
+    min-height: 330px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+        min-height: 245px;
+    }; 
 
     ${({ $extraContentAvailable }) => $extraContentAvailable && css`
         min-height: unset;
+        grid-template-rows: min-content 0.5fr;
+        
         @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
             grid-template-rows: unset;
             grid-template-columns: 1fr 1.5fr;
@@ -28,7 +34,8 @@ export const StyledTile = styled.li`
         }; 
 
         @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
-           min-height: unset;
+            min-height: 201px;
+            grid-template-columns: 1fr 1fr;
         }; 
     `};
 `;

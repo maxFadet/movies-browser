@@ -16,12 +16,12 @@ export const Tile = ({
     subInfo,
     extraContent,
     id,
-    navigateTo
+    navigateTo,
 }) => {
     const isExtraContentAvailable = !!extraContent;
 
     const invalidMovieImageUrl = `https://image.tmdb.org/t/p/w500https://image.tmdb.org/t/p/w500null`;
-    const invalidPersonImageUrl =  `https://image.tmdb.org/t/p/w500null`;
+    const invalidPersonImageUrl = `https://image.tmdb.org/t/p/w500null`;
 
     const imageUrl = `https://image.tmdb.org/t/p/w500${image}`;
 
@@ -32,7 +32,7 @@ export const Tile = ({
             $extraContentAvailable={isExtraContentAvailable}
         >
             {
-                imageUrl !== invalidMovieImageUrl && imageUrl !== invalidPersonImageUrl  ?
+                imageUrl !== invalidMovieImageUrl && imageUrl !== invalidPersonImageUrl ?
                     <Image $extraContentAvailable={isExtraContentAvailable} src={imageUrl} /> :
                     <IconContainer>
                         {isExtraContentAvailable ? <StyledVideoIcon /> : <StyledProfileIcon />}

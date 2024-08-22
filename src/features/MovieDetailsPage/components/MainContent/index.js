@@ -8,8 +8,8 @@ import { selectMovieCreddits } from "../../slices/moviesCredditsListSlice";
 import { selectMovieDetails } from "../../slices/movieDetailsSlice";
 import { PageContent } from "../../../../common/PageContent";
 import { BannerContent, MovieTitle, BannerMainInfo, Banner } from "./styled";
-import { useNavigate } from "react-router-dom";
 import { toPerson } from "../../../../routes";
+import { useNavigationToPage } from "../../../../useNavigation";
 
 export const MainContent = () => {
     const { cast, crew } = useSelector(selectMovieCreddits);
@@ -21,11 +21,7 @@ export const MainContent = () => {
         genres,
     } = useSelector(selectMovieDetails);
 
-    const navigate = useNavigate();
-
-    const handleActorClick = (id) => {
-        navigate(toPerson({ id }));
-    };
+    const handleTileClick = useNavigationToPage();
 
     return (
         <>
@@ -53,7 +49,7 @@ export const MainContent = () => {
                             }
                         />
                         {
-                            cast && (
+                            cast.length > 0 && (
                                 <PeopleTilesList
                                     header="Cast"
                                     content={
@@ -61,7 +57,7 @@ export const MainContent = () => {
                                             {
                                                 cast.map(({ character, name, profile_path, id }) => (
                                                     <Tile
-                                                        navigateTo={() => handleActorClick(id)}
+                                                        navigateTo={() => handleTileClick(toPerson, id)}
                                                         id={id}
                                                         image={profile_path}
                                                         title={name}
@@ -75,7 +71,7 @@ export const MainContent = () => {
                             )
                         }
                         {
-                            crew && (
+                            crew.length > 0 && (
                                 <PeopleTilesList
                                     header="Crew"
                                     content={
@@ -83,6 +79,7 @@ export const MainContent = () => {
                                             {
                                                 crew.map(({ job, name, profile_path, id }) => (
                                                     <Tile
+                                                        navigateTo={() => handleTileClick(toPerson, id)}
                                                         id={id}
                                                         image={profile_path}
                                                         title={name}
