@@ -13,7 +13,6 @@ export const StyledPersonTile = styled.li`
     list-style-type: none;
     height: 100%;
     word-break: break-word;
-    /* min-height: 330px; */
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         grid-template-rows: 200px min-content;
