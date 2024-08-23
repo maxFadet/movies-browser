@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { ReactComponent as StarIcon } from "./Star.svg";
 
 export const StyledRates = styled.div`
@@ -7,25 +7,24 @@ export const StyledRates = styled.div`
     grid-template-areas: 
       "star score votes";
     grid-gap: 16px 8px;
-    
     align-items: center;
     justify-content: start;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
       grid-template-areas: 
-          "star score votes";
+        "star score votes";
       grid-gap: 8px;
     };
+`;
 
-    ${({ $larger }) => $larger && css`
-      grid-template-areas: 
-        "star score"
-        "votes votes";
+export const StyledRatesOfMovieBanner = styled(StyledRates)`
+  grid-template-areas: 
+    "star score"
+    "votes votes";
       
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
-        grid-gap: 4px;
-      };
-    `};
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    grid-gap: 4px;
+  };
 `;
 
 export const StyledStarIcon = styled(StarIcon)`
@@ -39,10 +38,18 @@ export const StyledStarIcon = styled(StarIcon)`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
       width: 16px;
   };
+`;
 
-  ${({ $larger }) => $larger && css`
-      width: 40px;
-  `};
+export const StyledStarIconOfMovieBanner = styled(StyledStarIcon)`
+  width: 40px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    width: 21px;
+  };
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+    width: 16px;
+  };
 `;
 
 export const Score = styled.p`
@@ -52,26 +59,22 @@ export const Score = styled.p`
     grid-area: score;
     align-self: center;
 
-    // @media (max-width: 750px) {
-    //   font-size: 18px;
-    // };
-
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 13px;
         font-weight: 600;
       };
+`;
 
-    ${({ $larger }) => $larger && css`
-      font-size: 30px;
+export const ScoreOfMovieBanner = styled(Score)`
+  font-size: 30px;
 
-      @media (max-width: 750px) {
-        font-size: 24px;
-      };
+  @media (max-width: 750px) {
+    font-size: 24px;
+  };
 
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
-        font-size: 14px;
-      };
-    `};
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    font-size: 14px;
+  };
 `;
 
 export const TotalScore = styled.span`
@@ -83,20 +86,20 @@ export const TotalScore = styled.span`
       display: none;
       padding:  0 4px;
     };
+`;
 
-    ${({ $hideTotalScore }) => $hideTotalScore && css`
-      display: none;
-    `};
+export const TotalScoreHidden = styled(TotalScore)`
+  display: none;
+`;
 
-    ${({ $larger }) => $larger && css`
-      font-size: 16px;
+export const TotalScoreOfMovieBanner = styled(TotalScore)`
+  font-size: 16px;
 
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
-        font-size: 10px;
-        padding:  0 4px;
-        display: unset;
-      };
-    `};
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    font-size: 10px;
+    padding:  0 4px;
+    display: unset;
+  };
 `;
 
 export const Votes = styled.p`
@@ -109,15 +112,23 @@ export const Votes = styled.p`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
       font-size: 13px;
       color: ${({ theme }) => theme.colors.waterloo};
-    };
+  };
+`;
 
-  ${({ $larger }) => $larger && css`
-    font-size: 16px;
+export const NoVotes = styled(Votes)`
+  grid-area:  unset;
+`;
+
+export const VotesOfMovieBanner = styled(Votes)`
+  font-size: 16px;
+  color: ${({ theme }) => theme.colors.white};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    font-size: 10px;
     color: ${({ theme }) => theme.colors.white};
+  };
+`;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
-      font-size: 10px;
-      color: ${({ theme }) => theme.colors.white};
-    };
-  `};
+export const NoVotesOfMovieBanner = styled(VotesOfMovieBanner)`
+  grid-area:  unset;
 `;
