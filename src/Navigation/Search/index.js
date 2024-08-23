@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { searchMovies } from '../../searchMoviesSlice';
+import { searchMovies, setSearchResultsText } from '../../searchMoviesSlice';
 import { searchPeople } from '../../searchActorSlice';
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import { toMoviesList, toMovie, toActorsList } from "../../routes";
 import { useState, useEffect } from "react";
 
 const getPlaceholderText = (pathname) =>
-    pathname === toMoviesList() || pathname === toMovie() || pathname.match(/^\/movies\/\d+$/)
+    pathname.includes('/movies')
         ? 'Search for movies...'
         : 'Search for people...';
 
@@ -20,12 +20,14 @@ const MovieSearch = () => {
     const placeholderText = getPlaceholderText(location.pathname);
     const isSearchingMovies = location.pathname.includes("/movies");
 
-    const [searchResultsText, setSearchResultsText] = useState("");
-
     useEffect(() => {
         setSearchResultsText(query ? `Search results for "${query}"` : "");
     }, [query]);
     
+    useEffect(() => {
+        dispatch(setSearchResultsText(query ? `Search results for "${query}"` : ""));
+    }, [query, dispatch]);
+
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedQuery(query);
