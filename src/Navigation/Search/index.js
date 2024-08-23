@@ -18,7 +18,7 @@ const MovieSearch = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const placeholderText = getPlaceholderText(location.pathname);
-    const isSearchingMovies = location.pathname === toMoviesList() || location.pathname.match(/^\/movies\/\d+$/);
+    const isSearchingMovies = location.pathname.includes("/movies");
 
     const [searchResultsText, setSearchResultsText] = useState("");
 
