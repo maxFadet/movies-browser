@@ -1,3 +1,5 @@
+import { BASE_IMAGE_URL } from "../../../../config/BASE_IMAGE_URL";
+import { IMAGE_WIDTH } from "../../../../config/IMAGE_WIDTH";
 import {
     ActorProfile,
     ActorPhoto,
@@ -16,7 +18,7 @@ export const Details = ({ actor }) => {
     return (
         actor && (
             <ActorProfile>
-                <ActorPhoto src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`} alt={actor.name} />
+                <ActorPhoto src={`${BASE_IMAGE_URL}${IMAGE_WIDTH}${actor.profile_path}`} alt={actor.name} />
                 <ActorDetailsWrapper>
                     <ActorName>{actor.name}</ActorName>
                     <ActorDetails>
