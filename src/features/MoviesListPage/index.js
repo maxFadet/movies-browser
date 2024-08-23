@@ -24,8 +24,12 @@ function MoviesListPage() {
     const isSearching = Boolean(query);
 
     useEffect(() => {
-        dispatch(fetchPopularMovies({ page: currentPage }));
-        dispatch(fetchMoviesGenres());
+        const fetchDelayId = setTimeout(() => {
+            dispatch(fetchPopularMovies({ page: currentPage }));
+            dispatch(fetchMoviesGenres());
+        }, 1000);
+
+        return () => clearTimeout(fetchDelayId);
     }, [dispatch, currentPage]);
 
     useEffect(() => {
