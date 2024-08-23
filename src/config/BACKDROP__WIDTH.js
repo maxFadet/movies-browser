@@ -1,0 +1,1 @@
+export const BACKDROP_WIDTH = 'original';
