@@ -14,10 +14,9 @@ import { useEffect, useState } from 'react';
 import { NoResults } from "../../../common/NoResultsPage";
 import { getYear } from '../../../functions/getYear';
 import { queryKey } from '../../../queryKey';
-import { useNavigationToPage } from '../../../useNavigation';
+
 export const MainContent = () => {
     const navigate = useNavigate();
-    const handleTileClick = useNavigationToPage();
     const dispatch = useDispatch();
     const location = useLocation();
 
@@ -85,14 +84,14 @@ export const MainContent = () => {
                             }) => (
                                 <Tile
                                     key={id}
-                                    navigateTo={() => handleTileClick(toMovie, id)}
-                                    image={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                                    navigateTo={() => handleMovieClick(id)}
+                                    image={poster_path}
                                     title={title}
-                                    subInfo={getYear(release_date)}
+                                    subInfo={release_date && getYear(release_date)}
                                     extraContent={
                                         <>
                                             <GenresList genresIds={genre_ids} />
-                                            <Rates voteAverage={vote_average} voteCount={vote_count} />
+                                            <Rates voteAverage={vote_average} voteCount={vote_count} hideTotalScore />
                                         </>
                                     }
                                 />
