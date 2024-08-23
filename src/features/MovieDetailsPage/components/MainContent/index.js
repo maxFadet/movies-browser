@@ -10,6 +10,8 @@ import { PageContent } from "../../../../common/PageContent";
 import { BannerContent, MovieTitle, BannerMainInfo, Banner } from "./styled";
 import { toPerson } from "../../../../routes";
 import { useNavigationToPage } from "../../../../useNavigation";
+import { getImageUrl } from "../../../../functions/getImageUrl";
+import { BACKDROP_WIDTH } from "../../../../config/BACKDROP__WIDTH";
 
 export const MainContent = () => {
     const { cast, crew } = useSelector(selectMovieCreddits);
@@ -26,11 +28,11 @@ export const MainContent = () => {
     return (
         <>
             <BannerContent>
-                <Banner $backdrop={`https://image.tmdb.org/t/p/original${backdrop_path}`}>
+                <Banner $backdrop={getImageUrl(backdrop_path, BACKDROP_WIDTH)}>
                     <BannerMainInfo>
                         <MovieTitle>{title}</MovieTitle>
                         <Rates
-                            mainInfo
+                            useMovieBannerLayout
                             voteAverage={vote_average}
                             voteCount={vote_count}
                         />
