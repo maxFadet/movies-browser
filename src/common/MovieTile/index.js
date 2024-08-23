@@ -6,13 +6,9 @@ import {
     MovieInfo,
     MovieTitle,
     MovieSubTitle,
-    RatingWrapper,
-    Rating,
-    RatingStar,
-    RatingNumber,
-    VoteCount,
 } from "./styled";
 import { GenresList } from "../GenresList";
+import { Rates } from "../../common/Rates";
 
 export const MovieTile = ({ movie, handleMovieClick }) => {
     const posterUrl = movie.poster_path
@@ -30,13 +26,11 @@ export const MovieTile = ({ movie, handleMovieClick }) => {
                 <MovieTitle>{movie.title}</MovieTitle>
                 <MovieSubTitle>{getYear(movie.release_date)}</MovieSubTitle>
                 <GenresList genresIds={movie.genre_ids} />
-                <RatingWrapper>
-                    <Rating>
-                        <RatingStar />
-                        <RatingNumber>{movie.vote_average.toFixed(1)}</RatingNumber>
-                    </Rating>
-                    <VoteCount>{movie.vote_count} votes</VoteCount>
-                </RatingWrapper>
+                <Rates
+                    voteAverage={movie.vote_average}
+                    voteCount={movie.vote_count}
+                    hideTotalScore={true}
+                />
             </MovieInfo>
         </StyledTile>
     );
