@@ -18,6 +18,8 @@ import {
 } from "./styled";
 import { GenresList } from "../../../../common/GenresList";
 import { getYear } from "../../../../functions/getYear";
+import { BASE_IMAGE_URL } from "../../../../config/BASE_IMAGE_URL";
+import { IMAGE_WIDTH } from "../../../../config/IMAGE_WIDTH";
 
 export const Crew = () => {
     const crew = useSelector(selectCrew);
@@ -31,7 +33,7 @@ export const Crew = () => {
         <MoviesSection>
             <Title>Movies - crew</Title>
             {crew.map((movie, index) => {
-                const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null;
+                const posterUrl = movie.poster_path ? `${BASE_IMAGE_URL}${IMAGE_WIDTH}${movie.poster_path}` : null;
 
                 return (
                     <StyledTile key={index} onClick={() => handleMovieClick(movie.id)}>
