@@ -27,12 +27,12 @@ export const ListSection = styled.ul`
     padding-left: 0px;
     margin: 0;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         grid-template-columns: repeat(2, 0.5fr);
         grid-gap: 16px;
     };
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
        grid-template-columns: 1fr;
     };
 `;
