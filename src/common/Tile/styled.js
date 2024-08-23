@@ -22,7 +22,7 @@ export const StyledPersonTile = styled.li`
 
 export const StyledMovieTile = styled(StyledPersonTile)`
     min-height: unset;
-    grid-template-rows: min-content 0.5fr;
+    grid-template-rows: 434px min-content;
         
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         grid-template-rows: unset;
@@ -42,6 +42,8 @@ export const StyledMovieTile = styled(StyledPersonTile)`
 
 export const Image = styled.img`
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
 `;
 
