@@ -1,6 +1,4 @@
-import styled, { css } from "styled-components";
-import { ReactComponent as StarIcon } from '../../../../image/Vector.svg';
-import noImage from '../../../../Video.svg';
+import styled from "styled-components";
 
 export const MoviesSection = styled.section`
   display: grid;

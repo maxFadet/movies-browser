@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const StyledGenresList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 16px;
   list-style: none;
   margin: 0 0 8px;
   padding: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     margin: 6px 0 8px;
+    gap: 8px;
   }
 `;
 
