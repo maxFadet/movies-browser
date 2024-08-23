@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { selectSearchMovies } from '../../../searchMoviesSlice';
+import { selectSearchMovies, selectSearchResultsText } from '../../../searchMoviesSlice';
 import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../../popularMoviesSlice';
 import { Tile } from '../../../common/Tile';
 import { GenresList } from '../../../common/GenresList';
@@ -15,6 +15,7 @@ import { NoResults } from "../../../common/NoResultsPage";
 import { getYear } from '../../../functions/getYear';
 import { queryKey } from '../../../queryKey';
 import { useNavigationToPage } from '../../../useNavigation';
+
 export const MainContent = () => {
     const navigate = useNavigate();
     const handleTileClick = useNavigationToPage();
@@ -25,6 +26,8 @@ export const MainContent = () => {
     const popularMovies = useSelector(selectPopularMovies);
     const currentPage = useSelector(selectCurrentPage);
     const totalPages = useSelector(selectTotalPages);
+    const searchResultsText = useSelector(selectSearchResultsText);
+
 
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);

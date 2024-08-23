@@ -8,6 +8,7 @@ export const searchMoviesSlice = createSlice({
     initialState: {
         movies: [],
         searchStatus: loadingStatus,
+        searchResultsText: "",
     },
     reducers: {
         searchMovies: (state, action) => {
@@ -26,13 +27,18 @@ export const searchMoviesSlice = createSlice({
                 searchStatus: loadingStatus,
             };
         },
+        setSearchResultsText: (state, action) => {
+            state.searchResultsText = action.payload;
+        },
     },
 });
 
-export const { searchMovies, searchMoviesSuccess, searchMoviesError, resetSearchMovies } = searchMoviesSlice.actions;
+export const { searchMovies, searchMoviesSuccess, searchMoviesError, resetSearchMovies, setSearchResultsText } = searchMoviesSlice.actions;
 
 export const selectSearchMoviesState = (state) => state.searchMovies;
 export const selectSearchMoviesStatus = (state) => selectSearchMoviesState(state).searchStatus;
 export const selectSearchMovies = (state) => selectSearchMoviesState(state).movies;
+export const selectSearchResultsText = (state) => state.searchMovies.searchResultsText;
+
 
 export const searchMoviesReducer = searchMoviesSlice.reducer;
