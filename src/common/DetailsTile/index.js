@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-
 import {
     StyledDetailsTile,
     Image,
@@ -9,7 +8,7 @@ import {
     Year,
     DetailInfo,
     DetailInfoItem,
-    DetailInfoType,
+    Label,
     IconContainer
 } from "./styled";
 import { selectMovieDetails } from
@@ -17,9 +16,12 @@ import { selectMovieDetails } from
 import { StyledProfileIcon } from "../StyledProfileIcon";
 import { StyledVideoIcon } from "../StyledVideoIcon";
 import { getYear } from "../../functions/getYear";
+import { getImageUrl } from "../../functions/getImageUrl.js"
+import { checkIsValidImageUrl } from "../../functions/checkIsValidImageUrl.js";
+import { INVALID_IMAGE_URL } from "../../config/INVALID_IMAGE_URL.js";
+import { IMAGE_WIDTH } from "../../config/IMAGE_WIDTH.js";
 
 export const DetailsTile = ({ extraContent }) => {
-
     const {
         title,
         poster_path,
@@ -28,66 +30,65 @@ export const DetailsTile = ({ extraContent }) => {
         production_countries
     } = useSelector(selectMovieDetails);
 
-    const areMovieDetails = production_countries || release_date;
+    const imageUrl = getImageUrl(poster_path, IMAGE_WIDTH);
+    const isValidImageUrl = checkIsValidImageUrl(imageUrl, INVALID_IMAGE_URL);
+
+    const PlaceholderIcon = extraContent ? StyledVideoIcon : StyledProfileIcon;
+
+    const renderDetails = (label, value) => (
+        <DetailInfoItem >
+            <Label>{label}:</Label>
+            {value || <>Unknow</>}
+        </DetailInfoItem>
+    );
+
+    const renderMovieDetails = () => (
+        <DetailInfo>
+            {
+                renderDetails("Production",
+                    production_countries ?
+                        production_countries
+                            .map(({ name, iso_3166_1 }) => window.innerWidth <= 475 ? iso_3166_1 : name)
+                            .join(", ") :
+                        <>Unknow</>
+                )
+            }
+            {
+                renderDetails("Release date",
+                    release_date ?
+                        new Date(release_date).toLocaleString(undefined,
+                            { year: "numeric", month: "numeric", day: "numeric" }
+                        ) :
+                        <>Unknow</>
+                )
+            }
+        </DetailInfo>
+    );
+
+    const imageElement = isValidImageUrl ? (
+        <Image src={imageUrl} alt={title} />
+    ) : (
+        <IconContainer>
+            <PlaceholderIcon />
+        </IconContainer>
+    );
+
+    const yearElement = release_date && <Year>{getYear(release_date)}</Year>;
+
+    const detailsContent = renderMovieDetails(production_countries, release_date)
+
+    const descriptionElement = overview && <Description>{overview}</Description>;
 
     return (
         <StyledDetailsTile>
-            {
-                poster_path ?
-                    <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} /> :
-                    <IconContainer>
-                        {areMovieDetails ? <StyledVideoIcon /> : <StyledProfileIcon />}
-                    </IconContainer>
-            }
+            {imageElement}
             <Details>
                 <Header>{title}</Header>
-                {
-                    release_date && (
-                        <Year>{getYear(release_date)}</Year>
-                    )
-                }
-                {
-                    areMovieDetails ?
-                        <DetailInfo>
-                            <DetailInfoItem >
-                                <DetailInfoType>Production:</DetailInfoType> {
-                                    production_countries ?
-                                        production_countries.map(({ name, iso_3166_1 }) => (
-                                            <span key={iso_3166_1}>
-                                                {window.innerWidth <= 475 ? iso_3166_1 : name}
-                                            </span>
-                                        )) :
-                                        <>Unknow</>
-                                }
-                            </DetailInfoItem>
-                            <DetailInfoItem>
-                                <DetailInfoType>Release date:</DetailInfoType> {
-                                    release_date ?
-                                        new Date(release_date).toLocaleString(undefined,
-                                            { year: "numeric", month: "numeric", day: "numeric" }
-                                        ) :
-                                        <>Unknow</>
-                                }
-                            </DetailInfoItem>
-                        </DetailInfo> :
-                        <DetailInfo>
-                            <DetailInfoItem>
-                                <DetailInfoType>Birth:</DetailInfoType> China, United States of America
-                            </DetailInfoItem>
-                            <DetailInfoItem>
-                                <DetailInfoType>Place of birth:</DetailInfoType> 24.10.2020
-                            </DetailInfoItem>
-                        </DetailInfo>
-                }
+                {yearElement}
+                {detailsContent}
                 {extraContent}
             </Details>
-            {
-                overview && (
-                    <Description>
-                        {overview}
-                    </Description>
-                )
-            }
-        </StyledDetailsTile >
+            {descriptionElement}
+        </StyledDetailsTile>
     );
 };
