@@ -4,28 +4,44 @@ import {
     StyledRates,
     TotalScore,
     StyledStarIcon,
+    StyledRatesOfMovieBanner,
+    StyledStarIconOfMovieBanner,
+    ScoreOfMovieBanner,
+    TotalScoreOfMovieBanner,
+    VotesOfMovieBanner,
+    TotalScoreHidden,
+    NoVotes,
+    NoVotesOfMovieBanner
 } from "./styled";
 
-export const Rates = ({ mainInfo, hideTotalScore, voteAverage, voteCount }) => {
-    const isRatesAreMainInfo = !!mainInfo;
-    const isTotalScoreHidden = !!hideTotalScore;
-    
+export const Rates = ({ useMovieBannerLayout, hideTotalScore, voteAverage, voteCount }) => {
+
+    const StyledRatesComponent = useMovieBannerLayout ? StyledRatesOfMovieBanner : StyledRates;
+    const StyledStarIconComponent = useMovieBannerLayout ? StyledStarIconOfMovieBanner : StyledStarIcon;
+    const ScoreComponent = useMovieBannerLayout ? ScoreOfMovieBanner : Score;
+    const TotalScoreComponent = useMovieBannerLayout ? TotalScoreOfMovieBanner : TotalScore;
+    const VotesComponent = useMovieBannerLayout ? VotesOfMovieBanner : Votes;
+    const NoVotesComponent = useMovieBannerLayout ? NoVotesOfMovieBanner : NoVotes;
+    const TotalScoreWrapper = hideTotalScore ? TotalScoreHidden : TotalScoreComponent;
+
+    const ratesContentElement = voteCount ? (
+        <>
+            <StyledStarIconComponent />
+            <ScoreComponent>
+                {Number(voteAverage).toFixed(1).replace('.', ',')}
+                <TotalScoreWrapper>/ 10</TotalScoreWrapper>
+            </ScoreComponent>
+            <VotesComponent>
+                {Number(voteCount).toLocaleString().replace(/,/g, ',')} votes
+            </VotesComponent>
+        </>
+    ) : (
+        <NoVotesComponent>No votes yet</NoVotesComponent>
+    );
+
     return (
-        <StyledRates $larger={isRatesAreMainInfo}>
-            {
-                voteCount ?
-                    <>
-                        <StyledStarIcon $larger={isRatesAreMainInfo} />
-                        <Score $larger={isRatesAreMainInfo}>
-                            {Number(voteAverage).toFixed(1).replace('.', ',')}
-                            <TotalScore $hideTotalScore={isTotalScoreHidden} $larger={isRatesAreMainInfo}>/ 10</TotalScore>
-                        </Score>
-                        <Votes $larger={isRatesAreMainInfo}>
-                            {Number(voteCount).toLocaleString().replace(/,/g, ',')} votes
-                        </Votes>
-                    </> :
-                    <>No votes yet</>
-            }
-        </StyledRates>
-    )
+        <StyledRatesComponent>
+            {ratesContentElement}
+        </StyledRatesComponent>
+    );
 };
