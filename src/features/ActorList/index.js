@@ -10,19 +10,19 @@ import {
     selectSearchPeople,
     selectSearchPeopleStatus,
     searchPeople
-} from '../../searchActorSlice';
+} from '../../common/slices/searchActorSlice';
 import { Section, Title } from './styled';
-import { Pagination } from "../../common/Pagination";
-import { Container } from "../../common/Container";
+import { Pagination } from "../../common/components/Pagination";
+import { Container } from "../../common/components/Container";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Error } from "../../common/Error";
-import { Loader } from "../../common/Loader";
-import { PersonsListTile } from '../../common/PersosListTile';
+import { Error } from "../../common/components/Error";
+import { Loader } from "../../common/components/Loader";
+import { PersonsListTile } from '../../common/components/PersosListTile';
 import { toPerson } from "../../routes";
-import { loadingStatus } from '../../requestStatuses/loadingStatus';
-import { errorStatus } from '../../requestStatuses/errorStatus';
-import { NoResults } from '../../common/NoResultsPage';
-import { queryKey } from '../../queryKey';
+import { loadingStatus } from '../../common/constants/requestStatuses/loadingStatus';
+import { errorStatus } from '../../common/constants/requestStatuses/errorStatus';
+import { NoResults } from '../../common/components/NoResultsPage';
+import { queryKey } from '../../common/constants/queryKey';
 
 const useDebounce = (value, delay) => {
     const [debouncedValue, setDebouncedValue] = useState(value);

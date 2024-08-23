@@ -3,10 +3,10 @@ import createSagaMiddleware from 'redux-saga';
 import { movieDetailsReducer } from './features/MovieDetailsPage/slices/movieDetailsSlice';
 import { rootSaga } from './rootSaga';
 import { moviesCreditsListReducer } from './features/MovieDetailsPage/slices/moviesCredditsListSlice';
-import { popularMoviesReducer } from './popularMoviesSlice';
-import { moviesGenresReducer } from './moviesGenresSlice';
-import { searchMoviesReducer } from './searchMoviesSlice';
-import { searchPeopleReducer } from './searchActorSlice';
+import { popularMoviesReducer } from './features/MoviesListPage/slices/popularMoviesSlice';
+import { moviesGenresReducer } from './common/slices/moviesGenresSlice';
+import { searchMoviesReducer } from './common/slices/searchMoviesSlice';
+import { searchPeopleReducer } from '././common/slices/searchActorSlice';
 import { actorsSliceReducer } from "./features/ActorList/actorsSlice";
 import { actorDetailsSliceReducer } from "./features/ActorPage/actorDetailsSlice";
 

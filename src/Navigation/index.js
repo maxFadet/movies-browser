@@ -10,20 +10,20 @@ import {
 import Search from "./Search";
 import { toMoviesList, toActorsList } from "../routes";
 import { useDispatch } from "react-redux";
-import { resetSearchMovies } from "../searchMoviesSlice";
-import { resetSearchPeople } from "../searchActorSlice"; 
+import { resetSearchMovies } from "../common/slices/searchMoviesSlice";
+import { resetSearchPeople } from "../common/slices/searchActorSlice";
 
 const Navigation = () => {
     const dispatch = useDispatch();
 
     const handleMoviesClick = () => {
-        dispatch(resetSearchMovies()); 
+        dispatch(resetSearchMovies());
     };
 
     const handlePeopleClick = () => {
-        dispatch(resetSearchPeople()); 
+        dispatch(resetSearchPeople());
     };
-    
+
     return (
         <nav>
             <StyledPageHeader>

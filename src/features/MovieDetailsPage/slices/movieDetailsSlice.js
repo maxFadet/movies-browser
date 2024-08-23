@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadingStatus } from "../../../requestStatuses/loadingStatus";
-import { errorStatus } from "../../../requestStatuses/errorStatus";
-import { successStatus } from "../../../requestStatuses/successStatus";
+import { loadingStatus } from "../../../common/constants/requestStatuses/loadingStatus";
+import { errorStatus } from "../../../common/constants/requestStatuses/errorStatus";
+import { successStatus } from "../../../common/constants/requestStatuses/successStatus";
 
 export const movieDetailsSlice = createSlice({
     name: "movieDetails",

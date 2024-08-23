@@ -3,7 +3,7 @@ import Navigation from "./Navigation";
 import { toMoviesList, toActorsList, toPerson, toMovie } from "./routes";
 import ActorsList from "./features/ActorList";
 import { ActorsData } from "./features/ActorPage";
-import MoviesListPage from "../src/features/MoviesListPage";
+import MoviesListPage from "../src/features/MoviesListPage/components/index";
 import { MovieDetailsPage } from "./features/MovieDetailsPage/components/index";
 
 function App() {

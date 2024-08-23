@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { searchMovies } from '../../searchMoviesSlice';
-import { searchPeople } from '../../searchActorSlice';
+import { searchMovies } from '../../common/slices/searchMoviesSlice';
+import { searchPeople } from '../../common/slices/searchActorSlice';
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toMoviesList, toMovie, toActorsList } from "../../routes";

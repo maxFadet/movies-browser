@@ -1,5 +1,5 @@
-import { BASE_IMAGE_URL } from "../../../../config/BASE_IMAGE_URL";
-import { IMAGE_WIDTH } from "../../../../config/IMAGE_WIDTH";
+import { BASE_IMAGE_URL } from "../../../../common/constants/config/BASE_IMAGE_URL";
+import { IMAGE_WIDTH } from "../../../../common/constants/config/IMAGE_WIDTH";
 import {
     ActorProfile,
     ActorPhoto,
