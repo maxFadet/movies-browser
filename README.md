@@ -15,6 +15,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The application features a clean and responsive UI, powered by `styled-components`, with dynamic routing handled by `React Router` and state management achieved through `Redux` and `Redux-Saga`. The application is styled using a theme, allowing for consistent design across all components.
 
+## Screenshots
+
+Here are some screenshots of the project in action:
+
+![Popular movies page](./src/image/readmeimg/popular-movies.png)
+
+![Movie page](./src/image/readmeimg/movie.png)
+
+![Popular people page](./src/image/readmeimg/popular-people.png)
+
+![Actor page](./src/image/readmeimg/actor.png)
+
 ## Features
 
 - **Movie Search**: Browse and search for movies by title, genre, or year.
@@ -33,6 +45,17 @@ The application features a clean and responsive UI, powered by `styled-component
 - **Redux**: Global state management.
 - **Redux-Saga**: Handling side effects and asynchronous actions.
 - **ThemeProvider**: For consistent theming across the application.
+
+## Contributors
+
+This project was developed as a group effort by the following team members:
+
+- **Oskar Właszczuk** - [OskarWlaszczuk
+](https://github.com/OskarWlaszczuk)
+- **Dorota Karpińska** - [DorotaKar](https://github.com/DorotaKar)
+- **Maksim Padrabinkin** - [maxFadet](https://github.com/maxFadet)
+
+We worked together to bring this project to life, combining our skills.
 
 ## Available Scripts
 
