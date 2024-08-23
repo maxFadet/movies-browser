@@ -4,7 +4,7 @@ export const StyledPersonTile = styled.li`
     display: grid;
     grid-gap: 16px;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 0.5fr;
+    grid-template-rows: 245px min-content;
     align-items: flex-start;
     box-shadow: 0px 4px 12px 0px  ${({ theme }) => theme.colors.brightHeather};
     background-color: ${({ theme }) => theme.colors.white};
@@ -13,18 +13,21 @@ export const StyledPersonTile = styled.li`
     list-style-type: none;
     height: 100%;
     word-break: break-word;
-    min-height: 330px;
+    /* min-height: 330px; */
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-        min-height: 245px;
+        grid-template-rows: 200px min-content;
+    }; 
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+        grid-template-rows: 175px min-content;
     }; 
 `;
 
 export const StyledMovieTile = styled(StyledPersonTile)`
-    min-height: unset;
     grid-template-rows: 434px min-content;
         
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
         grid-template-rows: unset;
         grid-template-columns: 1fr 1.5fr;
         min-height: 293px;
@@ -103,7 +106,4 @@ export const IconContainer = styled.div`
     width: 100%;
     border-radius: 15px;
     height: 100%;
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
-        height: 144px;  
-    };
 `;
