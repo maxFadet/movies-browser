@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { findMoviesGenresById } from "../../moviesGenresSlice";
 
 export const GenresList = ({ genresIds }) => {
-
     const genresFoundById = useSelector(state => findMoviesGenresById(state, genresIds));
+
     return (
         <StyledGenresList>
             {
