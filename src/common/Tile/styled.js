@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-export const StyledTile = styled.li`
+export const StyledPersonTile = styled.li`
     display: grid;
     grid-gap: 16px;
     grid-template-columns: 1fr;
@@ -18,26 +18,26 @@ export const StyledTile = styled.li`
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         min-height: 245px;
     }; 
+`;
 
-    ${({ $extraContentAvailable }) => $extraContentAvailable && css`
-        min-height: unset;
-        grid-template-rows: min-content 0.5fr;
+export const StyledMovieTile = styled(StyledPersonTile)`
+    min-height: unset;
+    grid-template-rows: min-content 0.5fr;
         
-        @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
-            grid-template-rows: unset;
-            grid-template-columns: 1fr 1.5fr;
-            min-height: 293px;
-        };
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+        grid-template-rows: unset;
+        grid-template-columns: 1fr 1.5fr;
+        min-height: 293px;
+    };
 
-        @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-           min-height: 230px;
-        }; 
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+        min-height: 230px;
+    }; 
 
-        @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
-            min-height: 201px;
-            grid-template-columns: 1fr 1fr;
-        }; 
-    `};
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+        min-height: 201px;
+        grid-template-columns: 1fr 1fr;
+    }; 
 `;
 
 export const Image = styled.img`
@@ -51,11 +51,11 @@ export const GeneralInfo = styled.div`
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
+`;
 
-    ${({ $extraContentAvailable }) => $extraContentAvailable && css`
-        align-items: end;
-        justify-items: start;
-    `};
+export const MovieGeneralInfo = styled(GeneralInfo)`
+     align-items: end;
+     justify-items: start;
 `;
 
 export const Title = styled.header`
@@ -66,10 +66,10 @@ export const Title = styled.header`
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 16px;
     };
+`;
 
-    ${({ $extraContentAvailable }) => $extraContentAvailable && css`
-        text-align: start;
-    `};
+export const MovieTitle = styled(Title)`
+    text-align: start;
 `;
 
 export const SubInfo = styled.p`
