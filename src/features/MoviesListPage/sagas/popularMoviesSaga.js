@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchPopularMovies, fetchPopularMovieSuccess, fetchPopularMoviesError } from "../slices/popularMoviesSlice";
-import { API_KEY } from "../../../common/constants/config/API_KEY";
-import { BASE_URL } from "../../../common/constants/config/BASE_URL";
+import { API_KEY } from "../../../common/constants/config";
+import { BASE_URL } from "../../../common/constants/config";
 
 function* fetchPopularMovieHandler(action) {
     const { page = 1 } = action.payload;

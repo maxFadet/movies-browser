@@ -18,8 +18,8 @@ import {
 } from "./styled";
 import { GenresList } from "../../../../common/components/GenresList";
 import { getYear } from "../../../../common/functions/getYear";
-import { BASE_IMAGE_URL } from "../../../../common/constants/config/BASE_IMAGE_URL";
-import { IMAGE_WIDTH } from "../../../../common/constants/config/IMAGE_WIDTH";
+import { BASE_IMAGE_URL } from "../../../../common/constants/config";
+import { IMAGE_WIDTH } from "../../../../common/constants/config";
 
 export const Crew = () => {
     const crew = useSelector(selectCrew);

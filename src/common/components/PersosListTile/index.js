@@ -1,5 +1,5 @@
-import { BASE_IMAGE_URL } from "../../constants/config/BASE_IMAGE_URL";
-import { PHOTO_WIDTH } from "../../constants/config/PHOTO_WIDTH";
+import { BASE_IMAGE_URL } from "../../constants/config";
+import { PHOTO_WIDTH } from "../../constants/config";
 import {
     Info,
     Name,

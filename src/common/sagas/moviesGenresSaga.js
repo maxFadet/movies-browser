@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchMoviesGenres, fetchMoviesGenresSuccess, fetchMoviesGenresError } from "../slices/moviesGenresSlice";
-import { API_KEY } from "../constants/config/API_KEY";
-import { BASE_URL } from "../constants/config/BASE_URL";
+import { API_KEY } from "../constants/config";
+import { BASE_URL } from "../constants/config";
 
 function* fetchMoviesGenresHandler() {
     try {

@@ -18,8 +18,8 @@ import { StyledVideoIcon } from "../StyledVideoIcon";
 import { getYear } from "../../../common/functions/getYear";
 import { getImageUrl } from "../../../common/functions/getImageUrl.js"
 import { checkIsValidImageUrl } from "../../../common/functions/checkIsValidImageUrl.js";
-import { INVALID_IMAGE_URL } from "../../constants/config/INVALID_IMAGE_URL.js";
-import { IMAGE_WIDTH } from "../../constants/config/IMAGE_WIDTH.js";
+import { INVALID_IMAGE_URL } from "../../constants/config";
+import { IMAGE_WIDTH } from "../../constants/config";
 
 export const DetailsTile = ({ extraContent }) => {
     const {

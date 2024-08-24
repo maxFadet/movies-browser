@@ -11,7 +11,7 @@ import { BannerContent, MovieTitle, BannerMainInfo, Banner } from "./styled";
 import { toPerson } from "../../../../routes";
 import { useNavigationToPage } from "../../../../useNavigation";
 import { getImageUrl } from "../../../../common/functions/getImageUrl";
-import { BACKDROP_WIDTH } from "../../../../common/constants/config/BACKDROP__WIDTH";
+import { BACKDROP_WIDTH } from "../../../../common/constants/config";
 
 export const MainContent = () => {
     const { cast, crew } = useSelector(selectMovieCreddits);
