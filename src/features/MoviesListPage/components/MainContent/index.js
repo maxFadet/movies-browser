@@ -12,7 +12,7 @@ import { Pagination } from '../../../../common/components/Pagination';
 import { Loader } from '../../../../common/components/Loader';
 import { useEffect, useState } from 'react';
 import { NoResults } from "../../../../common/components/NoResultsPage";
-import { getYear } from '../../../../functions/getYear';
+import { getYear } from '../../../../common/functions/getYear';
 import { queryKey } from '../../../../common/constants/queryKey';
 
 export const MainContent = () => {

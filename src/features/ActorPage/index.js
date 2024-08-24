@@ -13,9 +13,9 @@ import { Error } from '../../common/components/Error';
 import { Details } from './Content/Details';
 import { Cast } from './Content/Cast';
 import { Crew } from './Content/Crew';
-import { loadingStatus } from '../../common/constants/requestStatuses/loadingStatus';
-import { errorStatus } from '../../common/constants/requestStatuses/errorStatus';
-import { successStatus } from '../../common/constants/requestStatuses/successStatus';
+import { loadingStatus } from '../../common/constants/requestStatuses';
+import { errorStatus } from '../../common/constants/requestStatuses';
+import { successStatus } from '../../common/constants/requestStatuses';
 import { Container } from '../../common/components/Container';
 
 export const ActorsData = () => {

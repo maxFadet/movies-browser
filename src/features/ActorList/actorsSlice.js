@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loadingStatus } from '../../common/constants/requestStatuses/loadingStatus';
-import { errorStatus } from '../../common/constants/requestStatuses/errorStatus';
-import { successStatus } from '../../common/constants/requestStatuses/successStatus';
+import { loadingStatus } from '../../common/constants/requestStatuses';
+import { errorStatus } from '../../common/constants/requestStatuses';
+import { successStatus } from '../../common/constants/requestStatuses';
 
 export const actorsSlice = createSlice({
     name: "actorsList",

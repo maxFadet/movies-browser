@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { successStatus } from "../constants/requestStatuses/successStatus";
-import { loadingStatus } from "../constants/requestStatuses/loadingStatus";
-import { errorStatus } from "../constants/requestStatuses/errorStatus";
+import { successStatus } from "../constants/requestStatuses";
+import { loadingStatus } from "../constants/requestStatuses";
+import { errorStatus } from "../constants/requestStatuses";
 
 export const searchMoviesSlice = createSlice({
     name: "searchMovies",

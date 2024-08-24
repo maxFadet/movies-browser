@@ -13,8 +13,8 @@ import {
 import { StyledProfileIcon } from "../StyledProfileIcon";
 import { StyledVideoIcon } from "../StyledVideoIcon";
 import { BASE_IMAGE_URL } from "../../constants/config/BASE_IMAGE_URL";
-import { getImageUrl } from "../../../functions/getImageUrl";
-import { checkIsValidImageUrl } from "../../../functions/checkIsValidImageUrl";
+import { getImageUrl } from "../../../common/functions/getImageUrl";
+import { checkIsValidImageUrl } from "../../../common/functions/checkIsValidImageUrl";
 import { INVALID_IMAGE_URL } from "../../constants/config/INVALID_IMAGE_URL";
 import { IMAGE_WIDTH } from "../../constants/config/IMAGE_WIDTH";
 
