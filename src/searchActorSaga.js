@@ -4,8 +4,11 @@ import { searchPeople, searchPeopleSuccess, searchPeopleError } from "./searchAc
 
 function* searchPeopleHandler(action) {
     try {
-        const people = yield call(fetchPeople, action.payload);
-        yield put(searchPeopleSuccess(people));
+        const data = yield call(fetchPeople, action.payload);
+        yield put(searchPeopleSuccess({
+            people: data.results,
+            totalResults: data.total_results
+        }));
     } catch (error) {
         yield put(searchPeopleError());
     }
