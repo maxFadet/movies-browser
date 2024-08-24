@@ -48,8 +48,10 @@ export const MainContent = () => {
 
     const isSearching = searchQuery.length > 0;
 
-    const header = isSearching
-        ? `Search results for “${searchQuery}”`
+    const header = isSearching 
+        ? searchResults.length > 0
+            ? `Search results for “${searchQuery}” (${searchResults.length})`
+            : `Search results for “${searchQuery}”`
         : "Popular movies";
 
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
