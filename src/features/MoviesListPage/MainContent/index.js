@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { 
     // useNavigate, 
     useLocation } from 'react-router-dom';
-import { selectSearchMovies
+import { selectSearchMovies, selectTotalResults
     // , selectSearchResultsText 
 } from '../../../searchMoviesSlice';
 import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../../popularMoviesSlice';
@@ -27,6 +27,7 @@ export const MainContent = () => {
     const location = useLocation();
 
     const searchResults = useSelector(selectSearchMovies);
+    const totalResults = useSelector(selectTotalResults);
     const popularMovies = useSelector(selectPopularMovies);
     const currentPage = useSelector(selectCurrentPage);
     const totalPages = useSelector(selectTotalPages);
@@ -49,9 +50,9 @@ export const MainContent = () => {
     const isSearching = searchQuery.length > 0;
 
     const header = isSearching 
-        ? searchResults.length > 0
-            ? `Search results for “${searchQuery}” (${searchResults.length})`
-            : `Search results for “${searchQuery}”`
+        ? totalResults > 0
+            ? `Search results for “${searchQuery}” (${totalResults})`
+            : `Search results for “${searchQuery}” ()`
         : "Popular movies";
 
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
