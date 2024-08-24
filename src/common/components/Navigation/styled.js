@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as LogoIcon } from "./Icons/Video.svg";
+import { ReactComponent as LogoIcon } from "./icons/Video.svg";
 import { NavLink } from "react-router-dom";
 
 export const StyledPageHeader = styled.div`

@@ -1,4 +1,4 @@
-import { ReactComponent as VideoIcon } from "../../../Video.svg";
+import { ReactComponent as VideoIcon } from "../../../image/Video.svg";
 import styled from "styled-components";
 
 export const StyledVideoIcon = styled(VideoIcon)`

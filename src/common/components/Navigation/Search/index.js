@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { searchMovies } from '../../common/slices/searchMoviesSlice';
-import { searchPeople } from '../../common/slices/searchActorSlice';
+import { searchMovies } from '../../../slices/searchMoviesSlice';
+import { searchPeople } from '../../../slices/searchActorSlice';
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toMoviesList, toMovie, toActorsList } from "../../routes";
+import { toMoviesList, toMovie, toActorsList } from "../../../../routes";
 import { useState, useEffect } from "react";
 
 const getPlaceholderText = (pathname) =>

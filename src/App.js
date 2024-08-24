@@ -1,5 +1,5 @@
 import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
-import Navigation from "./Navigation";
+import Navigation from "./common/components/Navigation";
 import { toMoviesList, toActorsList, toPerson, toMovie } from "./routes";
 import ActorsList from "./features/ActorList";
 import { ActorsData } from "./features/ActorPage";

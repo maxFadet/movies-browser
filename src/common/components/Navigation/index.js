@@ -8,10 +8,10 @@ import {
     NavigationLogoIcon,
 } from "./styled";
 import Search from "./Search";
-import { toMoviesList, toActorsList } from "../routes";
+import { toMoviesList, toActorsList } from "../../../routes";
 import { useDispatch } from "react-redux";
-import { resetSearchMovies } from "../common/slices/searchMoviesSlice";
-import { resetSearchPeople } from "../common/slices/searchActorSlice";
+import { resetSearchMovies } from "./../../slices/searchMoviesSlice";
+import { resetSearchPeople } from "./../../slices/searchActorSlice";
 
 const Navigation = () => {
     const dispatch = useDispatch();
