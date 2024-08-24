@@ -20,7 +20,7 @@ export const fetchMovies = async (query, page = 1) => {
 
         return response.data;
     } catch (error) {
-        console.error("Error fetching movies:", error.message);
-        throw new Error("Could not fetch movies. Please try again later.");
+        console.error("Error fetching movies:", error);
+        throw error;
     }
 };
