@@ -3,7 +3,9 @@ import { searchMovies, setSearchResultsText } from '../../searchMoviesSlice';
 import { searchPeople } from '../../searchActorSlice';
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toMoviesList, toMovie, toActorsList } from "../../routes";
+import { toMoviesList, 
+    // toMovie, 
+    toActorsList } from "../../routes";
 import { useState, useEffect } from "react";
 
 const getPlaceholderText = (pathname) =>
