@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../../../routes";
 import { useSelector } from "react-redux";
 import { selectCast } from "../../actorDetailsSlice";
-import { MovieTile } from "../../../../common/MovieTile";
+import { Tile } from "../../../../common/Tile";
 import { MoviesTilesList } from "../../../../common/MoviesTilesList";
+import { GenresList } from "../../../../common/GenresList";
+import { Rates } from "../../../../common/Rates";
 
 export const Cast = () => {
     const cast = useSelector(selectCast);
@@ -18,11 +20,20 @@ export const Cast = () => {
         <MoviesTilesList
             header="Movies - cast"
             content={
-                cast.map((movie, index) => (
-                    <MovieTile
+                cast.map(({ id, title, poster_path, character, genre_ids, vote_average, vote_count }, index) => (
+                    <Tile
                         key={index}
-                        movie={movie}
-                        handleMovieClick={handleMovieClick}
+                        id={id}
+                        image={poster_path}
+                        title={title}
+                        subInfo={character}
+                        navigateTo={() => handleMovieClick(id)}
+                        extraContent={
+                            <>
+                                <GenresList genresIds={genre_ids} />
+                                <Rates voteAverage={vote_average} voteCount={vote_count} hideTotalScore={true} />
+                            </>
+                        }
                     />
                 ))}
         />
