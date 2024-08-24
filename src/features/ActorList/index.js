@@ -9,7 +9,8 @@ import {
 import {
     selectSearchPeople,
     selectSearchPeopleStatus,
-    searchPeople
+    searchPeople,
+    selectTotalResults
 } from '../../searchActorSlice';
 import { Section, Title } from './styled';
 import { Pagination } from "../../common/Pagination";
@@ -51,6 +52,7 @@ const ActorsList = () => {
 
     const debouncedSearchQuery = useDebounce(searchQuery, 1000);
 
+    const totalResults = useSelector(selectTotalResults);
     const currentPage = useSelector(selectCurrentPage);
     const totalPages = 500;
     const isSearching = debouncedSearchQuery.length > 0;
@@ -59,9 +61,14 @@ const ActorsList = () => {
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get("search");
-        if (query !== searchQuery) {
-            setSearchQuery(query || "");
-            setHeaderText(query ? `Search results for “${query}”` : "Popular people");
+        setSearchQuery(query || "");
+            
+        if (query) {
+            setHeaderText(totalResults > 0 
+                ? `Search results for “${query}” (${totalResults})`
+                : `Search results for “${query}” ()`);
+        } else {
+            setHeaderText("Popular people");
         }
     }, [location.search, searchQuery]);
 
