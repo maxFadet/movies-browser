@@ -19,8 +19,8 @@ import { Error } from "../../common/components/Error";
 import { Loader } from "../../common/components/Loader";
 import { PersonsListTile } from '../../common/components/PersosListTile';
 import { toPerson } from "../../routes";
-import { loadingStatus } from '../../common/constants/requestStatuses/loadingStatus';
-import { errorStatus } from '../../common/constants/requestStatuses/errorStatus';
+import { loadingStatus } from '../../common/constants/requestStatuses';
+import { errorStatus } from '../../common/constants/requestStatuses';
 import { NoResults } from '../../common/components/NoResultsPage';
 import { queryKey } from '../../common/constants/queryKey';
 

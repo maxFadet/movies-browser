@@ -17,7 +17,7 @@ import {
     Rating
 } from "./styled";
 import { GenresList } from "../../../../common/components/GenresList";
-import { getYear } from "../../../../functions/getYear";
+import { getYear } from "../../../../common/functions/getYear";
 import { BASE_IMAGE_URL } from "../../../../common/constants/config/BASE_IMAGE_URL";
 import { IMAGE_WIDTH } from "../../../../common/constants/config/IMAGE_WIDTH";
 
