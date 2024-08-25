@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { resetSearchMovies } from "../../slices/searchMoviesSlice";
 import { fetchPopularMovies } from "../../../features/MoviesListPage/slices/popularMoviesSlice";
 import { resetSearchPeople } from "../../slices/searchActorSlice";
+import { fetchActorsStart } from "../../../features/ActorList/slices/actorsSlice";
 
 const Navigation = () => {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Navigation = () => {
 
     const handlePeopleClick = () => {
         dispatch(resetSearchPeople());
+        dispatch(fetchActorsStart({ page: 1 }));
     };
 
     return (
