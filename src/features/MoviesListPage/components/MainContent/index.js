@@ -45,7 +45,7 @@ export const MainContent = () => {
     const header = isSearching
         ? totalResults > 0
             ? `Search results for “${searchQuery}” (${totalResults})`
-            : `Search results for “${searchQuery}” ()`
+            : `Search results for “${searchQuery}”`
         : "Popular movies";
 
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
@@ -58,14 +58,7 @@ export const MainContent = () => {
         }, 1000);
     };
 
-    const getYear = (date) => {
-        if (!date) return "";
-        const parsedDate = new Date(date);
-        return isNaN(parsedDate.getFullYear()) ? "Unknown" : parsedDate.getFullYear();
-    };
-    
-
-    if (isLoading || isTransitioning) {
+   if (isLoading || isTransitioning) {
         return <Loader showText={false} />;
     }
     if (isSearching && (!moviesToDisplay || moviesToDisplay.length === 0)) {
