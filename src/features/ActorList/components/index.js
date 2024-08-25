@@ -22,7 +22,6 @@ import { Tile } from '../../../common/components/Tile';
 import { toPerson } from "../../../routes";
 import { loadingStatus, errorStatus } from "../../../common/constants/requestStatuses";
 import { NoResults } from '../../../common/components/NoResultsPage';
-// import { queryKey } from '../../queryKey';
 
 const useDebounce = (value, delay) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
@@ -65,7 +64,7 @@ const ActorsList = () => {
         if (query) {
             setHeaderText(totalResults > 0
                 ? `Search results for “${query}” (${totalResults})`
-                : `Search results for “${query}” ()`);
+                : `Search results for “${query}”`);
         } else {
             setHeaderText("Popular people");
         }
