@@ -1,10 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {
-    useLocation
-} from 'react-router-dom';
-import {
-    selectSearchMovies, selectTotalResults
-} from '../../../../common/slices/searchMoviesSlice';
+import { useLocation } from 'react-router-dom';
+import { selectSearchMovies, selectTotalResults } from '../../../../common/slices/searchMoviesSlice';
 import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../slices/popularMoviesSlice';
 import { Tile } from '../../../../common/components/Tile';
 import { GenresList } from '../../../../common/components/GenresList';
@@ -61,6 +57,13 @@ export const MainContent = () => {
             setIsLoading(false);
         }, 1000);
     };
+
+    const getYear = (date) => {
+        if (!date) return "";
+        const parsedDate = new Date(date);
+        return isNaN(parsedDate.getFullYear()) ? "Unknown" : parsedDate.getFullYear();
+    };
+    
 
     if (isLoading || isTransitioning) {
         return <Loader showText={false} />;
