@@ -30,13 +30,4 @@ export const selectMoviesCreditsListState = state => state.moviesCreditsList;
 export const selectMoviesCreditsListFetchStatus = state => selectMoviesCreditsListState(state).fetchMoviesCreditsListStatus
 export const selectMovieCreddits = state => selectMoviesCreditsListState(state).moviesCreditsList
 
-// export const selectCreditsById = (state, movieId) => {
-//     const movieIdAsNumber = Number(movieId);
-//     const creditsFoundById = selectMovieCreddits(state).find(({ id }) => id === movieIdAsNumber);
-//     return creditsFoundById;
-// };
-
-// export const selectMovieCast = state => selectMovieCreddits(state).cast;
-// export const selectMovieCrew = state => selectMovieCreddits(state).crew;
-
 export const moviesCreditsListReducer = moviesCredditsListSlice.reducer;

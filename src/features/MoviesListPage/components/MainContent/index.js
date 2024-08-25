@@ -1,11 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import {
-    // useNavigate, 
     useLocation
 } from 'react-router-dom';
 import {
     selectSearchMovies, selectTotalResults
-    // , selectSearchResultsText 
 } from '../../../../common/slices/searchMoviesSlice';
 import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../slices/popularMoviesSlice';
 import { Tile } from '../../../../common/components/Tile';
@@ -24,7 +22,6 @@ import { useNavigationToPage } from '../../../../useNavigation';
 import { BASE_IMAGE_URL, IMAGE_WIDTH } from '../../../../common/constants/config';
 
 export const MainContent = () => {
-    // const navigate = useNavigate();
     const handleTileClick = useNavigationToPage();
     const dispatch = useDispatch();
     const location = useLocation();
@@ -34,13 +31,10 @@ export const MainContent = () => {
     const popularMovies = useSelector(selectPopularMovies);
     const currentPage = useSelector(selectCurrentPage);
     const totalPages = useSelector(selectTotalPages);
-    // const searchResultsText = useSelector(selectSearchResultsText);
-
 
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [isTransitioning
-        // , setIsTransitioning
     ] = useState(false);
 
     useEffect(() => {
@@ -67,13 +61,6 @@ export const MainContent = () => {
             setIsLoading(false);
         }, 1000);
     };
-
-    // const handleMovieClick = (id) => {
-    //     setIsTransitioning(true);
-    //     setTimeout(() => {
-    //         navigate(toMovie({ id }));
-    //     }, 1000);
-    // };
 
     if (isLoading || isTransitioning) {
         return <Loader showText={false} />;
