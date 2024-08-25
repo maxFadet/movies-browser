@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import noImage from '../../../image/noImage.svg';
+import noImage from '../../../icons/noImage.svg';
 
 export const StyledTile = styled.div`
   background-color: rgba(255, 255, 255, 1);
