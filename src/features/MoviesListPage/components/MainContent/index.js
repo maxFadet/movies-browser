@@ -7,20 +7,20 @@ import {
     selectSearchMovies, selectTotalResults
     // , selectSearchResultsText 
 } from '../../../searchMoviesSlice';
-import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../../popularMoviesSlice';
-import { Tile } from '../../../common/components/Tile';
-import { GenresList } from '../../../common/components/GenresList';
-import { Rates } from '../../../common/components/Rates';
-import { toMovie } from "../../../routes";
-import { MoviesTilesList } from '../../../common/components/MoviesTilesList';
-import { Container } from '../../../common/components/Container';
-import { Pagination } from '../../../common/components/Pagination';
-import { Loader } from '../../../common/components/Loader';
+import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../../../popularMoviesSlice';
+import { Tile } from '../../../../common/components/Tile';
+import { GenresList } from '../../../../common/components/GenresList';
+import { Rates } from '../../../../common/components/Rates';
+import { toMovie } from "../../../../routes";
+import { MoviesTilesList } from '../../../../common/components/MoviesTilesList';
+import { Container } from '../../../../common/components/Container';
+import { Pagination } from '../../../../common/components/Pagination';
+import { Loader } from '../../../../common/components/Loader';
 import { useEffect, useState } from 'react';
-import { NoResults } from "../../../common/components/NoResultsPage";
-import { getYear } from '../../../common/functions/getYear';
-import { queryKey } from '../../../common/constants/queryKey';
-import { useNavigationToPage } from '../../../useNavigation';
+import { NoResults } from "../../../../common/components/NoResultsPage";
+import { getYear } from '../../../../common/functions/getYear';
+import { queryKey } from '../../../../common/constants/queryKey';
+import { useNavigationToPage } from '../../../../useNavigation';
 
 export const MainContent = () => {
     // const navigate = useNavigate();

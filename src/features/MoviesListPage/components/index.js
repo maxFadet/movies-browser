@@ -4,12 +4,12 @@ import { useLocation } from 'react-router-dom';
 import {
     selectPopularMoviesFetchStatust, fetchPopularMovies, selectCurrentPage
     // , selectTotalPages 
-} from '../../popularMoviesSlice';
+} from '../../../popularMoviesSlice';
 import { searchMovies } from '../../searchMoviesSlice';
 import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from '../../moviesGenresSlice';
-import { loadingStatus, errorStatus } from "../../common/constants/requestStatuses";
-import { Loader } from '../../common/components/Loader';
-import { Error } from '../../common/components/Error';
+import { loadingStatus, errorStatus } from "../../../common/constants/requestStatuses";
+import { Loader } from '../../../common/components/Loader';
+import { Error } from '../../../common/components/Error';
 import { MainContent } from './MainContent';
 
 function MoviesListPage() {
