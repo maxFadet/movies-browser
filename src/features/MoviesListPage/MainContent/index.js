@@ -92,7 +92,7 @@ export const MainContent = () => {
                                     extraContent={
                                         <>
                                             <GenresList genresIds={genre_ids} />
-                                            <Rates voteAverage={vote_average} voteCount={vote_count} />
+                                            <Rates voteAverage={vote_average} voteCount={vote_count} hideTotalScore={true} />
                                         </>
                                     }
                                 />

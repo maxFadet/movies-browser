@@ -17,7 +17,7 @@ import { Container } from "../../common/Container";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Error } from "../../common/Error";
 import { Loader } from "../../common/Loader";
-import { PersonsListTile } from '../../common/PersosListTile';
+import { Tile } from '../../common/Tile';
 import { toPerson } from "../../routes";
 import { loadingStatus } from '../../requestStatuses/loadingStatus';
 import { errorStatus } from '../../requestStatuses/errorStatus';
@@ -111,12 +111,13 @@ const ActorsList = () => {
             <Section>
                 <Title>{headerText}</Title>
                 {actors.length > 0 && (
-                    actors.map((actor) => (
-                        <PersonsListTile
-                            key={actor.id}
-                            onClick={() => handleActorClick(actor.id)}
-                            photo={actor.profile_path}
-                            name={actor.name}
+                    actors.map(({ id, name, profile_path }) => (
+                        <Tile
+                            key={id}
+                            id={id}
+                            image={profile_path}
+                            title={name}
+                            navigateTo={() => handleActorClick(id)}
                         />
                     ))
                 )}
