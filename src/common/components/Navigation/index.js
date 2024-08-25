@@ -11,6 +11,7 @@ import Search from "./Search";
 import { toMoviesList, toActorsList } from "../../../routes";
 import { useDispatch } from "react-redux";
 import { resetSearchMovies } from "../../slices/searchMoviesSlice";
+import { fetchPopularMovies } from "../../../features/MoviesListPage/slices/popularMoviesSlice";
 import { resetSearchPeople } from "../../slices/searchActorSlice";
 
 const Navigation = () => {
@@ -18,6 +19,7 @@ const Navigation = () => {
 
     const handleMoviesClick = () => {
         dispatch(resetSearchMovies());
+        dispatch(fetchPopularMovies({ page: 1 }));
     };
 
     const handlePeopleClick = () => {
