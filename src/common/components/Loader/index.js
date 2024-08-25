@@ -1,7 +1,7 @@
 import { Container, Image, Legend, Wrapper } from "./styled";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { queryKey } from "../../../queryKey";
+import { queryKey } from "../../constants/queryKey";
 
 export const Loader = ({ showText = true }) => {
     const location = useLocation();

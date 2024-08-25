@@ -19,7 +19,7 @@ import { Loader } from '../../../common/components/Loader';
 import { useEffect, useState } from 'react';
 import { NoResults } from "../../../common/components/NoResultsPage";
 import { getYear } from '../../../common/functions/getYear';
-import { queryKey } from '../../../queryKey';
+import { queryKey } from '../../../common/constants/queryKey';
 import { useNavigationToPage } from '../../../useNavigation';
 
 export const MainContent = () => {
