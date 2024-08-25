@@ -40,7 +40,7 @@ export const BannerMainInfo = styled.div`
     grid-gap: 24px;
 
     @media (max-width:  ${({ theme }) => theme.breakpoints.mobileL}) {
-        grid-gap: 4px;
+        grid-gap: 8px;
     };
 `;
 

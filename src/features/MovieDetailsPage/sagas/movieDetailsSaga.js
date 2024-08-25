@@ -4,8 +4,8 @@ import {
     fetchMovieDetailsSuccess,
     fetchMovieDetailsError,
 } from "../slices/movieDetailsSlice";
-import { API_KEY } from "../../../config/API_KEY";
-import { BASE_URL } from "../../../config/BASE_URL";
+import { API_KEY } from "../../../common/constants/config";
+import { BASE_URL } from "../../../common/constants/config";
 
 function* fetchMovieDetailsHandler(action) {
     try {

@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadingStatus } from "../../../requestStatuses/loadingStatus";
-import { errorStatus } from "../../../requestStatuses/errorStatus";
-import { successStatus } from "../../../requestStatuses/successStatus";
+import { loadingStatus, successStatus, errorStatus } from "../../../common/constants/requestStatuses";
 
 export const moviesCredditsListSlice = createSlice({
     name: "moviesCreditsList",
@@ -29,7 +27,7 @@ export const {
 
 export const selectMoviesCreditsListState = state => state.moviesCreditsList;
 
-export const selectMoviesCreditsListFetchStatus = state =>selectMoviesCreditsListState(state).fetchMoviesCreditsListStatus
+export const selectMoviesCreditsListFetchStatus = state => selectMoviesCreditsListState(state).fetchMoviesCreditsListStatus
 export const selectMovieCreddits = state => selectMoviesCreditsListState(state).moviesCreditsList
 
 // export const selectCreditsById = (state, movieId) => {
