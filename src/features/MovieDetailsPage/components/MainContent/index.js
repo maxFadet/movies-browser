@@ -2,7 +2,7 @@ import { DetailsTile } from "../../../../common/components/DetailsTile"
 import { Tile } from "../../../../common/components/Tile";
 import { GenresList } from "../../../../common/components/GenresList";
 import { PeopleTilesList } from "../../../../common/components/PeopleTilesList";
-import { Rates } from "../../../../common/components/Rates";
+import { Rates } from "../../../../common/components/Rates/components";
 import { useSelector } from "react-redux";
 import { selectMovieCreddits } from "../../slices/moviesCredditsListSlice";
 import { selectMovieDetails } from "../../slices/movieDetailsSlice";
@@ -10,6 +10,8 @@ import { PageContent } from "../../../../common/components/PageContent";
 import { BannerContent, MovieTitle, BannerMainInfo, Banner } from "./styled";
 import { toPerson } from "../../../../routes";
 import { useNavigationToPage } from "../../../../useNavigation";
+import { getImageUrl } from "../../../../common/functions/getImageUrl";
+import { BACKDROP_WIDTH } from "../../../../common/constants/config";
 
 export const MainContent = () => {
     const { cast, crew } = useSelector(selectMovieCreddits);
@@ -26,11 +28,11 @@ export const MainContent = () => {
     return (
         <>
             <BannerContent>
-                <Banner $backdrop={`https://image.tmdb.org/t/p/original${backdrop_path}`}>
+                <Banner $backdrop={getImageUrl(backdrop_path, BACKDROP_WIDTH)}>
                     <BannerMainInfo>
                         <MovieTitle>{title}</MovieTitle>
                         <Rates
-                            mainInfo
+                            useMovieBannerLayout
                             voteAverage={vote_average}
                             voteCount={vote_count}
                         />

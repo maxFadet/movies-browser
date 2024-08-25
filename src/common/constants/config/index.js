@@ -7,3 +7,4 @@ export const PHOTO_WIDTH = 'w185';
 
 export const BASE_IMAGE_URL = `https://image.tmdb.org/t/p/`;
 export const INVALID_IMAGE_URL = `${BASE_IMAGE_URL}${IMAGE_WIDTH}null`;
+

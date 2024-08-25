@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { fetchActorStart, fetchActorSuccess, fetchActorFailure, fetchCastAndCrewSuccess } from './actorDetailsSlice';
-import { API_KEY } from '../../common/constants/config';
-import { BASE_URL } from '../../common/constants/config';
+import { fetchActorStart, fetchActorSuccess, fetchActorFailure, fetchCastAndCrewSuccess } from '../slices/actorDetailsSlice';
+import { API_KEY } from '../../../common/constants/config';
+import { BASE_URL } from '../../../common/constants/config';
 
 function* fetchActorSaga(action) {
     try {

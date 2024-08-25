@@ -7,14 +7,14 @@ import {
     selectActorStatus,
     selectCast,
     selectCrew
-} from './actorDetailsSlice';
-import { Loader } from '../../common/components/Loader';
-import { Error } from '../../common/components/Error';
+} from '../slices/actorDetailsSlice';
+import { Loader } from '../../../common/components/Loader';
+import { Error } from '../../../common/components/Error';
 import { Details } from './Content/Details';
 import { Cast } from './Content/Cast';
 import { Crew } from './Content/Crew';
-import { loadingStatus, successStatus, errorStatus } from "../../common/constants/requestStatuses";
-import { Container } from '../../common/components/Container';
+import { loadingStatus, successStatus, errorStatus } from "../../../common/constants/requestStatuses";
+import { Container } from '../../../common/components/Container';
 
 export const ActorsData = () => {
     const { id: actorId } = useParams();

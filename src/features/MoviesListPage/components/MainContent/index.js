@@ -6,11 +6,11 @@ import {
 import {
     selectSearchMovies, selectTotalResults
     // , selectSearchResultsText 
-} from '../../../searchMoviesSlice';
-import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../../../popularMoviesSlice';
+} from '../../../../common/slices/searchMoviesSlice';
+import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../slices/popularMoviesSlice';
 import { Tile } from '../../../../common/components/Tile';
 import { GenresList } from '../../../../common/components/GenresList';
-import { Rates } from '../../../../common/components/Rates';
+import { Rates } from '../../../../common/components/Rates/components';
 import { toMovie } from "../../../../routes";
 import { MoviesTilesList } from '../../../../common/components/MoviesTilesList';
 import { Container } from '../../../../common/components/Container';
@@ -21,6 +21,7 @@ import { NoResults } from "../../../../common/components/NoResultsPage";
 import { getYear } from '../../../../common/functions/getYear';
 import { queryKey } from '../../../../common/constants/queryKey';
 import { useNavigationToPage } from '../../../../useNavigation';
+import { BASE_IMAGE_URL, IMAGE_WIDTH } from '../../../../common/constants/config';
 
 export const MainContent = () => {
     // const navigate = useNavigate();
@@ -100,7 +101,7 @@ export const MainContent = () => {
                                 <Tile
                                     key={id}
                                     navigateTo={() => handleTileClick(toMovie, id)}
-                                    image={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                                    image={`${BASE_IMAGE_URL}${IMAGE_WIDTH}${poster_path}`}
                                     title={title}
                                     subInfo={getYear(release_date)}
                                     extraContent={

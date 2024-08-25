@@ -4,9 +4,9 @@ import { useLocation } from 'react-router-dom';
 import {
     selectPopularMoviesFetchStatust, fetchPopularMovies, selectCurrentPage
     // , selectTotalPages 
-} from '../../../popularMoviesSlice';
-import { searchMovies } from '../../searchMoviesSlice';
-import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from '../../moviesGenresSlice';
+} from '../../../features/MoviesListPage/slices/popularMoviesSlice';
+import { searchMovies } from '../../../common/slices/searchMoviesSlice';
+import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from '../../../common/slices/moviesGenresSlice';
 import { loadingStatus, errorStatus } from "../../../common/constants/requestStatuses";
 import { Loader } from '../../../common/components/Loader';
 import { Error } from '../../../common/components/Error';

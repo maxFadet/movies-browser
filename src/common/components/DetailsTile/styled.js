@@ -117,7 +117,7 @@ export const DetailInfoItem = styled.p`
     margin: 0;
 `;
 
-export const DetailInfoType = styled.span`
+export const Label = styled.span`
     color: ${({ theme }) => theme.colors.stormGray};
     font-size: 18px;
     font-weight: 400;

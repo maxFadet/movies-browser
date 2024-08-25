@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadingStatus, successStatus, errorStatus } from "./common/constants/requestStatuses";
+import { loadingStatus, successStatus, errorStatus } from "../constants/requestStatuses";
 
 export const searchActorSlice = createSlice({
     name: "searchPeople",

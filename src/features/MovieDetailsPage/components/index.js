@@ -6,7 +6,7 @@ import { fetchMoviesCreditsList, selectMovieCreddits, selectMoviesCreditsListFet
 import { Loader } from "../../../common/components/Loader";
 import { Error } from "../../../common/components/Error";
 import { loadingStatus, successStatus, errorStatus } from "../../../common/constants/requestStatuses";
-import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from "../../../moviesGenresSlice";
+import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from "../../../common/slices/moviesGenresSlice";
 import { useParams } from "react-router-dom";
 import { NoResults } from "../../../common/components/NoResultsPage";
 

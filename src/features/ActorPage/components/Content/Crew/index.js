@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { toMovie } from "../../../../routes";
+import { toMovie } from "../../../../../routes";
 import { useSelector } from "react-redux";
-import { selectCrew } from "../../actorDetailsSlice";
-import { MoviesTilesList } from "../../../../common/components/MoviesTilesList";
-import { Tile } from "../../../../common/components/Tile";
-import { GenresList } from "../../../../common/components/GenresList";
-import { Rates } from "../../../../common/components/Rates";
+import { selectCrew } from "../../../slices/actorDetailsSlice";
+import { MoviesTilesList } from "../../../../../common/components/MoviesTilesList";
+import { Tile } from "../../../../../common/components/Tile";
+import { GenresList } from "../../../../../common/components/GenresList";
+import { Rates } from "../../../../../common/components/Rates/components";
 
 export const Crew = () => {
     const crew = useSelector(selectCrew);

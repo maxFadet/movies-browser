@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { fetchActorsStart, fetchActorsSuccess, fetchActorsFailure } from './actorsSlice';
-import { BASE_URL } from '../../common/constants/config';
-import { API_KEY } from '../../common/constants/config';
+import { fetchActorsStart, fetchActorsSuccess, fetchActorsFailure } from '../slices/actorsSlice';
+import { BASE_URL } from '../../../common/constants/config';
+import { API_KEY } from '../../../common/constants/config';
 
 function* fetchActorsSaga(action) {
     const { page = 1 } = action.payload;

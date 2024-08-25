@@ -9,10 +9,11 @@ import {
 } from "./styled";
 import { GenresList } from "../GenresList";
 import { Rates } from "../../common/Rates";
+import { BASE_IMAGE_URL, IMAGE_WIDTH } from "../../constants/config";
 
 export const MovieTile = ({ movie, handleMovieClick }) => {
     const posterUrl = movie.poster_path
-        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        ? `${BASE_IMAGE_URL}${IMAGE_WIDTH}${movie.poster_path}`
         : null;
 
     return (

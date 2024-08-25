@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { fetchMovies } from "./api/searchMovies";
-import { searchMovies, searchMoviesSuccess, searchMoviesError } from "./searchMoviesSlice";
+import { fetchMovies } from "../../api/searchMovies";
+import { searchMovies, searchMoviesSuccess, searchMoviesError } from "../slices/searchMoviesSlice";
 
 function* searchMoviesHandler(action) {
     try {

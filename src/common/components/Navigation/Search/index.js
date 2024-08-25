@@ -1,11 +1,13 @@
 import { useDispatch } from 'react-redux';
-import { searchMovies, setSearchResultsText } from '../../searchMoviesSlice';
-import { searchPeople } from '../../searchActorSlice';
+import { searchMovies, setSearchResultsText } from '../../../slices/searchMoviesSlice';
+import { searchPeople } from '../../../slices/searchActorSlice';
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toMoviesList, 
+import {
+    toMoviesList,
     // toMovie, 
-    toActorsList } from "../../routes";
+    toActorsList
+} from "../../../../routes";
 import { useState, useEffect } from "react";
 
 const getPlaceholderText = (pathname) =>
@@ -25,7 +27,7 @@ const MovieSearch = () => {
     useEffect(() => {
         setSearchResultsText(query ? `Search results for "${query}"` : "");
     }, [query]);
-    
+
     useEffect(() => {
         dispatch(setSearchResultsText(query ? `Search results for "${query}"` : ""));
     }, [query, dispatch]);
