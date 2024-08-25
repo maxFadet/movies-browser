@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../../../routes";
 import { useSelector } from "react-redux";
 import { selectCast } from "../../actorDetailsSlice";
-import { Tile } from "../../../../common/Tile";
-import { MoviesTilesList } from "../../../../common/MoviesTilesList";
-import { GenresList } from "../../../../common/GenresList";
-import { Rates } from "../../../../common/Rates";
+import { Tile } from "../../../../common/components/Tile";
+import { MoviesTilesList } from "../../../../common/components/MoviesTilesList";
+import { GenresList } from "../../../../common/components/GenresList";
+import { Rates } from "../../../../common/components/Rates";
 
 export const Cast = () => {
     const cast = useSelector(selectCast);

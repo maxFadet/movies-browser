@@ -13,7 +13,7 @@ import {
     IconContainer
 } from "./styled";
 import { selectMovieDetails } from
-    "../../features/MovieDetailsPage/slices/movieDetailsSlice";
+    "../../../features/MovieDetailsPage/slices/movieDetailsSlice";
 import { StyledProfileIcon } from "../StyledProfileIcon";
 import { StyledVideoIcon } from "../StyledVideoIcon";
 import { getYear } from "../../functions/getYear";

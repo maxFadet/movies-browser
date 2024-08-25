@@ -1,12 +1,12 @@
-import { DetailsTile } from "../../../../common/DetailsTile"
-import { Tile } from "../../../../common/Tile";
-import { GenresList } from "../../../../common/GenresList";
-import { PeopleTilesList } from "../../../../common/PeopleTilesList";
-import { Rates } from "../../../../common/Rates";
+import { DetailsTile } from "../../../../common/components/DetailsTile"
+import { Tile } from "../../../../common/components/Tile";
+import { GenresList } from "../../../../common/components/GenresList";
+import { PeopleTilesList } from "../../../../common/components/PeopleTilesList";
+import { Rates } from "../../../../common/components/Rates";
 import { useSelector } from "react-redux";
 import { selectMovieCreddits } from "../../slices/moviesCredditsListSlice";
 import { selectMovieDetails } from "../../slices/movieDetailsSlice";
-import { PageContent } from "../../../../common/PageContent";
+import { PageContent } from "../../../../common/components/PageContent";
 import { BannerContent, MovieTitle, BannerMainInfo, Banner } from "./styled";
 import { toPerson } from "../../../../routes";
 import { useNavigationToPage } from "../../../../useNavigation";

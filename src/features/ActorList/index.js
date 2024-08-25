@@ -13,16 +13,15 @@ import {
     selectTotalResults
 } from '../../searchActorSlice';
 import { Section, Title } from './styled';
-import { Pagination } from "../../common/Pagination";
-import { Container } from "../../common/Container";
+import { Pagination } from "../../common/components/Pagination";
+import { Container } from "../../common/components/Container";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Error } from "../../common/Error";
-import { Loader } from "../../common/Loader";
-import { Tile } from '../../common/Tile';
+import { Error } from "../../common/components/Error";
+import { Loader } from "../../common/components/Loader";
+import { Tile } from '../../common/components/Tile';
 import { toPerson } from "../../routes";
-import { loadingStatus } from '../../requestStatuses/loadingStatus';
-import { errorStatus } from '../../requestStatuses/errorStatus';
-import { NoResults } from '../../common/NoResultsPage';
+import { loadingStatus, errorStatus } from "../../common/constants/requestStatuses";
+import { NoResults } from '../../common/components/NoResultsPage';
 // import { queryKey } from '../../queryKey';
 
 const useDebounce = (value, delay) => {
@@ -62,9 +61,9 @@ const ActorsList = () => {
     useEffect(() => {
         const query = new URLSearchParams(location.search).get("search");
         setSearchQuery(query || "");
-            
+
         if (query) {
-            setHeaderText(totalResults > 0 
+            setHeaderText(totalResults > 0
                 ? `Search results for “${query}” (${totalResults})`
                 : `Search results for “${query}” ()`);
         } else {

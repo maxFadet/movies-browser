@@ -1,6 +1,6 @@
 import { StyledGenresList, Genre } from "./styled";
 import { useSelector } from "react-redux";
-import { findMoviesGenresById } from "../../moviesGenresSlice";
+import { findMoviesGenresById } from "../../../moviesGenresSlice";
 
 export const GenresList = ({ genresIds }) => {
 

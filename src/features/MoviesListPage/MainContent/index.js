@@ -1,22 +1,24 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { 
+import {
     // useNavigate, 
-    useLocation } from 'react-router-dom';
-import { selectSearchMovies, selectTotalResults
+    useLocation
+} from 'react-router-dom';
+import {
+    selectSearchMovies, selectTotalResults
     // , selectSearchResultsText 
 } from '../../../searchMoviesSlice';
 import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../../popularMoviesSlice';
-import { Tile } from '../../../common/Tile';
-import { GenresList } from '../../../common/GenresList';
-import { Rates } from '../../../common/Rates';
+import { Tile } from '../../../common/components/Tile';
+import { GenresList } from '../../../common/components/GenresList';
+import { Rates } from '../../../common/components/Rates';
 import { toMovie } from "../../../routes";
-import { MoviesTilesList } from '../../../common/MoviesTilesList';
-import { Container } from '../../../common/Container';
-import { Pagination } from '../../../common/Pagination';
-import { Loader } from '../../../common/Loader';
+import { MoviesTilesList } from '../../../common/components/MoviesTilesList';
+import { Container } from '../../../common/components/Container';
+import { Pagination } from '../../../common/components/Pagination';
+import { Loader } from '../../../common/components/Loader';
 import { useEffect, useState } from 'react';
-import { NoResults } from "../../../common/NoResultsPage";
-import { getYear } from '../../../functions/getYear';
+import { NoResults } from "../../../common/components/NoResultsPage";
+import { getYear } from '../../../common/functions/getYear';
 import { queryKey } from '../../../queryKey';
 import { useNavigationToPage } from '../../../useNavigation';
 
@@ -49,7 +51,7 @@ export const MainContent = () => {
 
     const isSearching = searchQuery.length > 0;
 
-    const header = isSearching 
+    const header = isSearching
         ? totalResults > 0
             ? `Search results for “${searchQuery}” (${totalResults})`
             : `Search results for “${searchQuery}” ()`

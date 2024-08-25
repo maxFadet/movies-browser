@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { successStatus } from "./requestStatuses/successStatus";
-import { loadingStatus } from "./requestStatuses/loadingStatus";
-import { errorStatus } from "./requestStatuses/errorStatus";
+import { loadingStatus, successStatus, errorStatus } from "./common/constants/requestStatuses";
 
 export const searchMoviesSlice = createSlice({
     name: "searchMovies",
@@ -15,7 +13,7 @@ export const searchMoviesSlice = createSlice({
         searchMovies: (state) => {
             state.searchStatus = loadingStatus;
         },
-        searchMoviesSuccess: (state, { payload: {movies, totalResults} }) => {
+        searchMoviesSuccess: (state, { payload: { movies, totalResults } }) => {
             state.movies = movies;
             state.totalResults = totalResults;
             state.searchStatus = successStatus;
@@ -28,7 +26,7 @@ export const searchMoviesSlice = createSlice({
                 movies: [],
                 searchStatus: loadingStatus,
                 searchResultsText: "",
-                totalResults: 0, 
+                totalResults: 0,
             };
         },
         setSearchResultsText: (state, action) => {

@@ -7,8 +7,8 @@ import {
     GeneralInfo,
     IconContainer
 } from "./styled";
-import { StyledProfileIcon } from "../../StyledProfileIcon";
-import { StyledVideoIcon } from "../../StyledVideoIcon";
+import { StyledProfileIcon } from "../StyledProfileIcon";
+import { StyledVideoIcon } from "../StyledVideoIcon";
 
 export const Tile = ({
     image,

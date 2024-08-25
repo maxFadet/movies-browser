@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loadingStatus } from '../../requestStatuses/loadingStatus';
-import { errorStatus } from '../../requestStatuses/errorStatus';
-import { successStatus } from '../../requestStatuses/successStatus';
+import { loadingStatus, successStatus, errorStatus } from "../../common/constants/requestStatuses";
 
 const actorDetailsSlice = createSlice({
     name: 'actorDetails',

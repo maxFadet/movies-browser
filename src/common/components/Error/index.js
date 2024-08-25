@@ -1,4 +1,4 @@
-import { toMoviesList } from "../../routes"
+import { toMoviesList } from "../../../routes"
 import { Button, Container, ErrorImage, ErrorWrapper, Message, Warning } from "./styled"
 
 export const Error = () => {

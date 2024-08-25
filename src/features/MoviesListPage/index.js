@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { selectPopularMoviesFetchStatust, fetchPopularMovies, selectCurrentPage
+import {
+    selectPopularMoviesFetchStatust, fetchPopularMovies, selectCurrentPage
     // , selectTotalPages 
 } from '../../popularMoviesSlice';
 import { searchMovies } from '../../searchMoviesSlice';
 import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from '../../moviesGenresSlice';
-import { loadingStatus } from '../../requestStatuses/loadingStatus';
-import { errorStatus } from '../../requestStatuses/errorStatus';
-import { Loader } from '../../common/Loader';
-import { Error } from '../../common/Error';
+import { loadingStatus, errorStatus } from "../../common/constants/requestStatuses";
+import { Loader } from '../../common/components/Loader';
+import { Error } from '../../common/components/Error';
 import { MainContent } from './MainContent';
 
 function MoviesListPage() {
