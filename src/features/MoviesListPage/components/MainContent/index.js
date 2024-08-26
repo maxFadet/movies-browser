@@ -15,7 +15,6 @@ import { NoResults } from "../../../../common/components/NoResultsPage";
 import { getYear } from '../../../../common/functions/getYear';
 import { queryKey } from '../../../../common/constants/queryKey';
 import { useNavigationToPage } from '../../../../useNavigation';
-import { BASE_IMAGE_URL, IMAGE_WIDTH } from '../../../../common/constants/config';
 
 export const MainContent = () => {
     const handleTileClick = useNavigationToPage();
@@ -84,7 +83,7 @@ export const MainContent = () => {
                                 <Tile
                                     key={id}
                                     navigateTo={() => handleTileClick(toMovie, id)}
-                                    image={`${BASE_IMAGE_URL}${IMAGE_WIDTH}${poster_path}`}
+                                    image={poster_path}
                                     title={title}
                                     subInfo={getYear(release_date)}
                                     extraContent={
