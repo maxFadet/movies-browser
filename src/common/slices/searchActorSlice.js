@@ -37,5 +37,4 @@ export const selectSearchPeopleStatus = (state) => selectSearchPeopleState(state
 export const selectSearchPeople = (state) => selectSearchPeopleState(state).people;
 export const selectTotalResults = (state) => selectSearchPeopleState(state).totalResults;
 
-
 export const searchPeopleReducer = searchActorSlice.reducer;

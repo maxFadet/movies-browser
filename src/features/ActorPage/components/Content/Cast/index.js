@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../../../../routes";
 import { useSelector } from "react-redux";
@@ -16,9 +15,11 @@ export const Cast = () => {
         navigate(toMovie({ id }));
     };
 
+    const castCount = cast.length;
+
     return (
         <MoviesTilesList
-            header="Movies - cast"
+            header={`Movies - cast (${castCount})`}
             content={
                 cast.map(({ id, title, poster_path, character, genre_ids, vote_average, vote_count }, index) => (
                     <Tile
@@ -35,7 +36,8 @@ export const Cast = () => {
                             </>
                         }
                     />
-                ))}
+                ))
+            }
         />
     );
 };
