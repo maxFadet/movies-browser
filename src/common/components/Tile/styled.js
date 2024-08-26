@@ -29,8 +29,9 @@ export const StyledMovieTile = styled(StyledPersonTile)`
 
 export const Image = styled.img`
     width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    display: block;
 `;
 
 export const GeneralInfo = styled.div`
@@ -88,11 +89,23 @@ export const ExtraContent = styled.div`
 `;
 
 export const IconContainer = styled.div`
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: ${({ theme }) => theme.colors.silver};
+    border-radius: 10px;
+`;
+
+export const ImageContainer = styled.div`
     width: 100%;
-    border-radius: 15px;
-    height: 100%;
+    aspect-ratio: 2 / 3;
+    position: relative;
+    background-color: ${({ theme }) => theme.colors.silver};
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
