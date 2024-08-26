@@ -1,65 +1,54 @@
 import styled from "styled-components";
 
 export const StyledPersonTile = styled.li`
-    display: grid;
-    grid-gap: 16px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 245px min-content;
-    align-items: flex-start;
-    box-shadow: 0px 4px 12px 0px  ${({ theme }) => theme.colors.brightHeather};
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     background-color: ${({ theme }) => theme.colors.white};
+    box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.colors.brightHeather};
     cursor: pointer;
     padding: 16px;
     list-style-type: none;
-    height: 100%;
     word-break: break-word;
+    height: 100%;
+    justify-content: space-between;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-        grid-template-rows: 200px min-content;
-    }; 
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
-        grid-template-rows: 175px min-content;
-    }; 
+        align-items: flex-start;
+        gap: 8px;
+    }
 `;
 
 export const StyledMovieTile = styled(StyledPersonTile)`
-    grid-template-rows: 434px min-content;
-        
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
-        grid-template-rows: unset;
-        grid-template-columns: 1fr 1.5fr;
-        min-height: 293px;
-    };
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-        min-height: 230px;
-    }; 
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
-        min-height: 201px;
-        grid-template-columns: 1fr 1fr;
-    }; 
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16px;
+    }
 `;
 
 export const Image = styled.img`
     width: 100%;
-    height: 100%;
     object-fit: cover;
     border-radius: 10px;
 `;
 
 export const GeneralInfo = styled.div`
-    display: grid;
-    grid-gap: 8px;
-    grid-template-columns: 1fr;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
     text-align: center;
+    justify-items: center;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
+        text-align: left;
+    }
 `;
 
 export const MovieGeneralInfo = styled(GeneralInfo)`
-     align-items: end;
-     justify-items: start;
+     align-items: flex-start;
+     justify-content: flex-start;
 `;
 
 export const Title = styled.header`
@@ -88,9 +77,10 @@ export const SubInfo = styled.p`
 `;
 
 export const ExtraContent = styled.div`
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 1;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         grid-gap: 12px;
