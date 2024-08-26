@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledTileList = styled.section`
     display: grid;
     grid-gap: 32px;
+    margin: 56px auto;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         grid-gap: 12px;
