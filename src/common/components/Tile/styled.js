@@ -57,7 +57,7 @@ export const Title = styled.header`
     font-weight: 500;
     text-align: center;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
         font-size: 16px;
     };
 `;
