@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
     fetchActorStart,
     selectActor,
@@ -19,7 +19,8 @@ import { Container } from '../../../common/components/Container';
 export const ActorsData = () => {
     const { id: actorId } = useParams();
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
+    
     const [isLoading, setIsLoading] = useState(true);
 
     const actor = useSelector(selectActor);
@@ -37,7 +38,18 @@ export const ActorsData = () => {
         return () => clearTimeout(loaderTimeoutId);
     }, [dispatch, actorId]);
 
-    if (isLoading || status === loadingStatus) {
+    const [loadingMovieId, setLoadingMovieId] = useState(null);
+
+    const handleMovieClick = (id) => {
+        setLoadingMovieId(id);
+        setIsLoading(true);
+        setTimeout(() => {
+            navigate(`/movies/${id}`);
+            setIsLoading(false);
+        }, 1000);
+    };
+
+    if (isLoading) {
         return <Loader showText={false} />;
     }
 
@@ -51,12 +63,12 @@ export const ActorsData = () => {
                 <Details actor={actor} />
                 {
                     cast.length > 0 && (
-                        <Cast cast={cast} />
+                        <Cast cast={cast} onMovieClick={handleMovieClick} />
                     )
                 }
                 {
                     crew.length > 0 && (
-                        <Crew crew={crew} />
+                        <Crew crew={crew} onMovieClick={handleMovieClick} />
                     )
                 }
             </Container>
