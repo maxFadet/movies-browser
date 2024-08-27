@@ -1,7 +1,17 @@
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { selectSearchMovies, selectTotalResults, selectTotalPages as selectSearchMoviesPages } from '../../../../common/slices/searchMoviesSlice';
-import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../slices/popularMoviesSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
+import {
+    selectSearchMovies,
+    selectTotalResults,
+    selectTotalPages as selectSearchMoviesPages
+} from '../../../../common/slices/searchMoviesSlice';
+import {
+    selectPopularMovies,
+    selectCurrentPage,
+    selectTotalPages,
+    fetchPopularMovies
+} from '../../slices/popularMoviesSlice';
 import { Tile } from '../../../../common/components/Tile';
 import { GenresList } from '../../../../common/components/GenresList';
 import { Rates } from '../../../../common/components/Rates/components';
@@ -9,17 +19,16 @@ import { toMovie } from "../../../../routes";
 import { MoviesTilesList } from '../../../../common/components/MoviesTilesList';
 import { Container } from '../../../../common/components/Container';
 import { Pagination } from '../../../../common/components/Pagination';
-import { Loader } from '../../../../common/components/Loader';
-import { useEffect, useState } from 'react';
 import { NoResults } from "../../../../common/components/NoResultsPage";
 import { getYear } from '../../../../common/functions/getYear';
 import { queryKey } from '../../../../common/constants/queryKey';
 import { useNavigationToPage } from '../../../../useNavigation';
+import { Loader } from '../../../../common/components/Loader';
 
 export const MainContent = () => {
-    const handleTileClick = useNavigationToPage();
     const dispatch = useDispatch();
     const location = useLocation();
+    const navigate = useNavigate();
 
     const searchResults = useSelector(selectSearchMovies);
     const totalResults = useSelector(selectTotalResults);
@@ -30,20 +39,19 @@ export const MainContent = () => {
 
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [isTransitioning
-    ] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         const query = new URLSearchParams(location.search).get(queryKey);
         if (query && query !== searchQuery) {
             setSearchQuery(query);
         }
-    }, [location, searchQuery]);
+        setIsLoading(false);
+    }, [location.search, searchQuery]);
 
     const isSearching = searchQuery.length > 0;
-
     const totalPages = isSearching ? totalPagesSearch : totalPagesPopular;
-
     const header = isSearching
         ? totalResults > 0
             ? `Search results for “${searchQuery}” (${totalResults})`
@@ -53,9 +61,17 @@ export const MainContent = () => {
     const moviesToDisplay = isSearching ? searchResults : popularMovies.results;
 
     const handlePageChange = (page) => {
-        setIsLoading(true);
+        setIsTransitioning(true);
         setTimeout(() => {
             dispatch(fetchPopularMovies({ page }));
+            setIsTransitioning(false);
+        }, 1000);
+    };
+
+    const handleMovieClick = (id) => {
+        setIsLoading(true);
+        setTimeout(() => {
+            navigate(`/movies/${id}`);
             setIsLoading(false);
         }, 1000);
     };
@@ -63,6 +79,7 @@ export const MainContent = () => {
     if (isLoading || isTransitioning) {
         return <Loader showText={false} />;
     }
+
     if (isSearching && (!moviesToDisplay || moviesToDisplay.length === 0)) {
         return <NoResults query={searchQuery} />;
     }
@@ -85,7 +102,7 @@ export const MainContent = () => {
                             }) => (
                                 <Tile
                                     key={id}
-                                    navigateTo={() => handleTileClick(toMovie, id)}
+                                    navigateTo={() => handleMovieClick(id)}
                                     image={poster_path}
                                     title={title}
                                     subInfo={getYear(release_date)}
