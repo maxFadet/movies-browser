@@ -2,13 +2,11 @@ import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../Star.svg";
 
 export const StyledRates = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-areas: 
-      "star score votes";
-    grid-gap: 16px 8px;
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
     align-items: center;
-    justify-content: start;
+    margin-bottom: -12px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
       grid-template-areas: 
@@ -104,10 +102,7 @@ export const TotalScoreOfMovieBanner = styled(TotalScore)`
 
 export const Votes = styled.p`
   color: ${({ theme }) => theme.colors.waterloo};
-  margin: 0;
   font-size: 14px;
-  font-weight: 400;
-  grid-area: votes;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
       font-size: 13px;
@@ -116,7 +111,7 @@ export const Votes = styled.p`
 `;
 
 export const NoVotes = styled(Votes)`
-  grid-area:  unset;
+
 `;
 
 export const VotesOfMovieBanner = styled(Votes)`

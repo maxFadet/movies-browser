@@ -23,10 +23,12 @@ function MoviesListPage() {
     const moviesGenresFetchStatus = useSelector(selectMoviesGenresFetchStatus);
 
     const [showSearchLoader, setShowSearchLoader] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+
     const query = new URLSearchParams(location.search).get('search');
     const isSearching = Boolean(query);
 
-    const isLoading = checkFetchStates([popularMoviesFetchStatus, moviesGenresFetchStatus], loadingStatus) || showSearchLoader;
+    const isLoading = checkFetchStates([popularMoviesFetchStatus, moviesGenresFetchStatus], loadingStatus) || showSearchLoader || isTransitioning;
     const isError = checkFetchStates([popularMoviesFetchStatus, moviesGenresFetchStatus], errorStatus);
 
     useEffect(() => {
@@ -45,6 +47,15 @@ function MoviesListPage() {
             return () => clearTimeout(searchDelayId);
         }
     }, [dispatch, query, isLoading]);
+
+    useEffect(() => {
+        setIsTransitioning(true);
+        const transitionDelayId = setTimeout(() => {
+            setIsTransitioning(false);
+        }, 1000);
+
+        return () => clearTimeout(transitionDelayId);
+    }, [location.pathname]);
 
     return (
         <>

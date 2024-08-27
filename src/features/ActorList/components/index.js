@@ -68,7 +68,7 @@ const ActorsList = () => {
         } else {
             setHeaderText("Popular people");
         }
-    }, [location.search, searchQuery]);
+    }, [location.search, totalResults]);
 
     useEffect(() => {
         if (isSearching) {
