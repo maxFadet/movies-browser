@@ -12,14 +12,13 @@ import {
     IconContainer
 } from "./styled.js";
 import { selectMovieDetails } from
-    "../../slices/movieDetailsSlice.js";
-import { StyledProfileIcon } from "../../../../common/components/StyledProfileIcon/index.js";
-import { StyledVideoIcon } from "../../../../common/components/StyledVideoIcon/index.js";
-import { getYear } from "../../../../common/functions/getYear.js";
-import { getImageUrl } from "../../../../common/functions/getImageUrl.js"
-import { checkIsValidImageUrl } from "../../../../common/functions/checkIsValidImageUrl.js";
-import { INVALID_IMAGE_URL } from "../../../../common/constants/config/index.js";
-import { IMAGE_WIDTH } from "../../../../common/constants/config/index.js";
+    "../../../slices/movieDetailsSlice.js";
+import { StyledProfileIcon } from "../../../../../common/components/StyledProfileIcon/index.js";
+import { StyledVideoIcon } from "../../../../../common/components/StyledVideoIcon/index.js";
+import { getYear } from "../../../../../common/functions/getYear.js";
+import { getImageUrl } from "../../../../../common/functions/getImageUrl.js"
+import { checkIsValidImageUrl } from "../../../../../common/functions/checkIsValidImageUrl.js";
+import { IMAGE_WIDTH, INVALID_IMAGE_URL } from "../../../../../common/constants/config";
 
 export const MovieDetailsTile = ({ extraContent }) => {
     const {
