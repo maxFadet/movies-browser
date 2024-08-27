@@ -28,11 +28,11 @@ export const StyledMovieTile = styled(StyledPersonTile)`
         
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
         grid-template-rows: unset;
-        grid-template-columns: 1fr 1.5fr;
         min-height: 293px;
     };
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+        grid-template-columns: 1fr 1.5fr;
         min-height: 230px;
     }; 
 
@@ -87,6 +87,10 @@ export const SubInfo = styled.p`
     };
 `;
 
+export const MovieSubInfo = styled(SubInfo)`
+    text-align: left;
+`;
+
 export const ExtraContent = styled.div`
     display: grid;
     grid-template-columns: 1fr;
@@ -105,4 +109,5 @@ export const IconContainer = styled.div`
     width: 100%;
     border-radius: 15px;
     height: 100%;
+    max-height: 464px;
 `;
