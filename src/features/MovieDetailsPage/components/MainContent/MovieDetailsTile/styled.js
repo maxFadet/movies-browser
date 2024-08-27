@@ -65,7 +65,7 @@ export const IconContainer = styled.div`
 export const Image = styled.img`
     grid-area: image;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
      width: 100%

@@ -28,7 +28,7 @@ export const Image = styled.img`
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: ${({ theme }) => theme.colors.silver};
     display: block;
 `;
@@ -45,7 +45,7 @@ export const IconContainer = styled.div`
     width: 100%;
 
     background-color: ${({ theme }) => theme.colors.silver};
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,5 +123,5 @@ export const ImageContainer = styled.div`
     align-items: center;
     justify-content: center;
     background-color: ${({ theme }) => theme.colors.silver};
-    border-radius: 10px;
+    border-radius: 5px;
 `;
