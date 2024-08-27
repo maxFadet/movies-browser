@@ -8,6 +8,7 @@ export const StyledDetailsTile = styled.div`
         "image description"
         "image ...";
     grid-gap: 40px;
+    margin-bottom: 64px;
     align-content: start;
     padding: 24px;
     background-color: ${({ theme }) => theme.colors.white};
@@ -21,6 +22,10 @@ export const StyledDetailsTile = styled.div`
             "description description";
     };
 
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+        margin-bottom: 42px
+  }
+  
     @media (max-width:  ${({ theme }) => theme.breakpoints.mobileL}) {
         grid-template-columns: 169px 1fr;
         /* min-height: 400px; */
@@ -32,6 +37,7 @@ export const StyledDetailsTile = styled.div`
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 16px;
         padding: 16px;
+        margin-bottom: 21px;
     }; 
 `;
 
