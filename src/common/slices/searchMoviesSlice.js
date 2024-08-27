@@ -8,14 +8,16 @@ export const searchMoviesSlice = createSlice({
         searchStatus: loadingStatus,
         searchResultsText: "",
         totalResults: 0,
+        totalPages:0,
     },
     reducers: {
         searchMovies: (state) => {
             state.searchStatus = loadingStatus;
         },
-        searchMoviesSuccess: (state, { payload: { movies, totalResults } }) => {
+        searchMoviesSuccess: (state, { payload: { movies, totalResults, totalPages } }) => {
             state.movies = movies;
             state.totalResults = totalResults;
+            state.totalPages = totalPages;
             state.searchStatus = successStatus;
         },
         searchMoviesError: (state) => {
@@ -42,6 +44,7 @@ export const selectSearchMoviesStatus = (state) => selectSearchMoviesState(state
 export const selectSearchMovies = (state) => selectSearchMoviesState(state).movies;
 export const selectSearchResultsText = (state) => state.searchMovies.searchResultsText;
 export const selectTotalResults = (state) => selectSearchMoviesState(state).totalResults;
+export const selectTotalPages = (state) => selectSearchMoviesState(state).totalPages;
 
 
 export const searchMoviesReducer = searchMoviesSlice.reducer;

@@ -7,7 +7,8 @@ function* searchMoviesHandler(action) {
         const data = yield call(fetchMovies, action.payload);
         yield put(searchMoviesSuccess({
             movies: data.results,
-            totalResults: data.total_results
+            totalResults: data.total_results,
+            totalPages: data.total_pages
         }));
     } catch (error) {
         yield put(searchMoviesError());
