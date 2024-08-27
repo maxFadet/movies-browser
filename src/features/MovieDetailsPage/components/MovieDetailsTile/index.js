@@ -10,18 +10,18 @@ import {
     DetailInfoItem,
     Label,
     IconContainer
-} from "./styled";
+} from "./styled.js";
 import { selectMovieDetails } from
-    "../../../features/MovieDetailsPage/slices/movieDetailsSlice";
-import { StyledProfileIcon } from "../StyledProfileIcon";
-import { StyledVideoIcon } from "../StyledVideoIcon";
-import { getYear } from "../../../common/functions/getYear";
-import { getImageUrl } from "../../../common/functions/getImageUrl.js"
-import { checkIsValidImageUrl } from "../../../common/functions/checkIsValidImageUrl.js";
-import { INVALID_IMAGE_URL } from "../../constants/config";
-import { IMAGE_WIDTH } from "../../constants/config";
+    "../../slices/movieDetailsSlice.js";
+import { StyledProfileIcon } from "../../../../common/components/StyledProfileIcon/index.js";
+import { StyledVideoIcon } from "../../../../common/components/StyledVideoIcon/index.js";
+import { getYear } from "../../../../common/functions/getYear.js";
+import { getImageUrl } from "../../../../common/functions/getImageUrl.js"
+import { checkIsValidImageUrl } from "../../../../common/functions/checkIsValidImageUrl.js";
+import { INVALID_IMAGE_URL } from "../../../../common/constants/config/index.js";
+import { IMAGE_WIDTH } from "../../../../common/constants/config/index.js";
 
-export const DetailsTile = ({ extraContent }) => {
+export const MovieDetailsTile = ({ extraContent }) => {
     const {
         title,
         poster_path,

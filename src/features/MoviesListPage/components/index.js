@@ -11,6 +11,7 @@ import { loadingStatus, errorStatus } from "../../../common/constants/requestSta
 import { Loader } from '../../../common/components/Loader';
 import { Error } from '../../../common/components/Error';
 import { MainContent } from './MainContent';
+import { checkFetchStates } from '../../../common/functions/checkFetchStates';
 
 function MoviesListPage() {
     const dispatch = useDispatch();
@@ -27,13 +28,16 @@ function MoviesListPage() {
     const query = new URLSearchParams(location.search).get('search');
     const isSearching = Boolean(query);
 
+    const isLoading = checkFetchStates([popularMoviesFetchStatus, moviesGenresFetchStatus], loadingStatus) || showSearchLoader || isTransitioning;
+    const isError = checkFetchStates([popularMoviesFetchStatus, moviesGenresFetchStatus], errorStatus);
+
     useEffect(() => {
         dispatch(fetchPopularMovies({ page: currentPage }));
         dispatch(fetchMoviesGenres());
     }, [dispatch, currentPage]);
 
     useEffect(() => {
-        if (isSearching) {
+        if (isLoading) {
             setShowSearchLoader(true);
             const searchDelayId = setTimeout(() => {
                 dispatch(searchMovies(query));
@@ -42,7 +46,7 @@ function MoviesListPage() {
 
             return () => clearTimeout(searchDelayId);
         }
-    }, [dispatch, query, isSearching]);
+    }, [dispatch, query, isLoading]);
 
     useEffect(() => {
         setIsTransitioning(true);
@@ -56,14 +60,12 @@ function MoviesListPage() {
     return (
         <>
             {
-                showSearchLoader ||
-                isTransitioning || 
-                popularMoviesFetchStatus === loadingStatus ||
-                moviesGenresFetchStatus === loadingStatus ?
-                    <Loader showText={false} /> :
-                    (popularMoviesFetchStatus === errorStatus || moviesGenresFetchStatus === errorStatus ?
-                        <Error /> :
-                        <MainContent />
+                isLoading ?
+                    <Loader /> :
+                    (
+                        isError ?
+                            <Error /> :
+                            <MainContent />
                     )
             }
         </>

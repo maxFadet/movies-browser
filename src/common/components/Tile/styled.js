@@ -77,6 +77,10 @@ export const SubInfo = styled.p`
     };
 `;
 
+export const MovieSubInfo = styled(SubInfo)`
+    text-align: left;
+`;
+
 export const ExtraContent = styled.div`
     display: flex;
     flex-direction: column;

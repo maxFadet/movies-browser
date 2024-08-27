@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledDetailsTile = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 312px 1.5fr;
     grid-template-areas: 
         "image details"
         "image description"
@@ -10,7 +10,6 @@ export const StyledDetailsTile = styled.div`
     grid-gap: 40px;
     align-content: start;
     padding: 24px;
-    min-height: 550px;
     background-color: ${({ theme }) => theme.colors.white};
     box-shadow: 0px 4px 12px 0px  
         ${({ theme }) => theme.colors.brightHeather};
@@ -23,8 +22,8 @@ export const StyledDetailsTile = styled.div`
     };
 
     @media (max-width:  ${({ theme }) => theme.breakpoints.mobileL}) {
-        grid-template-columns: unset;
-        min-height: 400px;
+        grid-template-columns: 169px 1fr;
+        /* min-height: 400px; */
         grid-gap: 16px;
         padding: 16px;
     };
@@ -45,12 +44,15 @@ export const IconContainer = styled.div`
     border-radius: 15px;
     background-color: ${({ theme }) => theme.colors.silver};
     width: 100%;
-    height: 100%;
+    height: 464px;
 
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
-      width: 100%;
-      min-height: 169px;
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+        height: 250px;
+    };
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+        height: 169px;
     };
 `;
 

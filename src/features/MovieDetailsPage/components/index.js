@@ -9,6 +9,7 @@ import { loadingStatus, successStatus, errorStatus } from "../../../common/const
 import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from "../../../common/slices/moviesGenresSlice";
 import { useParams } from "react-router-dom";
 import { NoResults } from "../../../common/components/NoResultsPage";
+import { checkFetchStates } from "../../../common/functions/checkFetchStates";
 
 export const MovieDetailsPage = () => {
     const { id: movieId } = useParams();
@@ -20,22 +21,12 @@ export const MovieDetailsPage = () => {
     const movieDetails = useSelector(selectMovieDetails);
     const movieCredits = useSelector(selectMovieCreddits);
 
-    const isLoading =
-        movieDetailsFetchStatus === loadingStatus ||
-        moviesCreditsListFetchStatus === loadingStatus ||
-        moviesGenresFetchStatus === loadingStatus;
+    const isLoading = checkFetchStates([movieDetailsFetchStatus, moviesCreditsListFetchStatus, moviesGenresFetchStatus], loadingStatus);
+    const isError = checkFetchStates([movieDetailsFetchStatus, moviesCreditsListFetchStatus, moviesGenresFetchStatus], errorStatus);
+    const isSuccess = checkFetchStates([movieDetailsFetchStatus, moviesCreditsListFetchStatus, moviesGenresFetchStatus], successStatus, true) &&
+        movieDetails.title &&
+        movieCredits.cast;
 
-    const isError =
-        movieDetailsFetchStatus === errorStatus ||
-        moviesCreditsListFetchStatus === errorStatus ||
-        moviesGenresFetchStatus === errorStatus;
-
-    const isSuccess =
-        movieDetailsFetchStatus === successStatus &&
-        moviesCreditsListFetchStatus === successStatus &&
-        moviesGenresFetchStatus === successStatus;
-
-    const isMovieDataComplete = isSuccess && movieDetails.title && movieCredits.cast;
     useEffect(() => {
         const fetchDataDelayId = setTimeout(() => {
             dispatch(fetchMovieDetails(movieId));
@@ -51,7 +42,7 @@ export const MovieDetailsPage = () => {
             <Loader /> :
             isError ?
                 <Error /> :
-                isMovieDataComplete ?
+                isSuccess ?
                     <MainContent /> :
                     <NoResults />
     );
