@@ -23,15 +23,15 @@ export const Details = ({ actor }) => {
                     <ActorDetails>
                         <ActorDetail>
                             <DetailLabel>{isMobile ? 'Birth:' : 'Date of birth:'}</DetailLabel>
-                            {actor.birthday || "Unknown"}
+                            {actor.birthday}
                         </ActorDetail>
                         <ActorDetail>
                             <DetailLabel>Place of birth:</DetailLabel>
-                            {actor.place_of_birth || "Unknown"}
+                            {actor.place_of_birth}
                         </ActorDetail>
                     </ActorDetails>
                 </ActorDetailsWrapper>
-                <Biography>{actor.biography || "Biography not available."}</Biography>
+                <Biography>{actor.biography}</Biography>
             </ActorProfile>
         )
     );

@@ -1,20 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import { toMovie } from "../../../../../routes";
-import { useSelector } from "react-redux";
-import { selectCrew } from "../../../slices/actorDetailsSlice";
-import { MoviesTilesList } from "../../../../../common/components/MoviesTilesList";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectCrew } from '../../../slices/actorDetailsSlice';
 import { Tile } from "../../../../../common/components/Tile";
+import { MoviesTilesList } from "../../../../../common/components/MoviesTilesList";
 import { GenresList } from "../../../../../common/components/GenresList";
 import { Rates } from "../../../../../common/components/Rates/components";
 
-export const Crew = () => {
+export const Crew = ({ onMovieClick }) => {
     const crew = useSelector(selectCrew);
-    const navigate = useNavigate();
-
-    const handleMovieClick = (id) => {
-        navigate(toMovie({ id }));
-    };
-
     const crewCount = crew.length;
 
     return (
@@ -28,7 +21,7 @@ export const Crew = () => {
                         image={poster_path}
                         title={title}
                         subInfo={character}
-                        navigateTo={() => handleMovieClick(id)}
+                        navigateTo={() => onMovieClick(id)}
                         extraContent={
                             <>
                                 <GenresList genresIds={genre_ids} />
