@@ -8,7 +8,7 @@ export const StyledGenresList = styled.ul`
     margin: 0px;
     padding-left: 0px;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
         gap: 8px;
     };
 `;
@@ -24,7 +24,7 @@ export const Genre = styled.li`
    padding: 8px 16px;
    list-style-type: none;
 
-   @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+   @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
         font-size: 10px;
         padding: 4px 8px;
     };

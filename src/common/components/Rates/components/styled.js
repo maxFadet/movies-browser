@@ -29,11 +29,7 @@ export const StyledStarIcon = styled(StarIcon)`
   grid-area: star;
   width: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
-      width: 21px;
-  };
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
       width: 16px;
   };
 `;
@@ -56,8 +52,11 @@ export const Score = styled.p`
     margin: 0;
     grid-area: score;
     align-self: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
         font-size: 13px;
         font-weight: 600;
       };
@@ -70,7 +69,7 @@ export const ScoreOfMovieBanner = styled(Score)`
     font-size: 24px;
   };
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
     font-size: 14px;
   };
 `;
@@ -102,9 +101,12 @@ export const TotalScoreOfMovieBanner = styled(TotalScore)`
 
 export const Votes = styled.p`
   color: ${({ theme }) => theme.colors.waterloo};
-  font-size: 14px;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
       font-size: 13px;
       color: ${({ theme }) => theme.colors.waterloo};
   };
