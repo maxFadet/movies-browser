@@ -43,13 +43,14 @@ export const ImageMovie = styled(Image)`
 export const IconContainer = styled.div`
     aspect-ratio: 2 / 3;
     width: 100%;
-
     background-color: ${({ theme }) => theme.colors.silver};
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+`;
 
+export const IconContainerMovie = styled(IconContainer)`
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         width: 114px;
         height: 171px;

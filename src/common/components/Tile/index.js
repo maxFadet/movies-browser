@@ -11,6 +11,7 @@ import {
     MovieTitle,
     MovieSubInfo,
     ImageMovie,
+    IconContainerMovie,
 } from "./styled";
 import { StyledProfileIcon } from "../StyledProfileIcon";
 import { StyledVideoIcon } from "../StyledVideoIcon";
@@ -34,13 +35,14 @@ export const Tile = ({ image, title, subInfo, extraContent, id, navigateTo, }) =
     const GeneralInfoComponent = extraContent ? MovieGeneralInfo : GeneralInfo;
     const TitleComponent = extraContent ? MovieTitle : Title;
     const ImageComponent = extraContent ? ImageMovie : Image;
+    const IconContainerComponent = extraContent ? IconContainerMovie : IconContainer;
 
     const imageElement = isValidImageUrl ? (
-            <ImageComponent src={imageUrl} alt={title} />
+        <ImageComponent src={imageUrl} alt={title} />
     ) : (
-            <IconContainer>
-                <PlaceholderIcon />
-            </IconContainer>
+        <IconContainerComponent>
+            <PlaceholderIcon />
+        </IconContainerComponent>
     );
     const SubInfoComponent = subInfo && extraContent ? MovieSubInfo : SubInfo;
     const extraContentElement = extraContent && <ExtraContent>{extraContent}</ExtraContent>
