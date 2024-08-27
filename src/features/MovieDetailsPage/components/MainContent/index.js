@@ -1,4 +1,4 @@
-import { MovieDetailsTile } from "../MovieDetailsTile"
+import { MovieDetailsTile } from "./MovieDetailsTile"
 import { Tile } from "../../../../common/components/Tile";
 import { GenresList } from "../../../../common/components/GenresList";
 import { PeopleTilesList } from "../../../../common/components/PeopleTilesList";
@@ -7,38 +7,19 @@ import { useSelector } from "react-redux";
 import { selectMovieCreddits } from "../../slices/moviesCredditsListSlice";
 import { selectMovieDetails } from "../../slices/movieDetailsSlice";
 import { PageContent } from "../../../../common/components/PageContent";
-import { BannerContent, MovieTitle, BannerMainInfo, Banner } from "./styled";
 import { toPerson } from "../../../../routes";
 import { useNavigationToPage } from "../../../../useNavigation";
-import { getImageUrl } from "../../../../common/functions/getImageUrl";
-import { BACKDROP_WIDTH } from "../../../../common/constants/config";
+import { MovieBanner } from "../../components/MainContent/MovieBanner";
 
 export const MainContent = () => {
     const { cast, crew } = useSelector(selectMovieCreddits);
-    const {
-        title,
-        backdrop_path,
-        vote_average,
-        vote_count,
-        genres,
-    } = useSelector(selectMovieDetails);
+    const { vote_average, vote_count, genres } = useSelector(selectMovieDetails);
 
     const handleTileClick = useNavigationToPage();
 
     return (
         <>
-            <BannerContent>
-                <Banner $backdrop={getImageUrl(backdrop_path, BACKDROP_WIDTH)}>
-                    <BannerMainInfo>
-                        <MovieTitle>{title}</MovieTitle>
-                        <Rates
-                            useMovieBannerLayout
-                            voteAverage={vote_average}
-                            voteCount={vote_count}
-                        />
-                    </BannerMainInfo>
-                </Banner>
-            </BannerContent>
+            <MovieBanner />
             <PageContent
                 content={
                     <>

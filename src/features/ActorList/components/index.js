@@ -22,6 +22,7 @@ import { toPerson } from "../../../routes";
 import { loadingStatus, errorStatus } from "../../../common/constants/requestStatuses";
 import { NoResults } from '../../../common/components/NoResultsPage';
 import { PeopleTilesList } from '../../../common/components/PeopleTilesList';
+import { queryKey } from '../../../common/constants/queryKey';
 
 const useDebounce = (value, delay) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
@@ -58,7 +59,7 @@ const ActorsList = () => {
     const status = useSelector(isSearching ? selectSearchPeopleStatus : selectActorsStatus);
 
     useEffect(() => {
-        const query = new URLSearchParams(location.search).get("search");
+        const query = new URLSearchParams(location.search).get(queryKey);
         setSearchQuery(query || "");
 
         if (query) {
