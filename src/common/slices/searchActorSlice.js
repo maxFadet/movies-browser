@@ -7,14 +7,17 @@ export const searchActorSlice = createSlice({
         people: [],
         searchStatus: loadingStatus,
         totalResults: 0,
+        totalPages:0,
+
     },
     reducers: {
         searchPeople: (state) => {
             state.searchStatus = loadingStatus;
         },
-        searchPeopleSuccess: (state, { payload: {people, totalResults} }) => {
+        searchPeopleSuccess: (state, { payload: {people, totalResults, totalPages} }) => {
             state.people = people;
             state.totalResults = totalResults;
+            state.totalPages = totalPages;
             state.searchStatus = successStatus;
         },
         searchPeopleError: (state) => {
@@ -25,6 +28,7 @@ export const searchActorSlice = createSlice({
                 people: [],
                 searchStatus: loadingStatus,
                 totalResults: 0,
+                totalPages:0,
             };
         },
     },
@@ -36,5 +40,7 @@ export const selectSearchPeopleState = (state) => state.searchPeople;
 export const selectSearchPeopleStatus = (state) => selectSearchPeopleState(state).searchStatus;
 export const selectSearchPeople = (state) => selectSearchPeopleState(state).people;
 export const selectTotalResults = (state) => selectSearchPeopleState(state).totalResults;
+export const selectTotalPages = (state) => selectSearchPeopleState(state).totalPages;
+
 
 export const searchPeopleReducer = searchActorSlice.reducer;
