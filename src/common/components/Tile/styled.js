@@ -100,7 +100,7 @@ export const IconContainer = styled.div`
     align-items: center;
     justify-content: center;
     background-color: ${({ theme }) => theme.colors.silver};
-    border-radius: 10px;
+    border-radius: 5px;
 `;
 
 export const ImageContainer = styled.div`
@@ -108,13 +108,13 @@ export const ImageContainer = styled.div`
     aspect-ratio: 2 / 3;
     position: relative;
     background-color: ${({ theme }) => theme.colors.silver};
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
-        max-width: 114px;
+        max-width: 100%;
     };
 `;
