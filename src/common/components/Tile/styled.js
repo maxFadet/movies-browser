@@ -12,26 +12,48 @@ export const StyledPersonTile = styled.li`
     word-break: break-word;
     height: 100%;
     justify-content: space-between;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-        align-items: flex-start;
-        gap: 8px;
-    }
 `;
 
 export const StyledMovieTile = styled(StyledPersonTile)`
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         flex-direction: row;
-        align-items: flex-start;
+        width: 100%;
         gap: 16px;
+        min-height: 201px;
     }
 `;
 
 export const Image = styled.img`
+    aspect-ratio: 2 / 3;
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
+    border-radius: 10px;
+    background-color: ${({ theme }) => theme.colors.silver};
     display: block;
+`;
+
+export const ImageMovie = styled(Image)`
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+        width: 114px;
+        height: 171px;
+    }
+`;
+
+export const IconContainer = styled.div`
+    aspect-ratio: 2 / 3;
+    width: 100%;
+
+    background-color: ${({ theme }) => theme.colors.silver};
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+        width: 114px;
+        height: 171px;
+    }
 `;
 
 export const GeneralInfo = styled.div`
@@ -48,8 +70,8 @@ export const GeneralInfo = styled.div`
 `;
 
 export const MovieGeneralInfo = styled(GeneralInfo)`
-     align-items: flex-start;
-     justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
 `;
 
 export const Title = styled.header`
@@ -57,9 +79,9 @@ export const Title = styled.header`
     font-weight: 500;
     text-align: center;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         font-size: 16px;
-    };
+    }
 `;
 
 export const MovieTitle = styled(Title)`
@@ -73,9 +95,9 @@ export const SubInfo = styled.p`
     color: ${({ theme }) => theme.colors.waterloo};
     text-align: center;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         font-size: 13px;
-    };
+    }
 `;
 
 export const MovieSubInfo = styled(SubInfo)`
@@ -88,33 +110,18 @@ export const ExtraContent = styled.div`
     justify-content: flex-end;
     flex-grow: 1;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
         grid-gap: 12px;
-    };
-`;
-
-export const IconContainer = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: ${({ theme }) => theme.colors.silver};
-    border-radius: 10px;
+    }
 `;
 
 export const ImageContainer = styled.div`
-    width: 100%;
     aspect-ratio: 2 / 3;
-    position: relative;
-    background-color: ${({ theme }) => theme.colors.silver};
-    border-radius: 10px;
-    overflow: hidden;
+    width: 114px;
+    height: 171px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
-        max-width: 114px;
-    };
+    background-color: ${({ theme }) => theme.colors.silver};
+    border-radius: 10px;
 `;
