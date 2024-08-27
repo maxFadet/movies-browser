@@ -114,6 +114,6 @@ export const ImageContainer = styled.div`
     justify-content: center;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
-        max-width: 169px;
+        max-width: 114px;
     };
 `;
