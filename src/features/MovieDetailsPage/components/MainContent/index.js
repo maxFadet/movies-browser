@@ -1,4 +1,4 @@
-import { DetailsTile } from "../../../../common/components/DetailsTile"
+import { MovieDetailsTile } from "../MovieDetailsTile"
 import { Tile } from "../../../../common/components/Tile";
 import { GenresList } from "../../../../common/components/GenresList";
 import { PeopleTilesList } from "../../../../common/components/PeopleTilesList";
@@ -42,7 +42,7 @@ export const MainContent = () => {
             <PageContent
                 content={
                     <>
-                        <DetailsTile
+                        <MovieDetailsTile
                             extraContent={
                                 <>
                                     <GenresList genresIds={genres.map(({ id }) => id)} />
