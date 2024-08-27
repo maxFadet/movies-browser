@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { selectSearchMovies, selectTotalResults } from '../../../../common/slices/searchMoviesSlice';
+import { selectSearchMovies, selectTotalResults, selectTotalPages as selectSearchMoviesPages } from '../../../../common/slices/searchMoviesSlice';
 import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../slices/popularMoviesSlice';
 import { Tile } from '../../../../common/components/Tile';
 import { GenresList } from '../../../../common/components/GenresList';
@@ -25,7 +25,8 @@ export const MainContent = () => {
     const totalResults = useSelector(selectTotalResults);
     const popularMovies = useSelector(selectPopularMovies);
     const currentPage = useSelector(selectCurrentPage);
-    const totalPages = useSelector(selectTotalPages);
+    const totalPagesPopular = useSelector(selectTotalPages);
+    const totalPagesSearch = useSelector(selectSearchMoviesPages);
 
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -40,6 +41,8 @@ export const MainContent = () => {
     }, [location, searchQuery]);
 
     const isSearching = searchQuery.length > 0;
+
+    const totalPages = isSearching ? totalPagesSearch : totalPagesPopular;
 
     const header = isSearching
         ? totalResults > 0
@@ -57,7 +60,7 @@ export const MainContent = () => {
         }, 1000);
     };
 
-   if (isLoading || isTransitioning) {
+    if (isLoading || isTransitioning) {
         return <Loader showText={false} />;
     }
     if (isSearching && (!moviesToDisplay || moviesToDisplay.length === 0)) {
