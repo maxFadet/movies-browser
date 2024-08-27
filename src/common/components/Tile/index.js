@@ -9,6 +9,7 @@ import {
     StyledMovieTile,
     MovieGeneralInfo,
     MovieTitle,
+    MovieSubInfo,
 } from "./styled";
 import { StyledProfileIcon } from "../StyledProfileIcon";
 import { StyledVideoIcon } from "../StyledVideoIcon";
@@ -38,7 +39,7 @@ export const Tile = ({ image, title, subInfo, extraContent, id, navigateTo, }) =
             <PlaceholderIcon />
         </IconContainer>
     );
-    const subInfoElement = subInfo && <SubInfo>{subInfo}</SubInfo>;
+    const SubInfoComponent = subInfo && extraContent ? MovieSubInfo : SubInfo;
     const extraContentElement = extraContent && <ExtraContent>{extraContent}</ExtraContent>
 
     return (
@@ -46,7 +47,7 @@ export const Tile = ({ image, title, subInfo, extraContent, id, navigateTo, }) =
             {imageElement}
             <GeneralInfoComponent>
                 <TitleComponent>{title}</TitleComponent>
-                {subInfoElement}
+                <SubInfoComponent>{subInfo}</SubInfoComponent>
                 {extraContentElement}
             </GeneralInfoComponent>
         </TileComponent>
