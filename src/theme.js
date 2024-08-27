@@ -16,6 +16,7 @@ export const theme = {
         mobileS: "320px",
         mobileM: "480px",
         mobileL: "600px",
+        mobileXL: "700px",
         tabletS: "768px",
         tabletM: "1024px",
         tabletL: "1200px",
