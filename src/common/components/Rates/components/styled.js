@@ -29,11 +29,7 @@ export const StyledStarIcon = styled(StarIcon)`
   grid-area: star;
   width: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
-      width: 21px;
-  };
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
       width: 16px;
   };
 `;
