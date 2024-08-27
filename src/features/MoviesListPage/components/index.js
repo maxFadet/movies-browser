@@ -11,6 +11,7 @@ import { loadingStatus, errorStatus } from "../../../common/constants/requestSta
 import { Loader } from '../../../common/components/Loader';
 import { Error } from '../../../common/components/Error';
 import { MainContent } from './MainContent';
+import { checkFetchStates } from '../../../common/functions/checkFetchStates';
 
 function MoviesListPage() {
     const dispatch = useDispatch();
@@ -25,13 +26,16 @@ function MoviesListPage() {
     const query = new URLSearchParams(location.search).get('search');
     const isSearching = Boolean(query);
 
+    const isLoading = checkFetchStates([popularMoviesFetchStatus, moviesGenresFetchStatus], loadingStatus) || showSearchLoader;
+    const isError = checkFetchStates([popularMoviesFetchStatus, moviesGenresFetchStatus], errorStatus);
+
     useEffect(() => {
         dispatch(fetchPopularMovies({ page: currentPage }));
         dispatch(fetchMoviesGenres());
     }, [dispatch, currentPage]);
 
     useEffect(() => {
-        if (isSearching) {
+        if (isLoading) {
             setShowSearchLoader(true);
             const searchDelayId = setTimeout(() => {
                 dispatch(searchMovies(query));
@@ -40,16 +44,15 @@ function MoviesListPage() {
 
             return () => clearTimeout(searchDelayId);
         }
-    }, [dispatch, query, isSearching]);
+    }, [dispatch, query, isLoading]);
 
     return (
         <>
             {
-                showSearchLoader ||
-                    (popularMoviesFetchStatus === loadingStatus || moviesGenresFetchStatus === loadingStatus) ?
+                isLoading ?
                     <Loader /> :
                     (
-                        popularMoviesFetchStatus === errorStatus || moviesGenresFetchStatus === errorStatus ?
+                        isError ?
                             <Error /> :
                             <MainContent />
                     )
