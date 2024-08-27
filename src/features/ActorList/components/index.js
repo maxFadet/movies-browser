@@ -21,7 +21,8 @@ import { Tile } from '../../../common/components/Tile';
 import { toPerson } from "../../../routes";
 import { loadingStatus, errorStatus } from "../../../common/constants/requestStatuses";
 import { NoResults } from '../../../common/components/NoResultsPage';
-import { PeopleTilesList } from '../../../common/components/PeopleTilesList';
+// import { PeopleTilesList } from '../../../common/components/PeopleTilesList';
+import { Section, Title } from './styled';
 import { queryKey } from '../../../common/constants/queryKey';
 
 const useDebounce = (value, delay) => {
@@ -114,22 +115,20 @@ const ActorsList = () => {
 
     return (
         <Container>
-            <PeopleTilesList
-                header={headerText}
-                content={
-                    actors.length > 0 && (
-                        actors.map(({ id, name, profile_path }) => (
-                            <Tile
-                                key={id}
-                                id={id}
-                                image={profile_path}
-                                title={name}
-                                navigateTo={() => handleActorClick(id)}
-                            />
-                        ))
-                    )
-                }
-            />
+                       <Section>
+                <Title>{headerText}</Title>
+                {actors.length > 0 && (
+                    actors.map(({ id, name, profile_path }) => (
+                        <Tile
+                            key={id}
+                            id={id}
+                            image={profile_path}
+                            title={name}
+                            navigateTo={() => handleActorClick(id)}
+                        />
+                    ))
+                )}
+            </Section>
             <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
