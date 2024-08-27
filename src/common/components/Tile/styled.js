@@ -63,7 +63,7 @@ export const Title = styled.header`
 `;
 
 export const MovieTitle = styled(Title)`
-    text-align: start;
+    text-align: left;
 `;
 
 export const SubInfo = styled.p`
@@ -71,6 +71,7 @@ export const SubInfo = styled.p`
     font-size: 16px;
     font-weight: 400;
     color: ${({ theme }) => theme.colors.waterloo};
+    text-align: center;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 13px;
