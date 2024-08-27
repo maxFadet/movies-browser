@@ -57,7 +57,7 @@ export const Score = styled.p`
     grid-area: score;
     align-self: center;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
         font-size: 13px;
         font-weight: 600;
       };
@@ -102,9 +102,9 @@ export const TotalScoreOfMovieBanner = styled(TotalScore)`
 
 export const Votes = styled.p`
   color: ${({ theme }) => theme.colors.waterloo};
-  font-size: 14px;
+  font-size: 16px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
       font-size: 13px;
       color: ${({ theme }) => theme.colors.waterloo};
   };
