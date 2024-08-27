@@ -3,13 +3,12 @@ import styled from "styled-components";
 export const StyledGenresList = styled.ul`
     display: flex;
     flex-wrap: wrap;
-
     gap: 16px;
     margin: 0px;
     padding-left: 0px;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
-        gap: 8px;
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+        gap: 8px;;
     };
 `;
 
@@ -24,7 +23,7 @@ export const Genre = styled.li`
    padding: 8px 16px;
    list-style-type: none;
 
-   @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
+   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         font-size: 10px;
         padding: 4px 8px;
     };
