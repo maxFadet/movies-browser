@@ -46,6 +46,10 @@ Here are some screenshots of the project in action:
 - **Redux-Saga**: Handling side effects and asynchronous actions.
 - **ThemeProvider**: For consistent theming across the application.
 
+## API
+
+This application uses the [TMDb API](https://developer.themoviedb.org/docs/getting-started) to fetch data about movies and actors. The API provides a vast amount of information about films, including ratings, reviews, cast details, and more. Integration with TMDb allows the app to stay up-to-date with the latest movies and trends.
+
 ## Contributors
 
 This project was developed as a group effort by the following team members:
