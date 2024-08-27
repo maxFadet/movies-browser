@@ -12,7 +12,6 @@ import {
     searchPeople,
     selectTotalResults
 } from '../../../common/slices/searchActorSlice';
-import { Section, Title } from './styled';
 import { Pagination } from "../../../common/components/Pagination";
 import { Container } from "../../../common/components/Container";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -22,6 +21,7 @@ import { Tile } from '../../../common/components/Tile';
 import { toPerson } from "../../../routes";
 import { loadingStatus, errorStatus } from "../../../common/constants/requestStatuses";
 import { NoResults } from '../../../common/components/NoResultsPage';
+import { PeopleTilesList } from '../../../common/components/PeopleTilesList';
 
 const useDebounce = (value, delay) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
@@ -113,20 +113,22 @@ const ActorsList = () => {
 
     return (
         <Container>
-            <Section>
-                <Title>{headerText}</Title>
-                {actors.length > 0 && (
-                    actors.map(({ id, name, profile_path }) => (
-                        <Tile
-                            key={id}
-                            id={id}
-                            image={profile_path}
-                            title={name}
-                            navigateTo={() => handleActorClick(id)}
-                        />
-                    ))
-                )}
-            </Section>
+            <PeopleTilesList
+                header={headerText}
+                content={
+                    actors.length > 0 && (
+                        actors.map(({ id, name, profile_path }) => (
+                            <Tile
+                                key={id}
+                                id={id}
+                                image={profile_path}
+                                title={name}
+                                navigateTo={() => handleActorClick(id)}
+                            />
+                        ))
+                    )
+                }
+            />
             <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
