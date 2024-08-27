@@ -7,7 +7,7 @@ function MoviesListPage() {
     const [isLoading, isError] = useMoviesListLogic();
 
     if (isLoading) {
-        return <Loader />;
+        return <Loader showText={false} />;
     }
 
     if (isError) {
