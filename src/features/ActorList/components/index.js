@@ -1,17 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-    selectActors,
-    selectActorsStatus,
-    selectCurrentPage,
-    fetchActorsStart
-} from '../slices/actorsSlice';
-import {
-    selectSearchPeople,
-    selectSearchPeopleStatus,
-    searchPeople,
-    selectTotalResults
-} from '../../../common/slices/searchActorSlice';
+import { selectActors, selectActorsStatus, selectCurrentPage, fetchActorsStart, selectTotalPages } from '../slices/actorsSlice';
+import { selectSearchPeople, selectSearchPeopleStatus, searchPeople, selectTotalResults, selectTotalPages as selectSearchPeoplePages } from '../../../common/slices/searchActorSlice';
 import { Pagination } from "../../../common/components/Pagination";
 import { Container } from "../../../common/components/Container";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -53,10 +43,14 @@ const ActorsList = () => {
 
     const totalResults = useSelector(selectTotalResults);
     const currentPage = useSelector(selectCurrentPage);
-    const totalPages = 500;
+    const totalPagesPopular = useSelector(selectTotalPages);
+    const totalPagesSearch = useSelector(selectSearchPeoplePages);
+
     const isSearching = debouncedSearchQuery.length > 0;
     const actors = useSelector(isSearching ? selectSearchPeople : selectActors);
     const status = useSelector(isSearching ? selectSearchPeopleStatus : selectActorsStatus);
+
+    const totalPages = isSearching ? totalPagesSearch : totalPagesPopular;
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get(queryKey);

@@ -7,7 +7,9 @@ function* searchPeopleHandler(action) {
         const data = yield call(fetchPeople, action.payload);
         yield put(searchPeopleSuccess({
             people: data.results,
-            totalResults: data.total_results
+            totalResults: data.total_results,
+            totalPages: data.total_pages
+
         }));
     } catch (error) {
         yield put(searchPeopleError());
