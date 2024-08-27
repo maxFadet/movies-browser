@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toMovie } from "../../../../../routes";
 import { useSelector } from "react-redux";
@@ -16,9 +15,11 @@ export const Crew = () => {
         navigate(toMovie({ id }));
     };
 
+    const crewCount = crew.length;
+
     return (
         <MoviesTilesList
-            header="Movies - crew"
+            header={`Movies - crew (${crewCount})`}
             content={
                 crew.map(({ id, title, poster_path, character, genre_ids, vote_average, vote_count }, index) => (
                     <Tile
@@ -35,7 +36,8 @@ export const Crew = () => {
                             </>
                         }
                     />
-                ))}
+                ))
+            }
         />
     );
 };
