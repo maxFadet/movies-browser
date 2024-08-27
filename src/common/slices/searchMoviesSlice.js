@@ -29,6 +29,7 @@ export const searchMoviesSlice = createSlice({
                 searchStatus: loadingStatus,
                 searchResultsText: "",
                 totalResults: 0,
+                totalPages:0,
             };
         },
         setSearchResultsText: (state, action) => {
