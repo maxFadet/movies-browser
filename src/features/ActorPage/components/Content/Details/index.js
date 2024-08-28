@@ -23,11 +23,14 @@ export const Details = ({ actor }) => {
                     <ActorDetails>
                         <ActorDetail>
                             <DetailLabel>{isMobile ? 'Birth:' : 'Date of birth:'}</DetailLabel>
-                            {actor.birthday}
+                            {actor.birthday
+                                ? (new Date(actor.birthday)).toLocaleDateString()
+                                : "Unknown"
+                            }
                         </ActorDetail>
                         <ActorDetail>
                             <DetailLabel>Place of birth:</DetailLabel>
-                            {actor.place_of_birth}
+                            {actor.place_of_birth || "Unknown"}
                         </ActorDetail>
                     </ActorDetails>
                 </ActorDetailsWrapper>
