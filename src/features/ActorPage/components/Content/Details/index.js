@@ -11,6 +11,12 @@ import {
 } from "./styled";
 import { useIsMobile } from './useIsMobile';
 
+const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const [year, month, day] = dateString.split('-');
+    return `${day}.${month}.${year}`;
+};
+
 export const Details = ({ actor }) => {
     const isMobile = useIsMobile();
 
@@ -23,7 +29,7 @@ export const Details = ({ actor }) => {
                     <ActorDetails>
                         <ActorDetail>
                             <DetailLabel>{isMobile ? 'Birth:' : 'Date of birth:'}</DetailLabel>
-                            {actor.birthday}
+                            {formatDate(actor.birthday)}
                         </ActorDetail>
                         <ActorDetail>
                             <DetailLabel>Place of birth:</DetailLabel>
