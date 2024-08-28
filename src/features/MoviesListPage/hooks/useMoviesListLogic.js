@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { queryKey } from "../../../common/constants/queryKey";
@@ -8,10 +9,12 @@ import { fetchMoviesGenres, selectMoviesGenresFetchStatus } from "../../../commo
 import { checkFetchStates } from "../../../common/functions/checkFetchStates";
 import { searchMovies } from "../../../common/slices/searchMoviesSlice";
 
+
 export const useMoviesListLogic = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const currentPage = useSelector(selectCurrentPage);
+    // const totalPages = useSelector(selectTotalPages);
 
     const popularMoviesFetchStatus = useSelector(selectPopularMoviesFetchStatust);
     const moviesGenresFetchStatus = useSelector(selectMoviesGenresFetchStatus);
@@ -31,7 +34,7 @@ export const useMoviesListLogic = () => {
     }, [dispatch, currentPage]);
 
     useEffect(() => {
-        if (isSearching) {
+        if (isLoading) {
             setShowSearchLoader(true);
             const searchDelayId = setTimeout(() => {
                 dispatch(searchMovies(query));
@@ -40,7 +43,7 @@ export const useMoviesListLogic = () => {
 
             return () => clearTimeout(searchDelayId);
         }
-    }, [dispatch, query, isSearching]);
+    }, [dispatch, query, isLoading]);
 
     useEffect(() => {
         setIsTransitioning(true);
