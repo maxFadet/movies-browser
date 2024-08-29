@@ -2,21 +2,13 @@ import styled from "styled-components";
 
 export const StyledTileList = styled.section`
   display: grid;
-  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 24px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     grid-template-columns: repeat(1,  1fr);
     grid-gap: 16px;
-  }
+  };
 `;
 
 export const ListHeader = styled.header`
