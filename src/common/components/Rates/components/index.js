@@ -32,7 +32,7 @@ export const Rates = ({ useMovieBannerLayout, hideTotalScore, voteAverage, voteC
                 <TotalScoreWrapper>/ 10</TotalScoreWrapper>
             </ScoreComponent>
             <VotesComponent>
-                {Number(voteCount).toLocaleString().replace(/,/g, ',')} votes
+                {Number(voteCount).toLocaleString().replace(/,/g, ',')} {voteCount === 1 ? "vote" : "votes"}
             </VotesComponent>
         </>
     ) : (
