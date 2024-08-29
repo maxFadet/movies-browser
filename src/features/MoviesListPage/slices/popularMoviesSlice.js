@@ -22,10 +22,13 @@ export const popularMoviesSlice = createSlice({
         fetchPopularMoviesError: (state) => {
             state.popularMoviesFetchStatus = errorStatus;
         },
+        setCurrentPage: (state, action) => {
+            state.currentPage = action.payload;
+        }
     }
 });
 
-export const { fetchPopularMovies, fetchPopularMovieSuccess, fetchPopularMoviesError } = popularMoviesSlice.actions;
+export const { fetchPopularMovies, fetchPopularMovieSuccess, fetchPopularMoviesError, setCurrentPage } = popularMoviesSlice.actions;
 
 export const selectPopularMoviesState = state => state.popularMovies;
 export const selectPopularMoviesFetchStatust = state => selectPopularMoviesState(state).popularMoviesFetchStatus;
