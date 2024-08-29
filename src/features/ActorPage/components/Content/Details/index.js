@@ -7,7 +7,8 @@ import {
     ActorDetailsWrapper,
     DetailLabel,
     Biography,
-    ActorDetail
+    ActorDetail,
+    PlaceholderPhoto
 } from "./styled";
 import { useIsMobile } from './useIsMobile';
 
@@ -20,10 +21,17 @@ const formatDate = (dateString) => {
 export const Details = ({ actor }) => {
     const isMobile = useIsMobile();
 
+    const hasPhoto = !!actor.profile_path;
+    const actorPhotoUrl = `${BASE_IMAGE_URL}${IMAGE_WIDTH}${actor.profile_path}`;
+
     return (
         actor && (
             <ActorProfile>
-                <ActorPhoto src={`${BASE_IMAGE_URL}${IMAGE_WIDTH}${actor.profile_path}`} alt={actor.name} />
+                {hasPhoto ? (
+                    <ActorPhoto src={actorPhotoUrl} alt={actor.name} />
+                ) : (
+                    <PlaceholderPhoto />
+                )}
                 <ActorDetailsWrapper>
                     <ActorName>{actor.name}</ActorName>
                     <ActorDetails>
