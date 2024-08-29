@@ -64,18 +64,9 @@ export const MovieDetailsTile = ({ extraContent }) => {
         </DetailInfo>
     );
 
-    const imageElement = isValidImageUrl ? (
-        <Image src={imageUrl} alt={title} />
-    ) : (
-        <IconContainer>
-            <PlaceholderIcon />
-        </IconContainer>
-    );
-
+    const imageElement = isValidImageUrl ? <Image src={imageUrl} alt={title} /> : <IconContainer><PlaceholderIcon /></IconContainer>
     const yearElement = release_date && <Year>{getYear(release_date)}</Year>;
-
     const detailsContent = renderMovieDetails(production_countries, release_date)
-
     const descriptionElement = overview && <Description>{overview}</Description>;
 
     return (
