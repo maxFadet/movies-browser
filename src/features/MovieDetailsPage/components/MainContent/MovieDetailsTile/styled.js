@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const StyledDetailsTile = styled.div`
     display: grid;
-    grid-template-columns: 312px 1.5fr;
+    grid-template-columns: 312px;
     grid-template-areas: 
         "image details"
         "image description"
         "image ...";
     grid-gap: 40px;
-    margin-bottom: 64px;
     align-content: start;
     padding: 24px;
     background-color: ${({ theme }) => theme.colors.white};
@@ -24,17 +23,16 @@ export const StyledDetailsTile = styled.div`
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
         margin-bottom: 42px
-  }
+    }
   
     @media (max-width:  ${({ theme }) => theme.breakpoints.mobileL}) {
         grid-template-columns: 169px 1fr;
-        /* min-height: 400px; */
         grid-gap: 16px;
         padding: 16px;
     };
 
     @media (max-width:  ${({ theme }) => theme.breakpoints.mobileM}) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 114px;
         grid-gap: 16px;
         padding: 16px;
         margin-bottom: 21px;
@@ -89,6 +87,11 @@ export const Header = styled.header`
     font-weight: 600;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+        font-size: 24px;
+        font-weight: 500;
+    };
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
         font-size: 16px;
         font-weight: 500;
     };
