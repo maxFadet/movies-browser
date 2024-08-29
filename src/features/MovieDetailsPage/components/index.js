@@ -11,14 +11,9 @@ export const MovieDetailsPage = () => {
         return <Loader showText={false} />;
     }
 
-    if (isError) {
+    if (isError || !isSuccess) {
         return <Error />;
     }
-
-    if (!isSuccess) {
-        return <NoResults />;
-    }
-
     return (
         <MainContent />
     );
