@@ -52,7 +52,7 @@ export const IconContainer = styled.div`
 
 export const IconContainerMovie = styled(IconContainer)`
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
-        width: 114px;
+        max-width: 114px;
         height: 171px;
     }
 `;
