@@ -5,11 +5,9 @@ import {
 
 export const PeopleTilesList = ({ header, content }) => {
     return (
-        <>
+        <div>
             <ListHeader>{header}</ListHeader>
-            <ListSection>
-                <>{content}</>
-            </ListSection>
-        </>
+            <ListSection>{content}</ListSection>
+        </div>
     );
 };
