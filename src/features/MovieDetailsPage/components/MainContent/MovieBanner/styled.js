@@ -14,7 +14,7 @@ export const Banner =
     width: 80%;
 
     margin: auto;
-    padding-top: 31.25%;
+    padding-top: 27%;
     padding-bottom: 3%;
 
     background-repeat: no-repeat;
@@ -28,10 +28,17 @@ export const Banner =
     box-shadow: inset 0px 5px 24px 27px
         ${({ theme }) => theme.colors.woodsmoke};
     };
-    
+
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
         box-shadow: inset 0px 5px 14px 11px 
             ${({ theme }) => theme.colors.woodsmoke};
+            padding-top: 20%;
+            padding-bottom: 0;
+            background-size: 100%;
+    };
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}) {
+        background-size: cover;
     };
 `;
 
@@ -54,5 +61,6 @@ export const MovieTitle = styled.header`
 
     @media (max-width:  ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 24px;
+        transform: translateY(19px);
     };
 `;
