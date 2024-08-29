@@ -13,14 +13,14 @@ import { Error } from '../../../common/components/Error';
 import { Details } from './Content/Details';
 import { Cast } from './Content/Cast';
 import { Crew } from './Content/Crew';
-import { loadingStatus, successStatus, errorStatus } from "../../../common/constants/requestStatuses";
+import { successStatus, errorStatus } from "../../../common/constants/requestStatuses";
 import { Container } from '../../../common/components/Container';
 
 export const ActorsData = () => {
     const { id: actorId } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     const [isLoading, setIsLoading] = useState(true);
 
     const actor = useSelector(selectActor);
@@ -53,7 +53,7 @@ export const ActorsData = () => {
         return <Loader showText={false} />;
     }
 
-    if (status === errorStatus) {
+    if (status === errorStatus || !cast || !crew) {
         return <Error />;
     }
 
