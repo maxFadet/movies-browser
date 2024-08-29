@@ -1,21 +1,12 @@
 import styled from "styled-components";
 
 export const StyledTileList = styled.section`
- display: grid;
-  grid-template-columns: repeat(4, 324px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
   grid-gap: 24px;
-  margin: 64px auto;
-  width: 1400px;
-  padding-left: 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-    grid-template-columns: repeat(4, minmax(200px, 1fr));
-    width: 100%;
-  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
     grid-template-columns: repeat(3, minmax(200px, 1fr));
-    width: 100%;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
@@ -24,13 +15,13 @@ export const StyledTileList = styled.section`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     grid-template-columns: repeat(1,  1fr);
-    margin-top: 24px;
     grid-gap: 16px;
   }
 `;
 
 export const ListHeader = styled.header`
-    font-size: 36px;
+  font-size: 36px;
+  margin: 8px 0px 0px;
   font-weight: 600;
   line-height: 43px;
   grid-column: 1 / -1;
