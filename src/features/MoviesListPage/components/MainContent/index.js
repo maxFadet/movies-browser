@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { selectSearchMovies, selectTotalResults, selectTotalPages as selectSearchMoviesPages } from '../../../../common/slices/searchMoviesSlice';
-import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies } from '../../slices/popularMoviesSlice';
+import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies, setCurrentPage } from '../../slices/popularMoviesSlice';
 import { Tile } from '../../../../common/components/Tile';
 import { GenresList } from '../../../../common/components/GenresList';
 import { Rates } from '../../../../common/components/Rates/components';
@@ -30,15 +30,20 @@ export const MainContent = () => {
 
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [isTransitioning
-    ] = useState(false);
+    const [isTransitioning] = useState(false);
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get(queryKey);
+        const queryPage = new URLSearchParams(location.search).get("page") || 1;
+        
         if (query && query !== searchQuery) {
             setSearchQuery(query);
         }
-    }, [location, searchQuery]);
+
+        if (Number(queryPage) !== currentPage) {
+            dispatch(setCurrentPage(Number(queryPage)));
+        }
+    }, [location, searchQuery, currentPage, dispatch]);
 
     const isSearching = searchQuery.length > 0;
 
