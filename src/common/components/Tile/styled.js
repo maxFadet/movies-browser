@@ -52,7 +52,7 @@ export const IconContainer = styled.div`
 
 export const IconContainerMovie = styled(IconContainer)`
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
-        width: auto;
+        width: 114px;
         height: 171px;
     }
 `;
@@ -80,7 +80,7 @@ export const Title = styled.header`
     font-weight: 500;
     text-align: center;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 16px;
     }
 `;
@@ -96,7 +96,7 @@ export const SubInfo = styled.p`
     color: ${({ theme }) => theme.colors.waterloo};
     text-align: center;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 13px;
     }
 `;
@@ -110,10 +110,7 @@ export const ExtraContent = styled.div`
     flex-direction: column;
     justify-content: flex-end;
     flex-grow: 1;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
-        grid-gap: 12px;
-    }
+    gap: 10px;
 `;
 
 export const ImageContainer = styled.div`
