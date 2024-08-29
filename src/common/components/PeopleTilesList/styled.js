@@ -22,30 +22,18 @@ export const ListHeader = styled.header`
 
 export const ListSection = styled.ul`
   display: grid;
-  grid-template-columns: repeat(6, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 24px;
   justify-content: center;
   padding: 0;
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
-    grid-template-columns: repeat(5, minmax(100px, 1fr));
-    gap: 20px;
-    width: 100%;
-  };
-
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
-    grid-template-columns: repeat(4, minmax(100px, 1fr));
-    gap: 16px;
-  };
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
-    grid-template-columns: repeat(3, minmax(100px, 1fr));
     gap: 16px;
   };
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   };
 `;
