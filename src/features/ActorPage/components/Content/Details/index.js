@@ -37,11 +37,17 @@ export const Details = ({ actor }) => {
                     <ActorDetails>
                         <ActorDetail>
                             <DetailLabel>{isMobile ? 'Birth:' : 'Date of birth:'}</DetailLabel>
-                            {formatDate(actor.birthday)}
+                            {actor.birthday
+                                ? formatDate(actor.birthday)
+                                : "Unknown"
+                                }
                         </ActorDetail>
                         <ActorDetail>
                             <DetailLabel>Place of birth:</DetailLabel>
-                            {actor.place_of_birth}
+                            {actor.place_of_birth
+                                ? actor.place_of_birth
+                                : "Unknown"
+                            }
                         </ActorDetail>
                     </ActorDetails>
                 </ActorDetailsWrapper>
