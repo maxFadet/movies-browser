@@ -51,7 +51,7 @@ export const MainContent = () => {
 
     const header = isSearching
         ? totalResults > 0
-            ? `Search results for “${searchQuery}” (${totalResults})`
+            ? `Search results for “${searchQuery}” (${totalResults.toLocaleString()})`
             : `Search results for “${searchQuery}”`
         : "Popular movies";
 
