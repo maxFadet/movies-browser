@@ -53,6 +53,12 @@ const ActorsList = () => {
     const totalPages = isSearching ? totalPagesSearch : totalPagesPopular;
 
     useEffect(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const page = parseInt(queryParams.get('page'), 10) || 1;
+        dispatch(fetchActorsStart({ page }));
+    }, [dispatch, location.search]);
+
+    useEffect(() => {
         const query = new URLSearchParams(location.search).get(queryKey);
         setSearchQuery(query || "");
 
@@ -75,7 +81,6 @@ const ActorsList = () => {
 
             return () => clearTimeout(searchDelayId);
         } else {
-            dispatch(fetchActorsStart({ page: currentPage }));
             setIsLoading(true);
             const loadingDelayId = setTimeout(() => {
                 setIsLoading(false);
@@ -91,6 +96,9 @@ const ActorsList = () => {
 
     const handlePageChange = (page) => {
         setIsLoading(true);
+        const params = new URLSearchParams(location.search);
+        params.set('page', page);
+        navigate(`${location.pathname}?${params.toString()}`);
         dispatch(fetchActorsStart({ page }));
     };
 

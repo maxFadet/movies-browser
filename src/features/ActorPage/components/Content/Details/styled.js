@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import noProfile from "../../../../../icons/Profile.svg";
 
 export const ActorProfile = styled.article`
   background: ${({ theme }) => theme.colors.white};
@@ -32,7 +33,7 @@ export const ActorPhoto = styled.img`
   height: 564px;
   border-radius: 5px;
   float: left;
-  margin: 0 40px 30px 0;
+  margin: 0 40px 10px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     height: 300px;
@@ -40,6 +41,35 @@ export const ActorPhoto = styled.img`
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     height: 240px;
+    margin: 0 22px 4px 0;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+    width: 116px;
+    height: 163px;
+    margin: 0;
+  }
+`;
+
+export const PlaceholderPhoto = styled.div`
+  width: 399px;
+  height: 564px;
+  border-radius: 5px;
+  float: left;
+  margin: 0 40px 10px 0;
+  background-image: url(${noProfile});
+  background-color: ${({ theme }) => theme.colors.silver};
+  background-size: 32%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+    height: 300px;
+    width: 210px;
+    margin: 0 20px 6px 0;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+    height: 240px;
+    width: 170px;
     margin: 0 22px 4px 0;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
