@@ -8,7 +8,8 @@ export const searchMoviesSlice = createSlice({
         searchStatus: loadingStatus,
         searchResultsText: "",
         totalResults: 0,
-        totalPages:0,
+        totalPages: 0,
+        currentPage: 1,
     },
     reducers: {
         searchMovies: (state) => {
@@ -18,6 +19,7 @@ export const searchMoviesSlice = createSlice({
             state.movies = movies;
             state.totalResults = totalResults;
             state.totalPages = totalPages;
+            state.currentPage = currentPage;
             state.searchStatus = successStatus;
         },
         searchMoviesError: (state) => {
@@ -29,16 +31,20 @@ export const searchMoviesSlice = createSlice({
                 searchStatus: loadingStatus,
                 searchResultsText: "",
                 totalResults: 0,
-                totalPages:0,
+                totalPages: 0,
+                currentPage: 1,
             };
         },
         setSearchResultsText: (state, action) => {
             state.searchResultsText = action.payload;
         },
+        setCurrentPage: (state, action) => {
+            state.currentPage = action.payload;
+        },
     },
 });
 
-export const { searchMovies, searchMoviesSuccess, searchMoviesError, resetSearchMovies, setSearchResultsText } = searchMoviesSlice.actions;
+export const { searchMovies, searchMoviesSuccess, searchMoviesError, resetSearchMovies, setSearchResultsText, setCurrentPage } = searchMoviesSlice.actions;
 
 export const selectSearchMoviesState = (state) => state.searchMovies;
 export const selectSearchMoviesStatus = (state) => selectSearchMoviesState(state).searchStatus;
@@ -46,6 +52,6 @@ export const selectSearchMovies = (state) => selectSearchMoviesState(state).movi
 export const selectSearchResultsText = (state) => state.searchMovies.searchResultsText;
 export const selectTotalResults = (state) => selectSearchMoviesState(state).totalResults;
 export const selectTotalPages = (state) => selectSearchMoviesState(state).totalPages;
-
+export const selectCurrentPage = (state) => selectSearchMoviesState(state).currentPage;
 
 export const searchMoviesReducer = searchMoviesSlice.reducer;
