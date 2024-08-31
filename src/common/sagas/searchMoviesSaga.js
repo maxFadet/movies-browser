@@ -12,7 +12,8 @@ function* searchMoviesHandler(action) {
         yield put(searchMoviesSuccess({
             movies: data.results,
             totalResults: data.total_results,
-            totalPages: data.total_pages
+            totalPages: data.total_pages,
+            page: data.page
         }));
     } catch (error) {
         yield put(searchMoviesError());
