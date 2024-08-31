@@ -15,11 +15,12 @@ export const searchMoviesSlice = createSlice({
         searchMovies: (state) => {
             state.searchStatus = loadingStatus;
         },
-        searchMoviesSuccess: (state, { payload: { movies, totalResults, totalPages, currentPage } }) => {
+        searchMoviesSuccess: (state, { payload: { movies, totalResults, totalPages, page } }) => {
             state.movies = movies;
             state.totalResults = totalResults;
             state.totalPages = totalPages;
-            state.currentPage = currentPage;
+            state.currentPage = page; 
+            // state.currentPage = currentPage;
             state.searchStatus = successStatus;
         },
         searchMoviesError: (state) => {
