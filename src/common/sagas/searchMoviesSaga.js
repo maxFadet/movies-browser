@@ -4,7 +4,11 @@ import { searchMovies, searchMoviesSuccess, searchMoviesError } from "../slices/
 
 function* searchMoviesHandler(action) {
     try {
-        const data = yield call(fetchMovies, action.payload);
+        const { query, page } = action.payload;
+        if (!query) {
+            return;
+        }
+        const data = yield call(fetchMovies, query, page );
         yield put(searchMoviesSuccess({
             movies: data.results,
             totalResults: data.total_results,
