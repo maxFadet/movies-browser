@@ -37,7 +37,7 @@ export const MainContent = () => {
     const searchResults = useSelector(selectSearchMovies);
     const totalResults = useSelector(selectTotalResults);
     const popularMovies = useSelector(selectPopularMovies);
-    
+
     const currentPopularPage = useSelector(selectPopularCurrentPage);
     const currentSearchPage = useSelector(selectSearchCurrentPage);
 
@@ -58,12 +58,16 @@ export const MainContent = () => {
         const queryPage = new URLSearchParams(location.search).get("page") || 1;
 
         if (query && query !== searchQuery) {
-            setSearchQuery(query);
+            setSearchQuery(query || "");
             dispatch(searchMovies({ query, page: Number(queryPage) }));
         }
 
         if (Number(queryPage) !== currentPage) {
-            dispatch(setCurrentPage(Number(queryPage)));
+            if (query) {
+                dispatch(searchMovies({ query, page: Number(queryPage) }));
+            } else {
+                dispatch(setCurrentPage(Number(queryPage)));
+            }
         }
     }, [location, searchQuery, currentPage, dispatch]);
 
