@@ -64,7 +64,7 @@ const ActorsList = () => {
 
         if (query) {
             setHeaderText(totalResults > 0
-                ? `Search results for “${query}” (${totalResults})`
+                ? `Search results for “${query}” (${totalResults.toLocaleString()})`
                 : `Search results for “${query}”`);
         } else {
             setHeaderText("Popular people");

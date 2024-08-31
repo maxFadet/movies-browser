@@ -1,7 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { selectSearchMovies, selectTotalResults, selectTotalPages as selectSearchMoviesPages } from '../../../../common/slices/searchMoviesSlice';
-import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies, setCurrentPage } from '../../slices/popularMoviesSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
+import {
+    selectSearchMovies,
+    selectTotalResults,
+    selectTotalPages as selectSearchMoviesPages,
+    searchMovies,
+    selectCurrentPage as selectSearchCurrentPage
+} from '../../../../common/slices/searchMoviesSlice';
+import {
+    selectPopularMovies,
+    selectCurrentPage as selectPopularCurrentPage,
+    selectTotalPages,
+    fetchPopularMovies,
+    setCurrentPage
+} from '../../slices/popularMoviesSlice';
 import { Tile } from '../../../../common/components/Tile';
 import { GenresList } from '../../../../common/components/GenresList';
 import { Rates } from '../../../../common/components/Rates/components';
@@ -20,11 +32,15 @@ export const MainContent = () => {
     const handleTileClick = useNavigationToPage();
     const dispatch = useDispatch();
     const location = useLocation();
+    const navigate = useNavigate();
 
     const searchResults = useSelector(selectSearchMovies);
     const totalResults = useSelector(selectTotalResults);
     const popularMovies = useSelector(selectPopularMovies);
-    const currentPage = useSelector(selectCurrentPage);
+
+    const currentPopularPage = useSelector(selectPopularCurrentPage);
+    const currentSearchPage = useSelector(selectSearchCurrentPage);
+
     const totalPagesPopular = useSelector(selectTotalPages);
     const totalPagesSearch = useSelector(selectSearchMoviesPages);
 
@@ -32,26 +48,34 @@ export const MainContent = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isTransitioning] = useState(false);
 
-    useEffect(() => {
-        const query = new URLSearchParams(location.search).get(queryKey);
-        const queryPage = new URLSearchParams(location.search).get("page") || 1;
-        
-        if (query && query !== searchQuery) {
-            setSearchQuery(query);
-        }
-
-        if (Number(queryPage) !== currentPage) {
-            dispatch(setCurrentPage(Number(queryPage)));
-        }
-    }, [location, searchQuery, currentPage, dispatch]);
-
     const isSearching = searchQuery.length > 0;
 
     const totalPages = isSearching ? totalPagesSearch : totalPagesPopular;
+    const currentPage = isSearching ? currentSearchPage : currentPopularPage;
+
+    useEffect(() => {
+        const query = new URLSearchParams(location.search).get(queryKey);
+        const queryPage = new URLSearchParams(location.search).get("page") || 1;
+
+        if (query && query !== searchQuery) {
+            setSearchQuery(query || "");
+            dispatch(searchMovies({ query, page: Number(queryPage) }));
+        }
+
+        if (Number(queryPage) !== currentPage) {
+            if (query) {
+                dispatch(searchMovies({ query, page: Number(queryPage) }));
+            } else {
+                dispatch(setCurrentPage(Number(queryPage)));
+            }
+        }
+    }, [location, searchQuery, currentPage, dispatch]);
+
+    
 
     const header = isSearching
         ? totalResults > 0
-            ? `Search results for “${searchQuery}” (${totalResults})`
+            ? `Search results for “${searchQuery}” (${totalResults.toLocaleString()})`
             : `Search results for “${searchQuery}”`
         : "Popular movies";
 
@@ -60,7 +84,13 @@ export const MainContent = () => {
     const handlePageChange = (page) => {
         setIsLoading(true);
         setTimeout(() => {
-            dispatch(fetchPopularMovies({ page }));
+            if (isSearching) {
+                navigate(`?${queryKey}=${searchQuery}&page=${page}`);
+                dispatch(searchMovies({ query: searchQuery, page }));
+            } else {
+                navigate(`?page=${page}`);
+                dispatch(fetchPopularMovies({ page }));
+            }
             setIsLoading(false);
         }, 1000);
     };
