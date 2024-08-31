@@ -4,11 +4,12 @@ import {
     selectSearchMovies,
     selectTotalResults,
     selectTotalPages as selectSearchMoviesPages,
-    searchMovies
+    searchMovies,
+    selectCurrentPage as selectSearchCurrentPage
 } from '../../../../common/slices/searchMoviesSlice';
 import {
     selectPopularMovies,
-    selectCurrentPage,
+    selectCurrentPage as selectPopularCurrentPage,
     selectTotalPages,
     fetchPopularMovies,
     setCurrentPage
@@ -36,13 +37,21 @@ export const MainContent = () => {
     const searchResults = useSelector(selectSearchMovies);
     const totalResults = useSelector(selectTotalResults);
     const popularMovies = useSelector(selectPopularMovies);
-    const currentPage = useSelector(selectCurrentPage);
+    
+    const currentPopularPage = useSelector(selectPopularCurrentPage);
+    const currentSearchPage = useSelector(selectSearchCurrentPage);
+
     const totalPagesPopular = useSelector(selectTotalPages);
     const totalPagesSearch = useSelector(selectSearchMoviesPages);
 
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [isTransitioning] = useState(false);
+
+    const isSearching = searchQuery.length > 0;
+
+    const totalPages = isSearching ? totalPagesSearch : totalPagesPopular;
+    const currentPage = isSearching ? currentSearchPage : currentPopularPage;
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get(queryKey);
@@ -58,9 +67,7 @@ export const MainContent = () => {
         }
     }, [location, searchQuery, currentPage, dispatch]);
 
-    const isSearching = searchQuery.length > 0;
-
-    const totalPages = isSearching ? totalPagesSearch : totalPagesPopular;
+    
 
     const header = isSearching
         ? totalResults > 0
