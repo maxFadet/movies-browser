@@ -14,10 +14,8 @@ export const fetchMovies = async (query, page = 1) => {
             Authorization: `Bearer ${API_KEY}`
         }
     };
-
     try {
         const response = await axios.request(options);
-
         return response.data;
     } catch (error) {
         console.error("Error fetching movies:", error);
