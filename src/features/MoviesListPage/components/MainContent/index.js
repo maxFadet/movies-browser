@@ -74,8 +74,10 @@ export const MainContent = () => {
         setIsLoading(true);
         setTimeout(() => {
             if (isSearching) {
+                navigate(`?${queryKey}=${searchQuery}&page=${page}`);
                 dispatch(searchMovies({ query: searchQuery, page }));
             } else {
+                navigate(`?page=${page}`);
                 dispatch(fetchPopularMovies({ page }));
             }
             setIsLoading(false);
