@@ -1,6 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { selectSearchMovies, selectTotalResults, selectTotalPages as selectSearchMoviesPages } from '../../../../common/slices/searchMoviesSlice';
+import { selectSearchMovies, 
+    selectTotalResults, 
+    selectTotalPages as selectSearchMoviesPages,
+    searchMovies
+} from '../../../../common/slices/searchMoviesSlice';
 import { selectPopularMovies, selectCurrentPage, selectTotalPages, fetchPopularMovies, setCurrentPage } from '../../slices/popularMoviesSlice';
 import { Tile } from '../../../../common/components/Tile';
 import { GenresList } from '../../../../common/components/GenresList';
@@ -35,9 +39,10 @@ export const MainContent = () => {
     useEffect(() => {
         const query = new URLSearchParams(location.search).get(queryKey);
         const queryPage = new URLSearchParams(location.search).get("page") || 1;
-        
+
         if (query && query !== searchQuery) {
             setSearchQuery(query);
+            dispatch(searchMovies({ query, page: Number(queryPage) }));
         }
 
         if (Number(queryPage) !== currentPage) {
@@ -60,7 +65,11 @@ export const MainContent = () => {
     const handlePageChange = (page) => {
         setIsLoading(true);
         setTimeout(() => {
-            dispatch(fetchPopularMovies({ page }));
+            if (isSearching) {
+                dispatch(searchMovies({ query: searchQuery, page }));
+            } else {
+                dispatch(fetchPopularMovies({ page }));
+            }
             setIsLoading(false);
         }, 1000);
     };
