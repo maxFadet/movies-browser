@@ -8,7 +8,7 @@ export const fetchPeople = async (query, page = 1) => {
   const options = {
     method: 'GET',
     url: `${BASE_URL}/search/person`,
-    params: { query, include_adult: 'false', language: 'en-US', ppage: page },
+    params: { query, include_adult: 'false', language: 'en-US', page: page },
     headers: {
       accept: 'application/json',
       Authorization: `Bearer ${API_KEY}`
