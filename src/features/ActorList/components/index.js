@@ -1,132 +1,125 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectActors, selectActorsStatus, selectCurrentPage, fetchActorsStart, selectTotalPages } from '../slices/actorsSlice';
-import { selectSearchPeople, selectSearchPeopleStatus, searchPeople, selectTotalResults, selectTotalPages as selectSearchPeoplePages } from '../../../common/slices/searchActorSlice';
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+    selectPopularActors,
+    setCurrentPage,
+    selectCurrentPage as selectPopularCurrentPage,
+    fetchActorsStart,
+    selectTotalPages
+} from '../slices/actorsSlice';
+import {
+    selectSearchPeople,
+    selectTotalResults,
+    selectCurrentPage as selectSearchCurrentPage,
+    searchPeople,
+    resetSearchPeople,
+    selectTotalPages as selectSearchPeoplePages
+} from '../../../common/slices/searchActorSlice';
 import { Pagination } from "../../../common/components/Pagination";
 import { Container } from "../../../common/components/Container";
-import { useNavigate, useLocation } from "react-router-dom";
-import { Error } from "../../../common/components/Error";
 import { Loader } from "../../../common/components/Loader";
 import { Tile } from '../../../common/components/Tile';
 import { toPerson } from "../../../routes";
-import { loadingStatus, errorStatus } from "../../../common/constants/requestStatuses";
 import { NoResults } from '../../../common/components/NoResultsPage';
 import { PeopleTilesList } from '../../../common/components/PeopleTilesList';
 import { queryKey } from '../../../common/constants/queryKey';
-
-const useDebounce = (value, delay) => {
-    const [debouncedValue, setDebouncedValue] = useState(value);
-
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            setDebouncedValue(value);
-        }, delay);
-
-        return () => {
-            clearTimeout(handler);
-        };
-    }, [value, delay]);
-
-    return debouncedValue;
-};
+import { useNavigationToPage } from '../../../useNavigation';
 
 const ActorsList = () => {
+    const handleTileClick = useNavigationToPage();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
 
-    const [searchQuery, setSearchQuery] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [headerText, setHeaderText] = useState("Popular people");
-
-    const debouncedSearchQuery = useDebounce(searchQuery, 1000);
-
+    const searchResults = useSelector(selectSearchPeople);
     const totalResults = useSelector(selectTotalResults);
-    const currentPage = useSelector(selectCurrentPage);
+    const popularActors = useSelector(selectPopularActors);
+
+    const currentPopularPage = useSelector(selectPopularCurrentPage);
+    const currentSearchPage = useSelector(selectSearchCurrentPage);
+
     const totalPagesPopular = useSelector(selectTotalPages);
     const totalPagesSearch = useSelector(selectSearchPeoplePages);
 
-    const isSearching = debouncedSearchQuery.length > 0;
-    const actors = useSelector(isSearching ? selectSearchPeople : selectActors);
-    const status = useSelector(isSearching ? selectSearchPeopleStatus : selectActorsStatus);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [isTransitioning] = useState(false);
+
+    const isSearching = searchQuery.length > 0;
 
     const totalPages = isSearching ? totalPagesSearch : totalPagesPopular;
-
-    useEffect(() => {
-        const queryParams = new URLSearchParams(location.search);
-        const page = parseInt(queryParams.get('page'), 10) || 1;
-        dispatch(fetchActorsStart({ page }));
-    }, [dispatch, location.search]);
+    const currentPage = isSearching ? currentSearchPage : currentPopularPage;
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get(queryKey);
-        setSearchQuery(query || "");
+        const queryPage = Number(new URLSearchParams(location.search).get("page")) || 1;
 
-        if (query) {
-            setHeaderText(totalResults > 0
-                ? `Search results for “${query}” (${totalResults.toLocaleString()})`
-                : `Search results for “${query}”`);
-        } else {
-            setHeaderText("Popular people");
-        }
-    }, [location.search, totalResults]);
+        setIsLoading(true);
 
-    useEffect(() => {
-        if (isSearching) {
-            setIsLoading(true);
-            const searchDelayId = setTimeout(() => {
-                dispatch(searchPeople(debouncedSearchQuery));
-                setIsLoading(false);
-            }, 300);
+        setTimeout(() => {
+            if (query && query !== searchQuery) {
+                setSearchQuery(query);
+                dispatch(searchPeople({ query, page: queryPage }));
+            } else if (queryPage !== currentPage || !popularActors.results.length) {
+                dispatch(setCurrentPage(queryPage));
+                dispatch(fetchActorsStart({ page: queryPage }));
+            }
+            setIsLoading(false);
+        }, 1000);
+    }, [location.search, searchQuery, currentPage, dispatch, popularActors.results.length]);
 
-            return () => clearTimeout(searchDelayId);
-        } else {
-            setIsLoading(true);
-            const loadingDelayId = setTimeout(() => {
-                setIsLoading(false);
-            }, 1500);
+    const header = isSearching
+        ? totalResults > 0
+            ? `Search results for “${searchQuery}” (${totalResults.toLocaleString()})`
+            : `Search results for “${searchQuery}”`
+        : "Popular people";
 
-            return () => clearTimeout(loadingDelayId);
-        }
-    }, [dispatch, isSearching, debouncedSearchQuery, currentPage]);
-
-    const handleActorClick = (id) => {
-        navigate(toPerson({ id }));
-    };
+    const peoplesToDisplay = isSearching ? searchResults : popularActors.results;
 
     const handlePageChange = (page) => {
         setIsLoading(true);
-        const params = new URLSearchParams(location.search);
-        params.set('page', page);
-        navigate(`${location.pathname}?${params.toString()}`);
-        dispatch(fetchActorsStart({ page }));
+        setTimeout(() => {
+            if (isSearching) {
+                navigate(`?${queryKey}=${searchQuery}&page=${page}`);
+                dispatch(searchPeople({ query: searchQuery, page }));
+            } else {
+                navigate(`?page=${page}`);
+                dispatch(fetchActorsStart({ page }));
+            }
+            setIsLoading(false);
+        }, 1000);
     };
 
-    if (isLoading || status === loadingStatus) {
+    useEffect(() => {
+        if (!location.search.includes(queryKey)) {
+            setSearchQuery("");
+            dispatch(resetSearchPeople());
+            dispatch(fetchActorsStart({ page: 1 }));
+        }
+    }, [location.search, dispatch]);
+
+    if (isLoading || isTransitioning) {
         return <Loader showText={false} />;
     }
 
-    if (status === errorStatus) {
-        return <Error />;
-    }
-
-    if (actors.length === 0 && isSearching) {
+    if (isSearching && (!peoplesToDisplay || peoplesToDisplay.length === 0)) {
         return <NoResults query={searchQuery} />;
     }
 
     return (
         <Container>
             <PeopleTilesList
-                header={headerText}
+                header={header}
                 content={
-                    actors.length > 0 && (
-                        actors.map(({ id, name, profile_path }) => (
+                    peoplesToDisplay && peoplesToDisplay.length > 0 && (
+                        peoplesToDisplay.map(({ id, name, profile_path }) => (
                             <Tile
                                 key={id}
                                 id={id}
                                 image={profile_path}
                                 title={name}
-                                navigateTo={() => handleActorClick(id)}
+                                navigateTo={() => handleTileClick(toPerson, id)}
                             />
                         ))
                     )

@@ -2,11 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import { loadingStatus, successStatus, errorStatus } from "../../../common/constants/requestStatuses";
 
 export const actorsSlice = createSlice({
-    name: "actorsList",
+    name: "popularActors",
     initialState: {
-        actors: [],
+        popularActors: { results: [] },
         status: loadingStatus,
-        error: null,
         currentPage: 1,
         totalPages: 500,
     },
@@ -15,23 +14,26 @@ export const actorsSlice = createSlice({
             state.status = loadingStatus;
             state.currentPage = action.payload.page || 1;
         },
-        fetchActorsSuccess: (state, action) => {
+        fetchActorsSuccess: (state, { payload: { actors, totalPages } }) => {
             state.status = successStatus;
-            state.actors = action.payload.actors;
-            state.totalPages = action.payload.totalPages || 500;
+            state.popularActors.results = actors;
+            state.totalPages = totalPages || state.totalPages;
         },
-        fetchActorsFailure: (state, action) => {
+        fetchActorsFailure: (state) => {
             state.status = errorStatus;
-            state.error = action.payload;
         },
+        setCurrentPage: (state, action) => {
+            state.currentPage = action.payload;
+        }
     },
 });
 
-export const { fetchActorsStart, fetchActorsSuccess, fetchActorsFailure } = actorsSlice.actions;
+export const { fetchActorsStart, fetchActorsSuccess, fetchActorsFailure, setCurrentPage } = actorsSlice.actions;
 
-export const selectActors = (state) => state.actorsList.actors;
-export const selectActorsStatus = (state) => state.actorsList.status;
-export const selectCurrentPage = (state) => state.actorsList.currentPage;
-export const selectTotalPages = (state) => state.actorsList.totalPages;
+export const selectActors = state => state.actorsList;
+export const selectActorsStatus = state => selectActors(state).status;
+export const selectPopularActors = state => selectActors(state).popularActors;
+export const selectCurrentPage = state => selectActors(state).currentPage;
+export const selectTotalPages = state => selectActors(state).totalPages;
 
 export const actorsSliceReducer = actorsSlice.reducer;
