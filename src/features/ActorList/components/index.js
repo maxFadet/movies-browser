@@ -31,6 +31,7 @@ const ActorsList = () => {
     const totalResults = useSelector(selectTotalResults);
     const currentSearchPage = useSelector(selectSearchCurrentPage);
     const totalPagesSearch = useSelector(selectSearchPeoplePages);
+    const actorsList = popularActor.data;
 
     const [searchQuery, setSearchQuery] = useState("");
     const isSearching = searchQuery.length > 0;
@@ -80,17 +81,15 @@ const ActorsList = () => {
             <PeopleTilesList
                 header={header}
                 content={
-                    peoplesToDisplay && peoplesToDisplay.length > 0 ? (
-                        peoplesToDisplay.map(({ id, name, profile_path }) => (
-                            <Tile
-                                key={id}
-                                id={id}
-                                image={profile_path}
-                                title={name}
-                                navigateTo={() => handleTileClick(toPerson, id)}
-                            />
-                        ))
-                    ) : null
+                    peoplesToDisplay.map((actor) => (
+                        <Tile
+                            key={actor.id}
+                            id={actor.id}
+                            image={actor.profile_path}
+                            title={actor.original_name}
+                            navigateTo={() => handleTileClick(toPerson, actor.id)}
+                        />
+                    ))
                 }
             />
             <Pagination
