@@ -1,13 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from "react-router-dom";
-import {
-    selectPopularActors,
-    setCurrentPage,
-    selectCurrentPage as selectPopularCurrentPage,
-    fetchActorsStart,
-    selectTotalPages
-} from '../slices/actorsSlice';
 import {
     selectSearchPeople,
     selectTotalResults,
@@ -25,6 +18,7 @@ import { NoResults } from '../../../common/components/NoResultsPage';
 import { PeopleTilesList } from '../../../common/components/PeopleTilesList';
 import { queryKey } from '../../../common/constants/queryKey';
 import { useNavigationToPage } from '../../../useNavigation';
+import { usePopularActors } from './usePopularActors';
 
 const ActorsList = () => {
     const handleTileClick = useNavigationToPage();
@@ -32,42 +26,35 @@ const ActorsList = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const { popularActor, totalPagesActor } = usePopularActors();
     const searchResults = useSelector(selectSearchPeople);
     const totalResults = useSelector(selectTotalResults);
-    const popularActors = useSelector(selectPopularActors);
 
-    const currentPopularPage = useSelector(selectPopularCurrentPage);
     const currentSearchPage = useSelector(selectSearchCurrentPage);
-
-    const totalPagesPopular = useSelector(selectTotalPages);
     const totalPagesSearch = useSelector(selectSearchPeoplePages);
 
     const [searchQuery, setSearchQuery] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [isTransitioning] = useState(false);
-
     const isSearching = searchQuery.length > 0;
 
-    const totalPages = isSearching ? totalPagesSearch : totalPagesPopular;
-    const currentPage = isSearching ? currentSearchPage : currentPopularPage;
+    const totalPages = isSearching ? totalPagesSearch : totalPagesActor;
+    const currentPage = isSearching ? currentSearchPage : parseInt(new URLSearchParams(location.search).get("page")) || 1;
 
     useEffect(() => {
         const query = new URLSearchParams(location.search).get(queryKey);
         const queryPage = Number(new URLSearchParams(location.search).get("page")) || 1;
 
-        setIsLoading(true);
+        if (query && query !== searchQuery) {
+            setSearchQuery(query);
+            dispatch(searchPeople({ query, page: queryPage }));
+        }
+    }, [location.search, searchQuery, dispatch]);
 
-        setTimeout(() => {
-            if (query && query !== searchQuery) {
-                setSearchQuery(query);
-                dispatch(searchPeople({ query, page: queryPage }));
-            } else if (queryPage !== currentPage || !popularActors.results.length) {
-                dispatch(setCurrentPage(queryPage));
-                dispatch(fetchActorsStart({ page: queryPage }));
-            }
-            setIsLoading(false);
-        }, 1000);
-    }, [location.search, searchQuery, currentPage, dispatch, popularActors.results.length]);
+    useEffect(() => {
+        if (!location.search.includes(queryKey)) {
+            setSearchQuery("");
+            dispatch(resetSearchPeople());
+        }
+    }, [location.search, dispatch]);
 
     const header = isSearching
         ? totalResults > 0
@@ -75,31 +62,18 @@ const ActorsList = () => {
             : `Search results for “${searchQuery}”`
         : "Popular people";
 
-    const peoplesToDisplay = isSearching ? searchResults : popularActors.results;
+    const peoplesToDisplay = isSearching ? searchResults : popularActor.data;
 
     const handlePageChange = (page) => {
-        setIsLoading(true);
-        setTimeout(() => {
-            if (isSearching) {
-                navigate(`?${queryKey}=${searchQuery}&page=${page}`);
-                dispatch(searchPeople({ query: searchQuery, page }));
-            } else {
-                navigate(`?page=${page}`);
-                dispatch(fetchActorsStart({ page }));
-            }
-            setIsLoading(false);
-        }, 1000);
+        if (isSearching) {
+            navigate(`?${queryKey}=${searchQuery}&page=${page}`);
+            dispatch(searchPeople({ query: searchQuery, page }));
+        } else {
+            navigate(`?page=${page}`);
+        }
     };
 
-    useEffect(() => {
-        if (!location.search.includes(queryKey)) {
-            setSearchQuery("");
-            dispatch(resetSearchPeople());
-            dispatch(fetchActorsStart({ page: 1 }));
-        }
-    }, [location.search, dispatch]);
-
-    if (isLoading || isTransitioning) {
+    if (popularActor.status === "loading") {
         return <Loader showText={false} />;
     }
 
