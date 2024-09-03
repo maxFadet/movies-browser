@@ -21,15 +21,14 @@ import { useNavigationToPage } from '../../../useNavigation';
 import { usePopularActors } from './usePopularActors';
 
 const ActorsList = () => {
-    const handleTileClick = useNavigationToPage();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
+    const handleTileClick = useNavigationToPage();
 
     const { popularActor, totalPagesActor } = usePopularActors();
     const searchResults = useSelector(selectSearchPeople);
     const totalResults = useSelector(selectTotalResults);
-
     const currentSearchPage = useSelector(selectSearchCurrentPage);
     const totalPagesSearch = useSelector(selectSearchPeoplePages);
 
@@ -40,26 +39,21 @@ const ActorsList = () => {
     const currentPage = isSearching ? currentSearchPage : parseInt(new URLSearchParams(location.search).get("page")) || 1;
 
     useEffect(() => {
-        const query = new URLSearchParams(location.search).get(queryKey);
+        const query = new URLSearchParams(location.search).get(queryKey) || "";
         const queryPage = Number(new URLSearchParams(location.search).get("page")) || 1;
 
-        if (query && query !== searchQuery) {
+        if (query !== searchQuery) {
             setSearchQuery(query);
-            dispatch(searchPeople({ query, page: queryPage }));
+            if (query) {
+                dispatch(searchPeople({ query, page: queryPage }));
+            } else {
+                dispatch(resetSearchPeople());
+            }
         }
     }, [location.search, searchQuery, dispatch]);
 
-    useEffect(() => {
-        if (!location.search.includes(queryKey)) {
-            setSearchQuery("");
-            dispatch(resetSearchPeople());
-        }
-    }, [location.search, dispatch]);
-
     const header = isSearching
-        ? totalResults > 0
-            ? `Search results for “${searchQuery}” (${totalResults.toLocaleString()})`
-            : `Search results for “${searchQuery}”`
+        ? `Search results for “${searchQuery}”${totalResults > 0 ? ` (${totalResults.toLocaleString()})` : ''}`
         : "Popular people";
 
     const peoplesToDisplay = isSearching ? searchResults : popularActor.data;
@@ -86,7 +80,7 @@ const ActorsList = () => {
             <PeopleTilesList
                 header={header}
                 content={
-                    peoplesToDisplay && peoplesToDisplay.length > 0 && (
+                    peoplesToDisplay && peoplesToDisplay.length > 0 ? (
                         peoplesToDisplay.map(({ id, name, profile_path }) => (
                             <Tile
                                 key={id}
@@ -96,7 +90,7 @@ const ActorsList = () => {
                                 navigateTo={() => handleTileClick(toPerson, id)}
                             />
                         ))
-                    )
+                    ) : null
                 }
             />
             <Pagination
