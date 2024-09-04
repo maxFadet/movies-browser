@@ -26,26 +26,21 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     };
 
     const handleFirstPageClick = () => {
-        // onPageChange(1);
         updatePageInURL(1);
     };
 
     const handleLastPageClick = () => {
-        // onPageChange(totalPages);
         updatePageInURL(totalPages);
     };
 
     const handleNextPageClick = () => {
         if (currentPage < totalPages) {
-            // onPageChange(currentPage + 1);
             updatePageInURL(currentPage + 1);
-
         }
     };
 
     const handlePreviousPageClick = () => {
         if (currentPage > 1) {
-            // onPageChange(currentPage - 1);
             updatePageInURL(currentPage - 1);
         }
     };

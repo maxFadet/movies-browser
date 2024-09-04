@@ -1,135 +1,95 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectActors, selectActorsStatus, selectCurrentPage, fetchActorsStart, selectTotalPages } from '../slices/actorsSlice';
-import { selectSearchPeople, selectSearchPeopleStatus, searchPeople, selectTotalResults, selectTotalPages as selectSearchPeoplePages } from '../../../common/slices/searchActorSlice';
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+    selectSearchPeople,
+    selectTotalResults,
+    selectCurrentPage as selectSearchCurrentPage,
+    searchPeople,
+    resetSearchPeople,
+    selectTotalPages as selectSearchPeoplePages
+} from '../../../common/slices/searchActorSlice';
 import { Pagination } from "../../../common/components/Pagination";
 import { Container } from "../../../common/components/Container";
-import { useNavigate, useLocation } from "react-router-dom";
-import { Error } from "../../../common/components/Error";
 import { Loader } from "../../../common/components/Loader";
 import { Tile } from '../../../common/components/Tile';
 import { toPerson } from "../../../routes";
-import { loadingStatus, errorStatus } from "../../../common/constants/requestStatuses";
 import { NoResults } from '../../../common/components/NoResultsPage';
 import { PeopleTilesList } from '../../../common/components/PeopleTilesList';
 import { queryKey } from '../../../common/constants/queryKey';
-
-const useDebounce = (value, delay) => {
-    const [debouncedValue, setDebouncedValue] = useState(value);
-
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            setDebouncedValue(value);
-        }, delay);
-
-        return () => {
-            clearTimeout(handler);
-        };
-    }, [value, delay]);
-
-    return debouncedValue;
-};
+import { useNavigationToPage } from '../../../useNavigation';
+import { usePopularActors } from './usePopularActors';
 
 const ActorsList = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
+    const handleTileClick = useNavigationToPage();
+
+    const { popularActor, totalPagesActor } = usePopularActors();
+    const searchResults = useSelector(selectSearchPeople);
+    const totalResults = useSelector(selectTotalResults);
+    const currentSearchPage = useSelector(selectSearchCurrentPage);
+    const totalPagesSearch = useSelector(selectSearchPeoplePages);
+    const actorsList = popularActor.data;
 
     const [searchQuery, setSearchQuery] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [headerText, setHeaderText] = useState("Popular people");
+    const isSearching = searchQuery.length > 0;
 
-    const debouncedSearchQuery = useDebounce(searchQuery, 1000);
-
-    const totalResults = useSelector(selectTotalResults);
-    const currentPage = useSelector(selectCurrentPage);
-    const totalPagesPopular = useSelector(selectTotalPages);
-    const totalPagesSearch = useSelector(selectSearchPeoplePages);
-
-    const isSearching = debouncedSearchQuery.length > 0;
-    const actors = useSelector(isSearching ? selectSearchPeople : selectActors);
-    const status = useSelector(isSearching ? selectSearchPeopleStatus : selectActorsStatus);
-
-    const totalPages = isSearching ? totalPagesSearch : totalPagesPopular;
+    const totalPages = isSearching ? totalPagesSearch : totalPagesActor;
+    const currentPage = isSearching ? currentSearchPage : parseInt(new URLSearchParams(location.search).get("page")) || 1;
 
     useEffect(() => {
-        const queryParams = new URLSearchParams(location.search);
-        const page = parseInt(queryParams.get('page'), 10) || 1;
-        dispatch(fetchActorsStart({ page }));
-    }, [dispatch, location.search]);
+        const query = new URLSearchParams(location.search).get(queryKey) || "";
+        const queryPage = Number(new URLSearchParams(location.search).get("page")) || 1;
 
-    useEffect(() => {
-        const query = new URLSearchParams(location.search).get(queryKey);
-        setSearchQuery(query || "");
-
-        if (query) {
-            setHeaderText(totalResults > 0
-                ? `Search results for “${query}” (${totalResults.toLocaleString()})`
-                : `Search results for “${query}”`);
-        } else {
-            setHeaderText("Popular people");
+        if (query !== searchQuery) {
+            setSearchQuery(query);
+            if (query) {
+                dispatch(searchPeople({ query, page: queryPage }));
+            } else {
+                dispatch(resetSearchPeople());
+            }
         }
-    }, [location.search, totalResults]);
+    }, [location.search, searchQuery, dispatch]);
 
-    useEffect(() => {
-        if (isSearching) {
-            setIsLoading(true);
-            const searchDelayId = setTimeout(() => {
-                dispatch(searchPeople(debouncedSearchQuery));
-                setIsLoading(false);
-            }, 300);
+    const header = isSearching
+        ? `Search results for “${searchQuery}”${totalResults > 0 ? ` (${totalResults.toLocaleString()})` : ''}`
+        : "Popular people";
 
-            return () => clearTimeout(searchDelayId);
-        } else {
-            setIsLoading(true);
-            const loadingDelayId = setTimeout(() => {
-                setIsLoading(false);
-            }, 1500);
-
-            return () => clearTimeout(loadingDelayId);
-        }
-    }, [dispatch, isSearching, debouncedSearchQuery, currentPage]);
-
-    const handleActorClick = (id) => {
-        navigate(toPerson({ id }));
-    };
+    const peoplesToDisplay = isSearching ? searchResults : popularActor.data;
 
     const handlePageChange = (page) => {
-        setIsLoading(true);
-        const params = new URLSearchParams(location.search);
-        params.set('page', page);
-        navigate(`${location.pathname}?${params.toString()}`);
-        dispatch(fetchActorsStart({ page }));
+        if (isSearching) {
+            navigate(`?${queryKey}=${searchQuery}&page=${page}`);
+            dispatch(searchPeople({ query: searchQuery, page }));
+        } else {
+            navigate(`?page=${page}`);
+        }
     };
 
-    if (isLoading || status === loadingStatus) {
+    if (popularActor.status === "loading") {
         return <Loader showText={false} />;
     }
 
-    if (status === errorStatus) {
-        return <Error />;
-    }
-
-    if (actors.length === 0 && isSearching) {
+    if (isSearching && (!peoplesToDisplay || peoplesToDisplay.length === 0)) {
         return <NoResults query={searchQuery} />;
     }
 
     return (
         <Container>
             <PeopleTilesList
-                header={headerText}
+                header={header}
                 content={
-                    actors.length > 0 && (
-                        actors.map(({ id, name, profile_path }) => (
-                            <Tile
-                                key={id}
-                                id={id}
-                                image={profile_path}
-                                title={name}
-                                navigateTo={() => handleActorClick(id)}
-                            />
-                        ))
-                    )
+                    peoplesToDisplay.map((actor) => (
+                        <Tile
+                            key={actor.id}
+                            id={actor.id}
+                            image={actor.profile_path}
+                            title={actor.original_name}
+                            navigateTo={() => handleTileClick(toPerson, actor.id)}
+                        />
+                    ))
                 }
             />
             <Pagination
