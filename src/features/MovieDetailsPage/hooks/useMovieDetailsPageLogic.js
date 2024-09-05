@@ -1,8 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { selectMoviesCreditsListFetchStatus, selectMovieCreddits, fetchMoviesCreditsList } from "../slices/moviesCredditsListSlice";
-import { selectFetchMovieDetailsStatus, fetchMovieDetails, selectMovieDetails } from "../slices/movieDetailsSlice";
+import { 
+    selectMoviesCreditsListFetchStatus, 
+    selectMovieCreddits, 
+    fetchMoviesCreditsList, 
+    resetMoviesCreditsList 
+} from "../slices/moviesCredditsListSlice";
+import { 
+    selectFetchMovieDetailsStatus, 
+    fetchMovieDetails, 
+    resetMovieDetails, 
+    selectMovieDetails 
+} from "../slices/movieDetailsSlice";
 import { selectMoviesGenresFetchStatus, fetchMoviesGenres } from "../../../common/slices/moviesGenresSlice";
 import { checkFetchStates } from "../../../common/functions/checkFetchStates";
 import { loadingStatus, errorStatus, successStatus } from "../../../common/constants/requestStatuses";
@@ -25,11 +35,14 @@ export const useMovieDetailsPageLogic = () => {
         movieCredits.cast;
 
     useEffect(() => {
+        dispatch(resetMovieDetails());
+        dispatch(resetMoviesCreditsList());
+
         const fetchDataDelayId = setTimeout(() => {
             dispatch(fetchMovieDetails(movieId));
             dispatch(fetchMoviesCreditsList(movieId));
             dispatch(fetchMoviesGenres());
-        }, 1000);
+        }, 500);
 
         return () => clearTimeout(fetchDataDelayId);
     }, [dispatch, movieId]);

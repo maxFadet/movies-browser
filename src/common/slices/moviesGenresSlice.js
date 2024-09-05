@@ -23,7 +23,6 @@ export const { fetchMoviesGenres, fetchMoviesGenresSuccess, fetchMoviesGenresErr
 
 export const selectMoviesGenresState = (state) => state.moviesGenres;
 
-// Проверка на наличие данных в `moviesGenres`
 export const selectMoviesGenresFetchStatus = (state) => {
     const moviesGenresState = selectMoviesGenresState(state);
     return moviesGenresState ? moviesGenresState.moviesGenresFetchStatus : null;
