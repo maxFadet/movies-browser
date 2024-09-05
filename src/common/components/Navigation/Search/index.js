@@ -1,89 +1,35 @@
-import { useDispatch } from 'react-redux';
-import { searchMovies, setSearchResultsText } from '../../../slices/searchMoviesSlice';
-import { searchPeople } from '../../../slices/searchActorSlice';
 import { Search, StyledSearchIcon, Input } from "./styled";
-import { useLocation, useNavigate } from "react-router-dom";
-import {
-    toMoviesList,
-    // toMovie, 
-    toActorsList
-} from "../../../../routes";
-import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useQueryParameter, useUpdateQueryParameter } from './useQueryParameter';
 
-const getPlaceholderText = (pathname) =>
-    pathname.includes('/movies')
-        ? 'Search for movies...'
-        : 'Search for people...';
-
-const MovieSearch = () => {
-    const [query, setQuery] = useState('');
-    const [debouncedQuery, setDebouncedQuery] = useState(query);
-    const dispatch = useDispatch();
+const SearchField = () => {
+    const query = useQueryParameter("query");
     const location = useLocation();
-    const navigate = useNavigate();
-    const placeholderText = getPlaceholderText(location.pathname);
-    const isSearchingMovies = location.pathname.includes("/movies");
+    const updateQueryParameter = useUpdateQueryParameter();
 
-    useEffect(() => {
-        setSearchResultsText(query ? `Search results for "${query}"` : "");
-    }, [query]);
-
-    useEffect(() => {
-        dispatch(setSearchResultsText(query ? `Search results for "${query}"` : ""));
-    }, [query, dispatch]);
-
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            setDebouncedQuery(query);
-        }, 500);
-
-        return () => {
-            clearTimeout(handler);
-        };
-    }, [query]);
-
-    useEffect(() => {
-        if (debouncedQuery) {
-            if (isSearchingMovies) {
-                dispatch(searchMovies(debouncedQuery));
-                navigate(`${toMoviesList()}?search=${debouncedQuery}`);
-            } else {
-                dispatch(searchPeople(debouncedQuery));
-                navigate(`${toActorsList()}?search=${debouncedQuery}`);
-            }
-
-            const clearInputTimer = setTimeout(() => {
-                setQuery('');
-            }, 3000);
-
-            return () => clearTimeout(clearInputTimer);
-        }
-    }, [debouncedQuery, dispatch, isSearchingMovies, navigate]);
+    const placeholder = location.pathname.startsWith("/movies")
+        ? "Search for movies..."
+        : "Search for people...";
 
     const handleInputChange = (event) => {
-        setQuery(event.target.value);
+        const value = event.target.value.trim();
+        updateQueryParameter({
+            key: "query",
+            value: value || undefined,
+            resetPage: true
+        });
     };
 
-    useEffect(() => {
-        const searchParams = new URLSearchParams(location.search);
-        const searchQuery = searchParams.get('search');
-        if (searchQuery) {
-            setQuery(searchQuery);
-        }
-    }, [location.search]);
-
     return (
-        <>
-            <Search>
-                <StyledSearchIcon />
-                <Input
-                    placeholder={placeholderText}
-                    value={query}
-                    onChange={handleInputChange}
-                />
-            </Search>
-        </>
+        <Search>
+            <StyledSearchIcon />
+            <Input
+                placeholder={placeholder}
+                value={query || ""}
+                onChange={handleInputChange}
+            />
+        </Search>
     );
 };
 
-export default MovieSearch;
+export default SearchField;

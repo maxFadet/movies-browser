@@ -7,45 +7,29 @@ import {
     NavigationTitle,
     NavigationLogoIcon,
 } from "./styled";
-import Search from "./Search";
+import SearchField from "./Search";
 import { toMoviesList, toActorsList } from "../../../routes";
-import { useDispatch } from "react-redux";
-import { resetSearchMovies } from "../../slices/searchMoviesSlice";
-import { fetchPopularMovies } from "../../../features/MoviesListPage/slices/popularMoviesSlice";
-import { resetSearchPeople } from "../../slices/searchActorSlice";
-import { fetchActorsStart } from "../../../features/ActorList/slices/actorsSlice";
 
 const Navigation = () => {
-    const dispatch = useDispatch();
-
-    const handleMoviesClick = () => {
-        dispatch(resetSearchMovies());
-        dispatch(fetchPopularMovies({ page: 1 }));
-    };
-
-    const handlePeopleClick = () => {
-        dispatch(resetSearchPeople());
-        dispatch(fetchActorsStart({ page: 1 }));
-    };
 
     return (
         <nav>
             <StyledPageHeader>
                 <NavigationContainer>
-                    <NavigationLogo to={toMoviesList()} onClick={handleMoviesClick}>
+                    <NavigationLogo to={toMoviesList()}>
                         <NavigationLogoIcon />
                         <NavigationTitle>Movies Browser</NavigationTitle>
                     </NavigationLogo>
                     <NavigationList>
-                        <NavigationItem to={toMoviesList()} onClick={handleMoviesClick}>
+                        <NavigationItem to={toMoviesList()}>
                             MOVIES
                         </NavigationItem>
-                        <NavigationItem to={toActorsList()} onClick={handlePeopleClick}>
+                        <NavigationItem to={toActorsList()}>
                             PEOPLE
                         </NavigationItem>
                     </NavigationList>
                 </NavigationContainer>
-                <Search />
+                <SearchField />
             </StyledPageHeader>
         </nav>
     );
