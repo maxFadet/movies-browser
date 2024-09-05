@@ -9,6 +9,8 @@ export const StyledRates = styled.div`
     grid-gap: 16px 8px;
     align-items: center;
     justify-content: start;
+    margin-top: auto;
+    margin-bottom: -12px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
       grid-template-areas: 
