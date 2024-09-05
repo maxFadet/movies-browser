@@ -19,6 +19,7 @@ import { PeopleTilesList } from '../../../common/components/PeopleTilesList';
 import { queryKey } from '../../../common/constants/queryKey';
 import { useNavigationToPage } from '../../../useNavigation';
 import { usePopularActors } from './usePopularActors';
+import { Error } from '../../../common/components/Error/index';
 
 const ActorsList = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const ActorsList = () => {
     const location = useLocation();
     const handleTileClick = useNavigationToPage();
 
-    const { popularActor, totalPagesActor } = usePopularActors();
+    const { popularActor, totalPagesActor, error } = usePopularActors();
     const searchResults = useSelector(selectSearchPeople);
     const totalResults = useSelector(selectTotalResults);
     const currentSearchPage = useSelector(selectSearchCurrentPage);
@@ -70,6 +71,9 @@ const ActorsList = () => {
 
     if (popularActor.status === "loading") {
         return <Loader showText={false} />;
+    }
+    if (error) {
+        return <Error message="An error occurred while fetching data. Please try again later." />;
     }
 
     if (isSearching && (!peoplesToDisplay || peoplesToDisplay.length === 0)) {
