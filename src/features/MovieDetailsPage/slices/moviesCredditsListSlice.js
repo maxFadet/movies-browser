@@ -16,18 +16,23 @@ export const moviesCredditsListSlice = createSlice({
         fetchMoviesCreditsListError: (state) => {
             state.fetchMoviesCreditsListStatus = errorStatus;
         },
+        resetMoviesCreditsList: (state) => {
+            state.moviesCreditsList = [];
+            state.fetchMoviesCreditsListStatus = loadingStatus;
+        },
     }
 });
 
 export const {
     fetchMoviesCreditsList,
     fetchMoviesCreditsListSuccess,
-    fetchMoviesCreditsListError
+    fetchMoviesCreditsListError,
+    resetMoviesCreditsList
 } = moviesCredditsListSlice.actions;
 
 export const selectMoviesCreditsListState = state => state.moviesCreditsList;
 
-export const selectMoviesCreditsListFetchStatus = state => selectMoviesCreditsListState(state).fetchMoviesCreditsListStatus
-export const selectMovieCreddits = state => selectMoviesCreditsListState(state).moviesCreditsList
+export const selectMoviesCreditsListFetchStatus = state => selectMoviesCreditsListState(state).fetchMoviesCreditsListStatus;
+export const selectMovieCreddits = state => selectMoviesCreditsListState(state).moviesCreditsList;
 
 export const moviesCreditsListReducer = moviesCredditsListSlice.reducer;

@@ -14,7 +14,11 @@ export const movieDetailsSlice = createSlice({
             state.movieDetails = movieDetails;
         },
         fetchMovieDetailsError: (state) => {
-            state.fetchMovieDetailsStatus = errorStatus
+            state.fetchMovieDetailsStatus = errorStatus;
+        },
+        resetMovieDetails: (state) => {
+            state.movieDetails = null;
+            state.fetchMovieDetailsStatus = loadingStatus;
         },
     },
 });
@@ -22,7 +26,8 @@ export const movieDetailsSlice = createSlice({
 export const {
     fetchMovieDetails,
     fetchMovieDetailsSuccess,
-    fetchMovieDetailsError
+    fetchMovieDetailsError,
+    resetMovieDetails
 } = movieDetailsSlice.actions;
 
 export const selectMovieDetailsState = state => state.movieDetails;
