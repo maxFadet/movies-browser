@@ -14,6 +14,8 @@ export const usePopularActors = () => {
         data: [],
     });
 
+    const [error, setError] = useState(null); 
+
     const url = `${BASE_URL}/person/popular?api_key=${API_KEY}`;
 
     useEffect(() => {
@@ -22,6 +24,7 @@ export const usePopularActors = () => {
                 status: "loading",
                 data: [],
             });
+            setError(null); 
 
             try {
                 const response = await axios.get(`${url}&page=1`);
@@ -30,6 +33,7 @@ export const usePopularActors = () => {
                 }
             } catch (error) {
                 console.log(error);
+                setError("Failed to fetch total pages");
             }
         };
 
@@ -45,7 +49,9 @@ export const usePopularActors = () => {
             } catch (error) {
                 setPopularActor({
                     status: "error",
+                    data: [], 
                 });
+                setError("Failed to fetch popular actors");
                 console.error(error.message);
             }
         };
@@ -53,5 +59,5 @@ export const usePopularActors = () => {
         setTimeout(fetchPopularActor, 500);
     }, [url, currentPage]);
 
-    return { popularActor, totalPagesActor };
+    return { popularActor, totalPagesActor, error };
 };
