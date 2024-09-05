@@ -23,7 +23,7 @@ export const MoviesListPage = () => {
 
     useEffect(() => {
         dispatch(fetchMoviesGenres());
-    }, [dispatch]);
+    }, [dispatch]); 
 
     if (popularMovies.status === loadingStatus) {
         return <Loader showText={false} />;

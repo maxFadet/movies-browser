@@ -12,7 +12,7 @@ const SearchField = () => {
         : "Search for people...";
 
     const handleInputChange = (event) => {
-        const value = event.target.value.trim();
+        const value = event.target.value;
         updateQueryParameter({
             key: "query",
             value: value || undefined,
