@@ -54,9 +54,8 @@ This application uses the [TMDb API](https://developer.themoviedb.org/docs/getti
 
 This project was developed as a group effort by the following team members:
 
-- **Oskar Właszczuk** - [OskarWlaszczuk
-](https://github.com/OskarWlaszczuk)
-- **Dorota Karpińska** - [DorotaKar](https://github.com/DorotaKar)
+- **Oskar Właszczuk** - [OskarWlaszczuk](https://github.com/OskarWlaszczuk)
+- **Dorota Karpińska** - [Dor-Ka]([https://github.com/Dor-Ka)
 - **Maksim Padrabinkin** - [maxFadet](https://github.com/maxFadet)
 
 We worked together to bring this project to life, combining our skills.
