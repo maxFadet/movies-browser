@@ -8,7 +8,7 @@ export const MovieDetailsPage = () => {
     const [isLoading, isError, isSuccess] = useMovieDetailsPageLogic();
 
     if (isLoading) {
-        return <Loader showText={false} />;
+        return <Loader extraTopMargin />;
     }
 
     if (isError || !isSuccess) {
