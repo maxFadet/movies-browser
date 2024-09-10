@@ -76,7 +76,7 @@ export const Title = styled.header`
     font-weight: 500;
     text-align: center;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         font-size: 16px;
     }
 `;
@@ -92,7 +92,7 @@ export const SubInfo = styled.p`
     color: ${({ theme }) => theme.colors.waterloo};
     text-align: center;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         font-size: 13px;
     }
 `;
