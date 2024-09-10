@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
-export const useQueryParameter = (key) => {
+export const useQueryParameter = (parameterName) => {
     const { search } = useLocation();
-    return new URLSearchParams(search).get(key);
+    return new URLSearchParams(search).get(parameterName);
 };
 
 export const useUpdateQueryParameter = () => {

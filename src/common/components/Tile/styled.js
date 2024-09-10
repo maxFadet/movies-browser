@@ -64,10 +64,6 @@ export const GeneralInfo = styled.div`
     flex-grow: 1;
     text-align: center;
     justify-items: center;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileXL}) {
-        text-align: left;
-    }
 `;
 
 export const MovieGeneralInfo = styled(GeneralInfo)`
