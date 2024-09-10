@@ -24,7 +24,7 @@ export const MainContent = () => {
                 <MovieDetailsTile
                     extraContent={
                         <>
-                            <GenresList genresIds={genres.map(({ id }) => id)} />
+                            <GenresList extra genresIds={genres.map(({ id }) => id)} />
                             <Rates voteAverage={vote_average} voteCount={vote_count} />
                         </>
                     }
