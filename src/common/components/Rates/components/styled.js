@@ -17,6 +17,10 @@ export const StyledRates = styled.div`
         "star score votes";
       grid-gap: 8px;
     };
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+      margin-bottom: -7px;
+    };
 `;
 
 export const StyledRatesOfMovieBanner = styled(StyledRates)`
