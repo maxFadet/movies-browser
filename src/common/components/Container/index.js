@@ -14,6 +14,6 @@ export const Container = styled.main`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
-    margin: 16px auto;
+    margin: 24px auto;
   };
 `;
