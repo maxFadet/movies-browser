@@ -4,12 +4,11 @@ import { useFetchSearchResult } from './useFetchSearchResult';
 import { useLocation } from 'react-router-dom';
 import { Loader } from '../Loader';
 import { Error } from '../Error';
-import { Container } from '../Container';
 import { NoResults } from '../NoResultsPage';
 import { Pagination } from '../Pagination';
 import { Tile } from '../Tile';
 import { errorStatus, loadingStatus } from '../../constants/requestStatuses';
-import { Title } from './styled';
+import { Title, Wrapper } from './styled';
 import { toPerson, toMovie } from "../../../routes";
 import { useNavigationToPage } from '../../../useNavigation';
 import { Rates } from '../Rates/components';
@@ -77,7 +76,7 @@ const SearchProcess = () => {
     };
 
     if (status === loadingStatus)
-        return <Container><Title>Search results for "{query}"</Title><Loader showText={false} /></Container>;
+        return <Wrapper><Title>Search results for "{query}"</Title><Loader /></Wrapper>;
 
     if (status === errorStatus)
         return <Error />;
@@ -86,11 +85,11 @@ const SearchProcess = () => {
         return <NoResults />;
 
     return (
-        <Container>
+        <Wrapper>
             <Title>Search results for "{query}" ({searchAmount})</Title>
             {renderTilesList()}
             <Pagination />
-        </Container>
+        </Wrapper>
     );
 };
 
