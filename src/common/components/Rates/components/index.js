@@ -14,7 +14,7 @@ import {
     NoVotesOfMovieBanner
 } from "./styled";
 
-export const Rates = ({ useMovieBannerLayout, hideTotalScore, voteAverage, voteCount }) => {
+export const Rates = ({ useMovieBannerLayout, hideTotalScore, voteAverage, voteCount, extra }) => {
 
     const StyledRatesComponent = useMovieBannerLayout ? StyledRatesOfMovieBanner : StyledRates;
     const StyledStarIconComponent = useMovieBannerLayout ? StyledStarIconOfMovieBanner : StyledStarIcon;
@@ -26,12 +26,12 @@ export const Rates = ({ useMovieBannerLayout, hideTotalScore, voteAverage, voteC
 
     const ratesContentElement = voteCount ? (
         <>
-            <StyledStarIconComponent />
-            <ScoreComponent>
+            <StyledStarIconComponent extra={extra} />
+            <ScoreComponent extra={extra}>
                 {Number(voteAverage).toFixed(1).replace('.', ',')}
                 <TotalScoreWrapper>/ 10</TotalScoreWrapper>
             </ScoreComponent>
-            <VotesComponent>
+            <VotesComponent extra={extra}>
                 {Number(voteCount).toLocaleString().replace(/,/g, ',')} {voteCount === 1 ? "vote" : "votes"}
             </VotesComponent>
         </>

@@ -48,6 +48,11 @@ export const StyledStarIcon = styled(StarIcon)`
   height: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+      width:  ${({ extra }) => extra ? "16px" : "20px"};
+      height:  ${({ extra }) => extra ? "16px" : "20px"};
+  };
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
       width: 16px;
       height: 16px;
   };
@@ -67,14 +72,19 @@ export const StyledStarIconOfMovieBanner = styled(StyledStarIcon)`
 `;
 
 export const Score = styled.p`
-    font-size: 16px;
-    font-weight: 600;
+    font-size: ${({ extra }) => extra ? "16px" : "22px"};
+    font-weight: ${({ extra }) => extra ? "600" : "500"};
     margin: 0;
     grid-area: score;
     align-self: center;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+        font-size: ${({ extra }) => extra ? "14px" : "18px"};
+      };
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         font-size: 13px;
+        font-weight: 600;
       };
 `;
 
@@ -93,6 +103,11 @@ export const ScoreOfMovieBanner = styled(Score)`
 export const TotalScore = styled.span`
     font-size: 14px;
     padding: 0 8px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+      font-size: 12px;
+      padding:  0 6px;
+      };
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
       display: none;
@@ -115,13 +130,14 @@ export const TotalScoreOfMovieBanner = styled(TotalScore)`
 `;
 
 export const Votes = styled.p`
-  color: ${({ theme }) => theme.colors.waterloo};
-  font-size: 16px;
+  font-size: 14px;
   grid-area: votes;
   margin: 0;
+  color: ${({ extra }) => extra ? "#7E839A" : "#000000"};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
       font-size: 13px;
+      color: ${({ extra }) => extra ? "#7E839A" : "#7E839A"};
   };
 `;
 
