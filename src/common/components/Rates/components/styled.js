@@ -10,7 +10,7 @@ export const StyledRates = styled.div`
     align-items: center;
     justify-content: start;
     margin-top: auto;
-    margin-bottom: -12px;
+
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
       grid-template-areas: 
@@ -18,8 +18,9 @@ export const StyledRates = styled.div`
       grid-gap: 8px;
     };
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
-      margin-bottom: -7px;
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+      margin-top: 0;
+      margin-bottom: auto;
     };
 `;
 
@@ -27,25 +28,34 @@ export const StyledRatesOfMovieBanner = styled(StyledRates)`
   grid-template-areas: 
     "star score"
     "votes votes";
+  margin-top: auto;
+  margin-bottom: -12px;
       
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
     grid-gap: 4px;
     grid-template-areas: 
       "star score votes"
   };
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+      margin-bottom: -7px;
+    };
 `;
 
 export const StyledStarIcon = styled(StarIcon)`
   grid-area: star;
   width: 24px;
+  height: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
       width: 16px;
+      height: 16px;
   };
 `;
 
 export const StyledStarIconOfMovieBanner = styled(StyledStarIcon)`
   width: 40px;
+  height: 40px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
     width: 21px;
@@ -108,6 +118,7 @@ export const Votes = styled.p`
   color: ${({ theme }) => theme.colors.waterloo};
   font-size: 16px;
   grid-area: votes;
+  margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
       font-size: 13px;
