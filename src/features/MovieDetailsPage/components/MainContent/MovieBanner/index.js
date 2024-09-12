@@ -19,6 +19,7 @@ export const MovieBanner = () => {
                 <BannerMainInfo>
                     <MovieTitle>{title}</MovieTitle>
                     <Rates
+                        extra
                         useMovieBannerLayout
                         voteAverage={vote_average}
                         voteCount={vote_count}

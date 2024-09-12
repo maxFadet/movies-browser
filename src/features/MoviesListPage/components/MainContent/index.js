@@ -50,6 +50,7 @@ export const MoviesListPage = () => {
                                 <>
                                     <GenresList genresIds={genre_ids} />
                                     <Rates
+                                        extra
                                         voteAverage={vote_average}
                                         voteCount={vote_count}
                                         hideTotalScore={true} />

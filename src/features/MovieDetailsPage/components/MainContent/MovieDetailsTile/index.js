@@ -36,7 +36,7 @@ export const MovieDetailsTile = ({ extraContent }) => {
 
     const renderDetails = (label, value) => (
         <DetailInfoItem >
-            <Label>{label}:</Label>
+            <Label>{label}:&nbsp;</Label>
             {value || <>Unknow</>}
         </DetailInfoItem>
     );

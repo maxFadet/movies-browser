@@ -7,6 +7,10 @@ export const StyledGenresList = styled.ul`
     margin: 0px;
     padding-left: 0px;
     
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+        gap: ${({ extra }) => extra ? "12px" : "8px"};
+    };
+
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         gap: 8px;
     };
