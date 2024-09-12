@@ -6,7 +6,7 @@ export const Wrapper = styled.section`
   gap: 24px;
   align-items: center;
   justify-content: center;
-  margin: 0 0 43px;
+  margin: 0 0 47px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
     gap: 20px;

@@ -28,7 +28,7 @@ export const ActorsData = () => {
 
     if (status === successStatus && actor) {
         return (
-            <Container>
+            <Container extra>
                 <Details actor={actor} />
                 <Cast onMovieClick={(id) => handleTileClick(toMovie, id)} />
                 <Crew onMovieClick={(id) => handleTileClick(toMovie, id)} />
