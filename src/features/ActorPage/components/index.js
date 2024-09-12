@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {
     fetchActorStart,
     selectActor,
@@ -15,11 +15,14 @@ import { Cast } from './Content/Cast';
 import { Crew } from './Content/Crew';
 import { successStatus, errorStatus } from "../../../common/constants/requestStatuses";
 import { Container } from '../../../common/components/Container';
+import { useNavigationToPage } from '../../../useNavigation';
+import { toMovie } from '../../../routes';
 
 export const ActorsData = () => {
     const { id: actorId } = useParams();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    
+    const handleTileClick = useNavigationToPage();
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -38,17 +41,6 @@ export const ActorsData = () => {
         return () => clearTimeout(loaderTimeoutId);
     }, [dispatch, actorId]);
 
-    const [loadingMovieId, setLoadingMovieId] = useState(null);
-
-    const handleMovieClick = (id) => {
-        setLoadingMovieId(id);
-        setIsLoading(true);
-        setTimeout(() => {
-            navigate(`/movies/${id}`);
-            setIsLoading(false);
-        }, 1000);
-    };
-
     if (isLoading) {
         return <Loader extraTopMargin />;
     }
@@ -63,12 +55,12 @@ export const ActorsData = () => {
                 <Details actor={actor} />
                 {
                     cast.length > 0 && (
-                        <Cast cast={cast} onMovieClick={handleMovieClick} />
+                        <Cast cast={cast} onMovieClick={(id) => handleTileClick(toMovie, id)} />
                     )
                 }
                 {
                     crew.length > 0 && (
-                        <Crew crew={crew} onMovieClick={handleMovieClick} />
+                        <Crew crew={crew} onMovieClick={(id) => handleTileClick(toMovie, id)} />
                     )
                 }
             </Container>
