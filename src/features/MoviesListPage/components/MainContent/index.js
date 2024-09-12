@@ -1,19 +1,16 @@
-import { useEffect } from "react";
-import { Tile } from '../../../../common/components/Tile';
-import { GenresList } from '../../../../common/components/GenresList';
-import { Rates } from '../../../../common/components/Rates/components';
-import { toMovie } from "../../../../routes";
-import { MoviesTilesList } from '../../../../common/components/MoviesTilesList';
-import { Container } from '../../../../common/components/Container';
-import { Pagination } from '../../../../common/components/Pagination';
-import { getYear } from '../../../../common/functions/getYear';
-import { useNavigationToPage } from '../../../../useNavigation';
-import { usePopularMovies } from './usePopularMovies';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { fetchMoviesGenres } from '../../../../common/slices/moviesGenresSlice';
-import { useDispatch } from "react-redux";
-import { Loader } from "../../../../common/components/Loader";
-import { Error } from "../../../../common/components/Error";
+import { usePopularMovies } from './usePopularMovies';
+import { Loader } from '../../../../common/components/Loader';
+import { Error } from '../../../../common/components/Error';
 import { errorStatus, loadingStatus } from '../../../../common/constants/requestStatuses';
+import { MoviesList } from '../../../movieList';
+import { useNavigationToPage } from '../../../../useNavigation';
+import { toMovie } from '../../../../routes';
+import { Pagination } from '../../../../common/components/Pagination';
+import { Container } from '../../../../common/components/Container';
+import { getYear } from '../../../../common/functions/getYear';
 
 export const MoviesListPage = () => {
     const dispatch = useDispatch();
@@ -35,30 +32,11 @@ export const MoviesListPage = () => {
 
     return (
         <Container>
-            <MoviesTilesList
+            <MoviesList
                 header="Popular movies"
-                content={
-                    movieList.map(({ id, title, poster_path, release_date, vote_average, vote_count, genre_ids }) => (
-                        <Tile
-                            key={id}
-                            id={id}
-                            image={poster_path}
-                            title={title}
-                            subInfo={getYear(release_date)}
-                            navigateTo={() => handleTileClick(toMovie, id)}
-                            extraContent={
-                                <>
-                                    <GenresList genresIds={genre_ids} />
-                                    <Rates
-                                        extra
-                                        voteAverage={vote_average}
-                                        voteCount={vote_count}
-                                        hideTotalScore={true} />
-                                </>
-                            }
-                        />
-                    ))
-                }
+                movies={movieList}
+                onMovieClick={(id) => handleTileClick(toMovie, id)}
+                subInfoExtractor={({ release_date }) => getYear(release_date)}
             />
             <Pagination />
         </Container>

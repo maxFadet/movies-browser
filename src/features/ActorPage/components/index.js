@@ -14,7 +14,6 @@ import { successStatus, errorStatus } from "../../../common/constants/requestSta
 
 export const ActorsData = () => {
     const { id: actorId } = useParams();
-
     const handleTileClick = useNavigationToPage();
     const isLoading = useLoadingDelay();
     const { actor, status, cast, crew } = useActorData(actorId);
@@ -31,16 +30,8 @@ export const ActorsData = () => {
         return (
             <Container>
                 <Details actor={actor} />
-                {
-                    cast.length > 0 && (
-                        <Cast cast={cast} onMovieClick={(id) => handleTileClick(toMovie, id)} />
-                    )
-                }
-                {
-                    crew.length > 0 && (
-                        <Crew crew={crew} onMovieClick={(id) => handleTileClick(toMovie, id)} />
-                    )
-                }
+                <Cast onMovieClick={(id) => handleTileClick(toMovie, id)} />
+                <Crew onMovieClick={(id) => handleTileClick(toMovie, id)} />
             </Container>
         );
     }
