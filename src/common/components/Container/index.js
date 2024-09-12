@@ -6,7 +6,7 @@ export const Container = styled.main`
   gap: ${({ extra }) => extra ? '64px' : '40px'};
   max-width: 1440px;
   width: 90%;
-  margin: ${({ extra }) => extra ? '103px auto' : '56px auto'};
+  margin: ${({ extraMargin }) => extraMargin ? '103px auto' : '56px auto'};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
     margin: 40px auto;
