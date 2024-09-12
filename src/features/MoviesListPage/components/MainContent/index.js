@@ -37,6 +37,7 @@ export const MoviesListPage = () => {
                 movies={movieList}
                 onMovieClick={(id) => handleTileClick(toMovie, id)}
                 subInfoExtractor={({ release_date }) => getYear(release_date)}
+                extra={true}
             />
             <Pagination />
         </Container>

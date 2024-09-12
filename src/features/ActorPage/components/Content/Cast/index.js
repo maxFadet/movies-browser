@@ -11,6 +11,7 @@ export const Cast = ({ onMovieClick }) => {
             movies={cast}
             onMovieClick={onMovieClick}
             subInfoExtractor={({ character }) => character}
+            extra={true}
         />
     );
 };

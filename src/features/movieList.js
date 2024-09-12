@@ -4,7 +4,7 @@ import { Tile } from '../common/components/Tile';
 import { GenresList } from '../common/components/GenresList';
 import { Rates } from '../common/components/Rates/components';
 
-export const MoviesList = ({ header, movies, onMovieClick, subInfoExtractor }) => {
+export const MoviesList = ({ header, movies, onMovieClick, subInfoExtractor, extra }) => {
     if (!movies || movies.length === 0) {
         return null;
     }
@@ -24,7 +24,12 @@ export const MoviesList = ({ header, movies, onMovieClick, subInfoExtractor }) =
                         extraContent={
                             <>
                                 <GenresList genresIds={genre_ids} />
-                                <Rates voteAverage={vote_average} voteCount={vote_count} hideTotalScore={true} />
+                                <Rates
+                                    voteAverage={vote_average}
+                                    voteCount={vote_count}
+                                    hideTotalScore={true}
+                                    extra={extra}
+                                />
                             </>
                         }
                     />

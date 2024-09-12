@@ -10,6 +10,7 @@ export const Crew = ({ onMovieClick }) => {
             header={`Movies - crew (${crew.length})`}
             movies={crew}
             onMovieClick={onMovieClick}
+            extra={true}
         />
     );
 };
