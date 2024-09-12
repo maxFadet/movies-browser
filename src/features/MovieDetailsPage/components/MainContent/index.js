@@ -20,7 +20,7 @@ export const MainContent = () => {
     return (
         <>
             <MovieBanner />
-            <Container>
+            <Container extra>
                 <MovieDetailsTile
                     extraContent={
                         <>

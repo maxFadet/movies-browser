@@ -32,3 +32,9 @@ export const Wrapper = styled.div`
     margin: 24px auto;
   }
 `;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+`;

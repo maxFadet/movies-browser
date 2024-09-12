@@ -8,7 +8,7 @@ import { NoResults } from '../NoResultsPage';
 import { Pagination } from '../Pagination';
 import { Tile } from '../Tile';
 import { errorStatus, loadingStatus } from '../../constants/requestStatuses';
-import { Title, Wrapper } from './styled';
+import { Title, Wrapper, ContentWrapper } from './styled';
 import { toPerson, toMovie } from "../../../routes";
 import { useNavigationToPage } from '../../../useNavigation';
 import { PeopleTilesList } from '../PeopleTilesList';
@@ -16,6 +16,7 @@ import { getYear } from '../../functions/getYear';
 import { useDispatch } from 'react-redux';
 import { fetchMoviesGenres } from '../../slices/moviesGenresSlice';
 import { MoviesList } from "../../../features/movieList";
+import { Container } from "../Container";
 
 const SearchProcess = () => {
     const query = useQueryParameter("query");
@@ -71,11 +72,13 @@ const SearchProcess = () => {
         return <NoResults />;
 
     return (
-        <Wrapper>
-            <Title>Search results for "{query}" ({searchAmount})</Title>
-            {renderTilesList()}
+        <Container>
+            <ContentWrapper>
+                <Title>Search results for "{query}" ({searchAmount})</Title>
+                {renderTilesList()}
+            </ContentWrapper>
             <Pagination />
-        </Wrapper>
+        </Container>
     );
 };
 
