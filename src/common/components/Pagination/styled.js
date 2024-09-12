@@ -6,11 +6,21 @@ export const Wrapper = styled.section`
   gap: 24px;
   align-items: center;
   justify-content: center;
-  margin: 56px auto;
+  margin: 0 0 43px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletL}) {
+    gap: 20px;
+    margin: 10px auto;
+  };
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+    gap: 16px;
+    margin: 10px auto;
+  };
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     gap: 8px;
-    margin: 50px auto;
+    margin: 7px auto;
   }
 `;
 

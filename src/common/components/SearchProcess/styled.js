@@ -8,7 +8,7 @@ export const Title = styled.h1`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 30px;
   }
 
@@ -16,5 +16,19 @@ export const Title = styled.h1`
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
+  }
+`;
+
+export const Wrapper = styled.div`
+  max-width: 1440px;
+  width: 90%;
+  margin: 56px auto;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+    margin: 40px auto;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+    margin: 24px auto;
   }
 `;

@@ -16,7 +16,7 @@ const ActorsList = () => {
     const actorList = popularActor.data;
 
     if (popularActor.status === loadingStatus) {
-        return <Loader showText={false} />;
+        return <Loader extraTopMargin />;
     }
     
     if (popularActor.status === errorStatus) {

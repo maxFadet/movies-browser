@@ -50,7 +50,7 @@ export const ActorsData = () => {
     };
 
     if (isLoading) {
-        return <Loader showText={false} />;
+        return <Loader extraTopMargin />;
     }
 
     if (status === errorStatus || !cast || !crew) {
