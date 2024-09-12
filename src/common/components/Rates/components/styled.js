@@ -10,12 +10,17 @@ export const StyledRates = styled.div`
     align-items: center;
     justify-content: start;
     margin-top: auto;
-    margin-bottom: -12px;
+
 
     @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
       grid-template-areas: 
         "star score votes";
       grid-gap: 8px;
+    };
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
+      margin-top: 0;
+      margin-bottom: auto;
     };
 `;
 
@@ -23,29 +28,34 @@ export const StyledRatesOfMovieBanner = styled(StyledRates)`
   grid-template-areas: 
     "star score"
     "votes votes";
+  margin-top: auto;
+  margin-bottom: -12px;
       
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
     grid-gap: 4px;
     grid-template-areas: 
       "star score votes"
   };
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+      margin-bottom: -7px;
+    };
 `;
 
 export const StyledStarIcon = styled(StarIcon)`
   grid-area: star;
   width: 24px;
+  height: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
-      width: 21px;
-  };
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
       width: 16px;
+      height: 16px;
   };
 `;
 
 export const StyledStarIconOfMovieBanner = styled(StyledStarIcon)`
   width: 40px;
+  height: 40px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
     width: 21px;
@@ -63,9 +73,8 @@ export const Score = styled.p`
     grid-area: score;
     align-self: center;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
         font-size: 13px;
-        font-weight: 600;
       };
 `;
 
@@ -83,7 +92,6 @@ export const ScoreOfMovieBanner = styled(Score)`
 
 export const TotalScore = styled.span`
     font-size: 14px;
-    font-weight: 400;
     padding: 0 8px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
@@ -108,13 +116,12 @@ export const TotalScoreOfMovieBanner = styled(TotalScore)`
 
 export const Votes = styled.p`
   color: ${({ theme }) => theme.colors.waterloo};
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 16px;
   grid-area: votes;
+  margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletM}) {
       font-size: 13px;
-      color: ${({ theme }) => theme.colors.waterloo};
   };
 `;
 
