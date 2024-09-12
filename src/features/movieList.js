@@ -13,13 +13,13 @@ export const MoviesList = ({ header, movies, onMovieClick, subInfoExtractor, ext
         <MoviesTilesList
             header={header}
             content={
-                movies.map(({ id, title, poster_path, release_date, vote_average, vote_count, genre_ids, character }) => (
+                movies.map(({ id, title, poster_path, release_date, vote_average, vote_count, genre_ids, character, job }) => (
                     <Tile
                         key={id}
                         id={id}
                         image={poster_path}
                         title={title}
-                        subInfo={subInfoExtractor ? subInfoExtractor({ release_date, character }) : null}
+                        subInfo={subInfoExtractor ? subInfoExtractor({ release_date, character, job }) : null}
                         navigateTo={() => onMovieClick(id)}
                         extraContent={
                             <>
