@@ -8,16 +8,15 @@ import { NoResults } from '../NoResultsPage';
 import { Pagination } from '../Pagination';
 import { Tile } from '../Tile';
 import { errorStatus, loadingStatus } from '../../constants/requestStatuses';
-import { Title, Wrapper } from './styled';
+import { Title, Wrapper, ContentWrapper } from './styled';
 import { toPerson, toMovie } from "../../../routes";
 import { useNavigationToPage } from '../../../useNavigation';
-import { Rates } from '../Rates/components';
-import { GenresList } from '../GenresList';
-import { MoviesTilesList } from '../MoviesTilesList';
 import { PeopleTilesList } from '../PeopleTilesList';
 import { getYear } from '../../functions/getYear';
 import { useDispatch } from 'react-redux';
 import { fetchMoviesGenres } from '../../slices/moviesGenresSlice';
+import { MoviesList } from "../../../features/movieList";
+import { Container } from "../Container";
 
 const SearchProcess = () => {
     const query = useQueryParameter("query");
@@ -39,23 +38,11 @@ const SearchProcess = () => {
     const renderTilesList = () => {
         if (isMovieSearch) {
             return (
-                <MoviesTilesList
-                    content={searchList.map(({ id, title, poster_path, release_date, vote_average, vote_count, genre_ids }) => (
-                        <Tile
-                            key={id}
-                            navigateTo={() => handleTileClick(toMovie, id)}
-                            id={id}
-                            image={poster_path}
-                            title={title}
-                            subInfo={getYear(release_date)}
-                            extraContent={
-                                <>
-                                    <GenresList genresIds={genre_ids} />
-                                    <Rates voteAverage={vote_average} voteCount={vote_count} hideTotalScore={true} />
-                                </>
-                            }
-                        />
-                    ))}
+                <MoviesList
+                    movies={searchList}
+                    onMovieClick={(id) => handleTileClick(toMovie, id)}
+                    subInfoExtractor={({ release_date }) => getYear(release_date)}
+                    extra={true}
                 />
             );
         }
@@ -85,11 +72,13 @@ const SearchProcess = () => {
         return <NoResults />;
 
     return (
-        <Wrapper>
-            <Title>Search results for "{query}" ({searchAmount})</Title>
-            {renderTilesList()}
+        <Container>
+            <ContentWrapper>
+                <Title>Search results for "{query}" ({searchAmount})</Title>
+                {renderTilesList()}
+            </ContentWrapper>
             <Pagination />
-        </Wrapper>
+        </Container>
     );
 };
 
