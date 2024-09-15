@@ -71,7 +71,7 @@ export const Pagination = ({ isMoviesPage }) => {
             {!isMobile && <ButtonText>{text}</ButtonText>}
         </ButtonTile>
     );
-    
+
     return (
         <Wrapper>
             <Buttons>
