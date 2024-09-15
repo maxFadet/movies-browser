@@ -63,7 +63,10 @@ export const Pagination = ({ isMoviesPage }) => {
                     {iconRight}
                 </>
             ) : (
-                iconLeft
+                <>
+                    {(text === "First" || text === "Previous") && iconLeft}
+                    {(text === "Last" || text === "Next") && iconRight}
+                </>
             )}
             {!isMobile && <ButtonText>{text}</ButtonText>}
         </ButtonTile>
