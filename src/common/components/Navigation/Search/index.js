@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Search, StyledSearchIcon, Input } from "./styled";
 import { useLocation } from "react-router-dom";
 import { useQueryParameter, useUpdateQueryParameter } from './useQueryParameter';
@@ -7,15 +8,26 @@ const SearchField = () => {
     const location = useLocation();
     const updateQueryParameter = useUpdateQueryParameter();
 
+    const [inputValue, setInputValue] = useState(query || "");
+
     const placeholder = location.pathname.startsWith("/movies")
         ? "Search for movies..."
         : "Search for people...";
 
+    useEffect(() => {
+        setInputValue(query || "");
+    }, [query, location.pathname]);
+
     const handleInputChange = (event) => {
-        const value = event.target.value;
+        let value = event.target.value;
+
+        value = value.replace(/^\s+/, "");
+
+        setInputValue(value);
+
         updateQueryParameter({
             key: "query",
-            value: value || undefined,
+            value: value.trim() || undefined,
             resetPage: true
         });
     };
@@ -25,7 +37,7 @@ const SearchField = () => {
             <StyledSearchIcon />
             <Input
                 placeholder={placeholder}
-                value={query || ""}
+                value={inputValue}
                 onChange={handleInputChange}
             />
         </Search>
