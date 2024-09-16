@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { BASE_URL, API_KEY } from '../../../common/constants/config';
+import { errorStatus, loadingStatus, successStatus } from "../../../common/constants/requestStatuses";
 
 export const usePopularActors = () => {
     const location = useLocation();
@@ -21,7 +22,7 @@ export const usePopularActors = () => {
     useEffect(() => {
         const fetchTotalPagesActor = async () => {
             setPopularActor({
-                status: "loading",
+                status: loadingStatus,
                 data: [],
             });
             setError(null); 
@@ -43,12 +44,12 @@ export const usePopularActors = () => {
             try {
                 const response = await axios.get(`${url}&page=${currentPage}`);
                 setPopularActor({
-                    status: "success",
+                    status: successStatus,
                     data: response.data.results,
                 });
             } catch (error) {
                 setPopularActor({
-                    status: "error",
+                    status: errorStatus,
                     data: [], 
                 });
                 setError("Failed to fetch popular actors");
