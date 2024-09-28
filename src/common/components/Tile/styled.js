@@ -12,6 +12,11 @@ export const StyledPersonTile = styled.li`
     word-break: break-word;
     height: 100%;
     justify-content: space-between;
+    transition: transform ease 300ms;
+
+    &:hover {
+        transform: translate(0, -10px);
+    }
 `;
 
 export const StyledMovieTile = styled(StyledPersonTile)`
