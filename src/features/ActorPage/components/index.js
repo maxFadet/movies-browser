@@ -6,15 +6,12 @@ import { Details } from './Content/Details';
 import { Cast } from './Content/Cast';
 import { Crew } from './Content/Crew';
 import { Container } from '../../../common/components/Container';
-import { useNavigationToPage } from '../../../useNavigation';
-import { toMovie } from '../../../routes';
 import { useLoadingDelay } from './useLoadingDelay';
 import { useActorData } from './useActorData';
 import { successStatus, errorStatus } from "../../../common/constants/requestStatuses";
 
 export const ActorsData = () => {
     const { id: actorId } = useParams();
-    const handleTileClick = useNavigationToPage();
     const isLoading = useLoadingDelay();
     const { actor, status, cast, crew } = useActorData(actorId);
 
@@ -30,8 +27,8 @@ export const ActorsData = () => {
         return (
             <Container extra>
                 <Details actor={actor} />
-                <Cast onMovieClick={(id) => handleTileClick(toMovie, id)} />
-                <Crew onMovieClick={(id) => handleTileClick(toMovie, id)} />
+                <Cast />
+                <Crew />
             </Container>
         );
     }

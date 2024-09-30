@@ -6,16 +6,12 @@ import { Rates } from "../../../../common/components/Rates/components";
 import { useSelector } from "react-redux";
 import { selectMovieCreddits } from "../../slices/moviesCredditsListSlice";
 import { selectMovieDetails } from "../../slices/movieDetailsSlice";
-import { toPerson } from "../../../../routes";
-import { useNavigationToPage } from "../../../../useNavigation";
 import { MovieBanner } from "../../components/MainContent/MovieBanner";
 import { Container } from "../../../../common/components/Container";
 
 export const MainContent = () => {
     const { cast, crew } = useSelector(selectMovieCreddits);
     const { vote_average, vote_count, genres } = useSelector(selectMovieDetails);
-
-    const handleTileClick = useNavigationToPage();
 
     return (
         <>
@@ -38,7 +34,6 @@ export const MainContent = () => {
                                     {
                                         cast.map(({ character, name, profile_path, id }) => (
                                             <Tile
-                                                navigateTo={() => handleTileClick(toPerson, id)}
                                                 id={id}
                                                 image={profile_path}
                                                 title={name}
@@ -60,7 +55,6 @@ export const MainContent = () => {
                                     {
                                         crew.map(({ job, name, profile_path, id }) => (
                                             <Tile
-                                                navigateTo={() => handleTileClick(toPerson, id)}
                                                 id={id}
                                                 image={profile_path}
                                                 title={name}

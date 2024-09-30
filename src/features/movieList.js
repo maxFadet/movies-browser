@@ -4,7 +4,7 @@ import { Tile } from '../common/components/Tile';
 import { GenresList } from '../common/components/GenresList';
 import { Rates } from '../common/components/Rates/components';
 
-export const MoviesList = ({ header, movies, onMovieClick, subInfoExtractor, extra }) => {
+export const MoviesList = ({ header, movies, subInfoExtractor, extra }) => {
     if (!movies || movies.length === 0) {
         return null;
     }
@@ -20,7 +20,6 @@ export const MoviesList = ({ header, movies, onMovieClick, subInfoExtractor, ext
                         image={poster_path}
                         title={title}
                         subInfo={subInfoExtractor ? subInfoExtractor({ release_date, character, job }) : null}
-                        navigateTo={() => onMovieClick(id)}
                         extraContent={
                             <>
                                 <GenresList genresIds={genre_ids} />
