@@ -1,6 +1,5 @@
-import { MovieDetailsTile } from "./MovieDetailsTile"
+import { MovieDetailsTile } from "./MovieDetailsTile";
 import { Tile } from "../../../../common/components/Tile";
-import { GenresList } from "../../../../common/components/GenresList";
 import { PeopleTilesList } from "../../../../common/components/PeopleTilesList";
 import { Rates } from "../../../../common/components/Rates/components";
 import { useSelector } from "react-redux";
@@ -8,6 +7,7 @@ import { selectMovieCreddits } from "../../slices/moviesCredditsListSlice";
 import { selectMovieDetails } from "../../slices/movieDetailsSlice";
 import { MovieBanner } from "../../components/MainContent/MovieBanner";
 import { Container } from "../../../../common/components/Container";
+import { GenresList } from "../../../../common/components/GenresList";
 
 export const MainContent = () => {
     const { cast, crew } = useSelector(selectMovieCreddits);
@@ -25,49 +25,37 @@ export const MainContent = () => {
                         </>
                     }
                 />
-                {
-                    cast.length > 0 && (
-                        <PeopleTilesList
-                            header="Cast"
-                            content={
-                                <>
-                                    {
-                                        cast.map(({ character, name, profile_path, id }) => (
-                                            <Tile
-                                                id={id}
-                                                image={profile_path}
-                                                title={name}
-                                                subInfo={character}
-                                            />
-                                        ))
-                                    }
-                                </>
-                            }
-                        />
-                    )
-                }
-                {
-                    crew.length > 0 && (
-                        <PeopleTilesList
-                            header="Crew"
-                            content={
-                                <>
-                                    {
-                                        crew.map(({ job, name, profile_path, id }) => (
-                                            <Tile
-                                                id={id}
-                                                image={profile_path}
-                                                title={name}
-                                                subInfo={job}
-                                            />
-                                        ))
-                                    }
-                                </>
-                            }
-                        />
-                    )
-                }
+                {cast.length > 0 && (
+                    <PeopleTilesList
+                        header="Cast"
+                        content={
+                            cast.map(({ character, name, profile_path, id }) => (
+                                <Tile
+                                    id={id}
+                                    image={profile_path}
+                                    title={name}
+                                    subInfo={character}
+                                />
+                            ))
+                        }
+                    />
+                )}
+                {crew.length > 0 && (
+                    <PeopleTilesList
+                        header="Crew"
+                        content={
+                            crew.map(({ job, name, profile_path, id }) => (
+                                <Tile
+                                    id={id}
+                                    image={profile_path}
+                                    title={name}
+                                    subInfo={job}
+                                />
+                            ))
+                        }
+                    />
+                )}
             </Container>
         </>
-    )
+    );
 };
