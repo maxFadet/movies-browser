@@ -124,7 +124,7 @@ export const NavigationItem = styled(NavLink)`
     position: relative;
     border: 1px solid transparent; 
     border-radius: 24px;
-    transition: border 0.3s ease, margin 0.3s ease; 
+    transition: transform ease 300ms, border 0.3s ease, margin 0.3s ease; 
     
     &:hover {
         border: 1px solid ${({ theme }) => theme.colors.white};
