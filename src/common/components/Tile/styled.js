@@ -1,17 +1,24 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
-export const StyledPersonTile = styled.li`
+export const StyledPersonTile = styled(NavLink)`
     display: flex;
     flex-direction: column;
     gap: 16px;
     background-color: ${({ theme }) => theme.colors.white};
     box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.colors.brightHeather};
-    cursor: pointer;
     padding: 16px;
     list-style-type: none;
     word-break: break-word;
     height: 100%;
     justify-content: space-between;
+    transition: transform ease 300ms;
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.black};
+
+    &:hover {
+        transform: translate(0, -10px);
+    }
 `;
 
 export const StyledMovieTile = styled(StyledPersonTile)`

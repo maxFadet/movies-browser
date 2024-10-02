@@ -36,7 +36,7 @@ export const Rates = ({ useMovieBannerLayout, hideTotalScore, voteAverage, voteC
             </VotesComponent>
         </>
     ) : (
-        <NoVotesComponent>No votes yet</NoVotesComponent>
+        <NoVotesComponent extra={extra}>No votes yet</NoVotesComponent>
     );
 
     return (

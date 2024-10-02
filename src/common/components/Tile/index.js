@@ -20,8 +20,9 @@ import { getImageUrl } from "../../../common/functions/getImageUrl";
 import { checkIsValidImageUrl } from "../../../common/functions/checkIsValidImageUrl";
 import { INVALID_IMAGE_URL } from "../../constants/config";
 import { IMAGE_WIDTH } from "../../constants/config";
+import { toMovie, toPerson } from "../../../routes";
 
-export const Tile = ({ image, title, subInfo, extraContent, id, navigateTo, }) => {
+export const Tile = ({ image, title, subInfo, extraContent, id }) => {
 
     const imageUrl = getImageUrl(image, IMAGE_WIDTH);
 
@@ -37,6 +38,8 @@ export const Tile = ({ image, title, subInfo, extraContent, id, navigateTo, }) =
     const ImageComponent = extraContent ? ImageMovie : Image;
     const IconContainerComponent = extraContent ? IconContainerMovie : IconContainer;
 
+    const linkTo = extraContent ? toMovie({ id }) : toPerson({ id });
+
     const imageElement = isValidImageUrl ? (
         <ImageComponent src={imageUrl} alt={title} />
     ) : (
@@ -44,11 +47,12 @@ export const Tile = ({ image, title, subInfo, extraContent, id, navigateTo, }) =
             <PlaceholderIcon />
         </IconContainerComponent>
     );
+
     const SubInfoComponent = subInfo && extraContent ? MovieSubInfo : SubInfo;
     const extraContentElement = extraContent && <ExtraContent>{extraContent}</ExtraContent>
 
     return (
-        <TileComponent onClick={navigateTo} key={id}>
+        <TileComponent to={linkTo} key={id}>
             {imageElement}
             <GeneralInfoComponent>
                 <TitleComponent>{title}</TitleComponent>
