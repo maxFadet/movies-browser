@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useQueryParameter } from '../Navigation/Search/useQueryParameter';
 import { useFetchSearchResult } from './useFetchSearchResult';
 import { useLocation } from 'react-router-dom';
@@ -12,7 +11,6 @@ import { Title, Wrapper, ContentWrapper } from './styled';
 import { PeopleTilesList } from '../PeopleTilesList';
 import { getYear } from '../../functions/getYear';
 import { useDispatch } from 'react-redux';
-import { fetchMoviesGenres } from '../../slices/moviesGenresSlice';
 import { MoviesList } from "../../../features/movieList";
 import { Container } from "../Container";
 
@@ -26,10 +24,6 @@ const SearchProcess = () => {
     const { status, data } = searchResults;
     const searchAmount = data?.total_results;
     const searchList = data?.results || [];
-
-    useEffect(() => {
-        dispatch(fetchMoviesGenres());
-    }, [dispatch]);
 
     const renderTilesList = () => {
         if (isMovieSearch) {

@@ -1,6 +1,3 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchMoviesGenres } from '../../../../common/slices/moviesGenresSlice';
 import { usePopularMovies } from './usePopularMovies';
 import { Loader } from '../../../../common/components/Loader';
 import { Error } from '../../../../common/components/Error';
@@ -11,13 +8,8 @@ import { Container } from '../../../../common/components/Container';
 import { getYear } from '../../../../common/functions/getYear';
 
 export const MoviesListPage = () => {
-    const dispatch = useDispatch();
     const { popularMovies } = usePopularMovies();
     const movieList = popularMovies.data;
-
-    useEffect(() => {
-        dispatch(fetchMoviesGenres());
-    }, [dispatch]);
 
     if (popularMovies.status === loadingStatus) {
         return <Loader extraTopMargin />;

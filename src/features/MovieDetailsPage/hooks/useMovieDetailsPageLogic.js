@@ -1,21 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { 
-    selectMoviesCreditsListFetchStatus, 
-    selectMovieCreddits, 
-    fetchMoviesCreditsList, 
-    resetMoviesCreditsList 
+import {
+    selectMoviesCreditsListFetchStatus,
+    selectMovieCreddits,
+    fetchMoviesCreditsList,
+    resetMoviesCreditsList
 } from "../slices/moviesCredditsListSlice";
-import { 
-    selectFetchMovieDetailsStatus, 
-    fetchMovieDetails, 
-    resetMovieDetails, 
-    selectMovieDetails 
+import {
+    selectFetchMovieDetailsStatus,
+    fetchMovieDetails,
+    resetMovieDetails,
+    selectMovieDetails
 } from "../slices/movieDetailsSlice";
-import { selectMoviesGenresFetchStatus, fetchMoviesGenres } from "../../../common/slices/moviesGenresSlice";
 import { checkFetchStates } from "../../../common/functions/checkFetchStates";
 import { loadingStatus, errorStatus, successStatus } from "../../../common/constants/requestStatuses";
+import { useGenresList } from "../../../common/components/GenresList/useGenresList";
 
 export const useMovieDetailsPageLogic = () => {
     const { id: movieId } = useParams();
@@ -23,14 +23,15 @@ export const useMovieDetailsPageLogic = () => {
 
     const movieDetailsFetchStatus = useSelector(selectFetchMovieDetailsStatus);
     const moviesCreditsListFetchStatus = useSelector(selectMoviesCreditsListFetchStatus);
-    const moviesGenresFetchStatus = useSelector(selectMoviesGenresFetchStatus);
 
     const movieDetails = useSelector(selectMovieDetails);
     const movieCredits = useSelector(selectMovieCreddits);
 
-    const isLoading = checkFetchStates([movieDetailsFetchStatus, moviesCreditsListFetchStatus, moviesGenresFetchStatus], loadingStatus);
-    const isError = checkFetchStates([movieDetailsFetchStatus, moviesCreditsListFetchStatus, moviesGenresFetchStatus], errorStatus);
-    const isSuccess = checkFetchStates([movieDetailsFetchStatus, moviesCreditsListFetchStatus, moviesGenresFetchStatus], successStatus, true) &&
+    const { genres } = useGenresList();
+
+    const isLoading = checkFetchStates([movieDetailsFetchStatus, moviesCreditsListFetchStatus, genres.status], loadingStatus);
+    const isError = checkFetchStates([movieDetailsFetchStatus, moviesCreditsListFetchStatus, genres.status], errorStatus);
+    const isSuccess = checkFetchStates([movieDetailsFetchStatus, moviesCreditsListFetchStatus, genres.status], successStatus, true) &&
         movieDetails.title &&
         movieCredits.cast;
 
@@ -41,7 +42,6 @@ export const useMovieDetailsPageLogic = () => {
         const fetchDataDelayId = setTimeout(() => {
             dispatch(fetchMovieDetails(movieId));
             dispatch(fetchMoviesCreditsList(movieId));
-            dispatch(fetchMoviesGenres());
         }, 500);
 
         return () => clearTimeout(fetchDataDelayId);
