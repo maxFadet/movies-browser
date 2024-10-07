@@ -16,20 +16,22 @@ import {
 
 export const Rates = ({ useMovieBannerLayout, hideTotalScore, voteAverage, voteCount, extra }) => {
 
-    const StyledRatesComponent = useMovieBannerLayout ? StyledRatesOfMovieBanner : StyledRates;
-    const StyledStarIconComponent = useMovieBannerLayout ? StyledStarIconOfMovieBanner : StyledStarIcon;
-    const ScoreComponent = useMovieBannerLayout ? ScoreOfMovieBanner : Score;
-    const TotalScoreComponent = useMovieBannerLayout ? TotalScoreOfMovieBanner : TotalScore;
-    const VotesComponent = useMovieBannerLayout ? VotesOfMovieBanner : Votes;
-    const NoVotesComponent = useMovieBannerLayout ? NoVotesOfMovieBanner : NoVotes;
-    const TotalScoreWrapper = hideTotalScore ? TotalScoreHidden : TotalScoreComponent;
+    const getStyledComponent = (movieBannerLayout, defaultComponent, movieBannerComponent) => 
+        movieBannerLayout ? movieBannerComponent : defaultComponent;
+
+    const StyledRatesComponent = getStyledComponent(useMovieBannerLayout, StyledRates, StyledRatesOfMovieBanner);
+    const StyledStarIconComponent = getStyledComponent(useMovieBannerLayout, StyledStarIcon, StyledStarIconOfMovieBanner);
+    const ScoreComponent = getStyledComponent(useMovieBannerLayout, Score, ScoreOfMovieBanner);
+    const VotesComponent = getStyledComponent(useMovieBannerLayout, Votes, VotesOfMovieBanner);
+    const NoVotesComponent = getStyledComponent(useMovieBannerLayout, NoVotes, NoVotesOfMovieBanner);
+    const TotalScoreComponent = hideTotalScore ? TotalScoreHidden : getStyledComponent(useMovieBannerLayout, TotalScore, TotalScoreOfMovieBanner);
 
     const ratesContentElement = voteCount ? (
         <>
             <StyledStarIconComponent extra={extra} />
             <ScoreComponent extra={extra}>
                 {Number(voteAverage).toFixed(1).replace('.', ',')}
-                <TotalScoreWrapper>/ 10</TotalScoreWrapper>
+                <TotalScoreComponent>/ 10</TotalScoreComponent>
             </ScoreComponent>
             <VotesComponent extra={extra}>
                 {Number(voteCount).toLocaleString().replace(/,/g, ',')} {voteCount === 1 ? "vote" : "votes"}
