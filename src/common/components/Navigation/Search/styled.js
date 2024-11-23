@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../Icons/Search.svg";
 
-
 export const Search = styled.div`
     display: flex;
     flex-basis: 30%;
@@ -32,7 +31,7 @@ export const Search = styled.div`
     };
 `;
 
-export const StyledSearchIcon = styled(SearchIcon) `
+export const StyledSearchIcon = styled(SearchIcon)`
     margin-left: 12px;
     max-width: 40px;
 
