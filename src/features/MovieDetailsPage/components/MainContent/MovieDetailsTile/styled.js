@@ -51,7 +51,6 @@ export const IconContainer = styled.div`
     width: 100%;
     height: 464px;
 
-
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileL}) {
         height: 250px;
     };
