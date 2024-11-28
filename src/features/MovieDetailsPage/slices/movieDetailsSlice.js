@@ -32,9 +32,9 @@ export const {
 
 export const selectMovieDetailsState = state => state.movieDetails;
 
-export const selectFetchMovieDetailsStatus = state => 
+export const selectFetchMovieDetailsStatus = state =>
     selectMovieDetailsState(state).fetchMovieDetailsStatus;
-export const selectMovieDetails = state => 
+export const selectMovieDetails = state =>
     selectMovieDetailsState(state).movieDetails;
 
 export const movieDetailsReducer = movieDetailsSlice.reducer;
