@@ -10,7 +10,7 @@ export const Error = () => {
                     Ooops! Something went wrong...
                 </Warning>
                 <Message>
-                    Please check your network connection <br/>and try again
+                    Please check your network connection <br />and try again
                 </Message>
                 <Button to={toMoviesList()}>Back to home page</Button>
             </ErrorWrapper>
