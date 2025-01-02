@@ -21,5 +21,5 @@ export const NoResults = () => {
             </Legend>
             <Image />
         </Container>
-    )
-}
+    );
+};
