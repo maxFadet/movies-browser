@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { errorStatus, loadingStatus, successStatus } from "../../constants/requestStatuses";
 import { API_KEY, BASE_URL } from "../../constants/config";
 
-
 const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
 
 export const useGenresList = () => {
