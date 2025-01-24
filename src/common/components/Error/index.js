@@ -12,7 +12,9 @@ export const Error = () => {
                 <Message>
                     Please check your network connection <br />and try again
                 </Message>
-                <Button to={toMoviesList()}>Back to home page</Button>
+                <Button to={toMoviesList()}>
+                    Back to home page
+                </Button>
             </ErrorWrapper>
         </Container>
     )
