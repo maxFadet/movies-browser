@@ -16,7 +16,7 @@ import {
 
 export const Rates = ({ useMovieBannerLayout, hideTotalScore, voteAverage, voteCount, extra }) => {
 
-    const getStyledComponent = (movieBannerLayout, defaultComponent, movieBannerComponent) => 
+    const getStyledComponent = (movieBannerLayout, defaultComponent, movieBannerComponent) =>
         movieBannerLayout ? movieBannerComponent : defaultComponent;
 
     const StyledRatesComponent = getStyledComponent(useMovieBannerLayout, StyledRates, StyledRatesOfMovieBanner);
