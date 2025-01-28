@@ -15,7 +15,7 @@ export const usePopularActors = () => {
         data: [],
     });
 
-    const [error, setError] = useState(null); 
+    const [error, setError] = useState(null);
 
     const url = `${BASE_URL}/person/popular?api_key=${API_KEY}`;
 
@@ -25,7 +25,7 @@ export const usePopularActors = () => {
                 status: loadingStatus,
                 data: [],
             });
-            setError(null); 
+            setError(null);
 
             try {
                 const response = await axios.get(`${url}&page=1`);
@@ -50,7 +50,7 @@ export const usePopularActors = () => {
             } catch (error) {
                 setPopularActor({
                     status: errorStatus,
-                    data: [], 
+                    data: [],
                 });
                 setError("Failed to fetch popular actors");
                 console.error(error.message);
