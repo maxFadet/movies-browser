@@ -40,7 +40,7 @@ export const Details = ({ actor }) => {
                             {actor.birthday
                                 ? formatDate(actor.birthday)
                                 : "Unknown"
-                                }
+                            }
                         </ActorDetail>
                         <ActorDetail>
                             <DetailLabel>Place of birth:</DetailLabel>
