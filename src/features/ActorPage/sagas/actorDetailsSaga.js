@@ -17,7 +17,7 @@ function* fetchActorSaga(action) {
         console.error(error.message);
         yield put(fetchActorFailure(error.toString()));
     }
-} 
+}
 
 export function* watchFetchActor() {
     yield takeLatest(fetchActorStart.type, fetchActorSaga);
