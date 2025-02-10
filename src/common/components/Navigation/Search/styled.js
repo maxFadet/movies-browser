@@ -8,7 +8,6 @@ export const Search = styled.div`
     gap: 16px;
     padding: 12px;
     padding-right: 16px;
-    
     border: 1px solid ${({ theme }) => theme.colors.mystic};
     border-radius: 33px;
     background-color: ${({ theme }) => theme.colors.white};
