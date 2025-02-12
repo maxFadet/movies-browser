@@ -9,7 +9,6 @@ export const useUpdateQueryParameter = () => {
     const navigate = useNavigate();
     const { search, pathname } = useLocation();
     const searchParams = new URLSearchParams(search || '');
-
     const isMoviesPage = pathname.startsWith("/movies");
 
     return ({ key, value, resetPage }) => {
