@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import { movieDetailsReducer } from './features/MovieDetailsPage/slices/movieDetailsSlice';
 import { rootSaga } from './rootSaga';
 import { moviesCreditsListReducer } from './features/MovieDetailsPage/slices/moviesCredditsListSlice';
-import { actorDetailsSliceReducer } from "./features/ActorPage/slices/actorDetailsSlice";
+import { actorDetailsSliceReducer } from './features/ActorPage/slices/actorDetailsSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
