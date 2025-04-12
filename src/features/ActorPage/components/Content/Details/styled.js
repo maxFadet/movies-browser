@@ -39,10 +39,12 @@ export const ActorPhoto = styled.img`
     height: 300px;
     margin: 0 20px 6px 0;
   }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletS}) {
     height: 240px;
     margin: 0 22px 4px 0;
   }
+  
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileM}) {
     width: 116px;
     height: 163px;
