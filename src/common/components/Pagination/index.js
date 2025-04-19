@@ -36,6 +36,7 @@ export const Pagination = ({ isMoviesPage }) => {
 
     const searchParams = new URLSearchParams(location.search);
     const currentPage = parseInt(searchParams.get("page")) || 1;
+    
     const [previousQuery, setPreviousQuery] = useState(query);
 
     useEffect(() => {
